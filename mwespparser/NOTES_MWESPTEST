@@ -1,0 +1,3681 @@
+
+Suggestion: Info/Response list should be sortable by Info.
+
+Icon = Inventory Image/Icon
+
+Does Region Paint in Regions window affect the CELL/REGN values?
+Or where else the map is stored?
+
+LAND:
+We should read the land data "as is" to memory.
+That way we are able to preload more cells.
+We may then precompute the terrain for required cells
+as in-memory process. Or we may even compute the terrain
+on-the-fly while rendering.
+
+Savegame related records:
+TES3/GMDT
+TES3/SCRD
+TES3/SCRS
+SCPT/SLCS
+SCPT/RNAM
+SCPT/SLSD
+SCPT/SLLD
+SCPT/SLFD
+REGN/WNAM
+NPCC
+CREC
+CNTC
+CELL/ZNAM
+CELL/LVCR
+CELL/SCRI
+CELL/SLCS
+CELL/SLSD
+CELL/SLLD
+CELL/SLFD
+CELL/ACDT
+CELL/ACSC   CONTINUE
+CELL/ACSL   CONTINUE
+CELL/CRED
+CELL/STPR
+CELL/NAM8   CONTINUE
+CELL/CHRD
+CELL/DELE
+CELL/MNAM
+CELL/LSTN
+CELL/ND3D
+CELL/ANIS
+CELL/FGTN
+CELL/MVRF
+CELL/CNDT
+CELL/CSTN
+CELL/CSHN
+CELL/LSHN
+CELL/TGTN
+CELL/WNAM
+CELL/MPCD
+CELL/MPNT
+CELL/XNAM
+CELL/YNAM
+REFR  % CONTINUE CHRD, check record with values 333333344; see TES3/GMDT!
+DIAL/XIDX
+INFO/ACDT
+JOUR
+FMAP
+PCDT
+STLN
+GAME   CONTINUE GMDT
+SPLM
+QUES
+KLST
+CREA/INDX
+CONT/INDX
+
+
+SLCS numbers:
+Number of shorts in SLSD
+Number of longs  in SLLD
+Number of floats in SLFD
+
+
+End of PCDT/FNAM is assumed to be garbage, after the string.
+Check if AI_* records have the same issue.
+
+note the cell location and PCDT/ENAM+LNAM
+
+cat tes3scrs.bgra | ~/src/rawimageskipalpha > x.bgr % GIMP cannot do this?
+cat x.bgr | rawtoppm -bgr 128 128 > x.ppm
+
+
+============================================================================
+
+ok
+ACTI
+Activator
+
+Animation button is disabled. When it is enabled?
+
+References Persist
+Blocked
+
+============================================================================
+
+nearly ok
+ALCH
+Alchemy
+
+Todo:
+Verify Auto Calculate flag. % ok, Tribunal
+Verify Script.
+
+
+Effect has only Duration and Magnitude.
+ENAM has the following values:
+Range = Self,
+Area = 0,
+Magnitude Min = Magnitude Max.
+
+
+
+============================================================================
+
+ok
+APPA
+Apparatus
+
+Type:
+0 Mortar/Pestle
+1 Alembic
+2 Calcinator
+3 Retort
+
+0 Mortar/Pestle 1 Alembic 2 Calcinator 3 Retort
+
+
+============================================================================
+
+nearly ok
+ARMO
+Armor
+
+
+Todo:
+Rest of the biped objects.
+
+
+Next to Weight there is a label showing "Light", "Medium", "Heavy".
+The label depends on more than on weight. E.g., sort all armors by
+weight and check the weight class column.
+
+Type:
+0 Helmet
+1 Cuirass
+2 Left Pauldron
+3 Right Pauldron
+4 Greaves
+5 Boots
+6 Left Gauntlet
+7 Right Gauntlet
+8 Shield
+9 Left Bracer
+10 Right Bracer
+
+0 Helmet 1 Cuirass 2 Left Pauldron 3 Right Pauldron 4 Greaves 5 Boots 6 Left Gauntlet 7 Right Gauntlet 8 Shield 9 Left Bracer 10 Right Bracer
+
+Biped Object:
+0 Head
+1 Hair
+2 ???? % not in Morrowind.esm
+3 Chest
+4 Groin
+5 Skirt
+6 Right Hand
+7 Left Hand
+8 Right Wrist
+9 Left Wrist
+10 Shield
+11 Right Forearm
+12 Left Forearm
+13 Right Upper Arm
+14 Left Upper Arm
+15 Right Foot
+16 Left Foot
+17 Right Ankle
+18 Left Ankle
+19 Right Knee
+20 Left Knee
+21 Right Upper Leg
+22 Left Upper Leg
+23 Right Pauldron
+24 Left Pauldron
+Neck
+Tail
+Weapon
+
+============================================================================
+
+ok
+BODY
+Body Part
+
+
+Clothing and Armor have Skin Info disabled, but Skin Info Race
+record exists.
+
+Parts Head and Hair have Playable flag enabled. Others have disabled.
+
+Part:
+0 Head
+1 Hair
+2 Neck
+3 Chest
+4 Groin
+5 Hand
+6 Wrist
+7 Forearm
+8 Upper Arm
+9 Foot
+10 Ankle
+11 Knee
+12 Upper Leg
+13 Clavicle
+14 Tail
+
+0 Head 1 Hair 2 Neck 3 Chest 4 Groin 5 Hand 6 Wrist 7 Forearm 8 Upper Arm 9 Foot 10 Ankle 11 Knee 12 Upper Leg 13 Clavicle 14 Tail
+
+Part Type:
+0 Skin
+1 Clothing
+2 Armor
+
+0 Skin 1 Clothing 2 Armor
+
+Flags:
+Female
+Playable
+Blocked
+
+Skin Info:
+Race:
+Type:
+Normal
+Vampire
+
+
+============================================================================
+
+ok
+BOOK
+Book/Scroll
+
+
+Flags:
+Scroll
+References Persist
+Blocked
+
+Teaches:
+-1 NONE
+0 Block
+1 Armorer
+2 Medium Armor
+3 Heavy Armor
+4 Blunt Weapon
+5 Long Blade
+6 Axe
+7 Spear
+8 Athletics
+9 Enchant
+10 Destruction
+11 Alteration
+12 Illusion
+13 Conjuration
+14 Mysticism
+15 Restoration
+16 Alchemy
+17 Unarmored
+18 Security
+19 Sneak
+20 Acrobatics
+21 Light Armor
+22 Short Blade
+23 Marksman
+24 Mercantile
+25 Speechcraft
+26 Hand-to-hand
+
+-1 NONE 0 Block 1 Armorer 2 Medium Armor 3 Heavy Armor 4 Blunt Weapon 5 Long Blade 6 Axe 7 Spear 8 Athletics 9 Enchant 10 Destruction 11 Alteration 12 Illusion 13 Conjuration 14 Mysticism 15 Restoration 16 Alchemy 17 Unarmored 18 Security 19 Sneak 20 Acrobatics 21 Light Armor 22 Short Blade 23 Marksman 24 Mercantile 25 Speechcraft 26 Hand-to-hand
+
+
+============================================================================
+
+ok
+BSGN
+Birthsigns
+
+
+============================================================================
+
+CELL
+Cell
+
+
+Todo:
+NAM0
+XCHG
+Behave Like Exterior flag % ok
+
+
+
+Abaelun Mine
+cat p1 | grep -A 1000 "Chunk name 0: CELL 0 55776839"|more
+
+CELL/DATA 12
+1
+0
+1.000000  % float while others have int; interiors?
+
+CELL/NAME 10
+Holamayan
+Chunk name: DATA
+CELL/DATA 12
+66 % this is not ref count, which is 54  flags?
+19 % Cell location (19,-4)
+-4
+
+CELL/NAME 13
+Sadrith Mora
+Chunk name: DATA
+CELL/DATA 12
+70
+18
+4
+
+0000,0000
+        ^Interior
+       ^Exterior
+      ^Illegal To Sleep Here
+ ^Map Color
+^Behave Like Exterior
+
+
+Behave Like Exterior % Tribunal
+
+
+Holamayan / Teleport:
+
+Chunk name: FRMR
+CELL/FRMR 4
+185886
+Chunk name: NAME
+CELL/NAME 23
+ex_velothi_loaddoor_01
+Chunk name: DODT
+CELL/DODT 24
+20.751129       % position of the teleport marker in Holamayan Monastery
+-605.182739
+-423.049591
+0.000000
+0.000000
+0.000000
+Chunk name: DNAM
+CELL/DNAM 20
+Holamayan Monastery
+Chunk name: DATA
+CELL/DATA 24
+159105.843750 % position of the door model
+-30298.326172
+2077.239014
+0.000000
+0.000000
+4.712389
+Chunk name: NAM0
+CELL/NAM0 4
+53 % 32+16+4+1 perhaps not flags; nothing in GUI, see screenshot
+
+
+Reference Data Flags:
+Reference Blocked
+Extra Data
+Teleport
+Locked
+
+3D Scale
+
+Extra Data:
+Health Left
+Soul
+
+Teleport:
+Load Cell
+Select Marker button
+
+Assignable Data:
+Owner
+Global Variable/Rank
+Apply to Selection button
+
+Locked:
+Level
+Key
+Trap
+
+ -*-
+
+NAM9 check.
+
+CELL/NAME 13
+Sadrith Mora
+Chunk name: DATA
+CELL/DATA 12
+70
+18
+4
+
+2080846:CELL/NAME 14
+2080847-steel halberd
+2080855:CELL/NAM9 4
+2080856-1
+
+CELL/NAME 14
+steel halberd
+CELL/NAM9 4
+1
+
+ -*-
+
+Chunk name 0: CELL 0 55822965
+flags 1 = 0000,0000,0000,0000,0000,0000,0000,0000
+flags 2 = 0000,0000,0000,0000,0000,0000,0000,0000
+                                    ^References Persist + Corpses Persist
+                                ^Blocked
+Chunk name: NAME
+CELL/NAME 27
+Abandoned Shipwreck, Cabin
+Chunk name: DATA
+CELL/DATA 12
+7
+3420170  % This is Fog color. (10,48,52) But the same is in CELL/AMBI.
+1065353216
+Chunk name: INTV
+CELL/INTV 4
+0
+
+CELL/DATA 12
+0000,0111
+        ^Interior
+       ^Exterior
+
+What it means when both Interior and Exterior flags are on?
+
+Vos, Varo Tradehouse Entrance / first CELL/DATA for fog color
+
+22472486:Chunk name 0: CELL 0 70971915
+22475658:Reference Extra Data Health Left 1125515264 / Interior Water Height 150.000000
+22475751:Reference Extra Data Health Left 1125515264 / Interior Water Height 150.000000
+22477055:Chunk name 0: CELL 0 70994299 % Vos, Varo Tradehouse Entrance
+22478285:Reference Extra Data Health Left 1125515264 / Interior Water Height 150.000000
+
+In below, 120.0 is the same as Time in the Light data.
+Should we parse by checking the object and then interpret
+INTV as the object requires?
+That means we should first parse and form a table of all
+objects (name, buffer location).
+
+CELL/FRMR 4
+FormID 352695
+Chunk name: NAME
+CELL/NAME 22
+Reference Object "light_de_candle_17_64"
+Chunk name: ANAM
+CELL/ANAM 15
+Reference Assignable Data Owner "burcanius varo"
+Chunk name: INTV
+CELL/INTV 4
+Reference Extra Data Health Left 1123024896 / Interior Water Height 120.000000
+Chunk name: NAM9
+CELL/NAM9 4
+1 % Extra Data flag??
+Chunk name: DATA
+CELL/DATA 24
+Position X 183.785934
+Position X 307.430634
+Position X 422.382446
+Rotation X 0.000000
+Rotation Y 0.000000
+Rotation Z 4.300000
+
+
+19389739:Chunk name 0: CELL 0 56369549
+19390319:CELL/BNAM 18
+
+CELL/NAME 23
+Ald-ruhn, Ald Skar Inn
+
+CELL/FRMR 4
+FormID 40203
+Chunk name: NAME
+CELL/NAME 19
+Reference Object "active_de_p_bed_04"
+Chunk name: ANAM
+CELL/ANAM 14
+Reference Assignable Data Owner "boderi farano"
+Chunk name: BNAM
+CELL/BNAM 18
+Rent_Aldruhn_Skar % Global Variable / Rank
+Chunk name: INTV
+CELL/INTV 4
+Reference Extra Data Health Left 1 / Interior Water Height 0.000000
+Chunk name: NAM9
+CELL/NAM9 4
+1 % Extra Data flag??
+
+3387357:Chunk name 0: CELL 0 12940167
+3390449:CELL/KNAM 18
+3390486:CELL/KNAM 20
+4955297:CELL/KNAM 16
+CELL/NAME 10
+Tel Aruhn
+CELL/DATA 12
+0100,0110
+        ^Interior
+       ^Exterior
+Cell Location X 15
+Cell Location Y 5
+
+CELL/FRMR 4
+FormID 404059
+Chunk name: NAME
+CELL/NAME 22
+Reference Object "ex_t_door_slavepod_01"
+Chunk name: FLTV
+CELL/FLTV 4
+60 / 0.000000 % Level
+Chunk name: KNAM
+CELL/KNAM 18
+key_savilecagekey % Key
+
+
+4593381:Chunk name 0: CELL 0 16200631
+4593768:CELL/CNAM 11
+4593794:CELL/CNAM 11
+4593820:CELL/CNAM 11
+CELL/NAME 17
+Erabenimsun Camp
+Chunk name: DATA
+CELL/DATA 12
+0100,0110
+        ^Interior
+       ^Exterior
+Cell Location X 13
+Cell Location Y -1
+
+CELL/FRMR 4
+FormID 123914
+Chunk name: NAME
+CELL/NAME 16
+Reference Object "barrel_01_empty"
+Chunk name: CNAM
+CELL/CNAM 11
+Ashlanders
+Chunk name: INDX
+CELL/INDX 4
+0
+Chunk name: INTV
+CELL/INTV 4
+Reference Extra Data Health Left 1 / Interior Water Height 0.000000
+Chunk name: NAM9
+CELL/NAM9 4
+1 % Extra Data flag??
+
+ -*-
+
+10211628:Chunk name 0: CELL 0 31400693 % Vivec, Temple (4,-14)
+10211681:CELL/TNAM 13 % ex_velothi_loaddoor_01
+11195232:Chunk name 0: CELL 0 34035428
+11197222:CELL/TNAM 9
+16040289:Chunk name 0: CELL 0 47149543
+16043466:CELL/TNAM 13
+
+ -*-
+
+19802186:Chunk name 0: CELL 0 58324411 % Balmora, Caius Cosades' House
+19802273:CELL/UNAM 1 % active_de_p_bed_04 / UNAM = ""
+See also in_hlaalu_loaddoor_01 for NAM0 = 56
+
+UNAM == Reference Blocked ??
+
+NAM0 stays unknown.
+
+ -*-
+
+19374312:Chunk name 0: CELL 0 56291679 % Ald Sotha, Shrine
+19374402:CELL/XSOL 6 % Misc_SoulGem_Grand
+19781054:Chunk name 0: CELL 0 58229042
+19781219:CELL/XSOL 15
+19841158:Chunk name 0: CELL 0 58517067
+19846157:CELL/XSOL 5
+
+ -*-
+
+19439953:Chunk name 0: CELL 0 56614248 % Ald-ruhn, Dandera Selaro: Smith
+19442349:CELL/XCHG 4 % dwarven halberd_soultrap
+CELL/XCHG 4
+30.000000
+
+Change what? Original object and ref has no this kind of value.
+But, 30 = 100-Enchantment = 100-70.
+
+19499271:Chunk name 0: CELL 0 56907189
+19502781:CELL/XCHG 4
+19502807:CELL/XCHG 4
+19502833:CELL/XCHG 4
+
+ -*-
+
+Tribunal.esm
+
+88425:Chunk name 0: CELL 0 879430 % Ald-ruhn, Arobar Manor Bedrooms
+88439:CELL/WHGT 4
+88460:Chunk name 0: CELL 0 879554
+88474:CELL/WHGT 4
+91531:Chunk name 0: CELL 0 891786
+91545:CELL/WHGT 4
+
+Chunk name 0: CELL 0 931658
+flags 1 = 0000,0000,0000,0000,0000,0000,0000,0000
+flags 2 = 0000,0000,0000,0000,0000,0000,0000,0000
+                                    ^References Persist + Corpses Persist
+                                ^Blocked
+Chunk name: NAME
+CELL/NAME 27
+Bamz-Amschend, King's Walk
+Chunk name: DATA
+CELL/DATA 12
+0000,0011
+        ^Interior
+       ^Exterior
+      ^Illegal To Sleep Here
+ ^Map Color (Exterior)
+0 (unused)
+0 (unused)
+0 (unused)
+0.000000
+1.000000
+Chunk name: WHGT
+CELL/WHGT 4
+11808.000000 % Water Height
+
+ -*-
+
+Erabenimsun Camp
+
+FormID 123969
+Chunk name: NAME
+CELL/NAME 16
+Reference Object "ex_ashl_door_02"
+Chunk name: DODT
+CELL/DODT 24
+Position X 34.528000
+Position X 379.944000
+Position X -168.889999
+Rotation X 0.000000
+Rotation Y 0.000000
+Rotation Z 1.000074
+Chunk name: DNAM
+CELL/DNAM 33
+Cell "Erabenimsun Camp, Assemmus' Yurt"
+Chunk name: DATA
+CELL/DATA 24
+Position X 110240.429688
+Position X -5025.456055
+Position X 653.595154
+Rotation X 0.000000
+Rotation Y 0.000000
+Rotation Z 2.605777
+Chunk name: NAM0
+CELL/NAM0 4
+Reference Count 228  % This is not part of the above ref object.
+
+What is this NAM0?
+It is some kind of reference count. Total number of refs is 238.
+What refs are excluded from NAM0? Possible answer: Doors.
+There are 10 doors. 228 = 238-10.
+What other objects are not counted to NAM0? Check other cells.
+
+Number of FRMR = 235. Number of DATA = 1 + 235.
+What objects are counted to 238?
+If we figure this out, then we may check better the NAM0 question
+on what other objects than doors are counted in.
+
+cat p1|grep -B 10 -A 4000 '^Erabenimsun Camp$'|grep '^..../\|^--'|head -907|cut -b -9|sort|uniq -c
+     20 CELL/CNAM
+    236 CELL/DATA
+     10 CELL/DNAM % Door
+     10 CELL/DODT % Door
+    235 CELL/FRMR
+     20 CELL/INDX
+     20 CELL/INTV
+      1 CELL/NAM0
+      1 CELL/NAM5
+     20 CELL/NAM9
+    236 CELL/NAME
+      1 CELL/RGNN
+     97 CELL/XSCL
+
+
+Abandoned Shipwreck, Cabin / Ref count = 10 / No path
+cat p1|grep -B 7 -A 188 '^Abandoned Shipwreck, Cabin$'|more
+
+cat p1|grep -B 7 -A 188 '^Abandoned Shipwreck, Cabin$'|grep "^CELL/"| cut -b -9 |sort|uniq -c
+      1 CELL/AMBI
+     10 CELL/DATA
+      1 CELL/DODT
+      1 CELL/FLTV
+      9 CELL/FRMR
+      1 CELL/INTV
+      1 CELL/NAM0
+     10 CELL/NAME
+      3 CELL/XSCL
+
+CELL/NAM0 4
+Reference Count 8
+
+10 - 8 = 2  % That is different from number of DODTs.
+
+The other uncounted must be:
+
+CELL/FRMR 4
+FormID 313395
+Chunk name: NAME
+CELL/NAME 17
+Reference Object "bk_pillowinvoice"
+Chunk name: DATA
+CELL/DATA 24
+Position X 62.939095
+Position X -318.936920
+Position X 56.735653
+Rotation X 0.265093
+Rotation Y 0.204916
+Rotation Z 0.183260
+
+But there are only 7 refs after NAM0.
+The "bk_pillowinvoice" is before NAM0 because it has References Persist
+flag turned on.
+Is NAM0 also a divider between References Persist objects?
+
+
+Mark's Vampire Test Cell / ref count 5 / no path
+cat p1|grep -B 7 -A 188 '^Mark.s Vampire Test Cell$'|more
+
+CELL/NAM0 4
+Reference Count 5
+
+There are 5 refs after NAM0. Two NPC refs before.
+That is the two NPCs are not counted in the Cell list nor in NAM0.
+
+ -*-
+
+
+Chunk name 0: CELL 0 96651
+flags 1 = 0000,0000,0000,0000,0000,0000,0000,0000
+flags 2 = 0000,0000,0000,0000,0000,0000,0000,0000
+                                    ^References Persist + Corpses Persist
+                                ^Blocked
+Chunk name: NAME
+CELL/NAME 10
+Nchurdamz
+Chunk name: DATA
+CELL/DATA 12
+0100,1010
+        ^Interior
+       ^Exterior
+      ^Illegal To Sleep Here
+     ^(??savefile related??)
+   ^(??savefile related??)
+  ^(??savefile related??)
+ ^Map Color (Exterior)
+^(unknown in Tribunal.esm)
+
+
+Behave Like Exterior flag?
+
+ ---*---
+
+Savefile.
+
+Reference Object "darvame hleran00000000"
+Chunk name: ACDT
+CELL/ACDT 264
+0
+0
+0.000000
+512
+64.000000
+0.000000
+0.000000
+0.000000
+0
+-1
+32.000000 % Health
+32.000000
+144.000000 % Fatigue
+144.000000 % Fatigue
+96.000000 % Magicka
+96.000000
+2.000000
+2.000000
+7.000000 % Encumbrance
+190.000000 % Total Encumbrance (see in editor: 7/190)
+38.000000 % Str
+38.000000
+48.000000 % Int
+48.000000
+29.000000 % Wil
+29.000000
+38.000000 % Agi
+38.000000
+49.000000 % Spd
+49.000000
+39.000000 % End
+39.000000
+38.000000 % Per
+38.000000
+40.000000 % Luc
+40.000000
+0
+0
+0
+75
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+30 % Fight | Flee | Hello
+30 % Fight | Flee | Hello
+30 % Fight | Flee | Hello
+0
+0
+0
+Chunk name: ACSC
+CELL/ACSC 112
+0
+0
+0
+0
+2
+1
+0
+255
+0
+0
+3
+255
+0
+67043328
+0
+0
+0.000000
+0
+0.000000
+0
+0.000000
+-8604.412109
+-70205.125000
+831.337585
+0
+0
+0
+-8600.303711
+-70203.468750
+824.218628
+0.000000
+0.000000
+0.000000
+0
+Chunk name: ACSL
+CELL/ACSL 112
+0
+0
+0
+0
+255
+0
+0
+255
+0
+0
+255
+255
+0
+0
+0
+0
+-65536
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0.000000
+-8604.412109
+-70205.125000
+831.337585
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+
+
+
+============================================================================
+
+ok
+CLAS
+Class
+
+
+Attributes:
+0 Strength
+1 Intelligence
+2 Willpower
+3 Agility
+4 Speed
+5 Endurance
+6 Personality
+7 Luck
+
+0 Strength 1 Intelligence 2 Willpower 3 Agility 4 Speed 5 Endurance 6 Personality 7 Luck
+
+Skills:
+-1 NONE
+0 Block
+1 Armorer
+2 Medium Armor
+3 Heavy Armor
+4 Blunt Weapon
+5 Long Blade
+6 Axe
+7 Spear
+8 Athletics
+9 Enchant
+10 Destruction
+11 Alteration
+12 Illusion
+13 Conjuration
+14 Mysticism
+15 Restoration
+16 Alchemy
+17 Unarmored
+18 Security
+19 Sneak
+20 Acrobatics
+21 Light Armor
+22 Short Blade
+23 Marksman
+24 Mercantile
+25 Speechcraft
+26 Hand-to-hand
+
+-1 NONE 0 Block 1 Armorer 2 Medium Armor 3 Heavy Armor 4 Blunt Weapon 5 Long Blade 6 Axe 7 Spear 8 Athletics 9 Enchant 10 Destruction 11 Alteration 12 Illusion 13 Conjuration 14 Mysticism 15 Restoration 16 Alchemy 17 Unarmored 18 Security 19 Sneak 20 Acrobatics 21 Light Armor 22 Short Blade 23 Marksman 24 Mercantile 25 Speechcraft 26 Hand-to-hand
+
+Warrior:
+Major Skills: 5 2 3 8 0
+Minor Skills: 1 4 6 7 23
+CLAS/CLDT 60
+0
+5
+0
+1
+5 major
+7 minor
+2 major
+23 minor
+3 major
+6 minor
+8 major
+4 minor
+0 major
+1
+0
+
+Mage:
+Major Skills: 14 10 11 12 15
+Minor Skills: 9 13 22 16 17
+CLAS/CLDT 60
+1
+2
+1
+9 minor
+14 major
+16 minor
+10 major
+17 minor
+11 major
+22 minor
+12 major
+13 minor
+15 major
+1
+0
+
+============================================================================
+
+nearly ok
+CLOT
+Clothing
+
+
+Todo:
+Rest of the biped objects.
+
+
+Flags:
+References Persist
+Blocked
+
+Type:
+0 Pants
+1 Shoes
+2 Shirt
+3 Belt
+4 Robe
+5 Right Glove
+6 Left Glove
+7 Skirt
+8 Ring
+9 Amulet
+
+0 Pants 1 Shoes 2 Shirt 3 Belt 4 Robe 5 Right Glove 6 Left Glove 7 Skirt 8 Ring 9 Amulet
+
+Biped Object:
+0 Head
+1 Hair
+2 ???? % not in Morrowind.esm
+3 Chest
+4 Groin
+5 Skirt
+6 Right Hand
+7 Left Hand
+8 Right Wrist
+9 Left Wrist
+10 Shield
+11 Right Forearm
+12 Left Forearm
+13 Right Upper Arm
+14 Left Upper Arm
+15 Right Foot
+16 Left Foot
+17 Right Ankle
+18 Left Ankle
+19 Right Knee
+20 Left Knee
+21 Right Upper Leg
+22 Left Upper Leg
+23 Right Pauldron
+24 Left Pauldron
+Neck
+Tail
+Weapon
+
+
+
+============================================================================
+
+ok
+CONT
+Container
+
+
+Flags:
+References Persist
+Blocked
+Organic Container
+Respawns
+
+
+Label "Encumbrance 0/50".
+Animation button; disabled.
+
+
+============================================================================
+
+continue
+CREA
+Creature
+
+Todo:
+AI packages + travel services; see also NPC_: DODT DNAM CNDT
+Blood Texture % ok
+
+
+BM_horker_swim_UNIQUE / AI_E
+centurion_spider / Blood Texture 8
+mudcrab_unique / AI Services
+
+
+Flags:
+Essential
+Corpses Persist
+Respawn
+Weapon&Shield
+Blocked
+
+Movement flags:
+Walks
+Flies
+Swims
+Biped
+None % == above flags are all unset
+
+alit / Walks
+CREA/FLAG 4
+72 % = 64 + 8
+Blood Texture / Default (Red)
+
+ancestor_ghost_vabdas / Walks Flies Respawn
+64 32 8 2
+
+cliff racer / Flies
+32 8
+
+dead_skeleton / Biped Weapon&Shield
+8 4 1
+
+dreugh / Swims
+16 8
+heart_akulakhan / NONE
+8
+vivec_god / Essential Biped
+128 8 1
+yagrum bagarn / Essential Walks
+128 64 8
+
+128 Essential
+64 Walks
+32 Flies
+16 Swims
+8  ????
+4  WeaponShield
+2  Respawns
+1  Biped
+
+flags 2 = 0000,0000,0000,0000,0000,0100,0000,0000
+flags 2 = 0000,0000,0000,0000,0010,0000,0000,0000
+flags 2 = 0000,0000,0000,0000,0000,0100,0000,0000
+                                    ^Corpses Persist
+                                ^Blocked
+
+Movement: When Biped is on, Flies Walks Swims are disabled.
+
+AI packages:
+Travel
+Wander
+Escort
+Follow
+Activate
+
+
+Animation Groups:
+Attack1
+Attack2
+Attack3
+Death1
+Death2
+DeathKnockDown
+DeathKnockOut
+Idle
+Idle2
+Idle3
+Idle4
+KnockDown
+KnockOut
+RunForward
+TurnLeft
+TurnRight
+WalkForward
+
+
+============================================================================
+
+ok
+DIAL
+
+
+Dialogue Type:
+0 Topic
+1 Voice
+2 Greeting
+3 Persuasion
+4 Journal
+
+0 Topic 1 Voice 2 Greeting 3 Persuasion 4 Journal
+
+
+============================================================================
+
+ok
+DOOR
+Door
+
+
+Flags:
+References Persist
+Blocked
+
+Animation button disabled.
+
+
+============================================================================
+
+ok
+ENCH
+Enchanting
+
+
+Cast Type:
+0 Cast Once
+1 Cast When Strikes
+2 Cast When Used
+3 Constant Effect
+
+0 Cast Once 1 Cast When Strikes 2 Cast When Used 3 Constant Effect
+
+Flags:
+Auto Calculate
+Blocked
+
+============================================================================
+
+ok
+FACT
+Faction
+
+
+
+Attributes:
+0 Strength
+1 Intelligence
+2 Willpower
+3 Agility
+4 Speed
+5 Endurance
+6 Personality
+7 Luck
+
+0 Strength 1 Intelligence 2 Willpower 3 Agility 4 Speed 5 Endurance 6 Personality 7 Luck
+
+Skills:
+-1 NONE
+0 Block
+1 Armorer
+2 Medium Armor
+3 Heavy Armor
+4 Blunt Weapon
+5 Long Blade
+6 Axe
+7 Spear
+8 Athletics
+9 Enchant
+10 Destruction
+11 Alteration
+12 Illusion
+13 Conjuration
+14 Mysticism
+15 Restoration
+16 Alchemy
+17 Unarmored
+18 Security
+19 Sneak
+20 Acrobatics
+21 Light Armor
+22 Short Blade
+23 Marksman
+24 Mercantile
+25 Speechcraft
+26 Hand-to-hand
+
+-1 NONE 0 Block 1 Armorer 2 Medium Armor 3 Heavy Armor 4 Blunt Weapon 5 Long Blade 6 Axe 7 Spear 8 Athletics 9 Enchant 10 Destruction 11 Alteration 12 Illusion 13 Conjuration 14 Mysticism 15 Restoration 16 Alchemy 17 Unarmored 18 Security 19 Sneak 20 Acrobatics 21 Light Armor 22 Short Blade 23 Marksman 24 Mercantile 25 Speechcraft 26 Hand-to-hand
+
+
+============================================================================
+
+FMAP (savefile)
+
+169308    0  0  0  0  0  0  0 46 4d 41 50 18   .......FMAP.
+169320    0  c  0  0  0  0  0  0  0  0  0 4d   ...........M
+169332   41 50 48  8  0  0  0  0  2  0  0  9   APH.........
+169344    0  0  0 4d 41 50 44  0  0  c  0 19   ...MAPD.....
+169356   24 21 19 24 21 19 24 21 19 24 21 19   $!.$!.$!.$!.
+169368   24 21 19 24 21 19 24 21 19 24 21 19   $!.$!.$!.$!.
+169380   24 21 19 24 21 19 24 21 19 24 21 19   $!.$!.$!.$!.
+
+RGB image
+
+============================================================================
+
+ok
+GLOB
+Globals
+
+
+cat save20090000.ess|hexdumpf|more
+
+Chunk name 0: GLOB 0 66818
+flags 1 = 0000,0000,0000,0000,0000,0000,0000,0000
+flags 2 = 0000,0000,0000,0000,0000,0000,0000,0000
+                                    ^References Persist + Corpses Persist
+                                ^Blocked
+Chunk name: NAME
+GLOB/NAME 16
+RedoranMurdered
+Chunk name: FNAM
+GLOB/FNAM 1
+Variable Type "s"
+Chunk name: FLTV
+GLOB/FLTV 4
+Value 69692321528031460982784.000000
+End of GLOB
+
+066816   80 bf 47 4c 4f 42 2d  0  0  0  0  0   ..GLOB-.....
+066828    0  0  0  0  0  0 4e 41 4d 45 10  0   ......NAME..
+066840    0  0 52 65 64 6f 72 61 6e 4d 75 72   ..RedoranMur
+066852   64 65 72 65 64  0 46 4e 41 4d  1  0   dered.FNAM..
+066864    0  0 73 46 4c 54 56  4  0  0  0 74   ..sFLTV....t
+066876   20 6c 65 47 4c 4f 42 2a  0  0  0  0    leGLOB*....
+
+
+
+============================================================================
+
+continue later
+GMST
+Game Settings
+
+
+============================================================================
+
+ok except the functions
+INFO
+
+
+Todo:
+Check every function.
+Can the voice SNAM be edited in the editor? % Yes. At right bottom.
+
+How Morrowind handled what is achived with INFO/Q* flags?
+
+
+Dialogue Type:
+0 Topic
+1 Voice
+2 Greeting
+3 Persuasion
+4 Journal
+
+0 Topic 1 Voice 2 Greeting 3 Persuasion 4 Journal
+
+ -*-
+
+Function/Variable types:
+1 Function
+2sX Global
+2fX Global / float
+3sX Local
+3fX Local / float
+4JX Journal % Refs to Dialogue/Journal
+5IX Item
+6DX Dead
+7XX Not ID
+ Not Faction
+ Not Class
+ARX Not Race
+BLX Not Cell
+CsX Not Local
+
+0 =
+1 !=
+2 >
+3 >=
+4 <
+5 <=
+
+04JX3IC14_Ponius % Journal IC14_Ponius >= 30
+14JX4IC14_Ponius % Journal IC14_Ponius <  50
+04JX3IC14_Ponius % Journal IC14_Ponius >= 1
+14JX4IC14_Ponius % Journal IC14_Ponius < 50
+04JX3EB_Bone % Journal EB_Bone >= 90
+14JX5EB_Bone % Journal EB_Bone <= 90
+24JX3VA_VampChild % Journal VA_VampChild >= 100
+34JX111111 test journal % Journal 11111 test journal != 120
+34JX0A1_6_AddhiranirrInformant % Journal A1_6_AddhiranirrInformant = 53
+
+21500                    % Function Choice = 2
+01600                    % Function PC Vampire = 1
+12sX0VampClan            % Global VampClan = 1
+12sX4Random100           % Global  Random100 < 33
+03sX0NoLore              % Local  NoLore = 0
+15IX2p_lovepotion_unique % Item  p_lovepotion_unique > 0
+06DX3adraria vandacia    % Dead  adraria vandacia >= 1
+07XX0Iulus Truptor       % Not ID  lulus Truptor = 1
+1ARX0Dark Elf            % Not Race   Dark Elf = 1
+0BLX0Balmora, Council Club % Not Cell  Balmora, Council Club = 1
+0CsX0NoLore              % Not Local  NoLore = 0
+
+2fX1CharGenState  % Global CharGenState != -1.00
+3fX0annoyed
+8FX0Thieves Guild
+9CX0Healer
+
+Searched functions with this:
+cat p1 | grep -B 50 "^INFO Function .104"|grep -A 50 DIAL|more
+Increase the number 50 until a DIAL is found.
+
+Functions:
+00 Reaction Low
+01 Reaction High
+02 Rank Requirement
+03 Reputation
+04 Health Percent
+05 PC Reputation
+06 PC Level
+07 PC Health Percent
+10 PC Strength
+15
+30
+35
+36
+38
+39 PC Expelled
+40
+41
+42 PC Clothing Modifier
+43
+44 Same Sex
+45 Same Race
+46 Same Faction
+47 Faction Rank Difference
+48 Detected
+49 Alarmed
+50 Choice
+51 PC Intelligence
+53
+56
+58
+59
+60 PC Vampire
+61
+62 Attacked
+63 Talked To PC
+64 PC Health
+65
+66 Friend Hit
+71
+
+ Alarm
+Alarmed
+Attacked
+Choice
+ Creature Target
+Detected
+Faction Rank Difference
+ Fight
+ Flee
+Friend Hit
+Health Percent
+ Hello
+ Level
+ PC Acrobatics
+ PC Blight Disease
+PC Clothing Modifier
+ PC Common Disease
+ PC Corprus
+ PC Crime Level
+PC Expelled
+PC Level
+PC Reputation
+ PC Sex
+PC Vampire
+Rank Requirement
+Reaction High
+Reaction Low
+Reputation
+Same Faction
+Same Race
+Same Sex
+ Should Attack
+Talked to PC
+ Weather
+
+
+ -*-
+
+INFO/INAM 17
+5335322465444076
+Chunk name: PNAM
+INFO/PNAM 1
+
+Chunk name: NNAM
+INFO/NNAM 21
+24327223743162511959
+Chunk name: DATA
+INFO/DATA 12
+0
+0
+255
+255
+255
+0
+Chunk name: ONAM
+INFO/ONAM 18
+Canctunian Ponius
+Chunk name: NAME
+INFO/NAME 51
+Thank you again for recovering our embezzled funds.
+Chunk name: SCVR
+INFO/SCVR 16
+04JX3IC14_Ponius
+Chunk name: INTV
+INFO/INTV 4
+45
+
+Journal IC14_Ponius >= 45
+
+04JX3IC14_Ponius  % Is this compiled script?
+     ^^^^^^^^^^^
+
+INFO/SCVR 16
+04JX3IC14_Ponius % Journal IC14_Ponius >= 30
+Chunk name: INTV
+INFO/INTV 4
+30
+Chunk name: SCVR
+INFO/SCVR 16
+14JX4IC14_Ponius % Journal IC14_Ponius <  50
+Chunk name: INTV
+INFO/INTV 4
+50
+
+Journal IC14_Ponius >= 30
+Journal IC14_Ponius <  50
+
+
+INFO/INAM 20
+1430325626161632435
+INFO/SCVR 16
+04JX3IC14_Ponius % Journal IC14_Ponius >= 1
+Chunk name: INTV
+INFO/INTV 4
+1
+Chunk name: SCVR
+INFO/SCVR 16
+14JX4IC14_Ponius % Journal IC14_Ponius < 50
+Chunk name: INTV
+INFO/INTV 4
+50
+Chunk name: SCVR
+INFO/SCVR 5
+21500        % Function Choice = 2
+Chunk name: INTV
+INFO/INTV 4
+2
+
+Journal IC14_Ponius >= 1
+Journal IC14_Ponius < 50
+Function Choice = 2
+
+04JX3IC14_Ponius
+^Number of the condition
+ ^4 Journal 1 Function 
+    ^3 >= 4 < 5 <=
+14JX4IC14_Ponius
+21500
+
+
+INFO/INAM 19
+219201920169165653
+INFO/SCVR 12
+04JX3EB_Bone % Journal EB_Bone >= 90
+INFO/INTV 4
+90
+INFO/SCVR 12
+14JX5EB_Bone % Journal EB_Bone <= 90
+INFO/INTV 4
+100
+
+Journal EB_Bone >= 90
+Journal EB_Bone <= 90
+
+INFO/SCVR 5
+01600        % Function PC Vampire = 1
+Chunk name: INTV
+INFO/INTV 4
+1
+Chunk name: SCVR
+INFO/SCVR 13
+12sX0VampClan % Global VampClan = 1
+Chunk name: INTV
+INFO/INTV 4
+1
+Chunk name: SCVR
+INFO/SCVR 17
+24JX3VA_VampChild % Journal VA_VampChild >= 100
+Chunk name: INTV
+INFO/INTV 4
+100
+Chunk name: SCVR
+INFO/SCVR 23
+34JX111111 test journal % Journal 11111 test journal != 120
+Chunk name: INTV
+INFO/INTV 4
+120
+
+Function PC Vampire = 1
+Global VampClan = 1
+Journal VA_VampChild >= 100
+Journal 11111 test journal != 120
+
+INFO/INAM 19
+189562236611077547
+INFO/SCVR 11
+0CsX0NoLore
+Chunk name: INTV
+INFO/INTV 4
+0
+
+Not Local  NoLore = 0
+
+INFO/SCVR 11
+0CsX0NoLore % Not Local  NoLore = 0
+Chunk name: INTV
+INFO/INTV 4
+0
+Chunk name: SCVR
+INFO/SCVR 13
+1ARX0Dark Elf % Not Race   Dark Elf = 1
+Chunk name: INTV
+INFO/INTV 4
+1
+
+Not Local  NoLore = 0
+Not Race   Dark Elf = 1
+
+INFO/SCVR 30
+34JX0A1_6_AddhiranirrInformant % Journal A1_6_AddhiranirrInformant = 53
+Chunk name: INTV
+INFO/INTV 4
+53
+
+Journal A1_6_AddhiranirrInformant = 53 % this is in 4th slot, others are empty!
+
+INFO/SCVR 21
+06DX3adraria vandacia % Dead  adraria vandacia >= 1
+Chunk name: INTV
+INFO/INTV 4
+1
+
+Dead  adraria vandacia >= 1
+
+INFO/SCVR 11
+03sX0NoLore % Local  NoLore = 0
+Chunk name: INTV
+INFO/INTV 4
+0
+Chunk name: SCVR
+INFO/SCVR 14
+12sX4Random100 % Global  Random100 < 33
+Chunk name: INTV
+INFO/INTV 4
+33
+
+Local  NoLore = 0
+Global  Random100 < 33
+
+INFO/SCVR 18
+07XX0Iulus Truptor % Not ID  lulus Truptor = 1
+Chunk name: INTV
+INFO/INTV 4
+1
+
+Not ID  lulus Truptor = 1
+
+INFO/SCVR 24
+15IX2p_lovepotion_unique % Item  p_lovepotion_unique > 0
+Chunk name: INTV
+INFO/INTV 4
+0
+
+Item  p_lovepotion_unique > 0
+
+INFO/SCVR 26
+0BLX0Balmora, Council Club % Not Cell  Balmora, Council Club = 1
+Chunk name: INTV
+INFO/INTV 4
+1
+
+Not Cell  Balmora, Council Club = 1
+
+INFO/SCVR 17
+12fX1CharGenState
+Chunk name: FLTV
+INFO/FLTV 4
+-1.000000
+
+Global CharGenState != -1.00
+
+
+ -*-
+
+INFO/DATA 12
+0
+0
+255
+255
+9   % PC Rank (Grandmaster of Hlaalu)
+0
+Chunk name: ONAM
+INFO/ONAM 11
+Vedam Dren
+Chunk name: DNAM
+INFO/DNAM 7
+Hlaalu
+Chunk name: NAME
+
+
+Why first INFO of DIAL Berne has Sex enabled?
+Because the INFO has no Speaker ID.
+
+============================================================================
+
+ok
+INGR
+Ingredient
+
+
+Todo:
+More effects. % ok, see SPEL.
+
+
+ID
+Name
+Script
+Weight / float
+Value / int
+Model
+Icon
+Effects / 4 effects + 4 parameters
+References Persist / flag
+Blocked / flag
+
+Effects:
+-1 NONE
+ 0 Water Breathing
+ 1 Swift Swim
+ 2 Water Walking
+ 4 Fire Shield
+ 5 Lightning Shield
+ 6 Frost Shield
+ 7 Burden
+ 8 Feather
+10 Levitate
+17 Drain Attribute <Parameter>
+18 Drain Health
+19 Drain Magicka
+20 Drain Fatigue
+22 Damage Attribute <Parameter>
+23 Damage Health
+25 Damage Fatigue
+27 Poison
+35 Weakness to Poison
+39 Invisibility
+41 Light
+43 Night Eye
+45 Paralyze
+57 Dispel
+59 Telekinesis
+64 Detect Animal
+65 Detect Enchantment
+66 Detect Key
+67 Spell Absorption
+68 Reflect
+69 Cure Common Disease
+70 Cure Blight Disease
+72 Cure Poison
+73 Cure Paralyzation
+74 Restore Attribute <Parameter>
+75 Restore Health % ingred_wickwheat_01 has par 3
+76 Restore Magicka
+77 Restore Fatigue
+79 Fortify Attribute <Parameter>
+80 Fortify Health
+90 Resist Fire
+91 Resist Frost
+92 Resist Shock
+93 Resist Magicka
+94 Resist Common Disease
+97 Resist Poison
+117 Fortify Attack
+133 Vampirism % parameter 6; is that real parameter? nothing seen in GUI
+
+
+Attributes:
+0 Strength
+1 Intelligence
+2 Willpower
+3 Agility
+4 Speed
+5 Endurance
+6 Personality
+7 Luck
+
+
+ingred_bread_01_UNI2
+flags 2 = 0000,0000,0000,0000,0000,0100,0000,0000
+                                    ^References Persist
+
+============================================================================
+
+LAND
+
+============================================================================
+
+ok
+LEVC
+Leveled Creature
+
+
+Blocked
+Calculate from all levels <= PC's level
+
+Chance None
+
+
+============================================================================
+
+ok
+LEVI
+Leveled Item
+
+Blocked
+
+============================================================================
+
+ok
+LIGH
+Light
+
+
+Light_Com_Candle_12_77
+
+References Persist
+Blocked
+
+============================================================================
+
+ok
+LOCK
+Lockpick
+
+
+References Persist
+Blocked
+
+============================================================================
+
+ok
+LTEX
+Land Texture
+
+
+Why land textures are indexes in ESM file?
+
+
+============================================================================
+
+nearly ok
+MGEF
+Magic Effects
+
+
+Todo:
+Creation Modes.
+Lighting Effect Negative flag.
+
+
+Checked Creation Modes from
+75 Restore Health
+76 Restore Magicka  % not used in Morrowind.esm
+
+GMST has section sSchool. Is modder able to add a new school?
+
+
+============================================================================
+
+ok
+MISC
+Misc Item
+
+
+Todo:
+miscunknown, but this is not in the GUI
+
+
+References Persist
+Blocked
+
+MISC/MCDT 12
+0.000000
+100
+1 % unknown, nothing in GUI
+
+Weight 0.000000
+Value 5
+0 miscunknown
+
+
+============================================================================
+
+continue
+NPC_
+NPC
+
+
+Todo:
+AI_W / Time
+AI_F
+Other AI packages.
+
+
+omesu hlarys / Tribunal / AI
+Forven Berano / Tribunal / AI
+seen-rei / Morrowind / AI
+dreamer guard / Morrowind / AI ai_tunknown
+mehra drora / Morrowind / AI Services (unblock by saving and reopening)
+
+
+How "omesu hlarys" gets its spells? And Fatigue? And skill values?
+Is there an inherit flag somewhere? From where? Not from class, faction.
+Only two of them might come from Race.
+
+
+alof the easterner
+
+addhiranirr
+Can the model be changed?
+When the model is defined, the animation button is disabled. Check.
+Thieves Guild / Operative % value is 4, and is 5th rank defined in FACT.
+
+NPC_/FLAG
+24 % 16 8
+16 Auto Calculate Stats
+
+flags 2 = 0000,0000,0000,0000,0010,0000,0000,0000
+flags 2 = 0000,0000,0000,0000,0000,0100,0000,0000
+                                    ^Corpses Persist
+                                ^Blocked
+
+Skills:
+-1 NONE
+0 Block
+1 Armorer
+2 Medium Armor
+3 Heavy Armor
+4 Blunt Weapon
+5 Long Blade
+6 Axe
+7 Spear
+8 Athletics
+9 Enchant
+10 Destruction
+11 Alteration
+12 Illusion
+13 Conjuration
+14 Mysticism
+15 Restoration
+16 Alchemy
+17 Unarmored
+18 Security
+19 Sneak
+20 Acrobatics
+21 Light Armor
+22 Short Blade
+23 Marksman
+24 Mercantile
+25 Speechcraft
+26 Hand-to-hand
+
+-1 NONE 0 Block 1 Armorer 2 Medium Armor 3 Heavy Armor 4 Blunt Weapon 5 Long Blade 6 Axe 7 Spear 8 Athletics 9 Enchant 10 Destruction 11 Alteration 12 Illusion 13 Conjuration 14 Mysticism 15 Restoration 16 Alchemy 17 Unarmored 18 Security 19 Sneak 20 Acrobatics 21 Light Armor 22 Short Blade 23 Marksman 24 Mercantile 25 Speechcraft 26 Hand-to-hand
+
+Skills:
+Marksman
+Sneak
+Security
+Alchemy
+Restoration
+Mysticism
+Conjuration
+Illusion
+Alteration
+Destruction
+Enchant
+Armorer
+Block
+Long Blade
+Heavy Armor
+Mercantile
+Short Blade
+Light Armor
+Acrobatics
+Axe
+Medium Armor
+Spear
+Hand-to-hand
+Speechcraft
+Unarmored
+Athletics
+Blunt Weapon
+
+Hand-to-hand Speechcraft Mercantile Acrobatics Sneak Security Spear Axe Blunt Weapon Armorer Block
+
+When auto calculate stats is off and blocked is off, the skill
+values are in the ESM:
+badama andarys
+ahaz
+aloie indaram
+alveleg
+alvis teri
+anes vendu
+ansu senatbael
+player
+Danders
+
+
+mebestian ence (blocked)
+
+
+
+AI_F
+omesu hlarys
+
+Target
+Duration (in hours)
+Follow To flag
+Follow To Cell
+Specific Point flag
+Specific Point X Y Z
+View Location button
+
+
+AI Pack Type:
+Wander
+Travel
+Escort
+Follow
+Activate
+
+Escort:
+Target
+Duration (in hours)
+Escort To flag
+Escort To Cell
+Specific Point flag
+Specific Point X Y Z
+
+Activate:
+Target
+
+
+AI Services:
+1010,1000,0001,1000
+0011,0010,0011,0000
+0000,0010,0000,0011 uulernil
+0011,0110,1001,1111 mebestian ence
+0110,0001,0001,0000 anarenen
+0000,1000,0000,0000 orrent geontene
+0001,0100,0000,1111 tanar llervi
+0100,0000,0000,0000 tralan
+0100,0100,0111,0000 lirielle stoine
+0000,0000,0001,0010 nivos drivam
+                  ^Weapons
+                 ^Armor
+                ^Clothing
+               ^Books
+             ^Ingredients
+            ^Picks
+           ^Probes
+          ^Lights
+        ^Apparatus
+       ^Repair Items
+      ^Miscellaneous
+     ^Spells
+   ^Magic Items
+  ^Potions
+ ^Training
+^Spellmaking
+
+0000,0000,1010,0010
+0000,0000,0000,0010 uulernil
+0000,0000,0000,0000 mebestian ence
+0000,0000,0000,0000 anarenen
+0000,0000,0000,0000 orrent geontene
+0000,0000,0000,0001 tanar llervi
+                  ^Enchanting
+                 ^Repair
+
+
+
+NPC todd / AI Services Travel Services
+NPC_/DODT 24
+1822.641113
+-231.532303
+-292.950073
+0.000000
+0.000000
+0.500000
+Chunk name: DNAM
+NPC_/DNAM 9
+ToddTest
+
+
+
+============================================================================
+
+NPCC (savefile)
+
+
+SLCS/SLSD/SLLD/SLFD saves the local variables of the script.
+The order is the same as in the script.
+
+NPCC/NAME 15
+PlayerSaveGame
+NPCC/SCRI 19
+Script "CharGen_ring_keley"
+NPCC/SLCS 12
+2
+0
+0
+NPCC/SLSD 4
+data given by numslcs1:
+30 % state
+1  % OnPCAdd
+
+begin CharGen_ring_keley
+short state
+short OnPCAdd
+if ( state == 30 )
+if ( OnPCAdd == 1 )
+
+
+NPCC/AI_T 16
+Location X 185.000000
+Location Y 174.000000
+Location Z 170.000000
+4675584 (ai_tunknown)  % Savefile related?
+
+NPCC/WIDX 8
+1
+0
+
+There are as many WIDXs as are NPCOs.
+Does WIDX tell the location of the object in Inventory Menu?
+
+Does WIDX tell the location of the object when it is weared (W)?
+No, because the second value has been always 0 in NPCs who
+have pants on.
+
+
+============================================================================
+
+PCDT (savefile)
+
+juhana@dante:~/mwesptest/savegame02$ cat zallsaves.ess | grep -A 20 PCDT/FNAM|more
+PCDT/FNAM 44
+0
+0
+1
+16633272856356832935936.000000  % "
+0.501761  % Strange: this looks float but we have 
+0.531186
+0
+-0.531186
+0.847255
+0.000000 % b8 6a  e 11
+0
+
+ea ff ff ff 11  0  0  0 46 4e 41 4d  ........FNAM
+2c  0  0  0  0  0  0  0  0  0  0  0  ,...........
+ 1  0  0  0 42 6c 61 64 65 73  0 3f  ....Blades.?
+d2 fb  7 3f  0  0  0  0 d2 fb  7 bf  ...?........
+bc e5 58 3f b8 6a  e 11  0  0  0  0  ..X?.j......
+4b 4e 41 4d 90  1  0  0  0  0  0  0  KNAM........
+
+Is the end of FNAM garbage? After the string.
+
+
+============================================================================
+
+ok
+PGRD
+Path Grid
+
+
+What red and blue colored path grid points mean?
+
+
+Chunk name 0: PGRD 0 58097075
+PGRD/NAME 21
+Assarnatamat, Shrine % matches the CELL name
+PGRD/DATA 12
+0
+0
+1024 % Granularity
+23 % Number of path grid points
+
+PGRD/PGRP 368
+Point 0:
+-112
+3695
+-896
+1
+2
+0
+0
+Point 1:
+125
+4392
+-640
+1
+1
+0
+0
+Point 22:
+-123
+2809
+-893
+1
+4 % Number of connections
+0
+0
+
+How to compute the cell space coordinates of path grid points?
+
+Figure: This path grid drawing matches the path grid in CS.
+(Format: PointNumber(XCoord,YCoord).)
+
+                                   1(125,4392)
+
+
+                            0(-112,3695)
+
+
+
+     5(-747,3133)           2(-112,3102)                 4(469,3116)
+
+                   21(-308,2906)
+                          22(-123,2809)
+                                       17(165,2724)
+      8(-706,2672)                                       6(424,2668)
+                          3(-161,2568)                           16(848,2539)
+9(-1046,2478)
+     20(-726,2300)
+                           7(-126,2290)                  18(448,2299)
+
+10(-1081,2024)11(-747,2011)                                      15(837,2087)
+                                                         14(461,1951)
+
+
+                                                    13(384,1620)
+       12(-640,1504)19(-328,1590)
+
+
+Point 22 is close to object "tonasi belas", which coordinates are:
+CELL/NAME 13
+Reference Object "tonasi belas"
+Chunk name: DATA
+CELL/DATA 24
+Position X -175.748764
+Position X 2762.518311
+Position X -886.008606
+Rotation X 0.000000
+Rotation Y 0.000000
+Rotation Z 6.283185
+
+The path grid point coordinates are rounded by the granulatity.
+But are they in different coordinates? I.e., the scale between
+coordinate spaces is different from 1.0.
+With the granularity of 1024, the coordinates matches but are
+rounded to integers. I placed an object to the location of
+the path grid point 22 (see above): the object position is
+(-123.7,2808.4) which closely matches with the point.
+
+PGRD/PGRC 240
+1
+2
+0
+0
+4
+5
+17
+21
+22
+7
+21
+22
+2
+6
+2
+8
+4
+16
+17
+18
+3
+5
+9
+20
+8
+10
+9
+11
+10
+12
+19
+20
+11
+19
+14
+19
+13
+15
+18
+14
+16
+6
+15
+2
+6
+22
+6
+14
+11
+12
+13
+8
+11
+2
+3
+22
+2
+3
+17
+21
+
+PGRD/PGRC 240
+Point 0:
+Connection to point 1
+Connection to point 2
+Point 1:
+Connection to point 0
+Point 2:
+Connection to point 0
+Connection to point 4
+Connection to point 5
+Connection to point 17
+Connection to point 21
+Connection to point 22
+Point 3:
+Connection to point 7
+Connection to point 21
+Connection to point 22
+Point 4:
+Connection to point 2
+Connection to point 6
+Point 5:
+Connection to point 2
+Connection to point 8
+Point 6:
+Connection to point 4
+Connection to point 16
+Connection to point 17
+Connection to point 18
+Point 7:
+Connection to point 3
+Point 8:
+Connection to point 5
+Connection to point 9
+Connection to point 20
+Point 9:
+Connection to point 8
+Connection to point 10
+Point 10:
+Connection to point 9
+Connection to point 11
+Point 11:
+Connection to point 10
+Connection to point 12
+Connection to point 19
+Connection to point 20
+Point 12:
+Connection to point 11
+Connection to point 19
+Point 13:
+Connection to point 14
+Connection to point 19
+Point 14:
+Connection to point 13
+Connection to point 15
+Connection to point 18
+Point 15:
+Connection to point 14
+Connection to point 16
+Point 16:
+Connection to point 6
+Connection to point 15
+Point 17:
+Connection to point 2
+Connection to point 6
+Connection to point 22
+Point 18:
+Connection to point 6
+Connection to point 14
+Point 19:
+Connection to point 11
+Connection to point 12
+Connection to point 13
+Point 20:
+Connection to point 8
+Connection to point 11
+Point 21:
+Connection to point 2
+Connection to point 3
+Connection to point 22
+Point 22:
+Connection to point 2
+Connection to point 3
+Connection to point 17
+Connection to point 21
+
+
+============================================================================
+
+ok
+PROB
+Probe
+
+
+References Persist
+Blocked
+
+============================================================================
+
+ok
+RACE
+Race
+
+Skills:
+-1 NONE
+0 Block
+1 Armorer
+2 Medium Armor
+3 Heavy Armor
+4 Blunt Weapon
+5 Long Blade
+6 Axe
+7 Spear
+8 Athletics
+9 Enchant
+10 Destruction
+11 Alteration
+12 Illusion
+13 Conjuration
+14 Mysticism
+15 Restoration
+16 Alchemy
+17 Unarmored
+18 Security
+19 Sneak
+20 Acrobatics
+21 Light Armor
+22 Short Blade
+23 Marksman
+24 Mercantile
+25 Speechcraft
+26 Hand-to-hand
+
+-1 NONE 0 Block 1 Armorer 2 Medium Armor 3 Heavy Armor 4 Blunt Weapon 5 Long Blade 6 Axe 7 Spear 8 Athletics 9 Enchant 10 Destruction 11 Alteration 12 Illusion 13 Conjuration 14 Mysticism 15 Restoration 16 Alchemy 17 Unarmored 18 Security 19 Sneak 20 Acrobatics 21 Light Armor 22 Short Blade 23 Marksman 24 Mercantile 25 Speechcraft 26 Hand-to-hand
+
+
+============================================================================
+
+continue
+REGN
+Regions
+
+Todo:
+Check if Chance/SoundID items can be edited by popping up a dialog.
+
+
+============================================================================
+
+ok
+REPA
+Repair Item
+
+
+References Persist
+Blocked
+
+============================================================================
+
+SCPT
+
+Todo:
+Write parser for the compiled code.
+
+Parameters may be constants (50.0) or variables (73 5 0).
+Because float and variable ref is in the same 4 bytes,
+we need test the variable ref first.
+Are least bytes
+0x73  % XXXX check what are used in float params
+0x56
+0x66
+0x72
+0x6d
+0x47
+of floats somehow specials to floats?
+
+Parse the if statements and the set expressions:
+GetAiPackageDone
+GetLevel
+GetPCCell
+
+% perhaps Position does not accept variables, and somebody forgot it
+Strange, fourth parameter (in the hexdump) of Position = 0 while
+the script has "hentface" local variable:
+  set hentface to ( "Hentus Yansurnummu"->GetAngle Z )
+  "Hentus Yansurnummu"->Position -83201.602 90123.063 885.547 hentface
+
+% it is a bug in the script, compiles wrong as seen in the hexdump
+Here the string is not at the end:
+PositionCell "Raven Rock, Bar" 4480.000 3968.000 15820.000 0
+PositionCell 0.000000 4480.000000 3968.000000 15820.000000 "0" % espparser
+109248    5 10  0  0  0  0  0  0 8c 45  0  0   .........E..
+109260   78 45  0 30 77 46  1 30  9  1  9  1   xE.0wF.0....
+
+% perhaps bug in the script, StopCombat does not take arguments
+Here the Player is not compiled as a parameter.
+StopCombat Player
+376368    0  0  0  0  3 11  0  0  0  0 1a 10   ............
+376380    9  1  9  1  8  1  7 10 20 47  8 56   ........ G.V
+
+
+
+0101 end
+0105 set
+0106 if PPPP
+0107 else   % 7 1 <jumpops>
+0108 elseif PPPP % 8 1 3 1b  8 1 <jumpops> <size>
+0109 endif
+010a while PPPP
+010b endwhile
+010c ""-> PPPP
+0124 return
+013f EnableRest
+1000 MessageBox PPPP
+1002 PlaySound <sound name>
+1003 StreamMusic <filename> % "conantheme.mp3"
+1004 Position -6115, 1041, -815 0   XXXX see Todo
+1005 PositionCell -37.431 180.252 134.399 180 "Mournhold, The Winged Guar"
+1006 Move z, -10
+1007 rotate, z, 45 % 7 10 58 ("X") <float> 7 10 5a ("Z") <float>
+1008 MoveWorld x, 20
+1009 RotateWorld Z 90
+100b SetPos Z, -620 / SetPos Z startHeight   PPPPFV
+100d SetAngle Z 270 / SetAngle Z angle / SetAngle, y, GetStartingAngle, y PPPPFV XXXX check the more complex expression
+1010 SetAtStart
+1012 <value> GetSecondsPassed
+1014 PlayGroup idle / PlayGroup, Idle, 0 % 14 10 <byte> <byte> <byte>
+1015 LoopGroup idle2 6
+1017 Activate
+1018 <int> OnActivate
+1019 StartCombat <nstring>
+101a StopCombat / StopCombat Player % XXXX see Todo
+101b StartScript dbAttackScript
+101c StopScript
+101f <int> CellChanged
+1020 <int> MenuMode
+1021 <value> Random
+1022 AddTopic "Eleidon's Ward"
+1024 SetStrength 100
+1025 ModStrength -40
+1028 ModIntelligence, 20
+102a SetWillpower 72
+102b ModWillpower -5
+102d SetAgility 93
+102e ModAgility, 20
+1030 SetSpeed 100
+1031 ModSpeed -30
+1033 SetEndurance 110
+1034 ModEndurance, 20
+1037 ModPersonality, 20
+103a ModLuck, 20
+103c SetBlock 50
+103d ModBlock -20
+103f SetArmorer 40
+1040 ModArmorer -40
+1042 SetMediumarmor 50
+1043 ModMediumArmor -20
+1045 SetHeavyarmor 90
+1046 ModHeavyarmor -50
+1048 SetBluntweapon 40
+1049 ModBluntweapon -40
+104b SetLongblade 50
+104c ModLongblade -50
+104e SetAxe 40
+104f ModAxe -40
+1051 SetSpear 40
+1052 ModSpear -40
+1054 SetAthletics 100
+1055 ModAthletics -80
+1057 SetEnchant 50
+105a SetDestruction 30
+105d SetAlteration 30
+1060 SetIllusion 30
+1063 SetConjuration 90
+1066 SetMysticism 30
+1069 SetRestoration 30
+106a ModRestoration 75
+106c SetAlchemy 50
+107f ModShortBlade -20
+1081 SetMarksman 50
+1082 ModMarksman -40
+1085 ModMercantile 10
+108d SetHealth 10000
+108e ModHealth <float>
+1090 SetMagicka 1000
+1091 ModMagicka -250
+1093 SetFatigue <float>
+1094 ModFatigue <float>
+1097 ModReputation 10
+1099 SetDisposition
+109a ModDisposition 50
+109c SetPCCrimeLevel temp
+10aa ModResistMagicka 100
+10ad ModResistFire 100
+10b0 ModResistFrost 100
+10bf ModResistPoison 100
+10c2 ModResistParalysis 100
+10cc Journal "A1_Dreams" 10 -1 % last int = -1 if none
+10cd <value> GetJournalIndex
+10ce RaiseRank
+10d0 PCRaiseRank "Mages Guild" / PCRaiseRank % name "" if missing
+10d3 PCClearExpelled "Mages Guild"
+10d4 AddItem "p_cure_common_s" 2
+10d5 RemoveItem "Blade Light" 1
+10d9 ModPCFacRep, 5, "Imperial Legion"
+10da Enable
+10db Disable / disable "reeh_jah" % XXXX parameter is ignored
+10dc <int> GetDisabled
+10dd EnablePlayerControls
+10de DisablePlayerControls
+10e1 WakeUpPC
+10e2 EnablePlayerViewSwitch
+10e3 DisablePlayerViewSwitch
+10e5 ShowRestMenu
+10e6 PlaceAtPC "db_assassin4" 1 128 1
+10e7 Resurrect
+10e8 ForceGreeting
+10e9 GoToJail
+10ec RemoveSoulGem "ash_ghoul" / Player->RemoveSoulGem "winged twilight_grunda_" 1 % in latter "1" is ignored
+10ee EnableTeleporting
+10ef DisableTeleporting
+10f0 <int> OnDeath
+10f4 AIEscort Player, 12, 195, 100, 170
+
+CONTINUE the check
+
+10f6 AiFollow Karrod 0 0 0 0 0 0
+10f8 AiTravel % f8 10 <float> <float> <float> <byte> % angle = <byte>*90
+10f9 AiWander, 128, 5, 0, 60, 60
+10fd GetItemCount
+10fe GetDeadCount
+1100 SetFight <float> xxxx
+1101 ModFight 30
+1103 SetFlee <float>?
+1106 SetAlarm <float>
+1109 SetHello <float>
+110d Drop Slave_Bracer_Left 1
+1111 ModFactionReaction, "Redoran", "Nerevarine", 4
+1117 EnableStatsMenu
+1118 EnableInventoryMenu
+1119 EnableMapMenu
+111a EnableMagicMenu
+111b Say <byte> <nstring> <short> <nstring>
+111d AddSpell "regenerate [ability]"
+111e RemoveSpell "crimson_plague"
+1123 Cast, gaenor_spell, "Gaenor"
+1124 ChangeWeather "Red Mountain Region" 0
+1125 ModRegion "Red Mountain Region" 50 50 0 0 0 0 0 0 % XXXX 50 50 + 6 bytes in Morrowind.esm, 50 50 + 8 bytes in Tribunal.esm and in Bloomoon.esm
+1126 EnableNameMenu
+1127 EnableRaceMenu
+1128 EnableClassMenu
+1129 EnableBirthMenu
+112b PlaySoundVP "Sound Test" 1.0, 1.0
+112c PlaySound3D
+112d Playsound3DVP "Dwemer Door Open" 1.0 1.0
+112e PlayLoopSound3D "endrumble"
+112f PlayLoopSound3DVP "oil bubbly", 1.0, 1.0
+1130 FadeOut 1.0
+1131 FadeIn 1.0
+1132 ModCurrentHealth, Damage
+1134 ModCurrentFatigue -10000
+1135 HurtStandingActor, 20.0
+1136 Lock, 100
+1137 Unlock
+113b PCJoinFaction, Nerevarine
+113f EnablePlayerJumping
+1140 DisablePlayerJumping
+114b EnableVanityMode
+114c DisableVanityMode
+114f PayFine
+1151 StopSound "heart"
+1152 ShowMap "Gnisis"
+1155 PlayBink <byte> <nstring> <byte>
+1159 EnablePlayerFighting
+115a DisablePlayerFighting
+115c EnablePlayerMagic
+115d DisablePlayerMagic
+115f DontSaveObject
+1160 EnableStatReviewMenu
+1162 Face 0 0 -116
+1163 ForceSneak
+1164 ClearForceSneak
+1166 Fall
+118e SetScale 1.00
+1191 SetWaterLevel
+1192 ModWaterLevel waterlift
+1193 EnableLevitation
+1194 DisableLevitation
+1195 PlaceItem <float> <float> <float> <int>
+1196 PlaceItemCell, "fabricant_machine_1", "Sotha Sil, Dome of Serlyn" 4364, 5091, 12541, 190
+119a ForceRun
+11a5 HurtCollidingActor <float>
+11ab SetDelete 1
+11ad ExplodeSpell "proj_trap_spell"
+11b3 BecomeWerewolf
+11b4 UndoWerewolf
+11b7 TurnMoonRed
+11b8 TurnMoonWhite
+11b9 SetWereWolfAcrobatics
+11ba PlaceAtMe skaal_hunter 1 1 1
+
+
+
+
+KEEP:
+
+Unknown opcode 1081. Exit.SetMarksman 0  ok but check this for variable version
+58  1 10 20 72  6 50 6c 61 79
+65 72 20 3c 20 34 30 30 81 10
+ 0  0  0  0  9  1  7  1  3  6
+ 1  1 13 20 58  1 10 20 72  6
+50 6c 61 79 65 72 20 3e 20 36
+30 30 81 10 73  2  0  0  9  1  SetMarksman myMarksman
+
+Unknown opcode 10f4. Exit.AIEscort Player, 12, 195, 100, 170
+ 9  1  8  1  3  a 20 73  1  0
+20 3d 3d 20 34 30 dd 10 f4 10
+ 6 50 6c 61 79 65 72  c  0  0
+ 0 43 43  0  0 c8 42  0  0 2a
+43  0  5  1 73  1  0  3 20 35
+30  8  1  3  a 20 73  1  0 20
+
+Unknown opcode 1132. Exit.ModCurrentHealth, Damage
+66  1  0 20 58 12 10 20 2a  c
+ 1  6 70 6c 61 79 65 72 32 11
+66  1  0  0  6  1  2  9 20 73
+ 2  0 20 3d 3d 20 30  0 10 85
+ 0 59 6f 75 20 66 65 65 6c 20
+61 20 73 65 61 72 69 6e 67 20
+
+Strange: "0" in the script is "1" in decompilation.
+AIEscort "Player" 12 195.000000 100.000000 170.000000 0
+	AIEscort Player, 12, 195, 100, 170
+AIEscort "Player" 0 70685.000000 126106.000000 835.000000 1
+			AiEscort Player 0 70685 126106 835 0
+AIEscort "Player" 0 -175218.828125 144654.515625 1005.164001 1
+AIEscort "Player" 0 -178127.468750 146951.734375 1025.390015 1
+	AIEscort Player 0 -175218.828 144654.516 1005.164 0
+	AiEscort Player 0 -178127.469 146951.734 1025.390 0
+AIEscort "Player" 0 -219541.625000 217412.187500 0.000000 1
+			AiEscort Player 0 -219541.625 217412.188 0 0
+
+
+Chunk name 0: SCPT 0 236622
+flags 1 = 0000,0000,0000,0000,0000,0000,0000,0000
+flags 2 = 0000,0000,0000,0000,0000,0000,0000,0000
+                                    ^References Persist + Corpses Persist
+                                ^Blocked
+Chunk name: SCHD
+SCPT/SCHD 52
+AbebaalAttack
+0
+0
+0
+135 % Size of the compiled script
+0
+Chunk name: SCDT
+SCPT/SCDT 135
+XXXX skipping compiled script
+Chunk name: SCTX
+SCPT/SCTX 347
+===Script Begin
+Begin AbebaalAttack
+
+;makes all slaves in Abebaal attack at once
+;easier than making them all follow one another, etc.
+
+"seen-rei"->StartCombat Player
+"dan_ru"->StartCombat Player
+"eleedal_lei"->StartCombat Player
+"ahnarra"->StartCombat Player
+"dro'zah"->StartCombat Player
+"j'dato"->StartCombat Player
+
+StopScript AbebaalAttack
+
+End
+===Script End
+
+236688    0  0 87  0  0  0  0  0  0  0 53 43   ..........SC
+236700   44 54 87  0  0  0  c  1  8 73 65 65   DT.......see
+236712   6e 2d 72 65 69 19 10  6 50 6c 61 79   n-rei...Play
+236724   65 72  c  1  6 64 61 6e 5f 72 75 19   er...dan_ru.
+236736   10  6 50 6c 61 79 65 72  c  1  b 65   ..Player...e
+236748   6c 65 65 64 61 6c 5f 6c 65 69 19 10   leedal_lei..
+236760    6 50 6c 61 79 65 72  c  1  7 61 68   .Player...ah
+236772   6e 61 72 72 61 19 10  6 50 6c 61 79   narra...Play
+236784   65 72  c  1  7 64 72 6f 27 7a 61 68   er...dro'zah
+236796   19 10  6 50 6c 61 79 65 72  c  1  6   ...Player...
+236808   6a 27 64 61 74 6f 19 10  6 50 6c 61   j'dato...Pla
+236820   79 65 72 1c 10  d 41 62 65 62 61 61   yer...Abebaa
+236832   6c 41 74 74 61 63 6b  1  1 53 43 54   lAttack..SCT
+236844   58 5b  1  0  0 42 65 67 69 6e 20 41   X[...Begin A
+
+"Begin" is not in the compiled script.
+
+c  1 <nstring>
+19 10 <nstring>  % StartCombat
+1c 10 <nstring>  % StopScript
+1 1 % End
+
+
+
+SCPT/SCHD 52
+abebaalSlaves
+3 % Number of local variables
+0
+0
+208
+26  % ????
+Chunk name: SCVR
+SCPT/SCVR 26
+slaveStatus
+doOnce
+NoLore
+Chunk name: SCDT
+SCPT/SCDT 208
+XXXX skipping compiled script
+Chunk name: SCTX
+SCPT/SCTX 929
+===Script Begin
+Begin abebaalSlaves
+
+;Slave Status... each slave has a status as follows
+;0 = Owned ( default state... does not indicate who they are owned by )
+;1 = For Sale ( someone in the game can "sell" this slave via dialogue )
+;2 = Owned By the Player ( the player has purchased this slave and the slave follows the player )
+;3 = Freed ( the player has freed this slave, the slave eventually disables himself)
+;dead = not in slave status, but a state one should check for
+
+;special conditions for slaves in Abebaal, see HT_SlaveRebellion
+
+short slaveStatus
+short doOnce
+short NoLore
+
+if ( CellChanged == 0 )
+	return
+endif
+
+if ( GetJournalIndex HT_SlaveRebellion >= 50 )
+
+	if ( GetItemCount Slave_Bracer_Left > 0 )
+		Drop Slave_Bracer_Left 1
+	endif
+
+	if ( GetItemCount Slave_Bracer_Right > 0 )
+		Drop Slave_Bracer_Right 1
+	endif
+
+endif
+
+if ( GetJournalIndex HT_SlaveRebellion >= 100 )
+	Disable
+endif
+
+End
+===Script End
+
+237300   6f 4c 6f 72 65  0 53 43 44 54 d0  0   oLore.SCDT..
+237312    0  0  6  1  1  9 20 58 1f 10 20 3d   ...... X.. =
+237324   3d 20 30 24  1  9  1  6  1  6 1e 20   = 0$....... 
+237336   58 cd 10 20 64 11 48 54 5f 53 6c 61   X.. d.HT_Sla
+237348   76 65 52 65 62 65 6c 6c 69 6f 6e 20   veRebellion 
+237360   3e 3d 20 35 30  6  1  1 1c 20 58 fd   >= 50.... X.
+237372   10 20 6f 11 53 6c 61 76 65 5f 42 72   . o.Slave_Br
+237384   61 63 65 72 5f 4c 65 66 74 20 3e 20   acer_Left > 
+237396   30  d 11 11 53 6c 61 76 65 5f 42 72   0...Slave_Br
+237408   61 63 65 72 5f 4c 65 66 74  1  0  9   acer_Left...
+237420    1  6  1  1 1d 20 58 fd 10 20 6f 12   ..... X.. o.
+237432   53 6c 61 76 65 5f 42 72 61 63 65 72   Slave_Bracer
+237444   5f 52 69 67 68 74 20 3e 20 30  d 11   _Right > 0..
+237456   12 53 6c 61 76 65 5f 42 72 61 63 65   .Slave_Brace
+237468   72 5f 52 69 67 68 74  1  0  9  1  9   r_Right.....
+237480    1  6  1  1 1f 20 58 cd 10 20 64 11   ..... X.. d.
+237492   48 54 5f 53 6c 61 76 65 52 65 62 65   HT_SlaveRebe
+237504   6c 6c 69 6f 6e 20 3e 3d 20 31 30 30   llion >= 100
+237516   db 10  9  1  1  1 53 43 54 58 a1  3   ......SCTX..
+
+
+% if ( CellChanged == 0 )
+ 6  1  1  9 % if / length 9
+20 58 % " X"
+1f 10 % CellChanged
+20 3d 3d 20 30 % " == 0" % where is the length of this? What is left of 9.
+
+24  1 % return
+ 9  1 % endif
+
+% if ( GetJournalIndex HT_SlaveRebellion >= 50 )
+ 6  1  6 1e % if / length 30 / what does the 6 mean? others have 1
+20 58 % " X"
+cd 10 % GetJournalIndex
+20 64 % " d"
+11 48 54 5f 53 6c 61 76 65 52 65 62 65 6c 6c 69 6f 6e % nstring
+20 3e 3d 20 35 30 % " >= 50"
+
+% if ( GetItemCount Slave_Bracer_Left > 0 )
+6  1  1 1c % if / 1c = length of the if-expression
+20 58 % " X"
+fd 10 % GetItemCount
+20 6f % " o"
+11 53 6c 61 76 65 5f 42 72 61 63 65 72 5f 4c 65 66 74 % nstring
+20 3e 20 30 % " > 0"
+
+ d 11 % Drop
+11 53 6c 61 76 65 5f 42 72 61 63 65 72 5f 4c 65 66 74 % nstring
+ 1  0 % short = 1
+ 9  1 % endif
+
+% if ( GetItemCount Slave_Bracer_Right > 0 )
+ 6  1  1 1d % if
+20 58 % " X"
+fd 10 % GetItemCount
+20 6f % " o"
+12 53 6c 61 76 65 5f 42 72 61 63 65 72 5f 52 69 67 68 74 % nstring
+20 3e 20 30 % " > 0"
+
+ d 11 % Drop
+12 53 6c 61 76 65 5f 42 72 61 63 65 72 5f 52 69 67 68 74 % nstring
+ 1  0 % short = 1
+ 9  1 % endif
+
+ 9  1 % endif
+
+ 6  1  1 1f % if
+20 58 % " X"
+cd 10 % GetJournalIndex
+20 64 % " d"
+11 48 54 5f 53 6c 61 76 65 52 65 62 65 6c 6c 69 6f 6e % nstring
+20 3e 3d 20 31 30 30 % " >= 100"
+
+db 10 % Disable
+ 9  1 % endif
+
+ 1  1 % end
+
+
+SCPT/SCHD 52
+ahnassiScript
+3
+0
+0
+106
+34
+
+===Script Begin
+begin ahnassiScript
+
+short localdaysPassed
+short currentDay
+short nolore
+
+if ( GetDisabled == 1 )
+	Return
+endif
+
+if ( GetJournalIndex Romance_Ahnassi == 33 )
+	Disable
+	Return
+endif
+
+
+if ( currentDay != Day )
+	set currentDay to Day
+	set localdaysPassed to localdaysPassed + 1
+endif
+
+
+End ahnassiScript
+===Script End
+
+238788   6c 6f 72 65  0 53 43 44 54 6a  0  0   lore.SCDTj..
+238800    0  6  1  1  9 20 58 dc 10 20 3d 3d   ..... X.. ==
+238812   20 31 24  1  9  1  6  1  2 1c 20 58    1$....... X
+238824   cd 10 20 64  f 52 6f 6d 61 6e 63 65   .. d.Romance
+238836   5f 41 68 6e 61 73 73 69 20 3d 3d 20   _Ahnassi == 
+238848   33 33 db 10 24  1  9  1  6  1  2  f   33..$.......
+238860   20 73  2  0 20 21 3d 20 47  4 44 61    s.. != G.Da
+238872   79  0  0  5  1 73  2  0  8 20 47  4   y....s... G.
+238884   44 61 79  0  0  5  1 73  1  0  8 20   Day....s... 
+238896   73  1  0 20 31 20 2b  9  1  1  1 53   s.. 1 +....S
+238908   43 54 58 42  1  0  0 62 65 67 69 6e   CTXB...begin
+
+6  1  1  9
+20 58 % " X"
+dc 10 % GetDisabled
+20 3d 3d 20 31 % " == 1"
+
+24  1 % return
+
+9  1
+
+6  1  2 1c
+20 58 % " X"
+cd 10 % GetJournalIndex
+20 64 % " d"
+f 52 6f 6d 61 6e 63 65 5f 41 68 6e 61 73 73 69 % Romance_Ahnassi
+20 3d 3d 20 33 33 % " == 33"
+
+db 10 % Disable
+24  1 % return
+
+9  1
+
+6  1  2  f
+20
+73 % " s"
+2  0  % variable index  73 2 0
+20 21 3d 20 47 % " != G"
+4 44 61 79  0 % "Day" + '\0'
+0
+
+5  1 % Set
+73  2  0  8 % 8 = length?? 2 = variable index
+20 47 % " G"
+4 44 61 79  0 % "Day" + '\0'
+0
+
+5  1 73  1  0  8 % 1 = variable index
+20 73 % " s"
+1  0 % short = 1  % variable index? 73 1 0
+20 31 20 2b % " 1 +"
+
+9  1
+
+1  1
+
+
+SCPT/SCHD 52
+ajiraReports
+1
+0
+0
+102
+7
+Chunk name: SCVR
+SCPT/SCVR 7
+doOnce
+Chunk name: SCDT
+SCPT/SCDT 102
+XXXX skipping compiled script
+Chunk name: SCTX
+SCPT/SCTX 256
+===Script Begin
+Begin ajiraReports
+
+short doOnce
+
+if ( doOnce > 1 )
+	Return
+endif
+
+if ( doOnce == 1 )
+	if ( GetJournalIndex MG_StolenReport > 0 ) 
+		Set doOnce to 2
+		Enable
+	endif
+	Return
+endif
+
+if ( doOnce == 0 )
+	Set doOnce to 1
+	Disable
+endif
+
+End
+===Script End
+
+
+239328   53 43 44 54 66  0  0  0  6  1  1  8   SCDTf.......
+239340   20 73  1  0 20 3e 20 31 24  1  9  1    s.. > 1$...
+239352    6  1  5  9 20 73  1  0 20 3d 3d 20   .... s.. == 
+239364   31  6  1  2 1a 20 58 cd 10 20 64  f   1.... X.. d.
+239376   4d 47 5f 53 74 6f 6c 65 6e 52 65 70   MG_StolenRep
+239388   6f 72 74 20 3e 20 30  5  1 73  1  0   ort > 0..s..
+239400    2 20 32 da 10  9  1 24  1  9  1  6   . 2....$....
+239412    1  2  9 20 73  1  0 20 3d 3d 20 30   ... s.. == 0
+239424    5  1 73  1  0  2 20 31 db 10  9  1   ..s... 1....
+239436    1  1 53 43 54 58  0  1  0  0 42 65   ..SCTX....Be
+
+
+ 6  1  1  8
+20 73  1  0
+20 3e 20 31 % " > 1"
+
+24  1 % Return
+
+9  1
+
+6  1  5  9  % 5 = number of statements between if and endif
+20 73 % " s"
+1  0
+20 3d 3d 20 31 % " == 1"
+
+6  1  2 1a
+20 58 % " X"
+cd 10 % GetJournalIndex
+20 64 % " d"
+f 4d 47 5f 53 74 6f 6c 65 6e 52 65 70 6f 72 74 % "MG_StolenReport"
+20 3e 20 30 % " > 0"
+
+5  1 73  1  0
+2 20 32 % " 2"
+
+da 10 % Enable
+
+9  1
+
+24  1 % Return
+
+9  1
+
+6  1  2  9
+20 73 % " s"
+1  0
+20 3d 3d 20 30 % " == 0"
+ 5  1 73  1  0  2  % 5 1 <variable> <length of statement>
+20 31 % " 1"
+db 10 % Disable
+9  1
+ 1  1
+
+SCPT/SCHD 52
+Akula_doors
+1
+0
+1
+247
+12
+
+if ( timer < 9 )
+	Rotate X 20
+	;above line rotates the crank itself
+	Akula_door00->Rotate Z -10
+	Akula_door01->Rotate Z 10
+	;above two lines open the doors.
+	;you may need to adjust the times or the rotate value.
+	;right now they open over 9 seconds to about 100 degrees.
+endif
+
+ 0 20 3d 3d 20 30 24  1  9  1  6  1   . == 0$.....
+ 3  8 20 66  1  0 20 3c 20 39  7 10   .. f.. < 9..
+58  0  0 a0 41  c  1  c 61 6b 75 6c   X...A...akul
+61 5f 64 6f 6f 72 30 30  7 10 5a  0   a_door00..Z.
+ 0 20 c1  c  1  c 61 6b 75 6c 61 5f   . ....akula_
+64 6f 6f 72 30 31  7 10 5a  0  0 20   door01..Z.. 
+41  9  1  6  1  2  9 20 66  1  0 20   A...... f.. 
+
+set timer to ( timer + GetSecondsPassed )
+
+5  1 66 % "f"
+ 1  0
+a % size
+20 66 " f" 1  0
+20 58 " X"
+12 10
+20 2b " +"
+1  1
+
+
+6  1  1  9
+20 58
+dc 10 % GetDisabled
+20 3d 3d 20 31 % " == 1"
+
+
+almaScript
+
+set randgreet to Random 100
+
+5  1 73  4  0  8
+20 58 21 10 64  0 30 30 % 0x64 = 100
+
+Last two 30s are strange.
+They could be part of 20 58.
+
+
+XXXX CONTINUE
+AzuraEnd
+
+Set
+0x66
+Unknown varop 0x66. Exit.
+
+023364    0 20 3d 3d 20 2d 31  5  1 66  1  0   . == -1..f..
+023376    a 20 66  1  0 20 58 12 10 20 2b  6   . f.. X.. +.
+
+5  1 66  1  0  a 20 66  1  0 20 58 12 10 20 2b
+set timer to ( timer + GetSecondsPassed )
+
+
+"hels_assassin1"->
+AiTravel 738.000000 -228.000000 -128.000000 0
+Set
+0x73
+1
+" 2"
+elseif
+JmpOps 20
+ExpLen 9
+"hels_assassin1"->     %% XXXX what is this?
+if
+JmpOps 18
+ExpLen 9
+Unknown opcode 112c. Exit.
+
+
+
+bladeScript / Why "Player->" is outside of "if" code?
+
+if ( Player->GetItemCount "nerevarblade_01_flame" == 0 )
+	return
+endif
+
+SCPT/SCDT 339
+ === Attempting to decompile the compiled script
+"player"->
+if
+JmpOps 1
+ExpLen 33
+Return
+endif
+
+060024   61 64 64 4f 6e 63 65  0 53 43 44 54   addOnce.SCDT
+060036   53  1  0  0  c  1  6 70 6c 61 79 65   S......playe
+060048   72  6  1  1 21 20 58 fd 10 20 6f 15   r...! X.. o.
+060060   6e 65 72 65 76 61 72 62 6c 61 64 65   nerevarblade
+060072   5f 30 31 5f 66 6c 61 6d 65 20 3d 3d   _01_flame ==
+060084   20 30 24  1  9  1  6  1  3  9 20 73    0$....... s
+
+20 58
+fd 10 % GetItemCount % XXXX "nerevarblade_01_flame"
+20 6f
+
+
+
+karrodMovement
+
+AiWander 2000.000000 1.000000 0.000000 8
+20
+10
+10
+0
+0
+0
+0
+0
+2
+
+AiWander 2000 1 0 60 20 10 10 0 0 0 0 0
+
+
+AiFollow, "fore paw", 24, 0, 0, -10,000
+556608   70 61 77 20 3c 20 34 30 30 f6 10  8   paw < 400...
+556620   66 6f 72 65 20 70 61 77 18  0  0  0   fore paw....
+556632    0  0  0  0  0  0  0  0 20 c1  3  5   ........ ...
+
+18  0  0  0  0  0  0  0  0  0  0  0 20 c1  3
+
+AiFollow Thoronor 0,0,0,60,20,10,0,0,0,0,0,0
+519936   f6 10  8 54 68 6f 72 6f 6e 6f 72  0   ...Thoronor.
+519948    0  0  0  0  0  0  0  0  0  0  0 70   ...........p
+519960   42  2  5  1 73  1  0  7 20 2d 31 20   B...s... -1 
+
+ 0  0  0  0  0  0  0  0  0  0  0  0 70 42  2
+
+AiFollow Player 0 0 0 0
+270612   30 30 f6 10  6 50 6c 61 79 65 72  0   00...Player.
+270624    0  0  0  0  0  0  0  0  0  0  0  0   ............
+270636    0  0  5  1 73  1  0  7 20 2d 31 20   ....s... -1 
+
+ 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+
+AiFollow Sason 0 0 0 0 0 0 0 0 0 0 0 0
+758856   61 6c 65 78 61 f6 10  5 53 61 73 6f   alexa...Saso
+758868   6e  0  0  0  0  0  0  0  0  0  0  0   n...........
+758880    0  0  0  1 e8 10  5  1 73  2  0  7   ........s...
+
+ 0  0  0  0  0  0  0  0  0  0  0  0  0  0  1
+
+
+============================================================================
+
+ok
+SKIL
+Skill
+
+
+Governing Attribute:
+Attributes:
+0 Strength
+1 Intelligence
+2 Willpower
+3 Agility
+4 Speed
+5 Endurance
+6 Personality
+7 Luck
+
+0 Strength 1 Intelligence 2 Willpower 3 Agility 4 Speed 5 Endurance 6 Personality 7 Luck
+
+Specialization:
+Combat
+Magic
+Stealth
+
+
+Block:
+Agility
+Combat
+Actions:
+Successful block % it is in the EXE
+
+Skills/Governing Attribute/Specialization/Actions:
+0 Block  / Agility / Combat / Successful block
+1 Armorer / Strength / Combat / Successful repair
+2 Medium Armor / Endurance / Combat / Hit by opponent
+3 Heavy Armor / Endurance / Combat / Hit by opponent
+4 Blunt Weapon / Strength / Combat / Successful attack
+5 Long Blade / Strength / Combat / Successful attack
+6 Axe / Strength / Combat / Successful attack
+7 Spear / Endurance / Combat / Successful attack
+8 Athletics / Speed / Combat / Second of running + Second of swimming
+9 Enchant / Intelligence / Magic / Recharge item + Use magic item + Create magic item + Cast When Strikes
+10 Destruction / Willpower / Magic / Successful cast
+11 Alteration / Willpower / Magic / Successful cast
+12 Illusion / Personality / Magic / Successful cast
+13 Conjuration / Intelligence / Magic / Successful cast
+14 Mysticism / Willpower / Magic / Successful cast
+15 Restoration / Willpower / Magic / Successful cast
+16 Alchemy / Intelligence / Magic / Potion creation + Ingredient use
+17 Unarmored / Speed / Magic / Hit by opponent
+18 Security / Intelligence / Stealth / Defeat trap + Pick lock
+19 Sneak / Agility / Stealth / Avoid notice + successful pick-pock
+20 Acrobatics / Strength / Stealth / Jump + Fall
+21 Light Armor / Agility / Stealth / Hit by opponent
+22 Short Blade / Speed / Stealth / Successful attack
+23 Marksman / Agility / Stealth / Successful attack
+24 Mercantile / Personality / Stealth / Successful bargain + Successful bribe
+25 Speechcraft / Personality / Stealth / Successful persuasion + Failed persuasion
+26 Hand-to-hand / Speed / Stealth / Successful attack
+
+============================================================================
+
+ok
+SNDG
+Sound Gen
+
+Type:
+0 Left
+1 Right
+2 SwimLeft
+3 SwimRight
+4 Moan
+5 Roar
+6 Scream
+7 Land
+
+0 Left 1 Right 2 SwimLeft 3 SwimRight 4 Moan 5 Roar 6 Scream 7 Land
+
+
+============================================================================
+
+ok
+SOUN
+Sounds
+
+
+Volume 0-255 (0.0-1.0)
+Min Range 0-255
+Max Range 0-255
+
+============================================================================
+
+ok
+SPEL
+Spellmaking
+
+Todo:
+Unknown in ENAM.
+Magnitude Min/Max?
+
+
+Is this list made from GMST records starting with sEffect?
+Are the effects numbered by their GMST order?
+Then it is important that the effect GMSTs and the effect numbers
+in INGR and SPEL are matching.
+
+If the list is hard-coded in the EXE, then what happens if
+we switch the order of GMSTs? Nothing?
+
+Is modder able to add new sEffect? How that is numbered?
+
+Effects: % the same as in INGR?
+0 Water Breathing
+1 Swift Swim
+2 Water Walking
+3 Shield
+4 Fire Shield
+5 Lightning Shield
+6 Frost Shield
+7 Burden
+8 Feather
+9 Jump
+10 Levitate
+11 SlowFall
+12 Lock
+13 Open
+14 Fire Damage
+15 Shock Damage
+16 Frost Damage
+17 Drain Attribute <Attribute>
+18 Drain Health
+19 Drain Magicka
+20 Drain Fatigue
+21 Drain Skill <Skill> % TODO skills
+22 Damage Attribute <Attribute>
+23 Damage Health
+24 Damage Magicka
+25 Damage Fatigue
+26 Damage Skill <Skill>
+27 Poison
+28 Weakness to Fire
+29 Weakness to Frost
+30 Weakness to Shock
+31 Weakness to Magicka
+32 Weakness to Common Disease
+33 Weakness to Blight Disease
+34 Weakness to Corprus Disease
+35 Weakness to Poison
+36 Weakness to Normal Weapons  % not used in Morrowind.esm
+37 Disintegrate Weapon
+38 Disintegrate Armor
+39 Invisibility
+40 Chameleon
+41 Light
+42 Sanctuary
+43 Night Eye
+44 Charm
+45 Paralyze
+46 Silence
+47 Blind
+48 Sound
+49 Calm Humanoid
+50 Calm Creature
+51 Frenzy Humanoid
+52 Frenzy Creature
+53 Demoralize Humanoid
+54 Demoralize Creature
+55 Rally Humanoid
+56 Rally Creature
+57 Dispel
+58 Soultrap
+59 Telekinesis
+60 Mark
+61 Recall
+62 Divine Intervention
+63 Almsivi Intervention
+64 Detect Animal
+65 Detect Enchantment
+66 Detect Key
+67 Spell Absorption
+68 Reflect
+69 Cure Common Disease
+70 Cure Blight Disease
+71 Cure Corprus Disease
+72 Cure Poison
+73 Cure Paralyzation
+74 Restore Attribute <Attribute>
+75 Restore Health
+76 Restore Magicka
+77 Restore Fatigue
+78 Restore Skill <Skill>
+79 Fortify Attribute <Attribute>
+80 Fortify Health
+81 Fortify Magicka
+82 Fortify Fatigue
+83 Fortify Skill <Skill>
+84 Fortify Maximum Magicka
+85 Absorb Attribute <Attribute>
+86 Absorb Health
+87 Absorb Magicka
+88 Absorb Fatigue
+89 Absorb Skill <Skill>
+90 Resist Fire
+91 Resist Frost
+92 Resist Shock
+93 Resist Magicka
+94 Resist Common Disease
+95 Resist Blight Disease
+96 Resist Corprus Disease
+97 Resist Poison
+98 Resist Normal Weapons
+99 Resist Paralysis
+100 Remove Curse  % not used in Morrowind.esm
+101 Turn Undead
+102 Summon Scamp
+103 Summon Clannfear
+104 Summon Daedroth
+105 Summon Dremora
+106 Summon Ancestral Ghost
+107 Summon Skeletal Minion
+108 Summon Bonewalker
+109 Summon Greater Bonewalker
+110 Summon Bonelord
+111 Summon Winged Twilight
+112 Summon Hunger
+113 Summon Golden Saint
+114 Summon Flame Atronach
+115 Summon Frost Atronach
+116 Summon Storm Atronach
+117 Fortify Attack
+118 Command Creature
+119 Command Humanoid
+120 Bound Dagger
+121 Bound Longsword
+122 Bound Mace
+123 Bound Battle Axe
+124 Bound Spear
+125 Bound Longbow
+126 EXTRA SPELL  % not used in Morrowind.esm; this is listed in the list
+127 Bound Cuirass
+128 Bound Helm
+129 Bound Boots
+130 Bound Shield
+131 Bound Gloves    ( P - C 2.00 R self A 0 D 60 M 1 1 TC 6.00 / D )
+132 Corprus         ( P - C - R self A 0 D 1 M 1 1 TC - / - )
+133 Vampirism       ( P - C - R self A 0 D 1 M 1 1 TC - / - )
+134 Summon Centurion Sphere ( P - C 25.00 R self A 0 D 120 M 1 1 TC 150.00 / D )
+135 Sun Damage
+136 Stunted Magicka
+
+What enables/disables the effect values? Not MGEF.
+They are hard-coded in the EXE. Where/how?
+We could remake the table manually.
+
+Ranges:
+0 Self
+1 Touch
+2 Target
+
+Type
+
+Auto Calculate Cost
+PC Start Spell
+Always Succeeds
+Blocked
+
+============================================================================
+
+ok
+STAT
+Static
+
+References Persist
+Blocked
+
+============================================================================
+
+TES3
+
+
+Todo:
+The comment text in HEDR of Bloodmoon.esm is clipped. Fix it.
+
+
+
+============================================================================
+
+continue
+WEAP
+Weapon
+
+Todo:
+More types.
+Flag: Silver Weapon.
+
+
+References Persist
+Blocked
+Silver Weapon
+Ignores Normal Weapon Resistance
+
+Types: % see screenshots
+0 ShortBladeOneHand
+1 LongBladeOneHand
+2 LongBladeTwoClose
+3 BluntOneHand
+4 BluntTwoClose
+5 BluntTwoWide
+6 SpearTwoWide
+7 AxeOneHand
+8 AxeTwoClose
+9 MarksmanBow
+10 MarksmanCrossbow
+11 MarksmanThrown
+12 Arrow
+13 Bolt
+
+
+============================================================================
+============================================================================
+============================================================================
+============================================================================

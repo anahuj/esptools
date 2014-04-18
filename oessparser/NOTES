@@ -1,0 +1,64 @@
+
+Master file "Oblivion.esm"
+843100 % address of TOC?
+
+tail --bytes +843101 autosave.ess |hexdumpf|more
+
+000000   68 17  0  0  0  0  0  0 b1 23  2  0   h........#..
+000012   c5 23  2  0 e3 23  2  0 61 41  2  0   .#...#..aA..
+000024   8e a3  2  0 32 cf  2  0 20 cf  1  0   ....2... ...
+000036   a4 e6  1  0 5e e8  1  0 5f e8  1  0   ....^..._...
+
+octave:1> hex2dec("1768")
+ans =  5992
+octave:2> -843100+867096
+ans =  23996
+octave:9> (23996-28)/5992
+ans =  4
+
+023928   7e ed  4  0 58 6e  5  0 4e 89  4  0   ~...Xn..N...
+023940   74 2d  2  0 1c 5e 11  0 d8 49  8  0   t-...^...I..
+023952   6d 45  2  0 cb 4d  2  0  2 9d  4  0   mE...M......
+023964   17 4e  3  0 33 72  3  0  5  0  0  0   .N..3r......
+                     ^^^^^^^^^^^Last
+023976    0  0  0  0 3c  0  0  0 1c c3  1  0   ....<.......
+023988    a c1  2  0  f c1  2  0               ........
+
+
+
+octave:10> hex2dec("223b1")
+ans =  140209
+
+Nothing meaningful in that location.
+
+Try offset:
+
+Master file "Oblivion.esm"
+loc = 156803
+843100
+
+octave:11> 156803+140209
+ans =  297012
+
+000000    0  0  0  0 27 a1  0  0 32  4  0  0   ....'...2...
+000012    8 7d b5  0 22  4  0  0 7e 1b 93 43   .}.."...~..C
+000024   86 71 76 c4 ef 79 2e c3 ff ff 7f 7f   .qv..y......
+000036    0  0  0  0  0  0  0  0  3  1  0 e2   ............
+000048    0  0  0  6  0  0  0  1  0  0  0  2   ............
+000060    0 36  0  0  0  0  0 2a  6  0  1  0   .6.....*....
+
+
+More numbers from the TOC table:
+
+octave:12> hex2dec("223c5")
+ans =  140229
+octave:13> hex2dec("223e3")
+ans =  140259
+octave:14> hex2dec("24161")
+ans =  147809
+octave:15> hex2dec("2a38e")
+ans =  172942
+octave:16> hex2dec("2cf32")
+ans =  184114
+octave:17> hex2dec("1e85f")
+ans =  125023

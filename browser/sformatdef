@@ -1,0 +1,3261 @@
+
+block recgroup
+string4 type
+
+block record
+string4 type
+int size
+flags32 flags1
+flag 19 iscompressed
+uint FormID
+flags32 flags2
+flags32 flags3
+
+block group
+string4 type
+int size
+string4 label
+int datatype
+int stamp
+
+block subrecord
+string4 type
+ushort size
+
+block XXXX
+import subrecord
+int xxxxsize
+
+block obnd
+short Min_X
+short Min_Y
+short Min_Z
+short Max_X
+short Max_Y
+short Max_Z
+
+block schr
+int unknown
+int Count_SCRO_SCRV
+int Compiled_Script_Size
+int Count_Script_variables
+short Script_Type
+short unknown
+
+block ctda
+flags8 flags
+ubyte unused
+ubyte unused
+ubyte unused
+setloc float
+float Value
+getloc uint
+uint Global_FormID
+int Function_ID
+int Parameter1
+int Parameter2
+int unknown
+
+block ctdt
+flags8 flags
+ubyte unused
+ubyte unused
+ubyte unused
+setloc float
+float Value
+getloc uint
+uint Global_FormID
+int Function_ID
+int Parameter1
+int Parameter2
+
+block sctx
+nstring Script
+
+block scro
+uint Script_Object_FormID
+
+block slsd
+int Script_Variable_Index
+int unused
+int unknown
+int unknown
+byte Script_Variable_Type
+byte unused
+byte unused
+byte unused
+setloc float
+float float
+getloc uint
+uint uint
+
+block efit
+string4 Effect
+int Magnitude
+int Area
+int Duration
+int Range
+int ActorVal
+
+block scit
+ifsize 4
+uint Script_FormID
+ifsize 12
+uint Script_FormID
+int School
+string4 Visual_Effect
+ifsize 16
+uint Script_FormID
+int School
+string4 Visual_Effect
+flags8 flags
+ubyte unused
+ubyte unused
+ubyte unused
+
+
+block TES4/HEDR
+import subrecord
+float version
+int numrecords
+uint unknown
+
+block TES4/CNAM
+import subrecord
+nstring s
+
+block TES4/MAST
+import subrecord
+nstring s
+
+block TES4/SNAM
+import subrecord
+nstring s
+
+block TES4/INTV
+import subrecord
+int i
+
+block AACT/EDID
+import subrecord
+nstring s
+
+block ACHR/EDID
+import subrecord
+nstring s
+
+block ACHR/FULL
+import subrecord
+nstring s
+
+block ACRE/EDID
+import subrecord
+nstring s
+
+block ACTI/EDID
+import subrecord
+nstring s
+
+block ACTI/FULL
+import subrecord
+nstring s
+
+block ACTI/MODL
+import subrecord
+nstring s
+
+block ALCH/EDID
+import subrecord
+nstring s
+
+block ALCH/EFID
+import subrecord
+nstring s
+
+block ALCH/FULL
+import subrecord
+nstring s
+
+block ALCH/ICON
+import subrecord
+nstring s
+
+block ALCH/MODL
+import subrecord
+nstring s
+
+block AMMO/EDID
+import subrecord
+nstring s
+
+block AMMO/FULL
+import subrecord
+nstring s
+
+block AMMO/ICON
+import subrecord
+nstring s
+
+block AMMO/MODL
+import subrecord
+nstring s
+
+block ANIO/EDID
+import subrecord
+nstring s
+
+block ANIO/MODL
+import subrecord
+nstring s
+
+block APPA/EDID
+import subrecord
+nstring s
+
+block APPA/FULL
+import subrecord
+nstring s
+
+block APPA/ICON
+import subrecord
+nstring s
+
+block APPA/MODL
+import subrecord
+nstring s
+
+block ARMO/EDID
+import subrecord
+nstring s
+
+block ARMO/FULL
+import subrecord
+nstring s
+
+block ARMO/ICO2
+import subrecord
+nstring s
+
+block ARMO/ICON
+import subrecord
+nstring s
+
+block ARMO/MOD2
+import subrecord
+nstring s
+
+block ARMO/MOD3
+import subrecord
+nstring s
+
+block ARMO/MOD4
+import subrecord
+nstring s
+
+block ARMO/MODL
+import subrecord
+nstring s
+
+block BOOK/DESC
+import subrecord
+nstring s
+
+block BOOK/EDID
+import subrecord
+nstring s
+
+block BOOK/FULL
+import subrecord
+nstring s
+
+block BOOK/ICON
+import subrecord
+nstring s
+
+block BOOK/MODL
+import subrecord
+nstring s
+
+block BSGN/DESC
+import subrecord
+nstring s
+
+block BSGN/EDID
+import subrecord
+nstring s
+
+block BSGN/FULL
+import subrecord
+nstring s
+
+block BSGN/ICON
+import subrecord
+nstring s
+
+block CELL/EDID
+import subrecord
+nstring s
+
+block CELL/FULL
+import subrecord
+nstring s
+
+block CLAS/DESC
+import subrecord
+nstring s
+
+block CLAS/EDID
+import subrecord
+nstring s
+
+block CLAS/FULL
+import subrecord
+nstring s
+
+block CLAS/ICON
+import subrecord
+nstring s
+
+block CLMT/EDID
+import subrecord
+nstring s
+
+block CLMT/FNAM
+import subrecord
+nstring s
+
+block CLMT/GNAM
+import subrecord
+nstring s
+
+block CLMT/MODL
+import subrecord
+nstring s
+
+block CLOT/EDID
+import subrecord
+nstring s
+
+block CLOT/FULL
+import subrecord
+nstring s
+
+block CLOT/ICO2
+import subrecord
+nstring s
+
+block CLOT/ICON
+import subrecord
+nstring s
+
+block CLOT/MOD2
+import subrecord
+nstring s
+
+block CLOT/MOD3
+import subrecord
+nstring s
+
+block CLOT/MOD4
+import subrecord
+nstring s
+
+block CLOT/MODL
+import subrecord
+nstring s
+
+block CONT/EDID
+import subrecord
+nstring s
+
+block CONT/FULL
+import subrecord
+nstring s
+
+block CONT/MODL
+import subrecord
+nstring s
+
+block CREA/EDID
+import subrecord
+nstring s
+
+block CREA/FULL
+import subrecord
+nstring s
+
+block CREA/MODL
+import subrecord
+nstring s
+
+block CREA/NAM0
+import subrecord
+nstring s
+
+block CREA/NAM1
+import subrecord
+nstring s
+
+block CREA/NIFZ
+import subrecord
+nifzstring s
+
+block CSTY/EDID
+import subrecord
+nstring s
+
+block DIAL/EDID
+import subrecord
+nstring s
+
+block DIAL/FULL
+import subrecord
+nstring s
+
+block DOOR/EDID
+import subrecord
+nstring s
+
+block DOOR/FULL
+import subrecord
+nstring s
+
+block DOOR/MODL
+import subrecord
+nstring s
+
+block EFSH/EDID
+import subrecord
+nstring s
+
+block EFSH/ICO2
+import subrecord
+nstring s
+
+block EFSH/ICON
+import subrecord
+nstring s
+
+block ENCH/EDID
+import subrecord
+nstring s
+
+block ENCH/EFID
+import subrecord
+nstring s
+
+block ENCH/FULL
+import subrecord
+nstring s
+
+block EYES/EDID
+import subrecord
+nstring s
+
+block EYES/FULL
+import subrecord
+nstring s
+
+block EYES/ICON
+import subrecord
+nstring s
+
+block FACT/EDID
+import subrecord
+nstring s
+
+block FACT/FNAM
+import subrecord
+nstring s
+
+block FACT/FULL
+import subrecord
+nstring s
+
+block FACT/INAM
+import subrecord
+nstring s
+
+block FACT/MNAM
+import subrecord
+nstring s
+
+block FLOR/EDID
+import subrecord
+nstring s
+
+block FLOR/FULL
+import subrecord
+nstring s
+
+block FLOR/MODL
+import subrecord
+nstring s
+
+block FURN/EDID
+import subrecord
+nstring s
+
+block FURN/FULL
+import subrecord
+nstring s
+
+block FURN/MODL
+import subrecord
+nstring s
+
+block GLOB/EDID
+import subrecord
+nstring s
+
+block GMST/EDID
+import subrecord
+nstring s
+
+block GRAS/EDID
+import subrecord
+nstring s
+
+block GRAS/MODL
+import subrecord
+nstring s
+
+block HAIR/EDID
+import subrecord
+nstring s
+
+block HAIR/FULL
+import subrecord
+nstring s
+
+block HAIR/ICON
+import subrecord
+nstring s
+
+block HAIR/MODL
+import subrecord
+nstring s
+
+block IDLE/EDID
+import subrecord
+nstring s
+
+block IDLE/MODL
+import subrecord
+nstring s
+
+block INFO/NAM1
+import subrecord
+nstring s
+
+block INFO/NAM2
+import subrecord
+nstring s
+
+block INGR/EDID
+import subrecord
+nstring s
+
+block INGR/EFID
+import subrecord
+nstring s
+
+block INGR/FULL
+import subrecord
+nstring s
+
+block INGR/ICON
+import subrecord
+nstring s
+
+block INGR/MODL
+import subrecord
+nstring s
+
+block KEYM/EDID
+import subrecord
+nstring s
+
+block KEYM/FULL
+import subrecord
+nstring s
+
+block KEYM/ICON
+import subrecord
+nstring s
+
+block KEYM/MODL
+import subrecord
+nstring s
+
+block KYWD/EDID
+import subrecord
+nstring s
+
+block KYWD/CNAM
+import subrecord
+byte unknownbyte
+byte unknownbyte
+byte unknownbyte
+byte unknownbyte
+
+block LCRT/EDID
+import subrecord
+nstring s
+
+block LCRT/CNAM
+import subrecord
+byte unknownbyte
+byte unknownbyte
+byte unknownbyte
+byte unknownbyte
+
+block LIGH/EDID
+import subrecord
+nstring s
+
+block LIGH/FULL
+import subrecord
+nstring s
+
+block LIGH/ICON
+import subrecord
+nstring s
+
+block LIGH/MODL
+import subrecord
+nstring s
+
+block LSCR/DESC
+import subrecord
+nstring s
+
+block LSCR/EDID
+import subrecord
+nstring s
+
+block LSCR/ICON
+import subrecord
+nstring s
+
+block LTEX/EDID
+import subrecord
+nstring s
+
+block LTEX/ICON
+import subrecord
+nstring s
+
+block LVLC/EDID
+import subrecord
+nstring s
+
+block LVLI/EDID
+import subrecord
+nstring s
+
+block LVSP/EDID
+import subrecord
+nstring s
+
+block MGEF/DESC
+import subrecord
+nstring s
+
+block MGEF/EDID
+import subrecord
+nstring s
+
+block MGEF/ESCE
+import subrecord
+nstring s
+
+block MGEF/FULL
+import subrecord
+nstring s
+
+block MGEF/ICON
+import subrecord
+nstring s
+
+block MGEF/MODL
+import subrecord
+nstring s
+
+block MISC/EDID
+import subrecord
+nstring s
+
+block MISC/FULL
+import subrecord
+nstring s
+
+block MISC/ICON
+import subrecord
+nstring s
+
+block MISC/MODL
+import subrecord
+nstring s
+
+block NPC_/EDID
+import subrecord
+nstring s
+
+block NPC_/FULL
+import subrecord
+nstring s
+
+block NPC_/KFFZ
+import subrecord
+nstring s
+
+block NPC_/MODL
+import subrecord
+nstring s
+
+block PACK/EDID
+import subrecord
+nstring s
+
+block QUST/CNAM
+import subrecord
+nstring s
+
+block QUST/EDID
+import subrecord
+nstring s
+
+block QUST/FULL
+import subrecord
+nstring s
+
+block QUST/ICON
+import subrecord
+nstring s
+
+block RACE/DESC
+import subrecord
+nstring s
+
+block RACE/EDID
+import subrecord
+nstring s
+
+block RACE/FULL
+import subrecord
+nstring s
+
+block RACE/ICON
+import subrecord
+nstring s
+
+block RACE/MODL
+import subrecord
+nstring s
+
+block REFR/EDID
+import subrecord
+nstring s
+
+block REFR/FULL
+import subrecord
+nstring s
+
+block REGN/EDID
+import subrecord
+nstring s
+
+block REGN/ICON
+import subrecord
+nstring s
+
+block REGN/RDMP
+import subrecord
+nstring s
+
+block SBSP/EDID
+import subrecord
+nstring s
+
+block SCPT/EDID
+import subrecord
+nstring s
+
+block SCPT/SCVR
+import subrecord
+nstring s
+
+block SGST/EDID
+import subrecord
+nstring s
+
+block SGST/EFID
+import subrecord
+nstring s
+
+block SGST/FULL
+import subrecord
+nstring s
+
+block SGST/ICON
+import subrecord
+nstring s
+
+block SGST/MODL
+import subrecord
+nstring s
+
+block SKIL/ANAM
+import subrecord
+nstring s
+
+block SKIL/DESC
+import subrecord
+nstring s
+
+block SKIL/EDID
+import subrecord
+nstring s
+
+block SKIL/ENAM
+import subrecord
+nstring s
+
+block SKIL/ICON
+import subrecord
+nstring s
+
+block SKIL/JNAM
+import subrecord
+nstring s
+
+block SKIL/MNAM
+import subrecord
+nstring s
+
+block SLGM/EDID
+import subrecord
+nstring s
+
+block SLGM/FULL
+import subrecord
+nstring s
+
+block SLGM/ICON
+import subrecord
+nstring s
+
+block SLGM/MODL
+import subrecord
+nstring s
+
+block SOUN/EDID
+import subrecord
+nstring s
+
+block SOUN/FNAM
+import subrecord
+nstring s
+
+block SPEL/EDID
+import subrecord
+nstring s
+
+block SPEL/EFID
+import subrecord
+nstring s
+
+block SPEL/FULL
+import subrecord
+nstring s
+
+block STAT/EDID
+import subrecord
+nstring s
+
+block STAT/MODL
+import subrecord
+nstring s
+
+block TREE/EDID
+import subrecord
+nstring s
+
+block TREE/ICON
+import subrecord
+nstring Leaf_Texture
+
+block TREE/MODL
+import subrecord
+nstring s
+
+block WATR/EDID
+import subrecord
+nstring s
+
+block WATR/MNAM
+import subrecord
+nstring s
+
+block WATR/TNAM
+import subrecord
+nstring s
+
+block WEAP/EDID
+import subrecord
+nstring s
+
+block WEAP/FULL
+import subrecord
+nstring s
+
+block WEAP/ICON
+import subrecord
+nstring s
+
+block WEAP/MODL
+import subrecord
+nstring s
+
+block WRLD/EDID
+import subrecord
+nstring s
+
+block WRLD/FULL
+import subrecord
+nstring s
+
+block WRLD/ICON
+import subrecord
+nstring s
+
+block WTHR/CNAM
+import subrecord
+nstring s
+
+block WTHR/DNAM
+import subrecord
+nstring s
+
+block WTHR/EDID
+import subrecord
+nstring s
+
+block WTHR/MODL
+import subrecord
+nstring s
+
+
+block ACTI/MODB
+import subrecord
+float f
+
+block ALCH/MODB
+import subrecord
+float f
+
+block AMMO/MODB
+import subrecord
+float f
+
+block ANIO/MODB
+import subrecord
+float f
+
+block APPA/MODB
+import subrecord
+float f
+
+block ARMO/MODB
+import subrecord
+float f
+
+block ARMO/MO2B
+import subrecord
+float f
+
+block ARMO/MO3B
+import subrecord
+float f
+
+block ARMO/MO4B
+import subrecord
+float f
+
+block BOOK/MODB
+import subrecord
+float f
+
+block CLMT/MODB
+import subrecord
+float f
+
+block CLOT/MODB
+import subrecord
+float f
+
+block CLOT/MO2B
+import subrecord
+float f
+
+block CLOT/MO3B
+import subrecord
+float f
+
+block CLOT/MO4B
+import subrecord
+float f
+
+block CONT/MODB
+import subrecord
+float f
+
+block CREA/MODB
+import subrecord
+float f
+
+block DOOR/MODB
+import subrecord
+float f
+
+block FLOR/MODB
+import subrecord
+float f
+
+block FURN/MODB
+import subrecord
+float f
+
+block GRAS/MODB
+import subrecord
+float f
+
+block HAIR/MODB
+import subrecord
+float f
+
+block IDLE/MODB
+import subrecord
+float f
+
+block INGR/MODB
+import subrecord
+float f
+
+block KEYM/MODB
+import subrecord
+float f
+
+block LIGH/MODB
+import subrecord
+float f
+
+block MGEF/MODB
+import subrecord
+float f
+
+block MISC/MODB
+import subrecord
+float f
+
+block NPC_/MODB
+import subrecord
+float f
+
+block RACE/MODB
+import subrecord
+float f
+
+block SGST/MODB
+import subrecord
+float f
+
+block SLGM/MODB
+import subrecord
+float f
+
+block STAT/MODB
+import subrecord
+float f
+
+block TREE/MODB
+import subrecord
+float f
+
+block WEAP/MODB
+import subrecord
+float f
+
+block WTHR/MODB
+import subrecord
+float f
+
+
+block CLAS/DATA
+import subrecord
+int primary_attribute1
+int primary_attribute2
+int specilization
+int majorskill1
+int majorskill2
+int majorskill3
+int majorskill4
+int majorskill5
+int majorskill6
+int majorskill7
+flags32 flags1
+flags32 flags2
+ubyte trainingtype
+ubyte trainingvalue
+ubyte unused
+ubyte unused
+
+block TREE/SNAM
+import subrecord
+intarray speedtree_seeds
+
+block TREE/CNAM
+import subrecord
+float leaf_curvature
+float minimum_leaf_angle
+float maximum_leaf_angle
+float branch_dimming_value
+float leaf_dimming_value
+int shadow_radius
+float rock_speed
+float rustle_speed
+
+block TREE/BNAM
+import subrecord
+float billboard_width
+float billboard_height
+
+block GRAS/DATA
+import subrecord
+ubyte density
+ubyte min_slope
+ubyte max_slope
+ubyte unused
+short units_from_water
+ubyte unused
+ubyte unused
+int location
+float position_range
+float height_range
+float color_range
+float wave_period
+flags8 flags
+ubyte unused
+ubyte unused
+ubyte unused
+
+block EFSH/DATA
+import subrecord
+flags8 flags
+ubyte unused
+ubyte unused
+ubyte unused
+int Fill_Source_Blend_Mode
+int Fill_Blend_Operation
+int Fill_Z_Test_Function
+ubyte Fill_Color_R
+ubyte Fill_Color_G
+ubyte Fill_Color_B
+ubyte unused
+float Fill_Alpha_Fade_In_Time
+float Fill_Full_Alpha_Time
+float Fill_Alpha_Fade_Out_Time
+float Fill_Persistent_Alpha_Ratio
+float Fill_Alpha_Pulse_Amplitude
+float Fill_Alpha_Pulse_Frequency
+float Fill_Texture_Animation_Speed_U
+float Fill_Texture_Animation_Speed_V
+float Edge_Effect_Fall_Off
+ubyte Edge_Effect_Color_R
+ubyte Edge_Effect_Color_G
+ubyte Edge_Effect_Color_B
+ubyte unused
+float Edge_Effect_Alpha_Fade_In_Time
+float Edge_Effect_Full_Alpha_Time
+float Edge_Effect_Alpha_Fade_Out_Time
+float Edge_Effect_Persistent_Alpha_Ratio
+float Edge_Effect_Alpha_Pulse_Amplitude
+float Edge_Effect_Alpha_Pulse_Frequency
+float Fill_Full_Alpha_Ratio
+float Edge_Effect_Full_Alpha_Ratio
+int Fill_Dest_Blend_Mode
+break 96
+int Source_Blend_Mode
+int Blend_Operation
+int Z_Test_Function
+int Dest_Blend_Mode
+float Particle_Birth_Ramp_Up_Time
+float Full_Particle_Birth_Time
+float Particle_Birth_Ramp_Down_Time
+float Full_Partical_Birth_Ratio
+float Persistant_Particle_Birth_Ratio
+float Particle_Life_Time
+float Particle_Life_Time_Variance
+float Initial_Speed_Along_Normal
+float Acceleration_Along_Normal
+float Initial_Velocity_X
+float Initial_Velocity_Y
+float Initial_Velocity_Z
+float Acceleration_X
+float Acceleration_Y
+float Acceleration_Z
+float Scale_Key_1
+float Scale_Key_2
+float Scale_Key_1_Time
+float Scale_Key_2_Time
+ubyte Color_Key_1_R
+ubyte Color_Key_1_G
+ubyte Color_Key_1_B
+ubyte unused
+ubyte Color_Key_2_R
+ubyte Color_Key_2_G
+ubyte Color_Key_2_B
+ubyte unused
+ubyte Color_Key_3_R
+ubyte Color_Key_3_G
+ubyte Color_Key_3_B
+ubyte unused
+float Color_Alpha_1
+float Color_Alpha_2
+float Color_Alpha_3
+float Color_Key_Time_1
+float Color_Key_Time_2
+float Color_Key_Time_3
+break 224
+
+block LIGH/SCRI
+import subrecord
+uint Script_FormID
+
+block LIGH/DATA
+import subrecord
+int Time
+int Radius
+ubyte Color_R
+ubyte Color_G
+ubyte Color_B
+ubyte unused_or_Color_A
+flags32 flags
+float Falloff_Exponent
+float FOV
+break 24
+int Value
+float Weight
+break 32
+
+block LIGH/FNAM
+import subrecord
+float Fade
+
+block LIGH/SNAM
+import subrecord
+uint Sound_FormID
+
+block LSCR/LNAM
+import subrecord
+uint FormID
+uint World_Space_FormID
+short WS_Cell_X_Coordinate
+short WS_Cell_Y_Coordinate
+
+block LVLC/LVLD
+import subrecord
+byte Chance_None
+
+block LVLC/LVLF
+import subrecord
+flags8 flags
+
+block LVLC/LVLO
+import subrecord
+ifsize 8
+int Level
+uint FormID
+ifsize 12
+short Level
+short unknown
+uint FormID
+short Count
+short unknown
+
+block LVLC/TNAM
+import subrecord
+uint Creature_Template_FormID
+
+block LVLC/SCRI
+import subrecord
+uint Marker_Script_FormID
+
+block MGEF/DATA
+import subrecord
+flags32 flags
+float Base_Cost
+uint Assoc_Item_FormID
+int School
+int Resist_Value
+ubyte Number_of_Counter_Effects
+ubyte unused_or_unknown_or_NoCE_is_short
+ubyte unused
+ubyte unused
+uint Visual_Effects_Light_FormID
+float Visual_Effects_Projectile_Speed
+uint Visual_Effects_Effect_Shader_FormID
+break 36
+uint Visual_Effects_Enchant_Effect_FormID
+uint Casting_Sound_FormID
+uint Bolt_Sound_FormID
+uint Hit_Sound_FormID
+uint Area_Sound_FormID
+float Constant_Effect_Enchantment_Factor
+float Constant_Effect_Barter_Factor
+break 64
+
+block GMST/DATA
+import subrecord
+sgmstdata value
+
+block GLOB/FNAM
+import subrecord
+byte value
+
+block GLOB/FLTV
+import subrecord
+float value
+
+block FACT/XNAM
+import subrecord
+uint Opposing_Affiliated_Faction_FormID
+int Disposition_Modifier
+
+block FACT/DATA
+import subrecord
+flags8 flags
+
+block FACT/CNAM
+import subrecord
+float Crime_Gold_Multiplier
+
+block FACT/RNAM
+import subrecord
+int Rank_Data_Rank
+
+block CELL/DATA
+import subrecord
+flags8 flags
+
+block CELL/XCLL
+import subrecord
+ubyte Ambient_Color_R
+ubyte Ambient_Color_G
+ubyte Ambient_Color_B
+ubyte unused
+ubyte Directional_Color_R
+ubyte Directional_Color_G
+ubyte Directional_Color_B
+ubyte unused
+ubyte Fog_Color_R
+ubyte Fog_Color_G
+ubyte Fog_Color_B
+ubyte unused
+float Fog_Near
+float Fog_Far
+int Rotation_XY
+int Rotation_Z
+float Fade
+float Fog_Clip_Dist
+
+block CELL/XOWN
+import subrecord
+uint Owner_FormID
+
+block CELL/XGLB
+import subrecord
+int unknown_int
+
+block CELL/XCCM
+import subrecord
+uint Climate_FormID
+
+block CELL/XCMT
+import subrecord
+byte Music_Type
+
+block CELL/XCLC
+import subrecord
+int Location_X
+int Location_Y
+
+block CELL/XCLR
+import subrecord
+repeat 4
+uint Region_FormID
+
+block CELL/XCLW
+import subrecord
+float Water_Height
+
+block CELL/XCWT
+import subrecord
+uint Water_FormID
+
+block CELL/XRNK
+import subrecord
+int unknown_int
+
+block REFR/NAME
+import subrecord
+uint Base_Object_FormID
+
+block REFR/DATA
+import subrecord
+float Position_X
+float Position_Y
+float Position_Z
+float Rotation_X
+float Rotation_Y
+float Rotation_Z
+
+block REFR/XMRK
+import subrecord
+
+block REFR/XSED
+import subrecord
+ifsize 1
+byte value
+ifsize 4
+int value
+
+block REFR/XLOD
+import subrecord
+float f
+float f
+float f
+
+block REFR/XPCI
+import subrecord
+uint unknown_FormID
+
+block REFR/XSCL
+import subrecord
+float scale
+
+block REFR/XOWN
+import subrecord
+uint Ownership_NPC_Faction_FormID
+
+block REFR/XRNK
+import subrecord
+int Required_Rank
+
+block REFR/XGLB
+import subrecord
+uint Ownership_Global_Variable_FormID
+
+block REFR/XESP
+import subrecord
+uint Enable_Parent_Ref_FormID
+flags8 flags
+ubyte unused
+ubyte unused
+ubyte unused
+
+block REFR/XTRG
+import subrecord
+int value
+
+block REFR/XHLT
+import subrecord
+int health
+
+block REFR/XCNT
+import subrecord
+int Count
+
+block REFR/XLCM
+import subrecord
+int int
+
+block REFR/XRTM
+import subrecord
+uint Master_FormID
+
+block REFR/XACT
+import subrecord
+int int
+
+block REFR/XTEL
+import subrecord
+uint Teleport_Target_FormID
+float Position_X
+float Position_Y
+float Position_Z
+float Angle_X
+float Angle_Y
+float Angle_Z
+
+block REFR/XLOC
+import subrecord
+ifsize 12
+ubyte Lock_Level
+ubyte ubyte
+ubyte ubyte
+ubyte ubyte
+uint Key_FormID
+flags32 flags
+ifsize 16
+ubyte Lock_Level
+ubyte ubyte
+ubyte ubyte
+ubyte ubyte
+uint Key_FormID
+int int
+flags32 flags
+
+block REFR/FNAM
+import subrecord
+ubyte ubyte
+
+block REFR/ONAM
+import subrecord
+
+block REFR/TNAM
+import subrecord
+ubyte ubyte
+ubyte ubyte
+
+block REFR/XSOL
+import subrecord
+ubyte soul
+
+block REFR/XCHG
+import subrecord
+float charge
+
+
+
+
+block ACHR/NAME
+import subrecord
+uint Base_Object_FormID
+
+block ACHR/XESP
+import subrecord
+uint Enable_Parent_Ref_FormID
+flags8 flags
+ubyte unused
+ubyte unused
+ubyte unused
+
+block ACHR/XLOD
+import subrecord
+float f
+float f
+float f
+
+block ACHR/XHRS
+import subrecord
+int int
+
+block ACHR/XMRC
+import subrecord
+uint Merchants_Container_FormID
+
+block ACHR/XRGD
+import subrecord
+repeat 28
+byte byte
+byte byte
+byte byte
+byte byte
+float f
+float f
+float f
+float f
+float f
+float f
+
+block ACHR/XSCL
+import subrecord
+float Scale
+
+block ACHR/XPCI
+import subrecord
+uint unknown_FormID
+
+block ACHR/DATA
+import subrecord
+float Position_X
+float Position_Y
+float Position_Z
+float Rotation_X
+float Rotation_Y
+float Rotation_Z
+
+block ACRE/NAME
+import subrecord
+uint Base_Object_FormID
+
+block ACRE/XRGD
+import subrecord
+repeat 28
+byte byte
+byte byte
+byte byte
+byte byte
+float f
+float f
+float f
+float f
+float f
+float f
+
+block ACRE/DATA
+import subrecord
+float Position_X
+float Position_Y
+float Position_Z
+float Rotation_X
+float Rotation_Y
+float Rotation_Z
+
+block ACRE/XSCL
+import subrecord
+float Scale
+
+block ACRE/XOWN
+import subrecord
+uint Owner_FormID
+
+block ACRE/XESP
+import subrecord
+uint Enable_Parent_Ref_FormID
+flags8 flags
+ubyte unused
+ubyte unused
+ubyte unused
+
+
+block HAIR/DATA
+import subrecord
+flags8 flags
+
+block EYES/DATA
+import subrecord
+flags8 flags
+
+block BSGN/SPLO
+import subrecord
+uint Spell_FormID
+
+block CREA/SPLO
+import subrecord
+uint Spell_FormID
+
+block NPC_/SPLO
+import subrecord
+uint Spell_FormID
+
+block RACE/SPLO
+import subrecord
+uint Spell_FormID
+
+block RACE/XNAM
+import subrecord
+uint Reactions_Race_FormID
+int Reactions_Disposition_Modifier
+
+block RACE/DATA
+import subrecord
+ubyte Skill_Bonus_Skill
+ubyte Skill_Bonus_Value
+ubyte Skill_Bonus_Skill
+ubyte Skill_Bonus_Value
+ubyte Skill_Bonus_Skill
+ubyte Skill_Bonus_Value
+ubyte Skill_Bonus_Skill
+ubyte Skill_Bonus_Value
+ubyte Skill_Bonus_Skill
+ubyte Skill_Bonus_Value
+ubyte Skill_Bonus_Skill
+ubyte Skill_Bonus_Value
+ubyte Skill_Bonus_Skill
+ubyte Skill_Bonus_Value
+ubyte ubyte
+ubyte ubyte
+float Male_Bodies_Height
+float Female_Bodies_Height
+float Male_Bodies_Weight
+float Female_Bodies_Weight
+flags32 flags
+
+block RACE/DNAM
+import subrecord
+uint Default_Hair_Male_FormID
+uint Default_Hair_Female_FormID
+
+block RACE/CNAM
+import subrecord
+byte Default_Hair_Color_ID
+
+block RACE/PNAM
+import subrecord
+float float
+
+block RACE/UNAM
+import subrecord
+float float
+
+block RACE/ATTR
+import subrecord
+ubyte Male_Str
+ubyte Male_Int
+ubyte Male_Wil
+ubyte Male_Agi
+ubyte Male_Spd
+ubyte Male_End
+ubyte Male_Pers
+ubyte Male_Luc
+ubyte Female_Str
+ubyte Female_Int
+ubyte Female_Wil
+ubyte Female_Agi
+ubyte Female_Spd
+ubyte Female_End
+ubyte Female_Pers
+ubyte Female_Luc
+
+block RACE/NAM0
+import subrecord
+
+block RACE/NAM1
+import subrecord
+
+block RACE/MNAM
+import subrecord
+
+block RACE/FNAM
+import subrecord
+
+block RACE/INDX
+import subrecord
+int Index
+
+block RACE/HNAM
+import subrecord
+repeat 4
+uint Hair_FormID
+
+block RACE/ENAM
+import subrecord
+repeat 4
+uint Eye_FormID
+
+block RACE/FGGS
+import subrecord
+repeat 4
+float float
+
+block RACE/FGGA
+import subrecord
+repeat 4
+float float
+
+block RACE/FGTS
+import subrecord
+repeat 4
+float float
+
+block RACE/SNAM
+import subrecord
+short short
+
+block RACE/VNAM
+import subrecord
+uint Male_Voice_Race_FormID
+uint Female_Voice_Race_FormID
+
+block SOUN/SNDD
+import subrecord
+ubyte Minimum_Attenuation_Distance
+ubyte Maximum_Attenuation_Distance
+byte Frequency_Adjustment
+byte unknown_value
+flags32 flags
+
+block SOUN/SNDX
+import subrecord
+ubyte Minimum_Attenuation_Distance
+ubyte Maximum_Attenuation_Distance
+byte Frequency_Adjustment
+byte unknown_value
+flags32 flags
+short Static_Attenuation
+ubyte Ends_at
+ubyte Starts_at
+
+block SKIL/INDX
+import subrecord
+int Skill_Index
+
+block SKIL/DATA
+import subrecord
+int Skill_Index
+int Governing_Attribute
+int Specialization
+float Action_1_Use_Value
+float Action_2_Use_Value
+
+block SCPT/SCHR
+import subrecord
+import schr
+
+block SCPT/SCRV
+import subrecord
+int Ref_variable_index
+
+block SCPT/SCRO
+import subrecord
+import scro
+
+block SCPT/SLSD
+import subrecord
+import slsd
+
+block LTEX/HNAM
+import subrecord
+byte Material_Type
+byte Friction
+byte Restitution
+
+block LTEX/SNAM
+import subrecord
+byte Texture_Specular_Exponent
+
+block LTEX/GNAM
+import subrecord
+uint Potential_Grass_FormID
+
+block ENCH/ENIT
+import subrecord
+int Type
+int Charge_Amount
+int Enchantment_Cost
+flags8 flags
+ubyte unused
+ubyte unused
+ubyte unused
+
+block ENCH/EFIT
+import subrecord
+import efit
+
+block ENCH/SCIT
+import subrecord
+import scit
+
+block SPEL/SPIT
+import subrecord
+int Type
+int Spell_Cost
+int Spell_Level
+flags8 flags
+ubyte unused
+ubyte unused
+ubyte unused
+
+block SPEL/EFIT
+import subrecord
+import efit
+
+block SPEL/SCIT
+import subrecord
+import scit
+
+block ACTI/SCRI
+import subrecord
+uint Script_FormID
+
+block ALCH/SCRI
+import subrecord
+uint Script_FormID
+
+block APPA/SCRI
+import subrecord
+uint Script_FormID
+
+block ARMO/SCRI
+import subrecord
+uint Script_FormID
+
+block BOOK/SCRI
+import subrecord
+uint Script_FormID
+
+block CLOT/SCRI
+import subrecord
+uint Script_FormID
+
+block CONT/SCRI
+import subrecord
+uint Script_FormID
+
+block CREA/SCRI
+import subrecord
+uint Script_FormID
+
+block DOOR/SCRI
+import subrecord
+uint Script_FormID
+
+block FLOR/SCRI
+import subrecord
+uint Script_FormID
+
+block FURN/SCRI
+import subrecord
+uint Script_FormID
+
+block INGR/SCRI
+import subrecord
+uint Script_FormID
+
+block KEYM/SCRI
+import subrecord
+uint Script_FormID
+
+block LIGH/SCRI
+import subrecord
+uint Script_FormID
+
+block LVLC/SCRI
+import subrecord
+uint Script_FormID
+
+block MISC/SCRI
+import subrecord
+uint Script_FormID
+
+block NPC_/SCRI
+import subrecord
+uint Script_FormID
+
+block QUST/SCRI
+import subrecord
+uint Script_FormID
+
+block SGST/SCRI
+import subrecord
+uint Script_FormID
+
+block SLGM/SCRI
+import subrecord
+uint Script_FormID
+
+block WEAP/SCRI
+import subrecord
+uint Script_FormID
+
+block ACTI/SNAM
+import subrecord
+uint Looping_Sound_FormID
+
+block APPA/DATA
+import subrecord
+byte Type
+int Value
+float Weight
+float Quality
+
+block ARMO/ANAM
+import subrecord
+ushort Enchantment_verify
+
+block ARMO/ENAM
+import subrecord
+uint Enchanting_FormID
+
+block ARMO/BMDT
+import subrecord
+flags32 flags
+
+block ARMO/DATA
+import subrecord
+short AR100
+int Value
+int Health
+float Weight
+
+block BOOK/ANAM
+import subrecord
+ushort Enchantment
+
+block BOOK/ENAM
+import subrecord
+uint Enchanting_FormID
+
+block BOOK/DATA
+import subrecord
+flags8 flags
+byte Teaches
+int Value
+float Weight
+
+block CLOT/ANAM
+import subrecord
+ushort Enchantment_verify
+
+block CLOT/ENAM
+import subrecord
+uint Enchanting_FormID
+
+block CLOT/BMDT
+import subrecord
+flags32 flags
+
+block CLOT/DATA
+import subrecord
+int Value
+float Weight
+
+block CONT/CNTO
+import subrecord
+uint Item_FormID
+int Count
+
+block CREA/CNTO
+import subrecord
+uint Item_FormID
+int Count
+
+block NPC_/CNTO
+import subrecord
+uint Item_FormID
+int Count
+
+block CONT/SNAM
+import subrecord
+uint Open_Sound_FormID
+
+block CONT/QNAM
+import subrecord
+uint Close_Sound_FormID
+
+block CONT/DATA
+import subrecord
+flags8 flags
+float Weight
+
+block DOOR/SNAM
+import subrecord
+uint Open_Sound_FormID
+
+block DOOR/ANAM
+import subrecord
+uint Close_Sound_FormID
+
+block DOOR/BNAM
+import subrecord
+uint Loop_Sound_FormID
+
+block DOOR/TNAM
+import subrecord
+uint Teleport_FormID
+
+block DOOR/FNAM
+import subrecord
+flags8 flags
+
+block INGR/DATA
+import subrecord
+float Weight
+
+block INGR/ENIT
+import subrecord
+int Ingredient_Value
+flags8 flags
+ubyte unused
+ubyte unused
+ubyte unused
+
+block INGR/EFIT
+import subrecord
+import efit
+
+block INGR/SCIT
+import subrecord
+import scit
+
+block MISC/DATA
+import subrecord
+int Value
+float Weight
+
+block FLOR/PFIG
+import subrecord
+uint Ingredient_FormID
+
+block FLOR/PFPC
+import subrecord
+byte Spring
+byte Summer
+byte Fall
+byte Winter
+
+block FURN/MNAM
+import subrecord
+flags32 flags
+
+block WEAP/ANAM
+import subrecord
+ushort Enchantment
+
+block WEAP/ENAM
+import subrecord
+uint Enchanting_FormID
+
+block WEAP/DATA
+import subrecord
+int Type
+float Speed
+float Reach
+flags8 flags
+ubyte unused
+ubyte unused
+ubyte unused
+int Value
+int Health
+float Weight
+short Damage
+
+block AMMO/ANAM
+import subrecord
+ushort Enchantment
+
+block AMMO/ENAM
+import subrecord
+uint Enchanting_FormID
+
+block AMMO/DATA
+import subrecord
+float Speed
+flags8 flags
+ubyte unused
+ubyte unused
+ubyte unused
+int Value
+float Weight
+short Damage
+
+block CREA/ACBS
+import subrecord
+flags32 flags
+ushort Spell_Pts
+ushort Fatigue
+ushort Barter_Gold
+short Level
+ushort Calc_min
+ushort Calc_max
+
+block CREA/SNAM
+import subrecord
+uint Faction_FormID
+ubyte Rank
+ubyte unused
+ubyte unused
+ubyte unused
+
+block CREA/INAM
+import subrecord
+uint Death_Item_FormID
+
+block CREA/AIDT
+import subrecord
+ubyte Aggression
+ubyte Confidence
+ubyte Energy_level
+ubyte Responsibility
+flags32 flags
+ubyte Training_Skill_Index
+ubyte Training_Skill_Value
+ubyte unused
+ubyte unused
+
+block CREA/PKID
+import subrecord
+uint AI_Package_FormID
+
+block CREA/DATA
+import subrecord
+ubyte Type
+ubyte Skills_Combat
+ubyte Skills_Magic
+ubyte Skills_Stealth
+ushort Soul
+ushort Health
+ubyte unused
+ubyte unused
+ushort Attack_Damage
+ubyte Attr_Str
+ubyte Attr_Int
+ubyte Attr_Wil
+ubyte Attr_Agi
+ubyte Attr_Spd
+ubyte Attr_End
+ubyte Personality
+ubyte Attr_Luc
+
+block CREA/ZNAM
+import subrecord
+uint Combat_Style_FormID
+
+block CREA/CSCR
+import subrecord
+uint Inherits_Sounds_From_FormID
+
+block CREA/CSDT
+import subrecord
+int Sound_Type
+
+block CREA/CSDI
+import subrecord
+uint Sound_FormID
+
+block CREA/CSDC
+import subrecord
+ubyte Chance
+
+block CREA/RNAM
+import subrecord
+ubyte Attack_Reach
+
+block CREA/TNAM
+import subrecord
+float Turning_Speed
+
+block CREA/BNAM
+import subrecord
+float Base_Scale
+
+block CREA/WNAM
+import subrecord
+float Foot_Weight
+
+block CREA/KFFZ
+import subrecord
+nifzstring s
+
+block SLGM/DATA
+import subrecord
+int Value
+float Weight
+
+block SLGM/SOUL
+import subrecord
+ubyte Soul
+
+block SLGM/SLCP
+import subrecord
+ubyte Capacity
+
+block KEYM/DATA
+import subrecord
+int Value
+float Weight
+
+block ALCH/DATA
+import subrecord
+float Weight
+
+block ALCH/ENIT
+import subrecord
+int Ingredient_Value
+flags8 flags
+ubyte unused
+ubyte unused
+ubyte unused
+
+block ALCH/EFIT
+import subrecord
+import efit
+
+block ALCH/SCIT
+import subrecord
+import scit
+
+block SBSP/DNAM
+import subrecord
+float X
+float Y
+float Z
+
+block SGST/DATA
+import subrecord
+ubyte Uses
+int Value
+float Weight
+
+block SGST/EFIT
+import subrecord
+import efit
+
+block SGST/SCIT
+import subrecord
+import scit
+
+block LVLI/LVLD
+import subrecord
+byte Chance_None_AND_Flag
+
+block LVLI/LVLF
+import subrecord
+flags8 flags
+
+block LVLI/LVLO
+import subrecord
+ifsize 8
+int Level
+uint FormID
+ifsize 12
+short Level
+short unknown
+uint FormID
+short Count
+short unknown
+
+block LVLI/DATA
+import subrecord
+flags8 flags
+
+block WTHR/NAM0
+import subrecord
+repeat 4
+ubyte Color_R
+ubyte Color_G
+ubyte Color_B
+ubyte Color_A_or_unused
+
+block WTHR/FNAM
+import subrecord
+float Fog_Distance_Day_Near
+float Fog_Distance_Day_Far
+float Fog_Distance_Night_Near
+float Fog_Distance_Night_Far
+
+block WTHR/HNAM
+import subrecord
+float Eye_Adapt_Speed
+float Blur_Radius
+float Blur_Passes
+float Emissive_Mult
+float Target_LUM
+float Upper_LUM_Clamp
+float Bright_Scale
+float Bright_Clamp
+float LUM_Ramp_No_Tex
+float LUM_Ramp_Min
+float LUM_Ramp_Max
+float Sunlight_Dimmer
+float Grass_Dimmer
+float Tree_Dimmer
+
+block WTHR/DATA
+import subrecord
+ubyte Wind_Speed
+ubyte Cloud_Speed_Lower
+ubyte Cloud_Speed_Upper
+ubyte Trans_Delta
+ubyte Sun_Glare
+ubyte Sun_Damage
+ubyte Precip_Begin_Fade_In
+ubyte Precip_End_Fade_Out
+ubyte ThunderLightning_Begin_Fade_In
+ubyte ThunderLightning_End_Fade_Out
+ubyte Frequency
+flags8 flags
+ubyte Lightning_Color_R
+ubyte Lightning_Color_G
+ubyte Lightning_Color_B
+
+block WTHR/SNAM
+import subrecord
+repeat 8
+uint Sound_FormID
+int Sound_Type
+
+block CLMT/WLST
+import subrecord
+repeat 8
+uint Weather_FormID
+int Chance
+
+block CLMT/TNAM
+import subrecord
+ubyte Sunrise_Begin
+ubyte Sunrise_End
+ubyte Sunset_Begin
+ubyte Sunset_End
+ubyte Volatility
+flags8 flags_AND_moonphase
+
+block REGN/RCLR
+import subrecord
+ubyte Map_Color_R
+ubyte Map_Color_G
+ubyte Map_Color_B
+ubyte unused
+
+block REGN/WNAM
+import subrecord
+uint World_Space_FormID
+
+block REGN/RPLI
+import subrecord
+int Edge_Falloff
+
+block REGN/RPLD
+import subrecord
+repeat 8
+float X
+float Y
+
+block REGN/RDAT
+import subrecord
+int Region_Data_Type
+flags8 flags
+ubyte Priority
+ubyte unused
+ubyte unused
+
+block REGN/RDMD
+import subrecord
+int Music_Type
+
+block REGN/RDSD
+import subrecord
+repeat 12
+uint Sound_FormID
+flags32 flags
+int Chance
+
+block REGN/RDOT
+import subrecord
+repeat 0
+uint Generated_Object_FormID
+short Hierarchy_Parent_Index
+ubyte unused
+ubyte unused
+float Density
+ubyte Clustering
+ubyte Min_Slope
+ubyte Max_Slope
+flags8 flags
+short Radius_wrt_Parent
+short Radius
+float Min_Height
+float Max_Height
+float Sink
+float Sink_Variance
+float Size_Variance
+short Angle_Variance_X
+short Angle_Variance_Y
+short Angle_Variance_Z
+ubyte unused
+ubyte unused
+ubyte Vertex_Color_R
+ubyte Vertex_Color_G
+ubyte Vertex_Color_B
+ubyte Percent_of_Radius
+
+block REGN/RDWT
+import subrecord
+repeat 8
+uint Weather_FormID
+int Weather_Probability
+
+block REGN/RDGS
+import subrecord
+repeat 8
+uint Grass_FormID
+int unknown
+
+block WRLD/XXXX
+import subrecord
+int xxxxsize
+
+block WRLD/OFST
+import subrecord
+intarray i
+
+block WRLD/NAM2
+import subrecord
+uint Water_FormID
+
+block WRLD/WNAM
+import subrecord
+uint Parent_Worldspace_FormID
+
+block WRLD/SNAM
+import subrecord
+int Music_Type
+
+block WRLD/CNAM
+import subrecord
+uint Climate_FormID
+
+block WRLD/MNAM
+import subrecord
+int Usable_Dimensions_X
+int Usable_Dimensions_Y
+short Cell_Coords_NW_Cell_X
+short Cell_Coords_NW_Cell_Y
+short Cell_Coords_SE_Cell_X
+short Cell_Coords_SE_Cell_Y
+
+block WRLD/DATA
+import subrecord
+flags8 flags
+
+block WRLD/NAM0
+import subrecord
+float Min_X
+float Min_Y
+
+block WRLD/NAM9
+import subrecord
+float Max_X
+float Max_Y
+
+block DIAL/QSTI
+import subrecord
+uint Quest_FormID
+
+block DIAL/DATA
+import subrecord
+ubyte Dialogue_Type
+
+block INFO/DATA
+import subrecord
+ifsize 2
+ubyte Dialogue_Type
+ubyte unknown_maybe_flags
+ifsize 3
+ubyte Dialogue_Type
+ubyte Next_Speaker
+flags8 flags
+
+block INFO/QSTI
+import subrecord
+uint Quest_FormID
+
+block INFO/PNAM
+import subrecord
+uint Previous_INFO_FormID
+
+block INFO/TRDT
+import subrecord
+int Emotion_Type
+int Emotion_Value
+int unknown
+ubyte Response_Choice_Number
+ubyte unused
+ubyte unused
+ubyte unused
+
+block INFO/TCLT
+import subrecord
+uint Choices_Link_To_FormID
+
+block INFO/TCLF
+import subrecord
+uint Link_From_FormID
+
+block INFO/NAME
+import subrecord
+uint Add_Topics_FormID
+
+block INFO/SCHR
+import subrecord
+import schr
+
+block INFO/CTDA
+import subrecord
+import ctda
+
+block INFO/SCRO
+import subrecord
+import scro
+
+block QUST/DATA
+import subrecord
+flags8 flags
+ubyte Priority
+
+block QUST/CTDA
+import subrecord
+import ctda
+
+block QUST/INDX
+import subrecord
+short Quest_Stage_Index
+
+block QUST/QSDT
+import subrecord
+flags8 flags
+
+block QUST/SCHR
+import subrecord
+import schr
+
+block QUST/SCRO
+import subrecord
+import scro
+
+block QUST/QSTA
+import subrecord
+uint Target_Ref_FormID
+flags8 flags
+ubyte unused
+ubyte unused
+ubyte unused
+
+block IDLE/ANAM
+import subrecord
+flags8 flags
+
+block IDLE/CTDA
+import subrecord
+import ctda
+
+block IDLE/CTDT
+import subrecord
+import ctdt
+
+block IDLE/DATA
+import subrecord
+uint Hierarchy_Parent_IDLE_FormID
+uint Hierarchy_Previous_IDLE_FormID
+
+block PACK/PKDT
+import subrecord
+flags32 flags
+break 4
+byte Package_Type
+ubyte unused
+ubyte unused
+ubyte unused
+
+block PACK/PLDT
+import subrecord
+int Type
+uint Reference_FormID
+int Radius
+
+block PACK/PSDT
+import subrecord
+ubyte Month
+ubyte Day_of_week
+ubyte Date
+ubyte Time
+int Duration
+
+block PACK/PTDT
+import subrecord
+int Type
+uint Ref_Object_FormID
+int Distance_OR_Count
+
+block PACK/CTDA
+import subrecord
+import ctda
+
+block PACK/CTDT
+import subrecord
+import ctdt
+
+block CSTY/CSTD
+import subrecord
+byte Dodge_PP_Chance
+byte Left_Right_PP_Chance
+byte unused
+byte unused
+float Dodge_LR_Timer_Min
+float Dodge_LR_Timer_Max
+float Dodge_Forward_Timer_Min
+float Dodge_Forward_Timer_Max
+float Dodge_Back_Timer_Min
+float Dodge_Back_Timer_Max
+float Idle_Timer_Min
+float Idle_Timer_Max
+byte Block_PP_Chance
+byte Attack_PP_Chance
+byte unused
+byte unused
+float Recoil_Stagger_Bonus_to_Attack
+float Unconscious_Bonus_to_Attack
+float Hand-To-Hand_Bonus_to_Attack
+byte Power_Attack_PP_Chance
+byte unused
+byte unused
+byte unused
+float Recoil_Stagger_Bonus_to_Power_Attack
+float Unconscious_Bonus_to_Power_Attack
+byte Normal
+byte Forward
+byte Back
+byte Left
+byte Right
+byte unused
+byte unused
+byte unused
+float Hold_Timer_Min
+float Hold_Timer_Max
+flags8 flags
+byte Acrobatic_Dodge_PP_Chance
+byte unused
+byte unused
+break 84
+float Range_Mult_Optimal
+float Range_Mult_Max
+break 92
+float Switch_Dist_Melee
+float Switch_Dist_Ranged
+float Buff_Standoff_Distance
+break 104
+float Ranged_Standoff_Distance
+float Group_Standoff_Distance
+break 112
+byte Rushing_Attack_PP_Chance
+byte unused
+byte unused
+byte unused
+float Rushing_Attack_Distance_Mult
+break 120
+flags8 flags
+byte unused
+byte unused
+byte unused
+break 124
+
+block CSTY/CSAD
+import subrecord
+float Dodge_Fatigue_Mod_Mult
+float Dodge_Fatigue_Mod_Base
+float Encumb_Speed_Mod_Base
+float Encumb_Speed_Mod_Mult
+float Dodge_While_Under_Attack_Mult
+float Dodge_Not_Under_Attack_Mult
+float Dodge_Back_While_Under_Attack_Mult
+float Dodge_Back_Not_Under_Attack_Mult
+float Dodge_Forward_While_Attacking_Mult
+float Dodge_Forward_Not_Attacking_Mult
+float Block_Skill_Modifier_Mult
+float Block_Skill_Modifier_Base
+float Block_While_Under_Attack_Mult
+float Block_Not_Under_Attack_Mult
+float Attack_Skill_Modifier_Mult
+float Attack_Skill_Modifier_Base
+float Attack_While_Under_Attack_Mult
+float Attack_Not_Under_Attack_Mult
+float Attack_During_Block_Mult
+float Power_Att_Fatigue_Mod_Base
+float Power_Att_Fatigue_Mod_Mult
+
+block LVSP/LVLD
+import subrecord
+byte Chance_None
+
+block LVSP/LVLF
+import subrecord
+flags8 flags
+
+block LVSP/LVLO
+import subrecord
+ifsize 8
+int Level
+uint FormID
+ifsize 12
+short Level
+short unknown
+uint FormID
+short Count
+short unknown
+
+block ANIO/DATA
+import subrecord
+uint Idle_Animation_FormID
+
+block WATR/ANAM
+import subrecord
+ubyte opacity
+
+block WATR/FNAM
+import subrecord
+flags8 flags
+
+block WATR/SNAM
+import subrecord
+uint Sound_FormID
+
+block WATR/DATA
+import subrecord
+ifsize 2
+short short
+ifsize 42
+float Wind_Velocity
+float Wind_Direction
+float Wave_Amplitude
+float Wave_Frequency
+float Sun_Power
+float Reflectivity_Amount
+float Fresnel_Amount
+ubyte r
+ubyte g
+ubyte b
+ubyte a
+ubyte r
+ubyte g
+ubyte b
+ubyte a
+ubyte r
+ubyte g
+ubyte b
+ubyte a
+short maybe
+ifsize 62
+float Wind_Velocity
+float Wind_Direction
+float Wave_Amplitude
+float Wave_Frequency
+float Sun_Power
+float Reflectivity_Amount
+float Fresnel_Amount
+float Scroll_X_Speed
+float Scroll_Y_Speed
+float Fog_Distance_-_Near_Plane
+float Fog_Distance_-_Far_Plane
+ubyte Shallow_Color_R
+ubyte Shallow_Color_G
+ubyte Shallow_Color_B
+ubyte unused
+ubyte Deep_Color_R
+ubyte Deep_Color_G
+ubyte Deep_Color_B
+ubyte unused
+ubyte Reflection_Color_R
+ubyte Reflection_Color_G
+ubyte Reflection_Color_B
+ubyte unused
+ubyte Texture_Blend
+ubyte Texture_Blend_Color_R
+ubyte Texture_Blend_Color_G
+ubyte Texture_Blend_Color_B
+short Damage_per_second
+ifsize 86
+float Wind_Velocity
+float Wind_Direction
+float Wave_Amplitude
+float Wave_Frequency
+float Sun_Power
+float Reflectivity_Amount
+float Fresnel_Amount
+float Scroll_X_Speed
+float Scroll_Y_Speed
+float Fog_Distance_-_Near_Plane
+float Fog_Distance_-_Far_Plane
+ubyte Shallow_Color_R
+ubyte Shallow_Color_G
+ubyte Shallow_Color_B
+ubyte unused
+ubyte Deep_Color_R
+ubyte Deep_Color_G
+ubyte Deep_Color_B
+ubyte unused
+ubyte Reflection_Color_R
+ubyte Reflection_Color_G
+ubyte Reflection_Color_B
+ubyte unused
+ubyte Texture_Blend
+ubyte Texture_Blend_Color_R
+ubyte Texture_Blend_Color_G
+ubyte Texture_Blend_Color_B
+float RainSim/Force
+float RainSim/Velocity
+float RainSim/Falloff
+float RainSim/Dampner
+float RainSim/Starting_Size
+float DispSim/Force
+short Damage_per_second
+ifsize 102
+float Wind_Velocity
+float Wind_Direction
+float Wave_Amplitude
+float Wave_Frequency
+float Sun_Power
+float Reflectivity_Amount
+float Fresnel_Amount
+float Scroll_X_Speed
+float Scroll_Y_Speed
+float Fog_Distance_-_Near_Plane
+float Fog_Distance_-_Far_Plane
+ubyte Shallow_Color_R
+ubyte Shallow_Color_G
+ubyte Shallow_Color_B
+ubyte unused
+ubyte Deep_Color_R
+ubyte Deep_Color_G
+ubyte Deep_Color_B
+ubyte unused
+ubyte Reflection_Color_R
+ubyte Reflection_Color_G
+ubyte Reflection_Color_B
+ubyte unused
+ubyte Texture_Blend
+ubyte Texture_Blend_Color_R
+ubyte Texture_Blend_Color_G
+ubyte Texture_Blend_Color_B
+float RainSim/Force
+float RainSim/Velocity
+float RainSim/Falloff
+float RainSim/Dampner
+float RainSim/Starting_Size
+float DispSim/Force
+float DispSim/Velocity
+float DispSim/Falloff
+float DispSim/Dampner
+float DispSim/Starting_Size
+short Damage_per_second
+
+block WATR/GNAM
+import subrecord
+uint Daytime_FormID
+uint Nighttime_FormID
+uint Underwater_FormID
+
+block NPC_/ACBS
+import subrecord
+flags32 flags
+ushort Base_Spell_Pts
+ushort Fatigue
+ushort Barter_Gold
+short Level
+ushort Calc_min
+ushort Calc_max
+
+block NPC_/SNAM
+import subrecord
+uint Faction_FormID
+ubyte Rank
+ubyte unused
+ubyte unused
+ubyte unused
+
+block NPC_/INAM
+import subrecord
+uint Death_Item_FormID
+
+block NPC_/RNAM
+import subrecord
+uint Race_FormID
+
+block NPC_/AIDT
+import subrecord
+ubyte Aggression
+ubyte Confidence
+ubyte Energy_level
+ubyte Responsibility
+flags32 flags
+ubyte Training_Skill_Index
+ubyte Training_Skill_Value
+ubyte unused
+ubyte unused
+
+block NPC_/PKID
+import subrecord
+uint AI_Package_FormID
+
+block NPC_/CNAM
+import subrecord
+uint Class_FormID
+
+block NPC_/DATA
+import subrecord
+ubyte Armorer
+ubyte Athletics
+ubyte Blade
+ubyte Block
+ubyte Blunt
+ubyte Hand_To_Hand
+ubyte Heavy_Armor
+ubyte Alchemy
+ubyte Alteration
+ubyte Conjuration
+ubyte Destruction
+ubyte Illusion
+ubyte Mysticism
+ubyte Restoration
+ubyte Acrobatics
+ubyte Light_Armor
+ubyte Marksman
+ubyte Mercantile
+ubyte Security
+ubyte Sneak
+ubyte Speechcraft
+ubyte Health
+ubyte unknown
+ubyte unknown
+ubyte unknown
+ubyte Attr_Str
+ubyte Attr_Int
+ubyte Attr_Wil
+ubyte Attr_Agi
+ubyte Attr_Spd
+ubyte Attr_End
+ubyte Personality
+ubyte Attr_Luc
+
+block NPC_/HNAM
+import subrecord
+uint Hair_FormID
+
+block NPC_/LNAM
+import subrecord
+float Hair_Length
+
+block NPC_/ENAM
+import subrecord
+uint Eyes_FormID
+
+block NPC_/HCLR
+import subrecord
+ubyte Hair_Color_R
+ubyte Hair_Color_G
+ubyte Hair_Color_B
+ubyte unused
+
+block NPC_/ZNAM
+import subrecord
+uint Combat_Style_FormID
+
+block NPC_/FGGS
+import subrecord
+repeat 4
+float float
+
+block NPC_/FGGA
+import subrecord
+repeat 4
+float float
+
+block NPC_/FGTS
+import subrecord
+repeat 4
+float float
+
+block NPC_/FNAM
+import subrecord
+ushort ushort
+
+block NPC_/KFFZ
+import subrecord
+nifzstring s
+
+block PGRD/DATA
+import subrecord
+ushort Path_Grid_Points
+
+block PGRD/PGRP
+import subrecord
+repeat 16
+float X
+float Y
+float Z
+byte Path_Lines
+ubyte unused
+ubyte unused
+ubyte unused
+
+block PGRD/PGAG
+import subrecord
+repeat 1
+byte Point_Types
+
+block PGRD/PGRR
+import subrecord
+repeat 2
+short Path_Grid_End_Points
+
+block PGRD/PGRI
+import subrecord
+repeat 16
+short Node
+ubyte unused
+ubyte unused
+float X
+float Y
+float Z
+
+block PGRD/PGRL
+import subrecord
+uint Linked_Object_FormID
+repeat 4
+int Point
+
+block ROAD/PGRP
+import subrecord
+repeat 16
+float X
+float Y
+float Z
+byte Path_Lines
+ubyte unused
+ubyte unused
+ubyte unused
+
+block ROAD/PGRR
+import subrecord
+repeat 12
+float X
+float Y
+float Z
+
+block LAND/DATA
+import subrecord
+flags32 flags
+
+block LAND/VNML
+import subrecord
+repeat 0
+byte nx
+byte ny
+byte nz
+
+block LAND/VHGT
+import subrecord
+float Base_Height
+repeat 0
+byte h
+
+block LAND/VCLR
+import subrecord
+repeat 3
+ubyte R
+ubyte G
+ubyte B
+
+block LAND/BTXT
+import subrecord
+uint Land_Texture_FormID
+byte Quadrant
+byte unused
+short Layer
+
+block LAND/ATXT
+import subrecord
+uint Land_Texture_FormID
+byte Quadrant
+byte unused
+short Layer
+
+block LAND/VTXT
+import subrecord
+repeat 8
+short short
+byte byte
+byte byte
+float f
+
+block TXST/EDID
+import subrecord
+nstring s
+
+block TXST/OBND
+import subrecord
+import obnd
+
+block TXST/TX00
+import subrecord
+nstring Diffuse
+
+block TXST/TX01
+import subrecord
+nstring Normal_Gloss
+
+block TXST/TX02
+import subrecord
+nstring Environment_Mask_Map
+
+block TXST/TX03
+import subrecord
+nstring Glow_Skin_Hair
+
+block TXST/TX04
+import subrecord
+nstring Height
+
+block TXST/TX05
+import subrecord
+nstring Environment
+
+block TXST/TX06
+import subrecord
+nstring unknownmap
+
+block TXST/TX07
+import subrecord
+nstring unknownmap
+
+block TXST/DNAM
+import subrecord
+short unknownshort
+
+block TXST/DODT
+import subrecord
+float Min_Width
+float Max_Width
+float Min_Height
+float Max_Height
+float Depth
+float Shininess
+float Parallax_Scale
+byte Parallax_Passes
+flags8 flags
+ubyte unusedunknown
+ubyte unusedunknown
+ubyte Color_R
+ubyte Color_G
+ubyte Color_B
+ubyte unused
+
+block NAVM/NVNM
+import subrecord
+int version
+uint unknown1
+int unknown2
+int num1
+int num2
+
+block NAVI/NVER
+import subrecord
+int cellgridsize
+
+block NAVI/NVMI
+import subrecord
+uint NavMesh_FormID
+uint WorldSpace_FormID
+float x
+float y
+float z
+int int1
+int int2
+uint 1_FormID
+uint 2_FormID
+int int3
+int int4
+short short1
+

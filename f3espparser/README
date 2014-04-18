@@ -1,0 +1,111 @@
+
+esptools
+========
+
+Version 20090108dev
+
+esptools includes software which juhana at BGSForums has used
+in decoding the esm/esp file format. The tool "espparser"
+reads the complete esm/esp file and prints its content in
+a human readable format. libespparser is a start of the same
+but user should be able to skip records and parse only the
+records needed.
+
+Program compiles in Linux with "make".
+
+Usage:
+espparser Fallout3.esm
+espparser Mod.esp
+
+The document NOTES_FESPTEST includes the decoding notes,
+but not all are documented there. Also, NOTES_FESPTEST
+has docs which are not in the source codes, like list of
+value choices, list of condition functions, etc.
+
+I'm going to write a separate format document soon.
+
+Note that Fallout 3 work is based on my Oblivion work, see
+the doc NOTES_ESPTEST for that. That doc include more
+condition functions.
+
+My decoding work includes the records:
+
+CLMT
+CSTY
+EFSH
+GRAS
+IDLE
+LSCR
+LTEX
+PGRD
+RACE
+REGN
+ROAD
+SBSP
+TREE
+WATR
+WRLD
+WTHR
+
+And all new records in Fallout 3.
+
+I have not yet fully decoded LAND, NAVI, and NAVM records.
+CREA of Fallout 3 needs to be verified and updated from
+Oblivion.
+
+ ---*---
+
+While I decoded a few unknown records and added to numerous
+other records, my work would have not been done without
+existing work, mainly UESP Wiki.
+
+When I first time checked at Oblivion data formats, I had
+no experience in decoding. Now, while still not being at level
+of most skilled decoders, I have decoded Oblivion and also
+other game file formats.
+
+The work amount involved here can be better understood by these
+numbers: 3708 screenshots for Oblivion TES CS, 4419 screenshots
+for FO3 GECK, 247 test esps for TES CS, 980 test esps for
+FO3 GECK.
+
+  
+Thanks goes to:
+
+UESP Wiki's TES4 format documentation.
+
+Timeslip for his landscape heightmap data source codes.
+(I only know how to calculate the heights, not how to
+assign the texture coordinates.)
+
+ScripterRon (BGSForums) for his source codes.
+(Though, I have used less all the source codes I have.
+However, I appreciate very much the open source software.)
+
+ElminsterEU / TES4Edit Lite source code
+
+TES4Gecko team / TES4Gecko source code
+ Created by TeamGecko
+ - Original TES4 Plugin Utility code: ScripterRon (Ron Hoffman)
+ - Gecko plugin splitter and compare code: KomodoDave (N David Brown)
+ - Gecko project leader: dev_akm (Aubrey K McAuley)
+
+Lord_Gannondorf for Oblivion Mod Maker's Manual.
+
+ ---*---
+
+FUTURE:
+
+Open source editor prior TES V appears. But FaceGen, SpeedTree,
+and procedural textures (see Gamebryo news) will be hard to have.
+Partial editor would be useful in any case.
+
+BSA unpacker within the editor: open file dialogs (which require
+NIF or DDS files) does not provide a way to open NIF and DDS
+files from BSA files.
+
+Complete engine clone. Instead of writing separate OBSE
+and graphics extenders, we would be able to add features to
+the engine directly. I keep mentioning ScummVM engine clone
+as they have succeeded well, both technically and legally.
+

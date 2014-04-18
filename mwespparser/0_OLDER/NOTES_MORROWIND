@@ -1,0 +1,44 @@
+
+Morrowind.esm
+
+LAND
+ INTV 0x17 6
+ DATA 4
+CELL
+ NAME '\0'
+ DATA 2 0x17 5
+ RGNN "Azura's Coast Region"
+LAND
+ INTV 0x17 5
+ DATA 5
+ VNML
+ VHGT
+ WNAM
+CELL
+NAME
+DATA
+RGNN
+LAND
+INTV
+DATA
+VNML
+VHGT
+WNAM
+CELL
+NAME
+DATA
+RGNN
+LAND
+INTV
+DATA
+CELL
+
+
+
+
+
+
+
+
+
+

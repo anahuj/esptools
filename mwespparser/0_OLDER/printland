@@ -1,0 +1,17 @@
+#!/bin/sh
+for y in ` seq -20 28 `
+do
+a=""
+for x in ` seq -19 24 `
+do
+f="land_${x}_${y}.info"
+if [ -f $f ]; then
+# a=$a"X"
+n=` cat $f | grep data | cut -b 8- `
+a=$a$n
+else
+a=$a"."
+fi
+done
+echo $a
+done

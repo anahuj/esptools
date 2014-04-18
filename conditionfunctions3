@@ -1,0 +1,256 @@
+  1 OF GetDistance <ObjectReferenceID> % [TARGET]
+  5 OF GetLocked
+  6 OF GetPos <Axis> % X Y Z
+  8 OF GetAngle <Axis> % X Y Z
+ 10 OF GetStartingPos <Axis> % X Y Z
+ 11 OF GetStartingAngle <Axis> % X Y Z
+ 12 OF GetSecondsPassed
+ 14 OF GetActorValue <Actor Value>
+ 18 OF GetCurrentTime
+ 24 OF GetScale
+ 25 -F IsMoving
+ 26 -F IsTurning
+ 27 OF GetLineOfSight <ObjectReferenceID> % [TARGET]
+ 32 OF GetInSameCell <ObjectReferenceID> % [TARGET]
+ 35 OF GetDisabled
+ 36 OF MenuMode <Integer> % 0
+ 39 OF GetDisease
+ 40 OF GetVampire
+ 41 OF GetClothingValue
+ 42 OF SameFaction <Actor> % [TARGET]
+ 43 OF SameRace <Actor> % [TARGET]
+ 44 OF SameSex <Actor> % [TARGET]
+ 45 OF GetDetected <Actor> % [TARGET]
+ 46 OF GetDead
+ 47 OF GetItemCount <ObjectID>
+ 48 OF GetGold
+ 49 OF GetSleeping
+ 50 OF GetTalkedToPC
+ 53 OF GetScriptVariable <ObjectReferenceID> <Variable Name> % includes NONE
+ 56 OF GetQuestRunning <Quest>
+ 58 OF GetStage <Quest>
+ 59 OF GetStageDone <Quest> <Stage> % NONE 10
+ 60 OF GetFactionRankDifference <Faction> <Actor> % [TARGET]
+ 61 OF GetAlarmed
+ 62 OF IsRaining
+ 63 OF GetAttacked
+ 64 OF GetIsCreature
+ 65 OF GetLockLevel
+ 66 OF GetShouldAttack <Actor> % [TARGET]
+ 67 OF GetInCell <Cell>
+ 68 OF GetIsClass <Class>
+ 69 OF GetIsRace <Race>
+ 70 OF GetIsSex <Sex> % 0 Male 1 Female
+ 71 OF GetInFaction <Faction>
+ 72 OF GetIsID <ObjectID>
+ 73 OF GetFactionRank <Faction>
+ 74 OF GetGlobalValue <Global>
+ 75 OF IsSnowing
+ 76 OF GetDisposition <Actor> % [TARGET]
+ 77 OF GetRandomPercent
+ 79 OF GetQuestVariable <Quest> <Variable Name> % Variable names?
+ 80 OF GetLevel
+ 81 OF GetArmorRating
+ 84 OF GetDeadCount <Actor Base> % NPC: 'Abhuki'
+ 91 OF GetIsAlerted
+ 98 -F GetPlayerControlsDisabled % two strange parameters, see capture_20090106_202137.png % XXXX caused program failure and exit, Function ID not verified
+ 98 O- GetPlayerControlsDisabled
+ 99 OF GetHeadingAngle <ObjectReferenceID> % [TARGET]
+101 OF IsWeaponOut
+102 OF IsTorchOut
+103 OF IsShieldOut
+104 O- IsYielding
+106 OF IsFacingUp
+107 OF GetKnockedState
+108 OF GetWeaponAnimType
+109 OF IsWeaponSkillType <Actor Value>
+109 O- GetWeaponSkillType
+110 OF GetCurrentAIPackage
+111 OF IsWaiting
+112 OF IsIdlePlaying
+116 -F GetMinorCrimeCount
+116 O- GetCrimeGold
+117 -F GetMajorCrimeCount
+118 -F GetActorAggroRadiusViolated
+122 OF GetCrime <Actor> <Crime Type> % [TARGET]
+123 -F IsGreetingPlayer
+125 OF IsGuard
+127 -F HasBeenEaten
+127 O- CanPayCrimeGold
+128 OF GetFatiguePercentage
+129 OF GetPCIsClass <Class>
+130 OF GetPCIsRace <Race>
+131 OF GetPCIsSex <Sex> % Female Male
+132 OF GetPCInFaction <Faction>
+133 OF SameFactionAsPC
+134 OF SameRaceAsPC
+135 OF SameSexAsPC
+136 OF GetIsReference <ObjectReferenceID> % [TARGET]
+141 OF IsTalking
+142 OF GetWalkSpeed
+143 OF GetCurrentAIProcedure
+144 OF GetTrespassWarningLevel
+145 OF IsTrespassing
+146 OF IsInMyOwnedCell
+147 OF GetWindSpeed
+148 OF GetCurrentWeatherPercent
+149 OF GetIsCurrentWeather <Weather ID> % CamoranWeather
+150 OF IsContinuingPackagePCNear
+153 OF CanHaveFlames
+154 OF HasFlames
+157 OF GetOpenState
+159 OF GetSitting
+160 OF GetFurnitureMarkerID
+161 OF GetIsCurrentPackage <Package>
+162 OF IsCurrentFurnitureRef <ObjectReferenceID> % [TARGET]
+163 -F IsCurrentFurnitureObj <Furniture> % Form List:'AlchoholicDrinks'
+163 O- IsCurrentFurnitureObj <Furniture>
+170 OF GetDayOfWeek
+171 O- IsPlayerInJail
+172 OF GetTalkedToPCParam <Actor> % [TARGET]
+175 OF IsPCSleeping
+176 OF IsPCAMurderer
+180 OF GetDetectionLevel <Actor> % [TARGET]
+182 OF GetEquipped <ObjectID> % MiscItem: 'aaaObeisanceToken'
+185 OF IsSwimming
+190 OF GetAmountSoldStolen
+192 -F GetIgnoreCrime
+193 OF GetPCExpelled <Faction>
+195 OF GetPCFactionMurder <Faction>
+197 -F GetPCEnemyofFaction <Faction>
+197 O- GetPCFactionSteal <Faction>
+199 OF GetPCFactionAttack <Faction>
+201 O- GetPCFactionSubmitAuthority <Faction>
+203 OF GetDestroyed
+214 OF HasMagicEffect <Magic Effect> % <Base Effect>
+215 -F GetDefaultOpen
+215 O- GetDoorDefaultOpen
+219 -F GetAnimAction
+223 OF IsSpellTarget <Magic Item> % Spell, Enchantment, Potion, what else?
+224 -F GetVATSMode
+224 O- GetIsPlayerBirthsign <Birthsign>
+225 OF GetPersuasionNumber
+226 -F GetSandman
+227 -F GetCannibal
+227 O- HasVampireFed
+228 OF GetIsClassDefault <Class>
+229 OF GetClassDefaultMatch
+230 OF GetInCellParam <Cell> <ObjectReferenceID> % [TARGET]
+235 -F GetVatsTargetHeight
+237 OF GetIsGhost
+242 OF GetUnconscious
+244 OF GetRestrained
+246 OF GetIsUsedItem <ObjectID>
+247 OF GetIsUsedItemType <Form Type>
+249 O- GetPCFame
+251 O- GetPCInfamy
+254 OF GetIsPlayableRace
+255 OF GetOffersServicesNow
+258 OF GetUsedItemLevel
+259 OF GetUsedItemActivate
+264 OF GetBarterGold
+265 OF IsTimePassing
+266 OF IsPleasant
+267 OF IsCloudy
+274 OF GetArmorRatingUpperBody
+277 OF GetBaseActorValue <Actor Value>
+278 OF IsOwner <Owner(optional)> % NPC: 'Abhuki'
+280 OF IsCellOwner <Cell> <Owner(optional)> % NPC: 'Abhuki'
+282 OF IsHorseStolen
+285 OF IsLeftUp
+286 OF IsSneaking
+287 OF IsRunning
+288 mF GetFriendHit % ok
+288 Om GetFriendHit <Actor> % [TARGET]
+289 OF IsInCombat
+300 OF IsInInterior
+304 -F IsWaterObject
+305 O- GetInvestmentGold
+306 OF IsActorUsingATorch
+309 OF IsXBox
+310 OF GetInWorldspace <WorldSpace>
+312 -F GetPCMiscStat <Miscellaneous>
+312 O- GetPCMiscStat <Integer> % 0
+313 OF IsActorEvil
+314 OF IsActorAVictim
+315 OF GetTotalPersuasionNumber
+318 OF GetIdleDoneOnce
+320 OF GetNoRumors
+323 OF WhichServiceMenu
+327 OF IsRidingHorse
+329 O- IsTurnArrest
+332 OF IsInDangerousWater
+338 OF GetIgnoreFriendlyHits
+339 OF IsPlayersLastRiddenHorse
+353 OF IsActor
+354 OF IsEssential
+358 OF IsPlayerMovingIntoNewSpace
+361 OF GetTimeDead
+362 OF GetPlayerHasLastRiddenHorse
+365 -F IsChild
+365 O- GetPlayerInSEWorld
+367 -F GetLastPlayerAction
+368 -F IsPlayerActionActive <Integer> % 0
+370 -F IsTalkingActivatorActor <Actor> % [TARGET]
+372 -F IsInList <Form List> % FLST record FormID
+382 -F GetHasNote <Note>
+391 -F GetHitLocation
+392 -F IsPC1stPerson
+397 -F GetCauseofDeath
+398 -F IsLimbGone <Integer> % 0
+399 -F IsWeaponInList <Form List>
+403 -F HasFriendDisposition
+408 -F GetVATSValue <VATS Value> <Data (Optional)>
+409 -F IsKiller <Actor> % [TARGET]
+410 -F IsKillerObject <Form List>
+411 -F GetFactionCombatReaction <Faction> <Faction>
+415 -F Exists <ObjectReferenceID> % [TARGET]
+416 -F GetGroupMemberCount
+417 -F GetGroupTargetCount
+427 -F GetIsVoiceType <VoiceType>
+428 -F GetPlantedExplosive
+430 -F IsActorTalkingThroughActivator
+431 -F GetHealthPercentage
+433 -F GetIsObjectType <Form Type> % e.g., Acoustic Space
+435 -F GetDialogueEmotion
+436 -F GetDialogueEmotionValue
+438 -F GetIsCreatureType <Integer>
+446 -F GetInZone <EncounterZone>
+449 -F HasPerk <Perk>
+450 -F GetFactionRelation <Actor> % [TARGET]
+451 -F IsLastIdlePlayed <Idle Form>
+454 -F GetPlayerTeammate
+455 -F GetPlayerTeammateCount
+459 -F GetActorCrimePlayerEnemy
+460 -F GetActorFactionPlayerEnemy
+464 -F IsPlayerGrabbedRef <***ESObjectREFR> % [TARGET] % TESObjectREFR
+471 -F GetDestructionStage
+474 -F GetIsAlignment <AlignmentValue> % Evil Good Neutral VeryEvil VeryGood
+478 -F GetThreatRatio <Actor> % [TARGET]
+480 -F GetIsUsedItemEquipType <EquipType>
+489 -F GetConcussed
+492 -F GetMapMarkerVisible
+495 -F GetPermanentActorValue <Actor Value>
+496 -F GetKillingBlowLimb
+500 -F GetWeaponHealthPerc
+503 -F GetRadiationLevel
+510 -F GetLastHitCritical
+515 -F IsCombatTarget <Actor> % [TARGET]
+518 -F GetVATSRightAreaFree <**ESObjectREFR> % TESObjectREFR??
+519 -F GetVATSLeftAreaFree <**ESObjectREFR> % TESObjectREFR??
+520 -F GetVATSBackAreaFree <**ESObjectREFR> % TESObjectREFR??
+521 -F GetVATSFrontAreaFree <**ESObjectREFR> % TESObjectREFR??
+522 -F GetIsLockBroken
+523 -F IsPS3
+524 OF IsWin32
+525 -F GetVATSRightTargetVisible <**ESObjectREFR> % TESObjectREFR??
+526 -F GetVATSLeftTargetVisible <**ESObjectREFR> % TESObjectREFR??
+527 -F GetVATSBackTargetVisible <**ESObjectREFR> % TESObjectREFR??
+528 -F GetVATSFrontTargetVisible <**ESObjectREFR> % TESObjectREFR??
+531 -F IsInCriticalStage <CriticalStage>
+533 -F GetXPForNextLevel
+546 -F GetQuestCompleted <Quest>
+550 -F IsGoreDisabled
+555 -F GetSpellUsageNum <Magic Item> % AlienDisintegrationFXSpell
+557 -F GetActorsInHigh
+558 -F HasLoaded3D

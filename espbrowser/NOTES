@@ -1,0 +1,13 @@
+
+
+
+ESP Browser: lists the data with tree widget.
+
+ESP Builder: module graph based editor for making ESP files.
+The positions of the graph nodes (e.g., NPC) may correspond
+with the game locations.
+
+Edit decision list (EDL) is used to store the changes.
+
+
+

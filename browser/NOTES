@@ -1,0 +1,1050 @@
+
+
+
+ ---*---
+ ---*---
+
+ ---*---
+
+XXXX later; now we just read the whole record to memory
+
+First read the format definitions.
+
+Calculate offsets to variables.
+If block has arrays or other structures which size is
+unknown until the record is read, then the offsets
+need to be calculated just prior reading a data from
+the record.
+
+
+ ---*---
+
+int numitems count
+structarray arrayname numitems  % ref: "arrayname 2 FormID1"
+int FormID1
+int FormID2
+end
+
+int numitems count
+structarray arrayname 2 numitems
+int FormID
+int FormID
+
+int numitems       % How to store only those numbers we need?
+count repeatcount  % stores last int, short, byte with the given name
+repeat 2 repeatcount  % variables % XXXX structarray arrayname 2 count
+int FormID
+int FormID
+
+int numitems #     % # is used to store the value
+repeat 2 numitems
+int FormID
+int FormID
+
+
+repeat 2 numitems
+if size 16 then 2  % 2 lines
+if size 32 then 7  % 7 lines
+
+
+Check Python for these constructs.
+Are they easy to implement?
+
+if size == 16
+elseif size == 32
+else
+print ""   % add text to the printblock
+endif
+
+
+ ---*---
+
+Could we replace the definition language with Python?
+
+ ---*---
+
+todo20121023
+
+% ok
+Process subrecords in their own buffer.
+Check the buffer and format sizes.
+
+% (1) and (2) ok
+Save record or subrecord to file. Uncompressed. Include header data.
+espbrowser <saved record>
+(1) Save the record under the cursor inside group (header + compression)
+(2) Save the record inside record (no header, no compression)
+(3) Save the record (header + uncompressed)
+
+Print only the visible parts.
+Now the NAVI record takes too long time to print and takes
+too much memory to keep the whole print.
+Print only visible subrecords.
+
+ ---*---
+
+printforms
+
+Definitions in separate file because printforms are
+specific to browser application.
+
+ ---*---
+
+
+Write objects for smallest data items first.
+File reader, file writer, memory structure,
+editable ui.
+
+int
+float
+
+
+
+
+
+
+ ---*---
+
+What commands ESM/ESP reader would need?
+
+open <esm/esp file>
+close // close the currently open file
+
+
+
+
+
+ ---*---
+
+User
+
+ ---*---
+
+Write code for displaying wide texts.
+That is used for, e.g., tables:
+<record type> <formid> <edid> <name> <variable1>
+
+Horizontal cursor movement.
+
+ ---*---
+
+Condition functions:
+
+CTDA
+CTDT
+
+ ---*---
+
+Root:
+
+TES4
+GRUP <record type> <number of items>
+
+Except, print
+GRUP CELL <number of CELLs>
+for CELLs in path "GRUP CELL / GRUP / GRUP /".
+
+Except, print
+GRUP WRLD <number of WRLDs>
+
+Except, print
+GRUP DIAL <number of DIALs>
+
+
+Most records:
+
+<record type> <EDID> <name>
+
+Possibility to define the above so that <name> is skipped
+if the record does not have it. Likewise, with EDID.
+The exceptions to the above are defined as needed in
+formatdef file.
+
+
+IDLEs:
+
+IDLE <EDID>
+
+Arranged to tree hierarchy, by info in DATA.
+
+
+
+Example:
+GRUP LTEX = LTEX <LTEX/EDID> <LTEX/HNAM/Material_Type>
+
+Prints
+LTEX TerrainHDForestGrassLeaves01SUNoGrass 4
+
+
+Entering GRUP/IDLE (at root level) should lead to a page
+where IDLE animations are printed as tree list.
+
+IDLE <EDID> <MODL>
+
+ ---*---
+
+Print styles:
+
+Should be possible to define the current printing style as well.
+
+Should be possible to choose how something is printed.
+E.g., int/float depending on the function ID.
+
+Should be possible to define math formulae: Moon phases.
+
+(0) If printing definition is missing, print as now.
+
+(1) When inside record, define how to print subrecords.
+
+(2) When outside record, define what to print in a line.
+
+NPC_  <formid> <edid> <name> etc.
+
+Only defined items are printed.
+Itempath: NPC_/AIDT/Aggression
+
+printline <record type>
+<itempath> <name1>
+<itempath> <name2>
+<itempath> <name3>
+
+The above in GRUP <record type> is printed:
+
+<record type> <name1> <name2> <name3>
+NPC_          00E565A   100     -14
+NPC_          00E5647   80       34
+NPC_          00E563B   120       6
+etc.
+
+Connect the outside definition to the equivalent GRUP.
+
+ ---*---
+
+OK solved: tmp_s[1024] --> tmp_s[2^16]
+OK : uncompressed size was not written to pi.size; now ok
+
+seg fault:
+
+scripts --> 14 pages 43553 --> MartinRef --> Martin NPC
+--> BOOK FormID
+Then back to Martin NPC.
+Seg. fault occurs after uncompress.
+
+Why no seg fault when returning from other CONTs?
+
+Return from INGR:
+
+1111 0 1425
+9047eb8
+0
+21
+0
+104
+1
+9048e80
+9048e68
+1
+NPC_
+1038
+
+after uncompress_record
+1111 0 1425
+9047eb8
+0
+21
+0
+104
+1
+9048e80
+9048e68
+1
+NPC_
+1038
+
+after create_print_insidtype1
+1111 0 1425
+9047eb8
+0
+21
+0
+104
+1
+9048e80
+9048e68
+1
+NPC_
+1038
+
+Return from BOOK:
+
+1111 0 1425
+9047eb8
+0
+25  ## 21
+0
+118 ## 104
+1
+9048e80
+9048e68
+1
+NPC_
+1038
+
+after uncompress_record
+1111 0 1425
+9047eb8
+0
+25 ## 21
+0
+118 ## 104
+1
+9048e80
+9048e68
+1
+NPC_
+1038
+
+## segfault here ##
+
+
+
+
+scpt size 485:
+124741 / 29024317
+
+martinref:
+211207 / 8906074 / NPC
+
+martin:
+148855 / 3887980 / BOOK Book2ReligiousTenCommandoftheNine
+
+
+g1eight = 1.000000
+  g2
+    g5
+      freeing 9186ae0 (not a927d380)
+                                    g6
+                                      g7
+                                        g8
+                                          g9
+                                            g10
+                                               g11
+
+ ---*---
+
+|type = GRUP
+|size = 8284
+|label = HAIR
+|datatype = 0
+|stamp = 134671
+
+ ---*---
+
+20111011 fix malloc()/free() problems when entering records
+
+ ---*---
+
+Either enter to decode the entire subrecord
+or move to the referenced record (FormID).
+
+Display the record header information at the top of the printing.
+Enter to edit the header data.
+
+Global header flags / record type related header flags.
+
+ ---*---
+
+incomplete:
+INFO/?
+QUST/?
+IDLE/CTDT
+LAND/VTEX
+NPC_ ok
+PGRD ok
+ROAD ok
+
+Check also all nstrings for proper names.
+
+ok
+REFR
+ACHR
+ACRE
+
+see list at bottom
+
+
+compressed:
+NPC_
+PGRD
+
+
+ ---*---
+
+Bug:
+If a subrecord block has been defined, but not yet decoded to end,
+the program fails to advance to the next subrecord.
+
+Fix:
+After printing subrecord as much as possible, skip the subrecord
+by its size.
+
+Fix2:
+Create new buffer for the subrecord.
+
+ ---*---
+
+SCTX
+Browser should count the lines in the script.
+
+ ---*---
+
+ncurses based viewer:
+
+Cursor moves between printed lines.
+Data is printed only for the visible range of the print.
+
+Or:
+
+Browser enters a group or a record, and starts an empty printspace.
+
+
+ ---*---
+
+XX We need to think this differently, like this way:
+XX (1) Print the data to display, to scrolled area.
+XX Expand/shrink groups, records, subrecords.
+XX (2) Map XY position on the screen to the data.
+
+Down key moves between items at the same level:
+ -Records
+ -Subrecords
+ -Values in subrecords
+
+
+
+Flags could be printed vertically.
+That makes it easier to read the flag names.
+4 bytes / 16 lines: <value> <name>
+
+How to implement the up/down movement?
+Byte-wise movement + bit-wise movement
+
+
+int:
+
+4 bytes / 1 line: <value> <name>
+
+
+ ---*---
+
+arrayofchar4 --> "ID"
+int --> "size"
+int --> "flags"
+unknown 8 bytes
+if ("flags" & FLAG_COMPRESSED) {
+ block of "size" bytes --> uncompress --> new buffer, use parser "ID"
+} else {
+ block of "size" bytes --> new buffer, use parser "ID"
+}
+
+while (not EOF) {    XXXX only if we want parse to end
+ use the top parser
+}
+
+If we want parse and print what is missing from screen, we
+need to generate TOC table of records. The TOC is needed because
+we want move back in the file.
+
+If we have a general file format, what kind of TOC table needs to
+be generated?
+
+ ---*---
+
+
+User builds a list of operations which generates
+the print/read/write list.
+
+For example, the generator list has
+ loop point
+ read RecordName
+ read RecordSize
+ skip RecordSize
+ loop until end
+
+User uses the printout to edit the operation list.
+Should user be able to edit the operation list directly?
+
+
+ ---*---
+
+
+Layers:
+General record headers.
+Record specific headers. E.g., GRUP.
+Note: Compression would probably belong to general layer.
+Note: This scheme will be clarified when ESM format is
+decoded from scratch.
+
+Selection.
+Copy selection to new buffer.
+
+Begin of block.
+End of block.
+Define layer/procedure from the block.
+
+When the header is parsed, the "end of block" could be automatically
+placed to the calculated end of the record.
+
+When procedure is defined, are non-unknowns added to its definition.
+
+Items may be named. Names are used to read and write files.
+
+Names may be used in the decoder itself for opening the format.
+
+When a record is decoded, the record may be examined in a new
+buffer.
+
+The format of the record may be updated by opening many example
+records.
+
+Decoder should have a tool to decode flags like I have done
+in the esptools project. Check esptools notes.
+
+Decoder should have image tools. Later the decoder could have
+proper GUI with image display.
+
+Record is skipped by requesting the record to skip.
+Record knows how to skip it. Sometimes there is no explicitly
+given the size of the record.
+
+
+===========================================================================
+
+int addchstr(const chtype *chstr);
+int addchnstr(const chtype *chstr, int n);
+int mvaddchstr(int y, int x, const chtype *chstr);
+int mvaddchnstr(int y, int x, const chtype *chstr, int n);
+
+int addstr(const char *str);
+int addnstr(const char *str, int n);
+int mvaddstr(int y, int x, const char *str);
+int mvaddnstr(int y, int x, const char *str, int n);
+
+===========================================================================
+
+
+
+
+ACHR/DATA
+ACHR/EDID
+ACHR/FULL
+ACHR/NAME
+ACHR/XESP
+ACHR/XHRS
+ACHR/XLOD
+ACHR/XMRC
+ACHR/XPCI
+ACHR/XRGD
+ACHR/XSCL
+ACRE/DATA
+ACRE/EDID
+ACRE/NAME
+ACRE/XESP
+ACRE/XOWN
+ACRE/XRGD
+ACRE/XSCL
+ACTI/EDID
+ACTI/FULL
+ACTI/MODB
+ACTI/MODL
+ACTI/SCRI
+ACTI/SNAM
+ALCH/DATA
+ALCH/EDID
+ALCH/EFID
+ALCH/EFIT
+ALCH/ENIT
+ALCH/FULL
+ALCH/ICON
+ALCH/MODB
+ALCH/MODL
+ALCH/SCIT
+ALCH/SCRI
+AMMO/ANAM
+AMMO/DATA
+AMMO/EDID
+AMMO/ENAM
+AMMO/FULL
+AMMO/ICON
+AMMO/MODB
+AMMO/MODL
+ANIO/DATA
+ANIO/EDID
+ANIO/MODB
+ANIO/MODL
+APPA/DATA
+APPA/EDID
+APPA/FULL
+APPA/ICON
+APPA/MODB
+APPA/MODL
+APPA/SCRI
+ARMO/ANAM
+ARMO/BMDT
+ARMO/DATA
+ARMO/EDID
+ARMO/ENAM
+ARMO/FULL
+ARMO/ICO2
+ARMO/ICON
+ARMO/MO2B
+ARMO/MO3B
+ARMO/MO4B
+ARMO/MOD2
+ARMO/MOD3
+ARMO/MOD4
+ARMO/MODB
+ARMO/MODL
+ARMO/SCRI
+BOOK/ANAM
+BOOK/DATA
+BOOK/DESC
+BOOK/EDID
+BOOK/ENAM
+BOOK/FULL
+BOOK/ICON
+BOOK/MODB
+BOOK/MODL
+BOOK/SCRI
+BSGN/DESC
+BSGN/EDID
+BSGN/FULL
+BSGN/ICON
+BSGN/SPLO
+CELL/DATA
+CELL/EDID
+CELL/FULL
+CELL/XCCM
+CELL/XCLC
+CELL/XCLL
+CELL/XCLR
+CELL/XCLW
+CELL/XCMT
+CELL/XCWT
+CELL/XGLB
+CELL/XOWN
+CELL/XRNK
+CLAS/DATA
+CLAS/DESC
+CLAS/EDID
+CLAS/FULL
+CLAS/ICON
+CLMT/EDID
+CLMT/FNAM
+CLMT/GNAM
+CLMT/MODB
+CLMT/MODL
+CLMT/TNAM
+CLMT/WLST
+CLOT/ANAM
+CLOT/BMDT
+CLOT/DATA
+CLOT/EDID
+CLOT/ENAM
+CLOT/FULL
+CLOT/ICO2
+CLOT/ICON
+CLOT/MO2B
+CLOT/MO3B
+CLOT/MO4B
+CLOT/MOD2
+CLOT/MOD3
+CLOT/MOD4
+CLOT/MODB
+CLOT/MODL
+CLOT/SCRI
+CONT/CNTO
+CONT/DATA
+CONT/EDID
+CONT/FULL
+CONT/MODB
+CONT/MODL
+CONT/QNAM
+CONT/SCRI
+CONT/SNAM
+CREA/ACBS
+CREA/AIDT
+CREA/BNAM
+CREA/CNTO
+CREA/CSCR
+CREA/CSDC
+CREA/CSDI
+CREA/CSDT
+CREA/DATA
+CREA/EDID
+CREA/FULL
+CREA/INAM
+CREA/KFFZ
+CREA/KFFZ
+CREA/MODB
+CREA/MODL
+CREA/NAM0
+CREA/NAM1
+CREA/NIFZ
+CREA/PKID
+CREA/RNAM
+CREA/SCRI
+CREA/SNAM
+CREA/SPLO
+CREA/TNAM
+CREA/WNAM
+CREA/ZNAM
+CSTY/CSAD
+CSTY/CSTD
+CSTY/EDID
+DIAL/DATA
+DIAL/EDID
+DIAL/FULL
+DIAL/QSTI
+DOOR/ANAM
+DOOR/BNAM
+DOOR/EDID
+DOOR/FNAM
+DOOR/FULL
+DOOR/MODB
+DOOR/MODL
+DOOR/SCRI
+DOOR/SNAM
+DOOR/TNAM
+EFSH/DATA
+EFSH/EDID
+EFSH/ICO2
+EFSH/ICON
+ENCH/EDID
+ENCH/EFID
+ENCH/EFIT
+ENCH/ENIT
+ENCH/FULL
+ENCH/SCIT
+EYES/DATA
+EYES/EDID
+EYES/FULL
+EYES/ICON
+FACT/CNAM
+FACT/DATA
+FACT/EDID
+FACT/FNAM
+FACT/FULL
+FACT/INAM
+FACT/MNAM
+FACT/RNAM
+FACT/XNAM
+FLOR/EDID
+FLOR/FULL
+FLOR/MODB
+FLOR/MODL
+FLOR/PFIG
+FLOR/PFPC
+FLOR/SCRI
+FURN/EDID
+FURN/FULL
+FURN/MNAM
+FURN/MODB
+FURN/MODL
+FURN/SCRI
+GLOB/EDID
+GLOB/FLTV
+GLOB/FNAM
+GMST/DATA
+GMST/EDID
+GRAS/DATA
+GRAS/EDID
+GRAS/MODB
+GRAS/MODL
+HAIR/DATA
+HAIR/EDID
+HAIR/FULL
+HAIR/ICON
+HAIR/MODB
+HAIR/MODL
+IDLE/ANAM
+IDLE/CTDA
+IDLE/CTDT
+IDLE/DATA
+IDLE/EDID
+IDLE/MODB
+IDLE/MODL
+INFO/CTDA
+INFO/DATA
+INFO/NAM1
+INFO/NAM2
+INFO/NAME
+INFO/PNAM
+INFO/QSTI
+INFO/SCHR
+INFO/SCRO
+INFO/TCLF
+INFO/TCLT
+INFO/TRDT
+INGR/DATA
+INGR/EDID
+INGR/EFID
+INGR/EFIT
+INGR/ENIT
+INGR/FULL
+INGR/ICON
+INGR/MODB
+INGR/MODL
+INGR/SCIT
+INGR/SCRI
+KEYM/DATA
+KEYM/EDID
+KEYM/FULL
+KEYM/ICON
+KEYM/MODB
+KEYM/MODL
+KEYM/SCRI
+LIGH/DATA
+LIGH/EDID
+LIGH/FNAM
+LIGH/FULL
+LIGH/ICON
+LIGH/MODB
+LIGH/MODL
+LIGH/SCRI
+LIGH/SCRI
+LIGH/SNAM
+LSCR/DESC
+LSCR/EDID
+LSCR/ICON
+LSCR/LNAM
+LTEX/EDID
+LTEX/GNAM
+LTEX/HNAM
+LTEX/ICON
+LTEX/SNAM
+LVLC/EDID
+LVLC/LVLD
+LVLC/LVLF
+LVLC/LVLO
+LVLC/SCRI
+LVLC/SCRI
+LVLC/TNAM
+LVLI/DATA
+LVLI/EDID
+LVLI/LVLD
+LVLI/LVLF
+LVLI/LVLO
+LVSP/EDID
+LVSP/LVLD
+LVSP/LVLF
+LVSP/LVLO
+MGEF/DATA
+MGEF/DESC
+MGEF/EDID
+MGEF/ESCE
+MGEF/FULL
+MGEF/ICON
+MGEF/MODB
+MGEF/MODL
+MISC/DATA
+MISC/EDID
+MISC/FULL
+MISC/ICON
+MISC/MODB
+MISC/MODL
+MISC/SCRI
+NPC_/CNTO
+NPC_/EDID
+NPC_/FULL
+NPC_/KFFZ
+NPC_/MODB
+NPC_/MODL
+NPC_/SCRI
+NPC_/SPLO
+PACK/CTDA
+PACK/CTDT
+PACK/EDID
+PACK/PKDT
+PACK/PLDT
+PACK/PSDT
+PACK/PTDT
+QUST/CNAM
+QUST/CTDA
+QUST/DATA
+QUST/EDID
+QUST/FULL
+QUST/ICON
+QUST/INDX
+QUST/QSDT
+QUST/QSTA
+QUST/SCHR
+QUST/SCRI
+QUST/SCRO
+RACE/ATTR
+RACE/CNAM
+RACE/DATA
+RACE/DESC
+RACE/DNAM
+RACE/EDID
+RACE/ENAM
+RACE/FGGA
+RACE/FGGS
+RACE/FGTS
+RACE/FNAM
+RACE/FULL
+RACE/HNAM
+RACE/ICON
+RACE/INDX
+RACE/MNAM
+RACE/MODB
+RACE/MODL
+RACE/NAM0
+RACE/NAM1
+RACE/PNAM
+RACE/SNAM
+RACE/SPLO
+RACE/UNAM
+RACE/VNAM
+RACE/XNAM
+REFR/DATA
+REFR/EDID
+REFR/FNAM
+REFR/FULL
+REFR/NAME
+REFR/ONAM
+REFR/TNAM
+REFR/XACT
+REFR/XCHG
+REFR/XCNT
+REFR/XESP
+REFR/XGLB
+REFR/XHLT
+REFR/XLCM
+REFR/XLOC
+REFR/XLOD
+REFR/XMRK
+REFR/XOWN
+REFR/XPCI
+REFR/XRNK
+REFR/XRTM
+REFR/XSCL
+REFR/XSED
+REFR/XSOL
+REFR/XTEL
+REFR/XTRG
+REGN/EDID
+REGN/ICON
+REGN/RCLR
+REGN/RDAT
+REGN/RDGS
+REGN/RDMD
+REGN/RDMP
+REGN/RDOT
+REGN/RDSD
+REGN/RDWT
+REGN/RPLD
+REGN/RPLI
+REGN/WNAM
+SBSP/DNAM
+SBSP/EDID
+SCPT/EDID
+SCPT/SCHR
+SCPT/SCRO
+SCPT/SCRV
+SCPT/SCVR
+SCPT/SLSD
+SGST/DATA
+SGST/EDID
+SGST/EFID
+SGST/EFIT
+SGST/FULL
+SGST/ICON
+SGST/MODB
+SGST/MODL
+SGST/SCIT
+SGST/SCRI
+SKIL/ANAM
+SKIL/DATA
+SKIL/DESC
+SKIL/EDID
+SKIL/ENAM
+SKIL/ICON
+SKIL/INDX
+SKIL/JNAM
+SKIL/MNAM
+SLGM/DATA
+SLGM/EDID
+SLGM/FULL
+SLGM/ICON
+SLGM/MODB
+SLGM/MODL
+SLGM/SCRI
+SLGM/SLCP
+SLGM/SOUL
+SOUN/EDID
+SOUN/FNAM
+SOUN/SNDD
+SOUN/SNDX
+SPEL/EDID
+SPEL/EFID
+SPEL/EFIT
+SPEL/FULL
+SPEL/SCIT
+SPEL/SPIT
+STAT/EDID
+STAT/MODB
+STAT/MODL
+TES4/CNAM
+TES4/HEDR
+TES4/MAST
+TES4/SNAM
+TREE/BNAM
+TREE/CNAM
+TREE/EDID
+TREE/ICON
+TREE/MODB
+TREE/MODL
+TREE/SNAM
+WATR/ANAM
+WATR/DATA
+WATR/EDID
+WATR/FNAM
+WATR/GNAM
+WATR/MNAM
+WATR/SNAM
+WATR/TNAM
+WEAP/ANAM
+WEAP/DATA
+WEAP/EDID
+WEAP/ENAM
+WEAP/FULL
+WEAP/ICON
+WEAP/MODB
+WEAP/MODL
+WEAP/SCRI
+WRLD/CNAM
+WRLD/DATA
+WRLD/EDID
+WRLD/FULL
+WRLD/ICON
+WRLD/MNAM
+WRLD/NAM0
+WRLD/NAM2
+WRLD/NAM9
+WRLD/OFST
+WRLD/SNAM
+WRLD/WNAM
+WRLD/XXXX
+WTHR/CNAM
+WTHR/DATA
+WTHR/DNAM
+WTHR/EDID
+WTHR/FNAM
+WTHR/HNAM
+WTHR/MODB
+WTHR/MODL
+WTHR/NAM0
+WTHR/SNAM
+
+

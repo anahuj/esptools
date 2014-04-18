@@ -1,0 +1,8012 @@
+
+
+Condition function:
+GetFriendHit <Actor>
+Both O and F have parameters 0 and 0.
+
+NPC_/DATA
+Health  ubyte? or ushort as in CREA?
+Attack Damage as in CREA??
+ubyte Attr_End
+ubyte Personality  % Attr_Per?
+
+Verify NPC_/ACBS:
+ s = MQ14DremoraMelee1
+ s = Dremora Feydnaz
+|type = ACBS
+|size = 16
+|flags = 290
+|Base_Spell_Pts = 172
+|Fatigue = 187
+|Barter_Gold = 0
+|Level = -4
+|Calc_min = 4
+|Calc_max = 0
+
+Verify CREA/ACBS:
+ s = TG03LlathasaWraith2Gloom
+ s = Llathasa's Spirit
+|type = ACBS
+|size = 16
+|flags = 81ad0
+|Spell_Pts = 6
+|Fatigue = 10
+|Barter_Gold = 0
+|Level = -3
+|Calc_min = 21
+|Calc_max = 0
+
+
+SPEL/SPIT AltarDragonStatue
+SPEL/SPIT 16
+Spell Cost 146784464
+
+ACHR/XRGD / persistent / cell SageGlenHollow
+
+WTHR/SNAM 8
+espparser: multiple 8*N entries in WTHR/SNAM
+but that must be incorrect because SNAM appears multiple times
+with 8 byte data
+
+In espparser:
+block WTHR/SNAM
+import subrecord
+repeat 8
+uint Sound_FormID
+int Sound_Type
+
+Now this:
+block WTHR/SNAM
+import subrecord
+uint Sound_FormID
+int Sound_Type
+
+
+
+These don't have WATR data at all. Try create WATR esp.
+test_watr01.esp
+test_watr02.esp
+
+WATR/DATA 2   CamoranLava
+WATR/DATA 42  Blood / CamoranLava02
+WATR/DATA 62  OblivionOil01
+WATR/DATA 86  SwampWater / MS31Water
+WATR/DATA 102 DungeonWaterBrightFog01 / DefaultUnderwater / DefaultWaterNight / OblivionCitadelLavaPlane / DungeonWater01
+
+WATR/DATA 42
+Wind Velocity 10.000000
+Wind Direction 0.000000
+Wave Amplitude 25.000000
+Wave Frequency 0.500000
+Sun Power 0.000000
+Reflectivity Amount 0.000000
+Fresnel Amount 0.025000
+60
+150
+255 % Color R
+102 % Color G
+102 % Color B
+0
+0
+0
+
+ ---*---
+
+These tweaks are in .lod files, in coordinate floats.
+Show speedtree billboard color tweak constants.
+
+ok
+this is Morrowind CS stuff:
+CONT flags: organic container / blocked / ref blocked
+/media/hugelacie/work/OPEN/esfiles/new11/KEEP/86194705.jpg
+
+CLOT BMDT flags
+
+How to get this window? Try Land Editing window.
+cdrw7/cs/Tut2_img_6.jpg % Land at '<name>' (x,y)
+
+Idle Animations window: right click on the tree entries
+
+REGN objects: right click on the tree entries
+
+CELL window with exteriors, all tabs, force hide land flag
+
+INFO/PNAM Edit multiple INFOs:
+INFO 1
+INFO 2
+INFO 3
+INFO 5 % leave INFO 4 unchanged
+
+ok
+Script Edit window menus
+
+LIGH try remove the sound, nif, and script and check how flags change
+
+ok
+LIGH
+% Have the bit valued 16:
+CheydinhalHangingLight01Orange350
+DEFireCandleFlame
+FireLight02
+firePlace1024
+IDLDarkAmb300
+prisonAmbDark250
+prisonAmbDarkDesat250
+prisonLamp100
+% Don't have:
+CityStreetlightPurple768
+DExteriorCampFire300
+DExteriorCaveFire300wFlame
+LightsIronLampHangingShort500
+
+ok
+GRAS more locations
+GRAS create esp for min slope != 0
+
+ok nothing happens
+FLOR Test the animation button
+
+ok
+Has SOUN/SNDD 8:
+BlockLight
+BlockHeavy
+
+ok
+LVLC Chance None -128
+MQ14ClanfearMedium
+KvatchCastleCreature
+KvatchCountsChamberCreature
+
+ok
+LVLI Chance None -128
+ArenaLeveledGoldGrandRecur
+ArenaLeveledGoldBeatGrand
+Dark07RewardFinery
+
+ok
+LVLI which have DATA:
+MQ15MythicDawnWeaponsHigh
+MQ15MythicDawnWeaponsLow
+
+ok
+LVLI/DATA
+FGC03ThiefArmor % = 1
+MG08RewardStaffFire % no data
+Dark03RewardDagger % = 0
+
+ok
+CLOT for ANAM:
+TG10SpringheelJakBoots
+DBUpperShirt30
+E.g., DARingKhajiiti is enchanting but has no ANAM.
+
+ok
+BOOK Teaches values; list of books
+
+ok but no values changed; when they can be changed?
+WATR create esps for Rain and Sun
+
+ok no need to create esp
+WATR Material ID
+WATR create esps for damage per second
+
+ok
+check IDLE or NPC/dialog for conditions;
+list of condition functions;
+list of function parameters (possibly depends on the function)
+
+ok
+INFO flags in Response Details of dialogue
+
+ok
+REGN NibenayBasinValleySubRegion01 objects
+
+ok but it looks like No Color means Color = (0,0,0) because
+when color was activated the color was blue, not the original
+color.
+REGN General flags, check regions, create esps if necessary
+
+ok but nothing for XRGD there, check all XRGDs
+has ACHR/XRGD:
+CELL SageGlenHollow
+ACHR formid = 455565 / formid = 0x0006f38d
+Base Object FormID: formid = 414119 / formid = 0x000651a7
+Position X 1225.342896
+Position Y -3615.421631
+Position Z 194.210114
+
+ok
+ENCH DBEnAppBloodyBounding15 has two same results
+
+ok partially, enough?
+Examples for strange flags?
+CREA screenshots, all tabs:
+CreatureWolf
+CreatureBoar
+MS18CreatureGoblin1
+CreatureWraith1
+TestIstZombie01
+CreatureGhost
+UndercroftGhost
+And:
+CreatureMehrunesDagon
+TestZombie02
+TestCreatureGoblinSkirmisherhorned
+FGC01Rat
+CreatureRat
+RenaDog01
+
+ok but we solved this already earlier
+NPC TG08MothPriestMaleGuard01
+Skills in NPC_/DATA
+XXXX Athletics 10
+XXXX Hand To Hand 35
+
+ok but path grid?
+CELL
+OblivionRD002CitadelLava for flags (Has Water etc.),
+for music type, and for path grids.
+
+ok they had cage around the oblivion port
+PGRD
+Tamriel / cell 22 10
+Tamriel / cell 5 33
+
+ok shift-alt-button3 worked, what orange means again?
+test orange
+ok but orange was not tested
+Path grids:
+Create esp for MelusPetilusHouse. Select a path grid node,
+press "r", and select an object. That should add a purple cage.
+Create esp for a blue node.
+Orange is created with Alt+Shift.
+
+ok
+screenshot of MGEF DGAT Damage Attribute
+screenshot of MGEF REAN Reanimate etc. See MGEF section.
+create esp for flags 13 20 21
+
+ok
+DOOR automatic door flag
+
+ok
+WATR OblivionOil01
+
+ok
+SOUN more flags
+
+ok
+check more ALCH with SEFF effect
+check SPEL MS40TestSpell for SCIT
+check SPEL AbDiveRockFrostEffect for SCIT
+check ENCH TestPoof for SCIT
+
+ok
+SPEL Mg05FingerSpell20
+
+ok
+more SPEL flags and types
+
+ok
+EFSH with affect skin only flag
+
+ok
+ALCH (Potion)
+MS14PotionTurpentine
+try edit the effects
+
+ok
+CSTY flags, create esp files:
+Melee Alert OK
+Do Not Acquire
+
+ok
+get screenshots of path grids listed in PGRD section;
+check the path grid marks if they can be edited;
+what is the reason for the bit values in PGAG?
+
+ok
+CLMT check the maximum value of the phase length
+
+ok
+RACE dremora and vampire screenshots, all tabs
+
+ok
+make esp files
+RACE/Tabs/General Data:
+Male Voice Race
+Female Voice Race
+
+ok
+check cell MelusPetilusHouse for path grids
+
+ok
+Climate
+Write esp files for moon flags and moon phase.
+
+precheck all suitable refs and their location cells
+REFR take shots of every additional tabs (ok: lock, teleport)
+
+no, we used face gen application instead
+facegen esp and screenshots;
+start always from what is in Oblivion.esm;
+multiple esp files per parameter;
+take shots of all parameters when one is changed;
+start from unchanged version;
+change one parameter, 55 shots, change the same parameter, 55 shots
+55*110 = 6050 shots
+
+ok
+NPC Dhola or Denel / create esp for every face parameter
+
+ok
+more CELL lighting screenshots
+
+ok
+REFR locked door editing, see down
+check also the two arrows; does arrow.nif contain the quiver?
+move the arrow and the set of arrows
+check their references if they match
+
+ok
+create test esp files for region general tabs
+
+ok
+more weather types
+
+ok
+IDLE anim types
+IDLE / LoiterIdles
+
+ok
+WTHR sound
+
+ok
+MGEF
+
+ok
+REGN JerallV..03
+
+ok
+REGN special shots only partially
+
+ok
+GRAS
+BWCattail03
+GroundCoverMediumGrass02
+OblivionBurntgrass01
+UnderWaterSeaWeed01
+WWSageGrassPurple01
+
+ok
+FLOR
+write mods for season production
+
+ok
+NPC
+more ACBS flags as they differ from CREA;
+Can Corpse Check, Essential, Respawn, No Low Lev Proc
+
+ok
+ARMO
+write mods for carry locations
+
+ok
+CREA
+Essential, Respawn, No Combat in Water, Animation flags with Movement on,
+No Right Arm, No Shadow, No Left Arm
+
+ok
+NPC
+Further flags for AIDT and ACBS
+
+
+ok
+Change the capture filename format 22082008 --> 20080822
+
+more CREA examples:
+-list of creatures; collapse non-flags so that all fits to one screenshot
+-flag pages
+-AI pages
+
+CREA and NPC_ shares inventory etc. tabs and AI window;
+check if they really match at the file level:
+CNTO AIDT
+DATA partially
+
+LVLO 8:
+TesKvatchCreature / LVLC
+OblivionContainerArmor02 / LVLI
+OblivionContainerArmor01 / LVLI
+
+INGR/EFIT examples
+INGR/SCIT Dark10Apple
+
+CLOT/BMDT
+ARMO/BMDT
+
+AMMO flags
+
+CREA/AIDT flags
+NPC_/AIDT
+
+NPC Barter Gold
+
+NPC face and advanced face tabs
+
+NPC/DATA Alchemy | Armorer | Blunt | Conjuration | Destruction etc.
+
+WEAP more types; list of weapons ok
+ENCH more types
+ENCH check details of DASanguineRoseENCH for flags
+
+CSTY more examples as listed in CSTY section
+
+LTEX/need more material types
+LTEX/verify friction/restitution order
+
+
+============================================================================
+============================================================================
+============================================================================
+============================================================================
+
+ACHR
+
+capture_20080911_191537.png % FjotreidRef
+capture_20081004_183028.png % XRGD
+
+only XMRC, we already have that in FjotreidRef
+CELL LeyawiinFiveClawsLodge
+WitseidutseiREF
+ACHR/NAME 4
+Base Object FormID 182488
+ACHR/XMRC 4
+228400 % Merchant's Container FormID % FiveClawsWitseidutseiChest
+
+has ACHR/XRGD:
+CELL SageGlenHollow
+ACHR formid = 455565 / formid = 0x0006f38d
+Base Object FormID: formid = 414119 / formid = 0x000651a7
+ACHR/DATA 24
+Position X 1225.342896
+Position Y -3615.421631
+Position Z 194.210114
+
+
+XRGD = R* GriD?
+ACHR/XRGD 504
+tail --bytes +10379576 Oblivion.esm |head --bytes 504|hexdump -f ~/src/hexdumpformat |more
+
+All except first could be floats.
+But the first byte of 28 bytes chunk behaves well as a small integer.
+We keep the 4xbyte 6xfloat choice.
+
+0.00000000000000000000000000000000000000000000280259692865
+0.00000000000000000000000000000000000000000000000000000000
+0.00000000000000000000000000000000000000000000000000000000
+0.00000000000000000000000000000000000000000000000000000000
+-1.70998501777648925781250000000000000000000000000000000000
+0.42501524090766906738281250000000000000000000000000000000
+0.20747604966163635253906250000000000000000000000000000000
+0.58186352252960205078125000000000000000000000000000000000
+6.97998046875000000000000000000000000000000000000000000000
+0.01782226562500000000000000000000000000000000000000000000
+-0.24639892578125000000000000000000000000000000000000000000
+-0.00102448544930666685104370117187500000000000000000000000
+-0.04011208191514015197753906250000000000000000000000000000
+-0.06570868939161300659179687500000000000000000000000000000
+-0.11721422523260116577148437500000000000000000000000000000
+8.90332031250000000000000000000000000000000000000000000000
+-0.00463867187500000000000000000000000000000000000000000000
+0.02575683593750000000000000000000000000000000000000000000
+0.11536318808794021606445312500000000000000000000000000000
+
+============================================================================
+
+ACRE
+
+ACRE/XRGD 476
+2
+0
+0
+0
+0.000000 % Position?
+0.000000
+0.000000
+-1.607565 % Rotation?
+-0.509183
+-1.730439
+2
+0
+0
+0
+9.429932
+-1.361877
+-0.043945
+0.004215
+-0.010780
+0.700617
+
+
+============================================================================
+
+ok
+ACTI
+
+capture_22082008_140305.png
+
+Dangerous flag is in the record header.
+
+============================================================================
+
+ok
+ALCH (Potion)
+
+capture_22082008_133243.png
+capture_20080928_191041.png % effect items
+
+EFIT/SCIT needs checking.
+
+ENIT records of ALCH, INGR, and ENCH differs.
+ENCH/ENIT 16
+ALCH/ENIT 8
+INGR/ENIT 8
+
+FGD08HistSap01 % capture_22082008_133339.png
+The SCIT is related to the effect name.
+Does SEFF effect require SCIT?
+
+
+MS14PotionTurpentine
+ALCH/EFIT 24
+SEFF
+Magnitude 0
+Area 0
+Duration 0
+Range 0 % 0 Self 1 Touch
+8 % Poison????
+
+ALCH/SCIT 16
+1621339
+2 % ???? type?
+1195657542 % "FIDG"
+0000,0000,0101,0101,0101,1001,0000,0001
+                                      ^Poison????
+
+
+This has two FULLs.
+And SCIT with 79 c0  0  1. Mask-out the last byte and check
+if this is a FormID.
+
+tail --bytes +2793209 Oblivion.esm |hexdump -f ~/src/hexdumpformat |more
+000000    0 53 50 45 4c 81  0  0  0  0  0  0   .SPEL.......
+000012    0 2b 81  9  0 11 1d 20  0 45 44 49   .+..... .EDI
+000024   44  e  0 4d 53 34 30 54 65 73 74 53   D..MS40TestS
+000036   70 65 6c 6c  0 46 55 4c 4c  b  0 54   pell.FULL..T
+000048   65 73 74 20 53 70 65 6c 6c  0 53 50   est Spell.SP
+000060   49 54 10  0  0  0  0  0  0  0  0  0   IT..........
+000072    0  0  0  0  0 64 20 6c 45 46 49 44   .....d lEFID
+000084    4  0 53 45 46 46 45 46 49 54 18  0   ..SEFFEFIT..
+000096   53 45 46 46  0  0  0  0  0  0  0  0   SEFF........
+000108    1  0  0  0  0  0  0  0  8  0  0  0   ............
+000120   53 43 49 54  4  0 79 c0  0  1 46 55   SCIT..y...FU
+000132   4c 4c  e  0 53 63 72 69 70 74 20 45   LL..Script E
+000144   66 66 65 63 74  0 53 50 45 4c 68  0   ffect.SPELh.
+
+
+Magic School:
+0 Alteration
+2 Destruction
+
+Visual effect points to MGEF's.
+
+Effect Item dialog:
+When range is self, area field is not active.
+When duration is 0, magnitude is not active. Not true. But why
+magnitude was not active?
+MGEF/DATA no duration, no magnitude, no area flags
+
+But see capture_20080928_191826.png for Effect Item having
+Area greyed-out but DGAT having no "No Area" set.
+That must be the first rule above: range == self --> area inactive
+
+How poisoneous is calculated?
+Poison/Yes ?= Effect is Hostile % what if there is no SCIT?
+
+Potion Value in the file (225) differs from the displayed
+greyed-out value (816).
+The value 816 is the cost of the only effect this potion has.
+
+============================================================================
+
+ok?
+AMMO
+
+capture_22082008_130326.png
+
+grep -A 300 -B 12 '^Arrow1Iron$' p1|more
+grep -A 300 -B 12 '^Arrow2Steel$' p1|more
+grep -A 300 -B 12 '^Arrow3Silver$' p1|more
+grep -A 300 -B 12 '^EncArrow2SteelDemCreature$' p1|more
+grep -A 300 -B 12 '^TG11ArrowExtrication$' p1|more
+
+Chunk name 0: AMMO 1 7514863
+flags 1 = 0000,0000,0000,0000,0000,0000,0000,0000
+formid = 96297
+flags 2 = 0000,0000,0000,0010,0010,0011,0001,0111
+Chunk name: EDID
+AMMO/EDID 11
+Arrow1Iron
+Chunk name: FULL
+AMMO/FULL 11
+Iron Arrow
+Chunk name: MODL
+AMMO/MODL 23
+Weapons\Iron\Arrow.NIF
+Chunk name: MODB
+AMMO/MODB 4
+23.287115 % in the ammo list this is "size"
+Chunk name: MODT
+AMMO/MODT 24
+Chunk name: ICON
+AMMO/ICON 22
+Weapons\IronArrow.dds
+Chunk name: DATA
+AMMO/DATA 18
+1.000000 % Speed
+0000,0000,0000,0000,0000,0000,0000,0000
+1 % Value
+0.100000 % Weight
+8 % Damage
+End of AMMO
+
+
+Enchanting: NONE % ENAM -- form id
+Enchantment: 0   % ANAM -- not in file if enchanting is NONE
+Ignores Normal Weapon Resistance: -
+Quest Item: -
+
+Flags:
+0000,0000,0000,0000,0000,0000,0000,0001
+                                      ^Ignores Normal Weapon Resistance
+
+Quest Item flag is in the record header:
+flags 1 = 0000,0000,0000,0000,0000,0100,0000,0000
+                                    ^Quest Item
+formid = 142773
+flags 2 = 0000,0000,0000,0010,0010,0011,0001,0111
+
+============================================================================
+
+ok
+ANIO
+
+capture_22082008_134000.png
+
+grep -A 300 -B 12 '^alchemyBottle$' p2|more
+
+Chunk name 0: ANIO 1 247361183
+flags 1 = 0000,0000,0000,0000,0000,0000,0000,0000
+formid = 41730
+flags 2 = 0000,0000,0001,1100,0010,0011,0001,1110
+Chunk name: EDID
+ANIO/EDID 14
+alchemyBottle
+Chunk name: MODL
+ANIO/MODL 30
+IdleObjects\alchemyBottle.NIF
+Chunk name: MODB
+ANIO/MODB 4
+0.000000 % XXXX why is this 0.0?
+Chunk name: DATA
+ANIO/DATA 4
+398611 % formid to IDLE
+End of ANIO
+
+XXXX The editor shows selectors for
+  Characters\_Male\IdleAnims
+and for
+  MakePotion
+Would the change of one of them change the formid as well?
+
+============================================================================
+
+ok
+APPA
+
+capture_22082008_130501.png
+
+grep -A 300 -B 12 '^Alembic$' p1|more
+grep -A 300 -B 12 '^Calcinator$' p1|more
+grep -A 300 -B 12 '^CGMortarPestle$' p1|more
+grep -A 300 -B 12 '^Retort$' p1|more
+
+APPA/EDID 8
+Alembic
+APPA/DATA 13
+1 % Type?
+50 % Value
+7.000000 % Weight
+10.000000 % Quality % XXXX editor's appa list has quality 0.00 -- check!
+
+Type:
+0 = Mortar/Pestle
+1 = Alembic
+2 = Calcinator
+3 = Retort
+
+APPA/SCRI 4
+817510 % Script
+
+
+============================================================================
+
+nearly ok
+ARMO
+
+capture_21082008_231229.png
+capture_22082008_130620.png
+capture_20080825_233506.png
+
+Todo:
+ANAM where?
+
+
+grep -A 300 -B 12 '^ArenaBladesHelmet$' p1|more
+  590  grep -A 300 -B 12 '^ArenaBladesHelmet$' p1|more
+  591  grep -A 300 -B 12 '^formid = 620473$' p1|more
+  592  grep -A 300 -B 12 '^ArenaBladesShield$' p1|more
+  593  grep -A 300 -B 12 '^ArenaChainmailHelmet$' p1|more
+  594  grep -A 300 -B 12 '^formid = 620473$' p1|more
+  595  grep -A 300 -B 12 '^ArenaChainmailHelmet$' p1|more
+  596  grep -A 300 -B 12 '^ArenaBladesShield$' p1|more
+  597  grep -A 300 -B 12 '^ArenaBladesHelmet$' p1|more
+  598  grep -A 300 -B 12 '^ArenaChainmailHelmet$' p1|more
+  599  grep -A 300 -B 12 '^ArenaRaimentHeavy$' p1|more
+  600  grep -A 300 -B 12 '^formid = 344129$' p1|more
+  601  grep -A 300 -B 12 '^ArenaRaimentHeavy$' p1|more
+  602  grep -A 300 -B 12 '^BladesBootsCG$' p1|more
+  603  grep -A 300 -B 12 '^BoundCuirass$' p1|more
+  604  grep -A 300 -B 12 '^BoundGauntlets$' p1|more
+  605  grep -A 300 -B 12 '^BoundGreaves$' p1|more
+  606  grep -A 300 -B 12 '^DAClavicusMasque$' p1|more
+  607  grep -A 300 -B 12 '^Dremora6ValkynazRobe$' p1|more
+
+Chunk name 0: ARMO 1 3019634
+flags 1 = 0000,0000,0000,0000,0000,0000,0000,0000
+formid = 473302
+flags 2 = 0000,0000,0000,0010,0010,0011,0001,0111
+Chunk name: EDID
+ARMO/EDID 18
+ArenaBladesHelmet
+Chunk name: FULL
+ARMO/FULL 14
+Blades Helmet
+Chunk name: SCRI
+ARMO/SCRI 4
+620473 % Script FormID
+Chunk name: BMDT
+ARMO/BMDT 4 % Biped Model Data % XXXX changed to uint (flags)
+2
+0
+128
+0
+Chunk name: MODL
+ARMO/MODL 26
+Armor\Blades\M\Helmet.NIF % Male
+Chunk name: MODB
+ARMO/MODB 4
+13.147620
+Chunk name: MODT
+ARMO/MODT 24
+Chunk name: MOD2
+ARMO/MOD2 30
+Armor\Blades\M\Helmet_gnd.NIF % Male
+Chunk name: MO2B
+ARMO/MO2B 4
+13.147620
+Chunk name: MO2T
+ARMO/MO2T 24
+Chunk name: ICON
+ARMO/ICON 23
+Armor\Blade\Helmet.dds
+Chunk name: DATA
+ARMO/DATA 14
+400 % Rating (in armo list) this_value = 100*AR -- AR = this_value/100.0
+0 % Value
+500 % Health
+7.000000 % Weight
+End of ARMO
+
+Where?
+Heavy selector % in BMDT flags % ok
+Enchanting FormID % ENAM
+
+Flags:
+Playable % ok
+Hide Amulet % ok
+Hide Rings % ok
+
+% Hair / Male
+ARMO/BMDT 4
+2
+0
+128
+0
+% Shield / Male
+ARMO/BMDT 4
+0
+32
+128
+0
+% Hair / Male and Female
+ARMO/BMDT 4
+2
+0
+0
+90
+% UpperBody|LowerBody|Hand|Foot
+ARMO/BMDT 4
+60 = 32 + 16 + 8 + 4 % Flags
+0
+130
+0
+% Foot
+ARMO/BMDT 4
+32
+0
+192
+0
+
+See BMDT flag section for updated version.
+0000,0000,0000,0000,0000,0000,0000,0000
+                                      ^Head
+                                     ^Hair
+                                    ^UpperBody
+                                   ^LowerBody
+                                 ^Hand
+                                ^Foot
+                      ^Shield?
+                  ^Hide Rings
+                 ^Hide Amulet
+           ^~Playable
+          ^Heavy
+
+ARMO/ANAM
+
+============================================================================
+
+ok
+BOOK
+
+capture_22082008_131255.png
+capture_20081004_150921.png % list of books for teaches values
+
+Name
+Script
+
+Teaches % same as Training in Creature % all verified
+-1 NONE
+ 0 Armorer
+ 1 Athletics
+ 2 Blade
+ 3 Block
+ 4 Blunt
+ 5 Hand To Hand
+ 6 Heavy Armor
+ 7 Alchemy
+ 8 Alteration
+ 9 Conjuration
+10 Destruction
+11 Illusion
+12 Mysticism
+13 Restoration
+14 Acrobatics
+15 Light Armor
+16 Marksman
+17 Mercantile
+18 Security
+19 Sneak
+20 Speechcraft
+
+Weight
+Value
+
+Model
+Icon
+
+Flags:
+Scroll
+Can't be Taken
+
+Book Text
+
+Enchanting
+Enchantment
+
+BOOK/DATA 10
+0
+-1 % Teaches % -1 NONE
+1        % Value
+1.000000 % Weight
+BOOK/DATA 10
+1 % Flags: 1 Scroll
+-1
+1
+1.000000
+
+
+============================================================================
+
+ok
+BSGN
+
+capture_22082008_155254.png
+
+============================================================================
+
+CELL
+
+capture_22082008_152255.png
+capture_22082008_143710.png % AnvilBay row in the CELL window
+capture_22082008_145431.png % AnvilBay subspace
+capture_22082008_145635.png % AnvilBay subspace
+capture_22082008_145729.png % AnvilBay Cell Window tabs
+capture_20080911_013725.png
+capture_20080916_022034.png
+capture_20081004_184822.png
+
+
+Force Hide Land flag?
+
+
+AnvilAbandonedHouse % capture 20080822  431/990
+
+Chunk name 0: CELL 3 25353738
+flags 1 = 0000,0000,0000,0000,0000,0000,0000,0000
+formid = 198847
+flags 2 = 0000,0000,0100,0110,0010,0001,0000,0010
+Chunk name: EDID
+CELL/EDID 20
+AnvilAbandonedHouse
+Chunk name: FULL
+CELL/FULL 16
+Abandoned House
+Chunk name: DATA
+CELL/DATA 1
+33
+Chunk name: XCLL
+CELL/XCLL 36
+Chunk name: XOWN
+CELL/XOWN 4
+41637
+Chunk name: XCMT
+CELL/XCMT 1
+1
+End of CELL
+
+AnvilBay % capture_20080822_145729 470/990
+
+Chunk name 0: CELL 4 149909814
+flags 1 = 0000,0000,0000,0000,0000,0000,0000,0000
+formid = 44071 / formid = 0x0000ac27
+flags 2 = 0000,0000,0000,1110,0010,0101,0000,1001
+Chunk name: EDID
+CELL/EDID 9
+AnvilBay
+Chunk name: DATA
+CELL/DATA 1
+0100,0010
+Chunk name: XCLC
+CELL/XCLC 8
+-48
+-9
+Chunk name: XCLR
+CELL/XCLR 8
+553698
+454447
+End of CELL
+
+
+CELL/DATA 1 % 1 2 3 4 5 6 7 8 9
+0100,0010
+1010,0001
+0000,0011
+0010,0001 %   1         - 7 - -
+0000,0001 %             - - - -
+0010,0001 %             - 7 - -
+1010,0001
+        ^Can't Travel From Here
+       ^Has Water
+      ^???? it is used in Oblivion.esm
+     ^Oblivion Interior
+  ^Public Area
+ ^Hand Changed
+^Behave Like Exterior
+
+1 Can't Travel From Here
+2 Has Water
+3 Force Hide Land
+4 Hand Changed
+5 Behave Like Exterior
+6 Oblivion Interior
+7 Public Area
+8 Off Limits % in the header flags
+9 Can't Wait % in the header flags
+
+Exterior cells have water, and the switch has been disabled.
+
+Defaults for music (Default), water level (0.0), water type (DefaultWater)
+are not stored as subrecords.
+
+
+============================================================================
+
+ok
+CLAS
+
+capture_22082008_154809.png
+
+Full Name
+Primary Attributes 1
+Primary Attributes 2
+Specialization
+Major Skills 1
+Major Skills 2
+Major Skills 3
+Major Skills 4
+Major Skills 5
+Major Skills 6
+Major Skills 7
+Auto-Calc Buys / Sells
+Weapons
+Armor
+Books
+Clothing
+Ingredients
+Lights
+Apparatus
+Miscellaneous
+Spells
+Magic Items
+Potions
+
+Auto-Calc Other
+Recharge
+Repair
+Training
+Training Type
+Training Value
+
+Playable % flag
+Guard % flag
+
+Description
+
+Menu Image
+
+ -*-
+
+Primary Attributes:
+0 Strength
+1 Intelligence
+2 Willpower
+3 Agility
+4 Speed
+5 Endurance
+6 Personality
+7 Luck
+
+0 Strength 1 Intelligence 2 Willpower 3 Agility 4 Speed 5 Endurance 6 Personality 7 Luck
+
+Specialization:
+0 Combat
+1 Magic
+2 Stealth
+
+0 Combat 1 Magic 2 Stealth
+
+Major Skills:
+26 Acrobatics
+19 Alchemy
+20 Alteration
+12 Armorer
+13 Athletics
+14 Blade
+15 Block
+16 Blunt
+21 Conjuration
+22 Destruction
+17 Hand To Hand
+18 Heavy Armor
+23 Illusion
+27 Light Armor
+28 Marksman
+29 Mercantile
+24 Mysticism
+25 Restoration
+30 Security
+31 Sneak
+32 Speechcraft
+
+12 Armorer
+13 Athletics
+14 Blade
+15 Block
+16 Blunt
+17 Hand To Hand
+18 Heavy Armor
+19 Alchemy
+20 Alteration
+21 Conjuration
+22 Destruction
+23 Illusion
+24 Mysticism
+25 Restoration
+26 Acrobatics
+27 Light Armor
+28 Marksman
+29 Mercantile
+30 Security
+31 Sneak
+32 Speechcraft
+
+12 Armorer 13 Athletics 14 Blade 15 Block 16 Blunt 17 Hand To Hand 18 Heavy Armor 19 Alchemy 20 Alteration 21 Conjuration 22 Destruction 23 Illusion 24 Mysticism 25 Restoration 26 Acrobatics 27 Light Armor 28 Marksman 29 Mercantile 30 Security 31 Sneak 32 Speechcraft
+
+First flags:
+0000,0000,0000,0000,0000,0000,0000,0000
+                                      ^Playable
+                                     ^Guard
+
+Second flags:
+0000,0000,0000,0000,0000,0000,0000,0000
+                                      ^Weapons
+                                     ^Armor
+                                    ^Clothing
+                                   ^Books
+                                 ^Ingredients
+                              ^Lights
+                            ^Apparatus
+                          ^Miscellaneous
+                         ^Spells
+                       ^Magic Items
+                      ^Potions
+                     ^Training
+                  ^Recharge
+                 ^Repair
+
+Training Types:
+
+0 Armorer
+1 Athletics
+2 Blade
+3 Block
+4 Blunt
+5 Hand To Hand
+6 Heavy Armor
+7 Alchemy
+8 Alteration
+9 Conjuration
+10 Destruction
+11 Illusion
+12 Mysticism
+13 Restoration
+14 Acrobatics
+15 Light Armor
+16 Marksman
+17 Mercantile
+18 Security
+19 Sneak
+20 Speechcraft
+
+0 Armorer 1 Athletics 2 Blade 3 Block 4 Blunt 5 Hand To Hand 6 Heavy Armor 7 Alchemy 8 Alteration 9 Conjuration 10 Destruction 11 Illusion 12 Mysticism 13 Restoration 14 Acrobatics 15 Light Armor 16 Marksman 17 Mercantile 18 Security 19 Sneak 20 Speechcraft
+
+============================================================================
+
+ok
+CLMT
+
+capture_22082008_151847.png
+capture_20080916_033740.png
+capture_20080922_234451.png % moons
+capture_20080928_195500.png
+
+CLMT/TNAM 6
+36 % Sunrise Begin
+60 % Sunrise End
+96 % Sunset Begin
+120 % Sunset End
+0 % Volatility
+195 % Moon flags (bits 128 and 64) and Phase Length (bits 32,16,8,4,2,1)
+
+In the time, one step is 10 minutes.
+24 is 4 hours.
+36 is 6 hours.
+
+dec2bin(195)
+ans = 11000011
+            ^^3 ?= phase in days
+      ^^Moon flags (Masser, Secunda)
+
+Complete Moon Cycle = 24 but how it is computed? 8*phase
+
+CamoranClimate
+CLMT/TNAM 6
+0 (00:00)
+36 (06:00)
+71 (11:50)
+112 (18:40)
+0
+3 % Moon flags are off
+
+
+tescstest_clmt20080922/
+
+test_clmt01.esp % Masser = 0 Secunda = 1 Phase Length = 23 Moon Cycle = 184
+01010111 % dec2bin(87)
+test_clmt02.esp % Masser = 1 Secunda = 0 Phase Length = 31 Moon Cycle = 248
+10011111 % dec2bin(159)
+  ^^^^^^Phase Length % What is the maximum value? Max is 63.
+ ^Secunda
+^Masser
+
+87-64 = 23
+159-128 = 31
+
+============================================================================
+
+CLOT
+
+capture_22082008_131452.png
+capture_20080825_233844.png
+capture_20081004_150414.png % ANAM
+
+Todo:
+Where the ANAM value comes from?
+CLOT/BMDT flags may differ from ARMO/BMDT flags. Check.
+
+
+CLOT for ANAM:
+TG10SpringheelJakBoots
+DBUpperShirt30
+E.g., DARingKhajiiti is enchanting but has no ANAM.
+
+grep -A 300 -B 12 '^ArchMageHood$' p1|more
+grep -A 300 -B 12 '^UpperShoes04$' p1|more
+
+Chunk name 0: CLOT 1 5206417
+flags 1 = 0000,0000,0000,0000,0000,0000,0000,0000
+formid = 413664
+flags 2 = 0000,0000,0000,0010,0010,0011,0001,0111
+Chunk name: EDID
+CLOT/EDID 13
+ArchMageHood
+Chunk name: FULL
+CLOT/FULL 17
+Arch-Mage's Hood
+Chunk name: BMDT
+CLOT/BMDT 4
+2
+0
+0
+65
+Chunk name: MODL
+CLOT/MODL 30
+Clothes\RobeMageArch\Hood.NIF
+Chunk name: MODB
+CLOT/MODB 4
+17.543026
+Chunk name: MODT
+CLOT/MODT 24
+Chunk name: MOD2
+CLOT/MOD2 34
+Clothes\RobeMageArch\hood_gnd.NIF
+Chunk name: MO2B
+CLOT/MO2B 4
+17.543026
+Chunk name: MO2T
+CLOT/MO2T 24
+Chunk name: ICON
+CLOT/ICON 30
+Clothes\RobeMageArch\hood.dds
+Chunk name: DATA
+CLOT/DATA 8
+0 % Value
+1.000000 % Weight
+End of CLOT
+
+
+
+
+============================================================================
+
+ok
+CONT
+
+capture_22082008_140444.png
+
+cat p1 | grep -A 70 -B 10 "^AgnarandSvenjaSack" | more
+cat p1 | grep -A 70 -B 10 "^AnvilBloodworksChest" | more
+
+CONT/DATA 5
+0000,0010
+       ^Respawns
+Weight 0.000000
+
+How to compute Encumbrance?
+
+============================================================================
+
+ok
+CREA
+
+capture_22082008_122226.png
+capture_20080825_215509.png
+capture_20080825_220622.png % AI Dialog
+capture_20080825_230012.png
+
+
+CREA/NIFT % does this exists at all?
+
+
+CREA/ACBS and NPC_/ACBS flags differ
+
+check ACBS flag:
+0000,0000,0000,0000,0000,0011,0101,0000 % CreatureWolf
+0000,0000,0000,0000,0000,0011,0100,1000 % CreatureBoar
+0000,0000,0000,0000,0000,0011,0101,0100 % MS18CreatureGoblin1
+0000,0000,0000,1000,0001,1011,0101,0000 % CreatureWraith1
+0000,0000,0000,0000,0000,0011,0100,0000 % TestIstZombie01
+0000,0000,0000,1000,0001,1011,1101,0000 % CreatureGhost
+0000,0000,0000,1000,0001,1010,1101,0000 % UndercroftGhost
+                            ^unknown
+
+check ACBS flag:
+0000,0000,0000,0000,0000,0111,0100,0000 % CreatureMehrunesDagon
+0000,0000,0000,0000,0000,0110,0100,0000 % TestZombie02
+0000,0000,0000,0000,0000,0110,0101,0100 % TestCreatureGoblinSkirmisherhorned
+0000,0000,0000,0000,0000,0100,0101,0000 % FGC01Rat
+0000,0000,0000,0000,0000,0111,0101,1000 % CreatureRat
+0000,0000,0000,0000,0000,0000,0101,0000 % RenaDog01
+                          ^unknown
+Others are rats.
+
+
+tescstest_crea20080903/ has more flag tests
+CREA/ACBS 16
+0000,0000,0000,0000,0000,0000,0111,0000 % original
+0000,0000,0000,0000,0000,0000,0111,0010 % Essential
+0000,0000,0000,0000,0000,0000,0111,1000 % Respawn
+0000,0000,0000,0000,1000,0000,0111,0000 % No Head
+0000,0000,0000,0010,0000,0000,0111,0000 % No Left Arm
+0000,0000,0000,0001,0000,0000,0111,0000 % No Right Arm
+0000,0000,0001,0000,0000,0010,0111,0000 % No Low Lev Proc
+0000,0000,0001,0100,0000,0000,0111,0000 % No Combat in Water
+0000,0000,0001,1000,0000,0000,0111,0000 % No Shadow
+0000,0000,0001,0000,0000,0000,0111,0000
+0000,0000,0001,0000,0000,0000,0111,0000
+0000,0000,0001,0000,0000,0000,0111,0000
+0000,0000,0001,0000,0000,0000,0111,0000
+0000,0000,0001,0000,0000,0000,0111,0000
+0000,0000,0001,0000,0000,0000,0111,0000
+0000,0000,0001,0000,0000,0000,0111,0000
+0000,0000,0001,0000,0000,0000,0111,0000
+             ^~Can Corpse Check
+
+tescstest_crea20080901/ has an extensive flag testing collection
+of screenshots and esp files.
+CREA/ACBS 16
+0000,0000,0000,0000,0000,0000,0111,0000 % original
+0000,0000,0001,0000,0000,0000,0010,0000 % Flies
+0000,0000,0001,0000,0000,0000,0000,0001 % Biped
+0000,0000,0001,0000,0000,0000,0100,0000 % Walks
+0000,0000,0001,0000,0000,0000,0001,0000 % Swims
+0000,0000,0001,0000,0000,0000,0000,0000 % None
+0000,0000,0000,0000,0000,0000,0000,0000 % Can Corpse Check
+0000,0000,0000,1001,0000,0000,0000,0000 % No Right Arm, Can Corpse, No shadow
+0000,0000,0000,1011,1000,0010,0000,0000 % +No Head, No Left Arm, No Low Lev Pro
+0000,0000,0000,1011,1000,0010,0000,0100 % Weapon & Shield
+0000,0000,0000,1011,1000,0010,1000,0100 % PC Level Offset
+0000,0000,0000,1011,1000,0010,0000,0100 % animation flag did not work, No Move
+0000,0000,0000,1011,1000,1010,0000,0100 % Blood Spray
+0000,0000,0000,1011,1001,1010,0000,0100 % Blood Decal
+0000,0000,0000,1011,1000,0010,0100,0100 % Walks
+
+tescstest_crea20080901/
+CREA/AIDT flags
+0000,0000,0000,0000,0000,0000,0000,0001 % Weapons
+0000,0000,0000,0000,0000,0000,0000,0011 % Armor
+0000,0000,0000,0000,0000,0000,0000,1011 % Books
+0000,0000,0000,0000,0000,0000,0000,1111 % Clothing
+0000,0000,0000,0000,0000,0000,0001,1111 % Ingredients
+0000,0000,0000,0000,0000,0000,1001,1111 % Lights
+0000,0000,0000,0000,0000,0001,1001,1111 % Apparatus
+0000,0000,0000,0000,0000,0101,1001,1111 % Miscellaneous
+0000,0000,0000,0000,0000,1101,1001,1111 % Spells
+0000,0000,0000,0000,0001,1101,1001,1111 % Magic Items
+0000,0000,0000,0000,0011,1101,1001,1111 % Potions
+0000,0000,0000,0001,0011,1101,1001,1111 % Recharge
+0000,0000,0000,0011,0011,1101,1001,1111 % Repair
+0000,0000,0000,0011,0111,1101,1001,1111 % Training
+                                      ^Weapons
+                                     ^Armor
+                                    ^Clothing
+                                   ^Books
+                                 ^Ingredients
+                                ^?
+                               ^?
+                              ^Lights
+                            ^Apparatus
+                           ^?
+                          ^Miscellaneous
+                         ^Spells
+                       ^Magic Items
+                      ^Potions
+                     ^Training
+                    ^?
+                  ^Recharge
+                 ^Repair
+
+CREA/ACBS 16
+0000,0000,0000,1011,1000,0010,0100,0100
+Spell Pts 20
+Fatigue 70
+321 % Barter Gold
+Level 1
+Calc min 1
+Calc max 3
+
+CREA/AIDT
+AI Attr/Responsibility 0
+0000,0000,0000,0011,0111,1101,1001,1111
+12 % Training Type
+68 % Training Value
+0
+
+Training Types (SkillName):
+ 0 Armorer
+ 1 Athletics
+ 2 Blade
+ 3 Block
+ 4 Blunt
+ 5 Hand To Hand
+ 6 Heavy Armor
+ 7 Alchemy
+ 8 Alteration
+ 9 Conjuration
+10 Destruction
+11 Illusion
+12 Mysticism
+13 Restoration
+14 Acrobatics
+15 Light Armor
+16 Marksman
+17 Mercantile
+18 Security
+19 Sneak
+20 Speechcraft
+
+Creature Types:
+0 Creature
+1 Daedra
+2 Undead
+3 Humanoid
+4 Horse
+5 Giant
+
+Soul types:
+0 None
+1 Petty
+2 Lesser
+3 Common
+4 Greater
+5 Grand
+
+
+How list of creatures in "inherit sounds from" is created?
+All creatures which have sounds?
+screenshots20080826/
+
+List of available hair types may vary between races.
+How this list is created?
+screenshots20080826/
+
+
+
+CREA flags:
+
+1. grep -A 300 -B 12 '^DeadLoverFortNikel$' p1|more
+2. grep -A 300 -B 12 '^CGGoblinBerserkerPATROL01$' p1|more
+3. grep -A 300 -B 12 '^AnvilMGPetImp$' p1|more
+4. grep -A 300 -B 12 '^ArenaBoar$' p1|more
+5. grep -A 300 -B 12 '^BlackWoodCompanyDog$' p1|more
+6. grep -A 300 -B 12 '^CreatureBoar$' p1|more
+
+                           1      2      3
+
+Level                      1      1      1
+
+Weapon & Shield            -      x      -
+PC Level Offset            -      -      -
+
+Death Item                 NONE   NONE   NONE
+
+Flies                      -      -      x
+Biped                      -      -      -
+Walks                      x      x      x
+Swims                      -      -      x
+None                       -      -      -
+
+Quest Item                 x      -      -  % DATA0?
+Essential                  -      -      -
+Respawn                    -      -      -
+No Head                    x      -      -  % DATA0?
+No left Arm                x      -      -  % DATA0?
+No Right Arm               -      -      -
+No low level processing    x      x      -
+No Combat in Water         -      -      -
+Can Corpse Check           -      x      x  % DATA0?
+
+No shadow                  -      -      -
+
+*Soul                       Lesser Petty  Lesser
+
+CREA/ACBS
+0000,0000,0001,0010,1000,0010,0100,0000 % 1
+0000,0000,0000,0000,0000,0010,0100,0100
+0000,0000,0000,0000,0000,0000,0111,0000
+0000,0000,0000,0000,0000,0010,0100,0010
+0000,0000,0000,0000,0000,0010,0101,0000
+0000,0000,0000,0000,0000,0011,0100,1000 % 6
+                                      ^Biped
+                                     ^Essential
+                                    ^Weapon & Shield
+                                   ^Respawn
+                                 ^Swims
+                                ^Flies
+                               ^Walks
+                              ^PC Level Offset
+                            ^?? unknown but used in Oblivion.esm
+                           ^No low level processing
+                          ^?? unknown but used in Oblivion.esm
+                         ^~Blood Spray
+                       ^~Blood Decal
+                      ^?? always zero in Oblivion.esm
+                     ^?? always zero in Oblivion.esm
+                    ^No Head
+                  ^No Right Arm
+                 ^No Left Arm
+                ^No Combat in Water
+               ^No Shadow
+             ^~Can Corpse Check
+
+Notes:
+Oblivion.esm does not have creature with Biped set.
+
+
+1.
+CREA/ACBS 16
+0000,0000,0001,0010,1000,0010,0100,0000
+*0
+*165
+0
+1
+*0
+*0
+CREA/DATA 20
+3  % Not always 0 as questioned in UESP doc
+*40
+*5
+*5
+2 % Soul
+*0
+0
+0
+*10
+*50
+*30
+*35
+*20
+*12
+*60
+?10
+*25
+
+2.
+CREA/ACBS 16
+0000,0000,0000,0000,0000,0010,0100,0100
+*0
+*90
+0
+1
+*1
+*0
+CREA/DATA 20
+0
+*1
+*50
+*4
+1 % Soul
+*10
+0
+0
+*3
+*5
+*30
+*30
+*40
+*12
+*40
+?10
+*40
+
+3.
+CREA/ACBS 16
+0000,0000,0000,0000,0000,0000,0111,0000
+*20
+*70
+0
+1
+*0
+*3
+CREA/DATA 20
+0
+*20
+*60
+*15
+2 % Soul
+*15
+0
+0
+*4
+*50
+*40
+*70
+*40
+*200
+*55
+?10
+*60
+
+4.
+CREA/ACBS 16
+0000,0000,0000,0000,0000,0010,0100,0010
+*0
+*250
+0
+5 % Level
+*0
+*0
+CREA/DATA 20
+0
+*65
+*5
+*30
+2
+*150
+0
+0
+*24
+60
+20
+30
+80
+12
+60
+10
+50
+
+ ---*---
+
+See capture_22082008_122710.png
+
+grep -A 300 -B 12 '^CGGoblinBerserkerPATROL01$' p1|more
+
+
+ ---*---
+
+See capture_22082008_122259.png etc.
+
+Search by formid:
+grep -A 300 -B 2 '^formid = 124489$' p1|more
+
+
+Chunk name 0: CREA 1 9226650
+flags 1 = 0000,0000,0000,0000,0000,0000,0000,0000
+formid = 85908
+flags 2 = 0000,0000,0011,1011,0010,0101,0000,1001
+Chunk name: EDID
+CREA/EDID 14
+AnvilMGPetImp % ID
+Chunk name: FULL
+CREA/FULL 7
+Sparky % Name
+Chunk name: MODL
+CREA/MODL 27
+Creatures\Imp\Skeleton.NIF
+Chunk name: MODB
+CREA/MODB 4
+52.103172 % not in UI, model scale --- somewhere else?
+Chunk name: MODT
+CREA/MODT 24
+creamodt011
+Chunk name: SPLO
+CREA/SPLO 4
+85106 % formid to SPEL (see below for the SPEL) % SpellList tab % where cost?
+Chunk name: SPLO
+CREA/SPLO 4
+85912 % formid to SPEL (see below for the SPEL) % SpellList tab % where cost?
+Chunk name: NIFZ
+CREA/NIFZ 9
+Imp.NIF % ModelList tab
+
+Chunk name: ACBS
+CREA/ACBS 16
+0000,0000,0000,0000,0000,0000,0111,0000
+20 % SpellPts
+70 % Fatigue
+0
+1 % level?
+0 % calc min?
+3 % calc max?
+Chunk name: SNAM
+CREA/SNAM 8
+85905 % formid to FACT (see below) % factions
+0 % rank?
+21 % nothing in the faction tab for these
+76
+0 % rank?
+Chunk name: SNAM
+CREA/SNAM 8
+139926 % formid to FACT (see below) % factions
+0 % rank?
+21 % nothing in the faction tab for these
+76
+0 % rank?
+Chunk name: CNTO
+CREA/CNTO 8
+192114 % formid to INGR (see below) % inventory
+1 % count of above
+Chunk name: AIDT
+CREA/AIDT 12
+5 % AIAttr/Aggr
+10 % AIAttr/Conf
+20 % AIAttr/Ener
+0 % AIAttr/Resp
+0000,0000,0000,0000,0000,0000,0000,0000
+0
+0
+0
+Chunk name: PKID
+CREA/PKID 4
+85906 % formid to PACK (see below) % AI Package List
+Chunk name: DATA
+CREA/DATA 20
+0
+20 % Skills/Combat
+60 % Skills/Magic
+15 % Skills/Stealth
+2
+15 % Health
+0
+0
+4  % AttackDamage
+50 % Attr/Str
+40 % Attr/Int
+70 % Attr/Wil
+40 % Attr/Agi
+200 % Attr/Spd
+55 % Attr/End
+10 % Personality % ok 20080903
+60 % Attr/Luc
+Chunk name: RNAM
+CREA/RNAM 1
+64 % AttackReach
+Chunk name: ZNAM
+CREA/ZNAM 4
+258698 % formid to CSTY % Combat Style % where Death Item?
+Chunk name: TNAM
+CREA/TNAM 4
+0.000000 % TurningSpeed
+Chunk name: BNAM
+CREA/BNAM 4
+0.500000 % BaseScale
+Chunk name: WNAM
+CREA/WNAM 4
+2.000000 % FootWeight
+Chunk name: CSCR
+CREA/CSCR 4
+124489 % Sounds tab / Inherits Sounds From
+End of CREA
+
+
+capture_22082008_123204.png
+TestIstZombie01
+
+CSDT Sound Types:
+0 Left Foot
+1 Right Foot
+2 Left Back Foot
+3 Right Back Foot
+4 Idle
+5 Aware
+6 Attack
+7 Hit
+8 Death
+
+Oblivion.esm don't have type "9 Weapon" as mentioned in UESP doc.
+It seems to not exists.
+
+CREA/CSDT 4
+0
+Chunk name: CSDI
+CREA/CSDI 4
+681309
+Chunk name: CSDC
+CREA/CSDC 1
+100
+Chunk name: CSDT
+CREA/CSDT 4
+1
+Chunk name: CSDI
+CREA/CSDI 4
+681309
+Chunk name: CSDC
+CREA/CSDC 1
+100
+Chunk name: CSDT
+CREA/CSDT 4
+4
+Chunk name: CSDI
+CREA/CSDI 4
+681310
+Chunk name: CSDC
+CREA/CSDC 1
+75
+Chunk name: CSDT
+CREA/CSDT 4
+5
+Chunk name: CSDI
+CREA/CSDI 4
+681307
+Chunk name: CSDC
+CREA/CSDC 1
+100
+Chunk name: CSDT
+CREA/CSDT 4
+6
+Chunk name: CSDI
+CREA/CSDI 4
+681306
+Chunk name: CSDC
+CREA/CSDC 1
+90
+Chunk name: CSDT
+CREA/CSDT 4
+7
+Chunk name: CSDI
+CREA/CSDI 4
+681311
+Chunk name: CSDC
+CREA/CSDC 1
+75
+Chunk name: CSDT
+CREA/CSDT 4
+8
+Chunk name: CSDI
+CREA/CSDI 4
+681308
+Chunk name: CSDC
+CREA/CSDC 1
+100
+
+============================================================================
+
+ok
+CSTY
+
+capture_22082008_134024.png
+capture_20080826_003855.png
+capture_20080928_203344.png
+
+Defaults when subrecord is not complete?
+
+
+Chunk name 0: CSTY 1 247259093
+flags 1 = 0000,0000,0000,0000,0000,0000,0000,0000
+formid = 175575
+flags 2 = 0000,0000,0001,1000,0010,0000,0001,1111
+Chunk name: EDID
+CSTY/EDID 25
+AggresiveForwardPower100
+Chunk name: CSTD
+CSTY/CSTD 112
+Chunk name: CSAD
+CSTY/CSAD 84 % Advanced
+-20.000000 % Dodge Fatigue Mod Mult
+0.000000 % Dodge Fatigue Mod Base
+-110.000000 % Encumb. Speed Mod Base
+1.000000 % Encumb. Speed Mod Mult
+1.000000 % Dodge While Under Attack Mult
+0.750000 % Dodge Not Under Attack Mult
+0.000000 % Dodge Back While Under Attack Mult
+0.000000 % Dodge Back Not Under Attack Mult
+1.000000 % Dodge Forward While Attacking Mult
+0.500000 % Dodge Forward Not Attacking Mult
+20.000000 % Block Skill Modifier Mult
+0.000000 % Block Skill Modifier Base
+2.000000 % Block While Under Attack Mult
+1.000000 % Block Not Under Attack Mult
+20.000000 % Attack Skill Modifier Mult
+0.000000 % Attack Skill Modifier Base
+0.750000 % Attack While Under Attack Mult
+1.000000 % Attack Not Under Attack Mult
+0.500000 % Attack During Block Mult
+5.000000 % Power Att. Fatigue Mod Base
+-10.000000 % Power Att. Fatigue Mod Mult
+End of CSTY
+
+CSAD is 84 bytes but CSTD varies.
+Data is different sized CSTDs does not differ but
+the end is cut off. The missing end seems to be
+replaced by the default values.
+E.g., verify that Rushing Attack % Change equals to 25
+in all which size is <= 104.
+
+CSTY/CSTD 84
+VidCaptureNoAttacks
+
+CSTY/CSTD 92
+DefaultCombatRejectPCYield
+DefaultCombatWillYield
+DefaultNoFlee
+E3DaedrothDefault
+E3OgreDefault
+
+CSTY/CSTD 104
+AndragilTraining
+
+CSTY/CSTD 112
+AggresiveForwardPower100
+BladesTrainingNoPowerAttack
+CGAssassinNoMagic
+PowerAttackNormalOnly
+PowerAttackStandard
+SideAttackStandard
+
+CSTY/CSTD 120
+DefaultArcher
+KvatchCastleMissile
+MankarCamoranStyle
+NPCBanditMage
+NPCMarauderMissile
+
+CSTY/CSTD 124
+DefaultBoar
+DefaultGoblinWarlord
+DefaultImp
+DefaultMonk
+DefaultSpiderling
+MS02LorgrenLichStyle
+NPCConjurer
+NPCDremoraMage
+NPCMarauderMage
+NPCNecromancer
+TG11PalaceGuard
+
+Have screenshots for:
+DefaultArcher
+DefaultBearBrown
+DefaultBlackBear
+DefaultGoblin
+DefaultHorse
+
+Choose Attack using: (i) Movement (ii) % Change
+selector drops with (i) the following:
+Normal
+Forward
+Back
+Left
+Right
+That is the difference between AndragilTraining and AggresiveForwardPower100.
+112-104 = 8 bytes difference -- for 5 values?
+
+
+AggresiveForwardPower100 CSTD
+tail --bytes +247259151 Oblivion.esm |head --bytes 84|floats 
+0.00000
+0.50000
+1.50000
+0.50000 % Dodge Forward Timer Min
+1.00000 % Dodge Forward Timer Max
+0.25000 % Dodge Back Timer Min
+0.75000 % Dodge Back Timer Max
+0.50000
+1.50000
+0.00000000000000000000000000000000000000003591527964064506
+100.000 % Recoil/Stagger Bonus to Attack
+5.00000 % Unconscious Bonus to Attack
+5.00000 % Hand-To-Hand Bonus to Attack
+0.00000000000000000000000000000000000000000014012984643248
+5.00000 % Recoil/Stagger Bonus to Power Attack
+5.00000 % Unconscious Bonus to Power Attack
+0.00000000000000000000000000000000000000003587324068671532
+0.00000000000000000000000000000006873463415585758456195561
+0.50000
+1.50000
+0.00000000000000000000000000000000000000000000420389539297 % flags
+% 0x1 = Choose attack using
+% 0x2 = Advanced
+
+CSTY/CSTD 92
+Dodge % Change 40
+Left/Right % Change 40
+102 % flags?
+0
+
+octave:7> dec2bin(102)
+ans = 1100110
+
+CSTY/CSTD 92
+Dodge % Change 40
+Left/Right % Change 40
+102
+0
+2.000000 % Dodge L/R Timer Min
+4.000000 % Dodge L/R Timer Max
+Dodge Forward Timer Min 2.000000
+Dodge Forward Timer Max 4.000000
+Dodge Back Timer Min 2.000000
+Dodge Back Timer Max 4.000000
+2.000000 % Idle Timer Min
+5.000000 % Idle Timer Max
+Block % Change 0
+Attack % Change 75
+114
+111
+
+0.000000 % Hold Timer Min
+0.000000 % Hold Timer Max
+0000,0100
+
+0000,0011
+50 % Acrobatic Dodge % Chance
+111
+32
+
+CSTD flags
+0000,0000,0000,0000,0000,0000,0010,0000
+0010,1000,0000,0010,0000,0000,0000,0001
+                                      ^Advanced exists
+                                     ^Movement (0) vs % Change (1)
+                                    ^Ignore Allies in Area
+                                   ^Will Yield
+                                 ^Rejects Yields
+                                ^Fleeing Disabled
+                               ^Prefers Ranged
+                              ^Melee Alert OK
+
+Do Not Acquire % In last int when size is 124?
+% Or here:
+Back 20
+Left 20
+Right 20
+64 % Do Not Acquire?? No. Verified. capture_20080826_004719.png
+
+
+verify defaults from screenshots
+
+Rushing Attack % Change % default = 25
+Rushing Attack Distance Mult % default = 1.0
+
+printf them is espparser? maybe later
+CSTY/CSAD 84 % Advanced defaults (when advanced is not flagged)
+-20.000000 % Dodge Fatigue Mod Mult
+0.000000 % Dodge Fatigue Mod Base
+-110.000000 % Encumb. Speed Mod Base
+1.000000 % Encumb. Speed Mod Mult
+1.000000 % Dodge While Under Attack Mult
+0.750000 % Dodge Not Under Attack Mult
+1.000000 % Dodge Back While Under Attack Mult
+0.700000 % Dodge Back Not Under Attack Mult
+1.000000 % Dodge Forward While Attacking Mult
+0.500000 % Dodge Forward Not Attacking Mult
+20.000000 % Block Skill Modifier Mult
+0.000000 % Block Skill Modifier Base
+2.000000 % Block While Under Attack Mult
+1.000000 % Block Not Under Attack Mult
+20.000000 % Attack Skill Modifier Mult
+0.000000 % Attack Skill Modifier Base
+0.750000 % Attack While Under Attack Mult
+1.000000 % Attack Not Under Attack Mult
+0.500000 % Attack During Block Mult
+5.000000 % Power Att. Fatigue Mod Base
+-10.000000 % Power Att. Fatigue Mod Mult
+
+============================================================================
+
+continue
+DIAL
+
+capture_22082008_124251.png % Dialogue / Filter: Abhuki
+capture_22082008_161201.png
+
+Dialogue Window/Topics Tab shows all dialogues in the second list
+from the left. The dialogues (DIAL) have only a list of quest
+FormIDs.
+
+Example:
+capture_22082008_124251.png % Dialogue / Filter: Abhuki
+
+DIAL 196763 bed / 185131 196930 240470
+
+QUST 185131 MG04Restore /
+QUST 196930 MS47FIN /
+QUST 240470 BedRental /
+
+Two first quests are not listed in the list at right because this
+was filtered by Abhuki.
+
+How the INFOs are linked to the quest?
+INFO has one quest FormID.
+
+How INFO links to a NPC?
+There is GetIsID <NPC> in the conditions.
+
+% Possible valid but INFOs are listed in the subgroup "Topic Children"
+% just after the DIAL.
+How the lists are built?
+Search every INFO for GetIsID Abhuki.
+Built the quest/info table based on INFO/QSTI.
+For every quest, search DIALs which refers to the quest;
+built dialogue/quest table. 
+
+This table then can be displayed and edited as shown in CS.
+For the given dialogue, list all quests.
+For each quest, list all infos.
+
+
+GRUP DIAL
+DIAL
+DIAL/QSTI % one per quest
+GRUP Topic Children
+INFO
+INFO
+etc.
+ENDGRUP
+ENDGRUP
+
+QUST List of topics? No. DIAL has Quest FormID which links
+all topics to the quest.
+
+DIAL % One topic?
+GRUP Topic Children
+INFO % table of infos
+ ***
+INFO
+ENDGRUP
+
+Inside INFO are the choices of response texts.
+
+DIAL/EDID 13
+MS05NotReady
+--
+DIAL/EDID 10
+MS05Ready % FormID = 163628
+--
+DIAL/EDID 10
+MS05Money
+--
+DIAL/EDID 11
+MS05WhyLie
+--
+DIAL/EDID 15
+MS05PreparedNo
+--
+DIAL/EDID 16
+MS05PreparedYes
+--
+DIAL/EDID 10
+MS05WhyMe
+--
+DIAL/EDID 11
+MS05Dreams
+--
+DIAL/EDID 20
+MS05DreamworldTopic
+--
+DIAL/EDID 18
+MS05PleaseExplain
+--
+DIAL/EDID 14
+MS05WhatGives
+--
+QUST/EDID 5
+MS05
+
+
+
+What is in formid 200?
+Huge list of DIAL/QSTI records.
+
+Its first INFO in the topic children points to
+Quest FormID 159203
+
+
+formid = 149102 / formid = 0x0002466e
+QUST/EDID 13
+Charactergen
+
+DIAL/FULL 4
+Bed % Display Text in the list of dialogues.
+
+DIAL/DATA 1
+0 % Type? 0 Topics 1 Conversation 2 Combat 3 Persuasion 4 Detection 5 Service 6 Misc
+
+DIAL has a subgroup:
+Grouptype = 7 Topic Children
+
+Conversation "AngerReceive" has INFO "No!!!!" because
+GetIsRace matches Khajiit (Abhuki is Khajiit).
+
+
+============================================================================
+
+ok
+DOOR
+
+capture_22082008_140554.png
+capture_20080928_184926.png
+
+FNAM flags:
+0000,0000
+0000,0001
+0000,0100
+0000,1000
+0000,1100
+        ^Oblivion Gate
+       ^Automatic Door
+      ^Hidden
+     ^Minimal Use
+
+Quest Item % in the header flags
+
+
+============================================================================
+
+ok
+EFSH
+
+capture_21082008_230732.png
+capture_22082008_134617.png
+capture_20080826_005151.png
+capture_20080826_005401.png % color dialog
+capture_20080928_195245.png
+
+cat p1|grep EFSH/DATA|sort|uniq -c
+     76 EFSH/DATA 224
+      2 EFSH/DATA 96
+
+creatureAnvilMGPetImp
+
+ICON has fill/texture effect texture file
+ICO2 has particle shader texture file
+
+EFSH/DATA 224
+0011,0000
+        ^~Membrane Shader
+     ^~Particle Shader
+   ^Inverse (Edge Effect Color)
+  ^Affect Skin Only
+
+EFSH/DATA 224
+8  % flags 4 bytes? values: 0x0 0x8 0x24 (= 16 + 8)
+0  % 16 = Edge Effect Inverse
+0  % 8 = ~Particle Shader
+0  % 1 = ~Membrane Shader
+5 % Source Blend Mode % 5 = Source Alpha
+3 % Blend Operation % 3 = Reverse Subtract 1 = Add
+3 % Z Test Function % 3 = Equal To
+0 % Color R
+0 % Color G
+0 % Color B
+0
+0.200000 % Alpha Fade In Time
+0.400000 % Full Alpha Time
+0.500000 % Alpha Fade Out Time
+0.500000 % Persistent Alpha Ratio [0-1]
+0.000000 % Alpha Pulse Amplitude
+1.000000 % Alpha Pulse Frequency
+0.000000 % Texture Animation Speed U
+0.000000 % Texture Animation Speed V
+2.000000 % Edge Effect/Fall Off
+8470391 % Color
+0.500000 % EE/Alpha Fade In Time
+0.000000 % EE/Full Alpha Time
+0.500000 % EE/Alpha Fade Out Time
+0.100000 % EE/Persistent Alpha Ratio [0-1]
+0.500000 % EE/Alpha Pulse Amplitude
+5.000000 % Edge Effect/Alpha Pulse Frequency
+0.500000 % Full Alpha Ratio [0-1]
+0.100000 % EE/Full Alpha Ratio [0-1]
+2 % Dest Blend Mode % 2 = One
+% Particle shader section
+5 % Source Blend Mode % 5 = Source Alpha
+1 % Blend Operation % 1 = Add
+4 % Z Test Function % 4 = Normal
+6 % Dest Blend Mode % 6 = Source Inverted Alpha
+0.500000 % Particle Birth Ramp Up Time
+0.000000 % Full Particle Birth Time
+0.500000 % Particle Birth Ramp Down Time
+1.000000 % Full Partical Birth Ratio [0-1]
+1.000000 % Persistant Particle Birth Ratio [0-1]
+1.500000 % Particle Life Time
+0.030000 % Particle Life Time +-
+15.000000 % Initial Speed Along Normal
+0.000000 % Acceleration Along Normal
+0 % Initial Velocity X
+0 % Initial Velocity Y
+0.000000 % Initial Velocity Z
+0 % Acceleration X
+0 % Acceleration Y
+0.000000 % Acceleration Z
+16.000000 % Scale Key 1
+22.000000 % Scale Key 2
+0.200000 % Scale Key 1 Time
+1.000000 % Scale Key 2 Time
+156 % Color Key 1 R
+202 % Color Key 1 G
+205 % Color Key 1 B
+0
+65 % Color Key 2 R
+125 % Color Key 2 G
+129 % Color Key 2 B
+0
+0 % Color Key 3 R
+0 % Color Key 3 G
+0 % Color Key 3 B
+0
+0.700000 % Color Alpha 1
+0.500000 % Color Alpha 2
+0.000000 % Color Alpha 3
+0.000000 % Color Key Time 1
+0.400000 % Color Key Time 2
+1.000000 % Color Key Time 3
+
+Graphics operation modes does match the DirectX types.
+However, I checked them from Wine header files:
+
+Blend Mode:
+typedef enum _D3DBLEND {
+    D3DBLEND_ZERO               =  1,
+    D3DBLEND_ONE                =  2,
+    D3DBLEND_SRCCOLOR           =  3,
+    D3DBLEND_INVSRCCOLOR        =  4,
+    D3DBLEND_SRCALPHA           =  5,
+    D3DBLEND_INVSRCALPHA        =  6,
+    D3DBLEND_DESTALPHA          =  7,
+    D3DBLEND_INVDESTALPHA       =  8,
+    D3DBLEND_DESTCOLOR          =  9,
+    D3DBLEND_INVDESTCOLOR       = 10,
+    D3DBLEND_SRCALPHASAT        = 11,
+    D3DBLEND_BOTHSRCALPHA       = 12,
+    D3DBLEND_BOTHINVSRCALPHA    = 13,
+    D3DBLEND_BLENDFACTOR        = 14,
+    D3DBLEND_INVBLENDFACTOR     = 15,
+
+Blend Operation:
+typedef enum _D3DBLENDOP {
+    D3DBLENDOP_ADD              = 1,
+    D3DBLENDOP_SUBTRACT         = 2,
+    D3DBLENDOP_REVSUBTRACT      = 3,
+    D3DBLENDOP_MIN              = 4,
+    D3DBLENDOP_MAX              = 5,
+
+Z Test Function:
+typedef enum _D3DCMPFUNC {
+    D3DCMP_NEVER                = 1,
+    D3DCMP_LESS                 = 2,
+    D3DCMP_EQUAL                = 3,
+    D3DCMP_LESSEQUAL            = 4,
+    D3DCMP_GREATER              = 5,
+    D3DCMP_NOTEQUAL             = 6,
+    D3DCMP_GREATEREQUAL         = 7,
+    D3DCMP_ALWAYS               = 8,
+
+
+============================================================================
+
+ok
+ENCH
+
+capture_22082008_132920.png
+capture_20080826_003425.png
+capture_20080928_192429.png
+capture_20081004_183435.png % DBEnAppBloodyBounding15
+
+DBEnAppBloodyBounding15 has two same results % with different ActorVal
+
+different charge amount and enchantment cost % capture_20080928_192429.png
+
+ENCH/FULL is used in Effect Item, not for name.
+
+grep -A 300 -B 12 '^AnAppGatherer$' p2|more
+grep -A 300 -B 12 '^DAClavicusMasqueENCH$' p2|more
+grep -A 300 -B 12 '^DarkScrollSummonGhostRufio$' p2|more
+grep -A 300 -B 12 '^DASanguineRoseENCH$' p2|more
+grep -A 300 -B 12 '^DANamiraRingENCH$' p2|more
+
+
+Chunk name 0: ENCH 1 2542817
+flags 1 = 0000,0000,0000,0000,0000,0000,0000,0000
+formid = 827418
+flags 2 = 0000,0000,0100,1011,0010,0001,0001,1101
+Chunk name: EDID
+ENCH/EDID 14
+AnAppGatherer
+Chunk name: ENIT
+ENCH/ENIT 16 % note: INGR/ENIT 8 and ALCH/ENIT 8
+2 % Type: Weapon
+0 % Charge Amount?
+0 % Enchantment Cost?
+0101,1111,0111,1001,0110,0001,0000,0000
+Chunk name: EFID
+ENCH/EFID 4
+FOAT
+Chunk name: EFIT
+ENCH/EFIT 24
+FOAT
+5 % Magnitude
+0 % Area
+0 % Duration
+1 % Range: Touch
+4
+Chunk name: EFID
+ENCH/EFID 4
+FOSK
+Chunk name: EFIT
+ENCH/EFIT 24
+FOSK
+5
+0
+0
+1
+19
+Chunk name: EFID
+ENCH/EFID 4
+DRAT
+Chunk name: EFIT
+ENCH/EFIT 24
+DRAT
+5
+0
+0
+1
+0
+Chunk name: EFID
+ENCH/EFID 4
+DRAT
+Chunk name: EFIT
+ENCH/EFIT 24
+DRAT
+5
+0
+0
+1
+5
+End of ENCH
+
+Types:
+0 = Scroll
+1 = Staff
+2 = Weapon
+3 = Apparel
+
+Flags:
+0101,1111,0111,1001,0110,0001,0000,0000
+0000,0000,0000,1110,0000,0000,0000,0000
+0010,0000,0010,1110,0110,1110,0000,0000
+0000,0000,0000,0000,0000,0000,0000,0001
+0000,0000,0000,0000,0000,0000,0000,0000 % XXXX Auto-calc is true
+               ^Auto-calc
+
+DANamiraRingENCH
+Chunk name: ENIT
+ENCH/ENIT 16
+3
+5 % XXXX in editor greyed-out 12
+5 % XXXX in editor greyed-out 12
+0000,0000,0000,0000,0000,0000,0000,0000 % XXXX Auto-calc is true
+
+============================================================================
+
+ok
+EYES
+
+capture_22082008_153524.png
+
+============================================================================
+
+ok
+FACT
+
+capture_22082008_155350.png
+
+============================================================================
+
+ok
+FLOR
+
+capture_22082008_140857.png
+
+What is the Animation button?
+
+Modified Alkanet:
+
+Chunk name 0: FLOR 1 105
+flags 1 = 0000,0000,0000,0000,0000,0000,0000,0000
+formid = 210597
+flags 2 = 0000,0000,0000,0000,0100,0101,0000,1000
+Chunk name: EDID
+FLOR/EDID 8
+Alkanet
+Chunk name: FULL
+FLOR/FULL 8
+Alkanet
+Chunk name: MODL
+FLOR/MODL 26
+Plants\FloraAlkanet01.NIF
+Chunk name: MODB
+FLOR/MODB 4
+51.220543
+Chunk name: MODT
+FLOR/MODT 24
+Chunk name: PFIG
+FLOR/PFIG 4
+210524
+Chunk name: PFPC
+FLOR/PFPC 4
+12 % Spring
+34 % Summer
+56 % Fall
+78 % Winter
+End of FLOR
+
+============================================================================
+
+continue
+FURN
+
+capture_22082008_141429.png
+capture_20080911_014545.png
+
+FURN/MNAM 4
+1000,0000,0000,0000,0000,0000,0000,0011 % AnvilBed01
+0100,0000,0000,0000,0000,0000,0000,0001 % AnvilThrone01
+0100,0000,0000,0000,0000,0000,0001,0100 % LCBench01BEndsOnly
+0100,0000,0000,0000,0000,0000,0000,1001 % LCBench01BmidL
+0100,0000,0000,0000,0000,0000,0001,1010 % LCBench01BmidleftR
+0100,0000,0000,0000,0000,0000,0000,0101 % DUNStool
+1000,0000,0000,0000,0000,0000,0000,0010 % HackdirtMoslinsInnBed
+                                      ^Marker 1
+                                     ^Marker 2
+                                    ^Marker 3
+                                   ^Marker 4
+                                 ^Marker 5
+^Bed/Sleeping?
+ ^Chair/Sitting?
+
+HackdirtMoslinsInnBed % one in middle, standing at the right side
+AnvilBed01            % two in bed, standing at both sides
+
+Why DUNStool has marker 3 set even the marker list has only one mark?
+Where comes the marker names "Sit 12" etc?
+
+In NIF files, orientation 6283 is 360 degrees.
+It looks like orientations are fixed to up-orientation.
+
+What positions they are? The standing positions near the bed
+or the sleeping positions?
+
+When positions are turned on and off in CS, both standing and sleeping
+markers goes on and off.
+
+anvilbed01.nif
+Object 2     at 745
+Node name BSFurnitureMarker
+Name: FRN
+Numpositions 2
+Furniture Position 0:
+Offset:
+-91.060791
+-21.216103
+-47.432129
+Orientation 1570
+Position ref 1 1
+Position ref 2 1
+Furniture Position 1:
+Offset:
+90.443604
+-21.216087
+-47.432129
+Orientation 4712
+Position ref 1 2
+Position ref 2 2
+End of object 2 at 788
+
+dunstool01.nif
+Object 2     at 553
+Node name BSFurnitureMarker
+Name: FRN
+Numpositions 1
+Furniture Position 0:
+Offset:
+-0.149887
+-56.286022
+-17.780535
+Orientation 0
+Position ref 1 13
+Position ref 2 13
+End of object 2 at 580
+
+
+capture_20080911_014545.png
+LCBench01BmidleftR
+Furniture\LowerClass\LowerClassBench01.NIF
+Active Markers:
+Sit 11   % facing to left
+Sit 12 x % facing to right
+Sit 13   % facing away
+Sit 13 x
+Sit 13 x
+Sit 14   % facing toward
+Sit 14
+Sit 14
+
+
+FURN/MNAM 4
+0100,0000,0000,0000,0000,0000,0001,1010
+
+Node name BSFurnitureMarker
+Name: FRN
+Numpositions 8
+Furniture Position 0:
+Offset:
+-94.527863
+0.348450
+-15.182539
+Orientation 1570
+Position ref 1 11
+Position ref 2 11
+Furniture Position 1:
+Offset:
+95.039764
+0.186554
+-15.182539
+Orientation 4712
+Position ref 1 12
+Position ref 2 12
+Furniture Position 2:
+Offset:
+43.473297
+-54.735596
+-15.182539
+Orientation 0
+Position ref 1 13
+Position ref 2 13
+Furniture Position 3:
+Offset:
+-0.327789
+-54.735596
+-15.182539
+Orientation 0
+Position ref 1 13
+Position ref 2 13
+Furniture Position 4:
+Offset:
+-43.118439
+-54.735596
+-15.182539
+Orientation 0
+Position ref 1 13
+Position ref 2 13
+Furniture Position 5:
+Offset:
+-0.181427
+55.295258
+-15.182539
+Orientation 3141
+Position ref 1 14
+Position ref 2 14
+Furniture Position 6:
+Offset:
+43.579132
+55.295258
+-15.182539
+Orientation 3141
+Position ref 1 14
+Position ref 2 14
+Furniture Position 7:
+Offset:
+-43.035858
+55.295258
+-15.182539
+Orientation 3141
+Position ref 1 14
+Position ref 2 14
+
+Orientation is 1000*angle in radians.
+? Pi/2
+%2 = 1.570796326794896619231321692
+? 2*Pi/2
+%3 = 3.141592653589793238462643383
+? 3*Pi/2
+%4 = 4.712388980384689857693965075
+? 4*Pi/2
+%5 = 6.283185307179586476925286767
+
+Orientation is based on the standing marker.
+The orientation of the sitting marker is then
+selected by the position ref (11, 12, 13, 14)
+which directly gives the correct NIF file, e.g.,
+"furnituremarker12.nif".
+
+
+============================================================================
+
+about ok
+GLOB
+
+capture_22082008_161746.png
+
+Editor ID % no type as the first char
+Variable Type % Short Long Float
+Value
+
+
+============================================================================
+
+ok
+GMST
+
+capture_22082008_161721.png
+
+Editor ID % type is the first char in EDID
+Numeric value
+String value
+
+============================================================================
+
+ok
+GRAS
+
+capture_22082008_141935.png
+capture_20081004_144612.png % min slope + location
+
+GRAS/DATA 32
+Density 50
+Min Slope 0
+Max Slope 45
+0
+At least units from water 0
+0
+0
+Position Range 32.000000
+Height Range 0.200000
+Color Range 0.500000
+Wave Period 10.000000
+0000,0000,0000,0000,0000,0000,0000,0010
+                                      ^Vertex Lighting
+                                     ^Uniform Scaling
+                                    ^Fit to Slope
+
+
+Location:
+0 Above At Least
+1 Above At Most
+2 Below At Least
+3 Below At Most
+4 Either At Least
+5 Either At Most
+6 Either At Most Above
+7 Either At Most Below
+
+============================================================================
+
+GRUP
+
+The coordinates of
+4 Exterior Cell Block
+5 Exterior Cell Sub-Block
+are not ushort as in UESP doc, but seems to be short.
+
+
+============================================================================
+
+ok
+HAIR
+
+capture_22082008_153432.png
+
+
+============================================================================
+
+ok
+IDLE
+
+capture_22082008_161803.png
+capture_20080916_030056.png
+
+
+How the hierarchy of the tree-view has been done? See DATA.
+
+IDLE/CTDA 24
+1 % Bit 1: 0 AND 1 OR; Others: Bits 32 and 64: 00 == 01 != 10 >
+0
+0
+0
+1.000000
+246 % function name
+725506 % FormID to ALCH, potion % 0 = NONE
+0 % second parameter
+0
+
+QUST/CTDA 24
+0
+0
+0
+0
+1.000000
+79 % GetQuestVariable
+182864
+7 % ElementADoOnce
+0
+
+<target> <function name> <function info> <comp> <value> <or/and/etc>
+
+Function names:
+ 36 MenuMode
+ 49 GetSleeping
+ 58 GetStage
+ 72 GetIsID
+ 79 GetQuestVariable
+101 IsWeaponOut
+110 GetCurrentAIPackage
+141 IsTalking
+143 GetCurrentAIProcedure
+159 GetSitting
+185 IsSwimming
+246 GetIsUsedItem
+254 GetIsPlayableRace
+286 IsSneaking
+
+
+check IDLE/LoiterIdles for DATA; it is strange
+
+Chunk name: ANAM
+IDLE/ANAM 1
+4 % Animation Group Section
+Chunk name: DATA
+IDLE/DATA 8
+256712 % Parent
+256713 % Previous
+End of IDLE
+
+Anim types/Bits 1-3
+
+0 Lower Body
+1 Left Arm
+2 Left Hand
+3 Right Arm
+4 Special Idle
+5 Whole Body
+6 Upper Body
+
+0 Lower Body 1 Left Arm 2 Left Hand 3 Right Arm 4 Special Idle 5 Whole Body 6 Upper Body
+
+ok continue: Anim types
+continue: CTDA functions
+
+
+============================================================================
+
+nearly ok
+INFO
+
+capture_22082008_124251.png % Dialogue / Filter: Abhuki
+capture_20081004_171917.png % flags
+capture_20081004_181740.png % Edit Response window
+
+Todo:
+INFO/SCHD What is this? It is skipped.
+
+
+Where are the data of Edit Response window stored? TRDT?
+The voice filename is of the form:
+<Quest EDID>_<Dialogue EDID>_<INFO FormID>_<Response Choice Number>
+The table values are probably taken from the bsa file.
+
+INFO has CTDA condition subrecord too
+
+INFO/DATA 3
+0
+0
+1 % G flag in the table of infos
+
+Flags:
+Info Refusal
+Goodbye
+Say Once
+Random
+Random End
+Run Immediately
+Run For Rumors
+
+Condition flags:
+Run on Target
+Use Global
+
+Lists:
+Response Text
+Conditions
+Add Topics
+Choices
+Link From
+Next Speaker
+
+capture_22082008_124450.png
+formid = 148059 / formid = 0x0002425b
+INFO/DATA 3
+1
+1
+2
+INFO/TCLT 4
+212 % Link To FormID
+INFO/TCLF 4
+215 % Link From FormID
+INFO/SCHR 20
+0
+0
+SCDA size 0 ??
+0
+0
+End of INFO
+
+capture_22082008_124654.png
+formid = 147268 / formid = 0x00023f44
+INFO/DATA 3
+2
+0
+2 % Random (R Flag)
+INFO/DATA 3
+2
+0
+2 % Random
+INFO/DATA 3
+2
+0
+34 % E flag ?= 2 + 32 = Random + End = Random End
+INFO/DATA 3
+3 % Dialogue Type % 0 Topics 1 Conversation 2 Combat 3 Persuasion
+0
+2 % Random
+INFO/DATA 3
+Dialogue Type 0
+0
+1 % 1 Goodbye 2 Random 4 Say Once 34 Random End
+INFO/DATA 3
+Dialogue Type 1
+0
+21 % Info Refusal % 21 = 16 + 4 + 1 but no flags Goodbye and Say Once
+Correction: The next screenshots shows the flags (and also the
+Edit Response window). Is this my mistage or did the values appear
+silently?
+The true modified screenshot seems to be capture_20081004_181939.png.
+
+Flags in DATA:
+0000,0000
+        ^Goodbye
+       ^Random
+  ^----^Random End
+      ^Say Once
+     ^Run Immediately ?
+   ^Info Refusal
+
+No INFO/PNAM in Oblivion.esm.
+INFO/PNAM appears in esp after an INFO is edited.
+I did edit first INFO in the dialogue group.
+The PNAM has value 0.
+Try edit multiple INFOs.
+
+INFO/TRDT 16
+Type 1 % 0 Neutral 1 Anger 2 Disgust 3 ?? 4 Sad 5 Happy 6 ??
+Emotion 20
+0
+Response Choice Number 1
+111
+110
+32 % Run on Target ?? No. That is in CTDA
+
+INFO/TRDT 16
+Type 0 % 0 Neutral 1 Anger 2 Disgust 3 ?? 4 Sad 5 Happy 6 ??
+Emotion 50
+0
+Response Choice Number 1
+32 % Run for rumours? Perhaps not.
+116
+104
+
+Next Speaker:
+Target
+Self
+Either
+Second byte in DATA?
+INFO/DATA 3
+Dialogue Type 1
+1 % Next Speaker % 0 Target 1 Self 2 Either
+0
+
+DATA flags with bit 64:
+0100,0100 % Case 1 below.
+0100,0110
+0100,1010
+
+Case 1:
+Dialogue INFOGENERAL
+Quest FormID 124706 % QUST/EDID "MQ00"
+formid = 1618421 / formid = 0x0018b1f5
+Response Text "Everyone's talking about the assassination, of course. Here. Take
+ my copy of the new Black Horse Courier. Go ahead. Keep it."
+
+============================================================================
+
+ok
+INGR
+
+capture_22082008_131755.png
+capture_20080825_231834.png
+
+EFIT and SCIT needs more work in espparser.c
+
+Where the Magic School and Cost are stored? In MGEF.
+
+grep -A 300 -B 12 '^AlkanetFlower$' p1|more
+grep -A 300 -B 12 '^BoarMeat$' p1|more
+grep -A 300 -B 12 '^ClannfearClaws$' p1|more
+
+Chunk name 0: INGR 1 5760501
+flags 1 = 0000,0000,0000,0000,0000,0000,0000,0000
+formid = 210524
+flags 2 = 0000,0000,0000,0010,0010,0011,0001,0111
+Chunk name: EDID
+INGR/EDID 14
+AlkanetFlower
+Chunk name: FULL
+INGR/FULL 15
+Alkanet Flower
+Chunk name: MODL
+INGR/MODL 32
+Clutter\ingredalkanetflower.NIF
+Chunk name: MODB
+INGR/MODB 4
+12.153230
+Chunk name: MODT
+INGR/MODT 24
+Chunk name: ICON
+INGR/ICON 30
+Clutter\IconAlkanetFlower.dds
+Chunk name: DATA
+INGR/DATA 4
+1036831949 % Weight? Yes: in float.
+Chunk name: ENIT
+INGR/ENIT 8
+1 % Ingredient Value, Cost
+1 % flags
+Chunk name: EFID
+INGR/EFID 4
+REAT % Effect ID
+Chunk name: EFIT
+INGR/EFIT 24
+REAT % Effect ID
+15 % Magnitude
+0
+1 % Duration
+0
+1
+Chunk name: EFID
+INGR/EFID 4
+RSPO
+Chunk name: EFIT
+INGR/EFIT 24
+RSPO
+30
+0
+1
+0
+67
+Chunk name: EFID
+INGR/EFID 4
+LGHT
+Chunk name: EFIT
+INGR/EFIT 24
+LGHT
+45
+0
+1
+0
+8
+Chunk name: EFID
+INGR/EFID 4
+DGFA
+Chunk name: EFIT
+INGR/EFIT 24
+DGFA
+60
+0
+1
+0
+10
+End of INGR
+
+
+INGR/SCRI 4
+418265 % Script FormID
+INGR/ENIT 8
+20 % Ingredient Value
+3 % Flags 0x2 = Food Item
+
+INGR/EFIT 24
+PARA
+0
+0
+45 % Duration
+0
+48
+
+
+cat p2|grep -A 6 INGR/EFIT|sort|uniq|more
+Area 0
+Duration 0
+Duration 1
+Duration 10
+Duration 120
+Duration 15
+Duration 30
+Duration 45
+Duration 5
+Duration 60
+Magnitude 0
+Magnitude 1
+Magnitude 10
+Magnitude 15
+Magnitude 20
+Magnitude 25
+Magnitude 30
+Magnitude 40
+Magnitude 45
+Magnitude 5
+Magnitude 60
+Magnitude 65
+Magnitude 80
+Range 0
+
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+41
+43
+46
+47
+48
+49
+53
+55
+56
+58
+59
+61
+62
+63
+66
+67
+68
+
+% these are MGEF/EDID names
+BRDN
+CHML
+CUDI
+CUPA
+CUPO
+DGAT
+DGFA
+DGHE
+DGSP
+DRAT
+DRFA
+DRHE
+DSPL
+DTCT
+FIDG
+FISH
+FOAT
+FOFA
+FOHE
+FOSP
+FRDG
+FRSH
+FTHR
+INVI
+LGHT
+LISH
+NEYE
+PARA
+REAT
+REDG
+REFA
+REHE
+RESP
+RFLC
+RSDI
+RSFI
+RSFR
+RSPA
+RSPO
+RSSH
+SEFF
+SHDG
+SHLD
+SLNC
+WABR
+WAWA
+
+============================================================================
+
+ok
+KEYM
+
+capture_22082008_132147.png
+
+grep -A 300 -B 12 '^MS11BradonKey$' p1|more
+grep -A 300 -B 12 '^MS08RealKey$' p1|more
+
+Chunk name 0: KEYM 1 9597043
+flags 1 = 0000,0000,0000,0000,0000,0100,0000,0000
+formid = 230820
+flags 2 = 0000,0000,0000,0010,0010,0011,0001,0111
+Chunk name: EDID
+KEYM/EDID 14
+MS11BradonKey
+Chunk name: FULL
+KEYM/FULL 13
+Bradon's Key
+Chunk name: MODL
+KEYM/MODL 20
+Clutter\Key\Key.NIF
+Chunk name: MODB
+KEYM/MODB 4
+7.213032
+Chunk name: MODT
+KEYM/MODT 24
+Chunk name: ICON
+KEYM/ICON 20
+Clutter\Key\Key.dds
+Chunk name: DATA
+KEYM/DATA 8
+0 % Value
+0.100000 % Weight
+End of KEYM
+
+
+KEYM/SCRI 4
+957615 % Script FormID
+
+============================================================================
+
+continue
+LAND
+
+20090812 Copied land code from F3 version.
+
+============================================================================
+
+ok
+LIGH
+
+capture_22082008_142259.png
+capture_20080901_230725.png
+capture_20081004_143624.png % list of lights which have script
+
+Unknown but used flag in bit valued 16 in DATA.
+
+Chunk name 0: LIGH 1 105
+flags 1 = 0000,0000,0000,0000,0000,0100,0000,0000
+formid = 189906
+flags 2 = 0000,0000,0000,0000,0100,0101,0000,0001
+Chunk name: EDID
+LIGH/EDID 12
+AkatoshFire
+Chunk name: MODL
+LIGH/MODL 23
+Fire\FireOpenLarge.nif
+Chunk name: MODB
+LIGH/MODB 4
+386.942993
+Chunk name: MODT
+LIGH/MODT 72
+Chunk name: SCRI
+LIGH/SCRI 4
+706484 % Script
+Chunk name: FULL
+LIGH/FULL 9
+testname % Name
+Chunk name: DATA
+LIGH/DATA 32
+135 % Time (CarryTime)
+510 % Radius
+206 % Color R
+123 % Color G
+49  % Color B
+0   % (Color A)
+0000,0000,0000,0000,0000,0110,0011,0110
+1.100000 % Falloff Exponent
+89.000000 % FOV
+21 % Value
+0.123000 % Weight
+Chunk name: FNAM
+LIGH/FNAM 4
+1.200000 % Fade
+Chunk name: SNAM
+LIGH/SNAM 4
+621785 % Sound FormID
+End of LIGH
+
+
+LIGH/DATA flags:
+0000,0000,0000,0000,0000,0000,0001,1001 % original
+0000,0000,0000,0000,0000,0000,0001,1011
+0000,0000,0000,0000,0000,0000,0011,1011
+0000,0000,0000,0000,0000,0000,0011,1011
+0000,0000,0000,0000,0000,0000,0111,0011
+0000,0000,0000,0000,0000,0001,0011,0110
+0000,0000,0000,0000,0000,0100,1011,0110
+0000,0000,0000,0000,0000,0110,0011,0110
+                                      ^Dynamic
+                                     ^Can Carry
+                                    ^Negative
+                                   ^Flicker
+                                 ^??
+                                ^Off by default
+                               ^Flicker Slow
+                              ^Pulse
+                            ^Pulse Slow
+                           ^Spot Light
+                          ^Spot Shadow
+
+Flicker Effect:
+Flicker
+Flicker Slow
+Pulse
+Pulse Slow
+None % = all flicker bits 0
+
+
+formid = 34722
+formid = 34587
+formid = 34141
+formid = 32833
+formid = 32342
+formid = 21853
+0000,0000,0000,0000,0000,0000,0001,1001 % DEFireCandleFlame
+0000,0000,0000,0000,0000,0000,0000,0000 % CityStreetlightPurple768
+0000,0000,0000,0000,0000,0000,0000,1000 % DExteriorCampFire300
+0000,0000,0000,0000,0000,0000,0000,1000 % DExteriorCaveFire300wFlame
+0000,0000,0000,0000,0000,0000,0000,1000 % LightsIronLampHangingShort500
+0000,0000,0000,0000,0000,0000,0001,0000 % CheydinhalHangingLight01Orange350
+
+Have the bit valued 16:
+CheydinhalHangingLight01Orange350 % time -1, has nif, has sound
+DEFireCandleFlame % time -1, has nif, no sound
+FireLight02
+firePlace1024
+IDLDarkAmb300
+prisonAmbDark250
+prisonAmbDarkDesat250
+prisonLamp100
+
+Don't have:
+CityStreetlightPurple768 % time -1, no nif, no sound
+DExteriorCampFire300 % has script % time -1, no nif, no sound
+DExteriorCaveFire300wFlame % has script % time -1, has nif, has sound
+LightsIronLampHangingShort500 % no script
+
+============================================================================
+
+ok
+LSCR
+
+capture_22082008_135103.png
+
+grep -A 300 -B 12 '^ArenaLoad1$' p1|more
+
+Chunk name 0: LSCR 1 247312064
+flags 1 = 0000,0000,0000,0000,0000,0000,0000,0000
+formid = 403411
+flags 2 = 0000,0000,0000,0010,0010,0100,0001,0001
+Chunk name: EDID
+LSCR/EDID 11
+ArenaLoad1
+Chunk name: ICON
+LSCR/ICON 38
+Menus\Loading\load_fighters_guild.dds % Loading Screen Image
+Chunk name: DESC
+LSCR/DESC 114
+If you decide to enter the Arena as a combatant, you'd better come prepared. Ev
+ery match is a fight to the death.
+Chunk name: LNAM
+LSCR/LNAM 12
+227431
+0
+0
+Chunk name: LNAM
+LSCR/LNAM 12
+227432
+0
+0
+Chunk name: LNAM
+LSCR/LNAM 12
+116239
+0
+0
+Chunk name: LNAM
+LSCR/LNAM 12
+251419
+0
+0
+Chunk name: LNAM
+LSCR/LNAM 12
+596806
+0
+0
+End of LSCR
+
+
+This has two types of LNAM subrecords:
+
+Chunk name 0: LSCR 1 247269739
+flags 1 = 0000,0000,0000,0000,0000,0000,0000,0000
+formid = 830726
+flags 2 = 0000,0000,0000,0010,0010,0100,0001,0001
+Chunk name: EDID
+LSCR/EDID 14
+InGameAnvil06
+Chunk name: ICON
+LSCR/ICON 33
+Menus\Loading\load_bookstore.dds
+Chunk name: DESC
+LSCR/DESC 133
+Some say certain members of the Thieves Guild will buy stolen goods. But some o
+fficials insist the Thieves Guild doesn't even exist.
+Chunk name: LNAM
+LSCR/LNAM 12
+0
+60
+-2883594
+Chunk name: LNAM
+LSCR/LNAM 12
+0
+60
+-3014666
+Chunk name: LNAM
+LSCR/LNAM 12
+0
+60
+-2949129
+Chunk name: LNAM
+LSCR/LNAM 12
+0
+60
+-3080200
+Chunk name: LNAM
+LSCR/LNAM 12
+0
+60
+-3014665
+Chunk name: LNAM
+LSCR/LNAM 12
+0
+60
+-3080201
+Chunk name: LNAM
+LSCR/LNAM 12
+232776
+0
+0
+Chunk name: LNAM
+LSCR/LNAM 12
+115482
+0
+0
+End of LSCR
+
+% incorrect
+The format of LNAM seems to be
+uint % formid
+uint % world space formid
+short % coordinate X
+short % coordinate Y
+If formid == 0 then the world space and map coordinates are used.
+
+Both CELL and WRLD are referenced by the second type of LNAM.
+
+Formid may point to CELL record or to WRLD record.
+When formid == 0, the second formid may point to WRLD.
+
+
+============================================================================
+
+ok
+LTEX
+
+capture_21082008_230128.png
+capture_22082008_134819.png
+capture_20080826_003641.png
+
+need more material types
+verify friction/restitution order
+
+grep -A 300 -B 12 '^AnvilGrass01$' p1|more
+
+LTEX/EDID 13
+AnvilGrass01
+LTEX/ICON 24
+TerrainAnvilGrass01.dds % Texture
+LTEX/HNAM 3 % Havok Data
+4 % Material Type % 0 = STONE 2 = DIRT 4 = GRASS 14 = SNOW
+30 % Friction
+30 % Restitution
+LTEX/SNAM 1
+30 % Texture Specular Exponent
+
+
+LTEX/EDID 15
+HeartGrassMoss
+LTEX/GNAM 4
+25321 % not "short byte byte" but "uint" for potential grass formid % 156393
+2
+0
+Chunk name: GNAM
+LTEX/GNAM 4
+20584
+2
+0
+
+
+Material Type:
+ 0 Stone
+ 1 Cloth
+ 2 Dirt
+ 3 Glass
+ 4 Grass
+ 5 Metal
+ 6 Organic
+ 7 Skin
+ 8 Water
+ 9 Wood
+10 Heavy Stone
+11 Heavy Metal
+12 Heavy Wood
+13 Chain
+14 Snow
+15 Stone Stairs
+16 Cloth Stairs
+17 Dirt Stairs
+18 Glass Stairs
+19 Grass Stairs
+20 Metal Stairs
+21 Organic Stairs
+22 Skin Stairs
+23 Water Stairs
+24 Wood Stairs
+25 Heavy Stone Stairs
+26 Heavy Metal Stairs
+27 Heavy Wood Stairs
+28 Chain Stairs
+29 Snow Stairs
+30 Elevator
+
+
+============================================================================
+
+ok
+LVLC
+
+capture_22082008_123258.png
+capture_20080825_225850.png
+capture_20080825_231650.png
+capture_20081004_145550.png % high bit vs LVLF vs DATA
+
+LVLD high bit if LVLF is missing % verify
+Only negative value is:
+Change None -128
+
+LVLC Chance None -128:
+MQ14ClanfearMedium
+KvatchCastleCreature
+KvatchCountsChamberCreature
+
+TesKvatchCreature has LVLO size 8 % capture_20080825_225850.png
+LVLC/LVLO 8
+Level 1
+FormID 152340
+End of LVLC
+Count is 1.
+
+grep -A 300 -B 12 '^FGC08MythicNatureLairDry100$' p1|more
+grep -A 300 -B 12 '^KvatchCastleCourtyardCreature$' p1|more
+grep -A 300 -B 12 '^MS18GoblinWave2$' p1|more
+grep -A 300 -B 12 '^OrcAdventurerRandom10$' p1|more
+grep -A 300 -B 12 '^MS48FinalBattleCreature100$' p1|more 
+
+
+Chunk name 0: LVLC 1 9505151
+flags 1 = 0000,0000,0000,0000,0000,0000,0000,0000
+formid = 419594
+flags 2 = 0000,0000,0010,0011,0010,0000,0000,0100
+Chunk name: EDID
+LVLC/EDID 28
+FGC08MythicNatureLairDry100
+Chunk name: LVLD
+LVLC/LVLD 1
+0 % Change None
+Chunk name: LVLF
+LVLC/LVLF 1
+0 % 0x1 = Calculate from all levels <= PC's level, 0x2 = Calc count
+Chunk name: LVLO
+LVLC/LVLO 12
+1 % Level
+443
+213161 % formid
+1 % Count
+780
+Chunk name: LVLO
+LVLC/LVLO 12
+1
+443
+213161 % formid
+1
+780
+Chunk name: LVLO
+LVLC/LVLO 12
+1
+443
+213161 % formid
+1
+780
+Chunk name: LVLO
+LVLC/LVLO 12
+1
+443
+152340 % formid
+1
+780
+End of LVLC
+
+
+============================================================================
+
+ok
+LVLI
+
+capture_22082008_132312.png
+capture_20080825_231609.png
+capture_20081004_145752.png % high bit vs LVLF vs DATA
+
+LVLO 8 or 12. Parsed as in LVLC.
+OblivionContainerArmor02
+
+LVLD high bit if LVLF is missing % it is used as flag, not as LVLF is missing
+Only negative value is:
+Change None -128
+
+LVLI Chance None -128
+ArenaLeveledGoldGrandRecur
+ArenaLeveledGoldBeatGrand
+Dark07RewardFinery % PC flag = 1 count flag = 0 DATA = 0
+That means:
+1000,0000
+^Calculate from all levels <= PC's level
+ ^Calculate for each item in count ???? % No. It is in DATA
+
+LVLI which have DATA:
+MQ15MythicDawnWeaponsHigh
+MQ15MythicDawnWeaponsLow
+
+LVLI/DATA
+FGC03ThiefArmor % = 1
+MG08RewardStaffFire % no data
+Dark03RewardDagger % = 0
+
+
+grep -A 300 -B 12 '^AdventurerWarriorBoots$' p1|more
+
+LVLI MQ15MythicDawnWeaponsHigh
+has DATA but has no LVLF and Chance None = 0.
+
+Perhaps this works:
+Either (1) LVLF (2) High bit of Chance None.
+
+Check for cases where the bits are stored in DATA, if any.
+
+LVLF and DATA never appears together in Oblivion.esm.
+
+============================================================================
+
+ok
+LVSP
+
+capture_22082008_133011.png
+
+unknowns in LVLO
+
+grep -A 300 -B 12 '^CGGoblinWitch100$' p2|more
+grep -A 300 -B 12 '^LL0AbsorbAttrMajor100$' p1|more
+
+No LVLO 8 here.
+
+LVSP/LVLF 1
+Flags 7 / 0x1 = Calc All <= PC, 0x2 = Calc count
+
+7 = 4 + 2 + 1
+    ^Use All Spells (only in LVSP)
+
+
+============================================================================
+
+nearly ok
+MGEF
+
+capture_22082008_161442.png
+capture_20080916_032807.png
+capture_20080930_073935.png
+
+Todo:
+flag 20 but how? % todo: modify the esp file, open in editor
+when actor value is used? what flags should be on?
+School choices % ok
+Resist Value choices % ok
+Projectile types % ok
+
+MGEF/DESC % Description text
+MGEF/ICON % Effect Icon
+MGEF/MODL % Visual Effects/Effects NIF
+
+MGEF/DATA 64
+0000,0000,0000,0100,0010,1001,0001,0010
+72.500000
+822380
+1
+-1
+-842203136
+0 % Visual Effects/Light FormID
+1.000000
+0 % Visual Effects/Effect Shader FormID
+0 % Visual Effects/Enchant Effect FormID
+1337372 % Casting Sound
+1337374 % Bolt Sound
+0       % Hit Sound
+1337373 % Area Sound
+0.000000 % Constant Effect Enchantment Factor
+0.000000 % Constant Effect Barter Factor
+
+School?
+Resist Value?
+Counter Effects?
+
+Flags:
+Spellmaking
+Enchanting
+Hostile
+Detrimental
+Recover
+Magnitude %
+FX Persist
+Self
+Touch
+Target
+No Duration
+No Magnitude
+No Area
+No Ingredient
+Use Weapon
+Use Armor
+Use Creature
+Use Skill
+Use Attribute
+No Recast
+No Hit Effect
+
+ 1 Spellmaking
+ 2 Enchanting
+ 3 Hostile
+ 4 Detrimental
+ 5 Recover
+ 6 Magnitude %
+ 7 FX Persist
+ 8 Self
+ 9 Touch
+10 Target
+11 No Duration
+12 No Magnitude
+13 No Area
+14 No Ingredient
+15 Use Weapon
+16 Use Armor
+17 Use Creature
+18 Use Skill
+19 Use Attribute
+20 No Recast
+21 No Hit Effect
+
+Example flags: left to right, top to bottom
+
+000010010001001000000 % BW01 % Not in Oblivion.esm
+
+000010010001010000000 % STMA
+100010010001010010000 % ZDRE
+100010010001010100000 % BASH
+100010010001011000000 % BWAX
+110011111100000000000 % FISH
+111010101100000000000 % TURN
+111010111100000000000 % BRDN
+111100111100000000000 % SHDG
+111110001000010000100 % ABAT
+111110001000010001000 % ABSK
+111110111100000000000 % DRFA
+111110111100000001000 % DRSK
+111111111100000000000 % WKSH
+111100001000010000000 % ABHE
+110000000110010000000 % OPEN
+100010000100100000001 % TELE
+100010000100100000000 % TELE modified, without No Hit Effect
+111100111100000000100 % DGAT
+000000101101100000000 % REAN
+110010010000000000000 % DTCT
+*******************+*
+123456789012345678901
+         1         2
+
+ESM flags:
+0000,0001,0000,0000,0010,0001,0001,0010 % STMA
+0000,0000,0000,0100,0010,1001,0001,0010 % ZDRE
+0000,0000,0000,0010,0010,1001,0001,0010 % BASH
+0000,0000,0000,0001,0010,1001,0001,0010 % BWAX
+0000,0001,0000,0000,0001,1100,0111,1010 % FISH
+0000,0000,0000,0000,0001,1100,0110,0011 % TURN
+0000,0001,0000,0000,0001,1100,0111,0011 % BRDN
+0010,0101,0000,0000,0001,1100,0111,0101 % SHDG
+0000,0000,0001,0000,0011,1000,0010,0111 % ABAT
+0000,0000,0000,1000,0011,1000,0010,0111 % ABSK
+0000,0001,0000,0000,0001,1100,0111,0111 % DRFA
+0000,0000,0000,1000,0001,1100,0111,0111 % DRSK
+0000,0001,0000,0000,0001,1100,0111,1111 % WKSH
+0000,0001,0000,0000,0011,1000,0010,0101 % ABHE
+0000,0000,0000,0000,0011,1000,1100,0000 % OPEN
+1000,1001,0000,0000,0000,1010,0100,0010 % TELE
+1000,0001,0000,0000,0000,1010,0100,0010 % TELE modified, without No Hit Effect
+0000,0000,0001,0000,0001,1100,0111,0101 % DGAT
+0001,0000,0000,0010,0000,0111,0110,0000 % REAN
+1000,0001,0000,0000,0001,1000,0001,0010 % DTCT
+                                      ^3
+                                     ^5
+                                    ^4
+                                   ^6
+                                 ^8
+                                ^9
+                               ^10
+                              ^11
+                            ^12
+                           ^13
+                          ^7
+                         ^1
+                       ^2
+                      ^14
+                     ^20? always zero
+                    ^20? always zero
+                  ^15
+                 ^16
+                ^17
+               ^18
+             ^19
+            ^20? always zero
+           ^20? always zero
+          ^?
+        ^?
+      ^^Projectile Type 00 Ball 01 Spray 10 Bolt 11 Fog (UESP doc)
+     ^21
+   ^?
+  ^?
+ ^?
+^?
+
+Check MGEFs with:
+0001,0000,0000,0010,0000,0111,0110,0000 % REAN Reanimate
+1000,0001,0000,0000,0001,1000,0001,0010 % DTCT Detect Life
+1000,0000,0000,0000,0001,1000,0111,0010 % LGHT Light
+0000,0000,1000,0000,0000,0000,0000,0000 % POSN Poison Info
+0000,0111,0000,0000,0001,1100,0111,0101 % FRDG Frost Damage
+0100,0001,0000,0000,0001,1100,0110,0110 % DEMO Demoralize
+0100,0000,0000,0000,0001,1100,0110,0010 % COCR Command Creature
+0100,0000,0000,0000,0001,1100,0110,0010 % COHU Command Humanoid
+
+tescstest_20080930/
+test_mgef01.esp % WAWA turned No Hit Effect to 1
+0000,0001,0000,0000,0001,1001,0111,0010 % WAWA original
+0000,1001,0000,0000,0001,1001,0111,0010 % WAWA modified
+     ^No Hit Effect
+test_mgef02.esp % TELE turned No Hit Effect to 0, check No Area
+1000,1001,0000,0000,0000,1010,0100,0010 % TELE original
+1000,0001,0000,0000,0000,1010,0100,0010 % TELE modified, without No Hit Effect
+     ^No Hit Effect
+Now check the modified TELE against all others above.
+
+No Recast (20) is 0 in all MGEFs of Oblivion.esm.
+These are marked "always zero" in the above table.
+
+Two possible 13 flags differs:
+0001,0000,0000,0010,0000,0111,0110,0000 % REAN
+1000,0001,0000,0000,0001,1000,0001,0010 % DTCT
+
+School:
+0 Alteration
+1 Conjuration
+2 Destruction
+3 Illusion
+4 Mysticism
+5 Restoration
+
+0 Alteration 1 Conjuration 2 Destruction 3 Illusion 4 Mysticism 5 Restoration
+
+ResistValue:
+-1 NONE
+61 Resist Fire
+62 Resist Frost
+63 Resist Disease
+64 Resist Magic
+65 Resist Normal Weapons
+66 Resist Paralysis
+67 Resist Poison
+68 Resist Shock
+
+-1 NONE 61 Resist Fire 62 Resist Frost 63 Resist Disease 64 Resist Magic 65 Resist Normal Weapons 66 Resist Paralysis 67 Resist Poison 68 Resist Shock
+
+TURN has counter effect RYCR which cannot be found in ESM.
+This shows as empty entry in the list.
+
+Many MGEFs are not in Oblivion.esm. Where they are?
+
+       School  ResistValue  ProjectileType
+ABAT Restoration ResistMagic Ball
+0000,0000
+5 % School % 0 Alteration 1 Conjuration 2 Destruction 5 Restoration
+64 % ResistValue % 61 ResistFire 64 ResistMagic 68 ResistShock
+4
+ABHE Restoration ResistMagic Ball
+0000,0001
+5
+64
+4
+ABSK Restoration ResistMagic Ball
+0000,0000
+5
+64
+3
+BACU Conjuration NONE Ball
+0000,0000
+1
+-1
+0
+BAGA Conjuration NONE Ball
+0000,0000
+1
+-1
+0
+BAGR Conjuration NONE Ball
+0000,0000
+1
+-1
+0
+BASH Conjuration NONE Ball
+0000,0000
+1
+-1
+0
+BRDN Alteration ResistMagic Ball
+0000,0001
+0
+64
+2
+BWAX Conjuration NONE Ball
+0000,0000
+1
+-1
+0
+DGFA Destruction ResistMagic Ball
+0000,0001
+2
+64
+4
+FIDG Destruction ResistFire Ball
+0010,0001
+2
+61
+3
+FISH Alteration NONE Ball
+0000,0001
+0
+-1
+0
+SHDG Destruction ResistShock Bolt
+0010,0101
+      ^Bolt
+2
+68
+3
+STMA Destruction NONE Ball
+0000,0001
+2
+-1
+0
+TURN Conjuration ResistMagic Ball
+0000,0000
+1
+64
+2
+
+
+============================================================================
+
+ok
+MISC
+
+capture_22082008_132450.png
+
+MISC/DATA 8
+4 % Value
+4.500000 % Weight
+
+============================================================================
+
+ok except FaceGen data
+NPC_
+
+capture_22082008_124049.png
+capture_22082008_124251.png % Dialogue / Filter: Abhuki
+capture_22082008_125324.png % AI dialog
+capture_22082008_125348.png
+capture_20080825_230756.png
+capture_20080825_231414.png % AI dialog
+capture_20080825_234307.png % AI dialog
+capture_20080825_235130.png % Face tab
+capture_20080901_225444.png % auto-calc stats test
+capture_20081004_184628.png
+tescstest_npc20080903/
+tescstest_npc20080908/
+tescstest_npc_face20080916/
+
+
+What makes auto calc stats = 1 and greyed-out?
+
+FaceGen data unknown.
+
+Auto calc stats flag?
+PC level offset flag?
+Solved. Two used-flags detected:
+NPC_/ACBS 16
+0000,0000,0001,0000,0000,0000,0001,0000 % AdrianDecanius auto = 1 PC = 0
+                                 ^????
+                              ^????
+
+CREA/ACBS and NPC_/ACBS flags differ.
+CREA/AIDT and NPC_/AIDT are assumed to be identical.
+CREA/AIDT flags have been tested, NPC_/AIDT flags seems to match.
+
+Face tab:
+-Age, complexion? Are they among FG subrecords?
+-Flags?
+
+grep -A 300 -B 12 '^Abhuki$' p1|more
+
+
+NPC_/ACBS flags
+tescstest_npc20080903/
+0000,0000,0000,0000,0000,0000,0000,0001 % original
+0000,0000,0000,0000,1000,0000,0000,0001 % No Persuasion
+0000,0000,0000,0000,0010,0000,0000,0001 % No Rumors
+0000,0000,0000,0000,0100,0000,0000,0001 % Summonable
+0000,0000,0000,0000,0000,0000,0000,0000
+0000,0000,0000,0000,0000,0000,0000,0000
+% tescstest_npc20080908/
+0000,0000,0001,0000,0000,0000,0000,0001 % Can Corpse check
+0000,0000,0000,0000,0000,0000,0000,0011 % Essential
+0000,0000,0000,0000,1000,0000,0000,0001 % No Persuasion
+0000,0000,0000,0000,0000,0000,0000,1001 % Respawn
+0000,0000,0000,0000,0010,0000,0000,0001 % No Rumors
+0000,0000,0000,0000,0000,0010,0000,0001 % No low level processing
+                                      ^Female
+                                     ^Essential
+                                    ^? always 0 in Oblivion.esm
+                                   ^Respawn
+                                 ^Auto Calc Stats
+                                ^? always 0 in Oblivion.esm
+                               ^? always 0 in Oblivion.esm
+                              ^PC Level Offset
+                            ^? always 0 in Oblivion.esm
+                           ^No low level processing
+                          ^? always 0 in Oblivion.esm
+                         ^? always 0 in Oblivion.esm
+                       ^? always 0 in Oblivion.esm
+                      ^No Rumors
+                     ^Summonable
+                    ^No Persuasion
+             ^Can Corpse check (Note: here on = 1, CREA has on = 0)
+
+
+Chunk name 0: NPC_ 1 8286173
+flags 1 = 0000,0000,0000,0100,0000,0000,0000,0000
+formid = 231864
+flags 2 = 0000,0000,0010,1011,0010,0010,0001,1010
+Data is compressed
+numcomp = 848, nout = 858
+Chunk name: EDID
+NPC_/EDID 7
+Abhuki
+Chunk name: FULL
+NPC_/FULL 7
+Abhuki
+Chunk name: MODL
+NPC_/MODL 35
+Characters\_Male\SkeletonBeast.NIF
+Chunk name: MODB
+NPC_/MODB 4
+71.407402
+Chunk name: SCRI
+NPC_/SCRI 4
+768467 % Script formid
+Chunk name: CNTO
+NPC_/CNTO 8
+141742 % Item formid
+1 % Count
+Chunk name: CNTO
+NPC_/CNTO 8
+141741
+1
+Chunk name: CNTO
+NPC_/CNTO 8
+141743
+1
+Chunk name: CNTO
+NPC_/CNTO 8
+255177
+1
+Chunk name: AIDT
+NPC_/AIDT 12
+5 % Aggression
+50 % Confidence
+50 % Energy Level
+100 % Responsibility
+0000,0000,0000,0000,0110,0000,0001,0000
+8 % Skill Index % NPC_/DATA index to Alteration value (index starting from 0)
+70 % Skill Value % AI Alteration (or what value the above index points to)
+0
+Chunk name: PKID
+NPC_/PKID 4
+608199 % PACK formid
+Chunk name: PKID
+NPC_/PKID 4
+429069 % PACK formid
+Chunk name: ACBS
+NPC_/ACBS 16
+0000,0000,0000,0000,0000,0000,0000,0001
+73  % Base Spell Pts
+260 % Fatigue
+50 % Barter Gold % in AI window
+20 % Level
+0 % Calc Min
+0 % Calc Max
+Chunk name: RNAM
+NPC_/RNAM 4
+140231 % Race formid
+Chunk name: CNAM
+NPC_/CNAM 4
+147050 % Class formid
+Chunk name: DATA
+NPC_/DATA 33
+7 % Armorer
+12 % Athletics
+49 % Blade
+44 % Block
+7 % Blunt
+12 % Hand to Hand
+7 % Heavy Armor
+7 % Alchemy
+70 % Alteration
+7 % Conjuration
+7 % Destruction
+7 % Illusion
+7 % Mysticism
+7 % Restoration
+36 % Acrobatics
+64 % Light Armor
+21 % Marksman
+80 % Mercantile
+7 % Security
+64 % Sneak
+58 % Speechcraft
+139 % Health
+0
+0
+0
+57 % Str
+61 % Int
+41 % Wil
+92 % Agi
+63 % Spd
+70 % End
+92 % Personality?
+50 % Luc
+Chunk name: HNAM
+NPC_/HNAM 4
+804897 % Hair formid
+Chunk name: LNAM
+NPC_/LNAM 4
+1.000000 % Hair Length
+Chunk name: ENAM
+NPC_/ENAM 4
+226760 % Eyes formid
+Chunk name: HCLR
+NPC_/HCLR 4
+75 % Hair Color R
+50 % Hair Color G
+25 % Hair Color B
+0
+Chunk name: FGGS
+NPC_/FGGS 200
+-0.602076
+0.962397
+-0.526373
+0.422264
+2.341133
+-0.947146
+-0.730198
+0.520078
+-1.260422
+2.351910
+0.898094
+0.488922
+-2.855810
+1.307841
+1.249798
+-0.867698
+-1.174642
+-0.495479
+0.551659
+0.706998
+0.293036
+0.138531
+0.445312
+-0.358458
+-0.986301
+0.403239
+-0.480807
+-0.604029
+0.924330
+-0.143644
+0.622029
+0.056319
+-0.648451
+0.871767
+1.264054
+-0.469332
+-1.136926
+2.142848
+0.616197
+-0.535476
+-1.532770
+1.229559
+0.441764
+-0.767618
+0.025683
+-1.030179
+0.450038
+0.143187
+0.056106
+1.052276
+Chunk name: FGGA
+NPC_/FGGA 120
+0.562962
+0.432850
+0.633354
+-0.687130
+-1.058204
+0.789656
+-0.163523
+0.617203
+0.455287
+1.071255
+-0.574026
+-0.539447
+0.525335
+-0.355127
+-0.397011
+-0.279051
+0.403158
+0.203433
+-0.027990
+0.968692
+-0.437339
+0.187834
+-0.555840
+-0.179481
+-0.303949
+-0.240683
+0.249407
+-0.333431
+0.399107
+0.753181
+Chunk name: FGTS
+NPC_/FGTS 200
+2.959997
+-0.670646
+1.168406
+-3.359558
+-0.407299
+-0.907273
+-1.492803
+0.212940
+-0.585370
+-1.300533
+-1.141782
+1.943052
+-0.544337
+-0.934900
+-0.307457
+1.306899
+-0.411502
+-1.390210
+0.889713
+0.380445
+1.360448
+-1.287117
+-0.041892
+-1.026315
+0.427335
+0.320688
+0.508527
+0.168305
+-0.417177
+0.121766
+-0.137320
+1.380341
+0.277901
+-0.296846
+0.767734
+-1.020692
+0.165542
+0.773388
+0.356895
+-0.137821
+2.175421
+-0.156861
+-1.155313
+-0.279132
+-0.360554
+-0.441563
+0.334097
+-0.540586
+-0.355110
+-0.449096
+Chunk name: FNAM
+NPC_/FNAM 2
+23380 % Age? Complexion? Face tab flags?
+End of NPC
+
+
+NPC_/FGGS 200 % Geometry / Symmetry
+NPC_/FGGA 120 % Geometry / Asymmetry
+NPC_/FGTS 200 % Texture / Symmetry
+
+
+Vinicia Melissaeia
+NPC_/SNAM 8
+37493
+0 % rank?
+79
+68
+66
+VincentGalien
+Chunk name: SNAM
+NPC_/SNAM 8
+182834
+0
+79
+68
+66
+Chunk name: SNAM
+NPC_/SNAM 8
+139919
+1
+79
+68
+66
+
+VilenaDonton  1 (Big Mama) % "Big Mama" is given in FACT
+VilenaDonton has 3 SNAM subrecords. Is it always the last
+which is displayed in the NPC table?
+
+NPC_/INAM 4
+505845 % Death Item FormID
+
+NPC_/AIDT flags:
+0000,0000,0000,0000,0110,0000,0001,0000 % Abhuki
+0000,0000,0000,0010,0100,0100,1000,0011 % TadroseHelas
+
+NPC_/AIDT flags seems to match CREA/AIDT flags.
+
+CREA/AIDT flags:
+0000,0000,0000,0011,0111,1101,1001,1111
+                                      ^Weapons
+                                     ^Armor
+                                    ^Clothing
+                                   ^Books
+                                 ^Ingredients
+                                ^?
+                               ^?
+                              ^Lights
+                            ^Apparatus
+                           ^?
+                          ^Miscellaneous
+                         ^Spells
+                       ^Magic Items
+                      ^Potions
+                     ^Training
+                    ^?
+                  ^Recharge
+                 ^Repair
+
+
+
+============================================================================
+
+ok
+PACK
+
+capture_22082008_155556.png
+capture_20080903_061741.png
+
+tescstest_pack20080903$ for i in `ls test_* `; do espparser $i | grep -A 1 PACK/PKDT|tail -1; done
+0000,0000,0000,0000,0000,0010,0000,0000 % Continue if PC near
+0000,0000,0000,0000,0000,0000,0000,0010 % Must Reach Location
+0000,0000,0000,0000,0000,0000,0000,0001 % Offers Services
+0000,0000,0000,0000,0000,0000,0000,0100 % Must Complete
+0000,0000,0000,0000,0000,0100,0000,0000 % Once Per Day
+0000,0000,0000,0000,0001,0000,0000,0000 % Skip Fallout Behavior
+0000,0000,1000,0000,0000,0000,0000,0000 % Use Horse
+0000,0001,0000,0000,0000,0000,0000,0000 % No Idle Anims
+0000,0000,0000,0000,0010,0000,0000,0000 % Always Run
+0000,0000,0000,0010,0000,0000,0000,0000 % Always Sneak
+0000,0000,0000,0100,0000,0000,0000,0000 % Allow Swimming
+0000,0000,0000,1000,0000,0000,0000,0000 % Allow Falls
+0000,0000,0001,0000,0000,0000,0000,0000 % Armor Unequipped
+0000,0000,0010,0000,0000,0000,0000,0000 % Weapons Unequipped
+0000,0000,0100,0000,0000,0000,0000,0000 % Defensive Combat
+0000,0000,0000,0000,0000,0000,0100,0000 % Start/Unlock Doors
+0000,0000,0000,0000,0000,0000,0000,1000 % Start/Lock Doors
+0000,0000,0000,0000,0000,0001,0000,0000 % Loc/Unlock Doors
+0000,0000,0000,0000,0000,0000,0010,0000 % Loc/Lock Doors
+0000,0000,0000,0000,0000,0000,1000,0000 % End/Unlock Doors
+0000,0000,0000,0000,0000,0000,0001,0000 % End/Lock Doors
+                                      ^Offers Services
+                                     ^Must Reach Location
+                                    ^Must Complete
+                                   ^Start/Lock Doors
+                                 ^End/Lock Doors
+                                ^Loc/Lock Doors
+                               ^Start/Unlock Doors
+                              ^End/Unlock Doors
+                            ^Loc/Unlock Doors
+                           ^Continue if PC near
+                          ^Once Per Day
+                         ^??
+                       ^Skip Fallout Behavior
+                      ^Always Run
+                     ^??
+                    ^??
+                  ^??
+                 ^Always Sneak
+                ^Allow Swimming
+               ^Allow Falls
+             ^Armor Unequipped
+            ^Weapons Unequipped
+           ^Defensive Combat
+          ^Use Horse
+        ^No Idle Anims
+
+
+PACK/PKDT 8
+0000,0000,0000,0000,0001,0000,0000,0100
+0 % Package Type % 0 Find 1 Follow 2 Escort 3 Eat 4 Sleep 5 Wander 6 Travel 7 Accompany 8 Use Item At 9 Ambush 10 Flee not Combat 11 Cast Magic
+-92
+63
+14
+
+
+
+What is the type of package when PKDT size is 4?
+
+PACK/PSDT 8
+1 % Month % 1 February 255 Any
+0 % Day of week % 0 Sunday 255 Any
+4 % Date % 0 Any
+23 % Time
+7  % Duration
+
+
+FGC01PinarusEscort
+
+PACK/PSDT 8
+255 % value is Any
+255
+0
+255
+0
+
+PACK/PLDT 12 % Package location data
+0 % 0 Near Reference 1 In Cell 2 Near Current Location 3 Near Editor Location
+222764 % Reference FormID; FGC01CatHuntMarker (which base object is STAT XMarker)
+1000 % Radius (for types 0 2 3)
+
+Where the cell "AnvilWest02 (-48,-7)" is given?
+Is FGC01CatHuntMarker in that cell?
+
+PACK/PTDT 12
+0 % 0 Specific Reference
+20 % Ref FormID; 20 means Player Ref FormID (Player FormID = 7)
+1000 % Distance (for Specific Reference)
+
+Where the cell "AbandonedMine" is given?
+
+PACK/PTDT 12
+1 % 0 Specific Reference 1 Any Object (ID) 2 Any Object (Type)
+222765
+4 % Count (for Any Object)
+
+PACK/CTDA 24
+0000,0000
+        ^0 AND 1 OR
+       ^Run on Target
+^^^000 == 001 != 010 > 011 >= 100 < 101 <=
+0
+0
+0
+Value 1.000000
+Function ID 53
+Parameter 1: 48242
+Parameter 2: 1   % What is this "variable"? Are script variables indexed?
+0
+
+If script variables are indexed, then recompiling all scripts
+means that all CTDAs must be modified.
+
+Here is the way the script variable is taken.
+But where the value is at the runtime?
+Does SLSD hold its relative location?
+
+222770 PACK FGC01PinarusEscort / CTDA parameter 1 formid -->
+ 48242 ACHR PinarusInventiusRef / NAME base object formid -->
+ 41629 NPC_ PinarusInventius / SCRI Script FormID -->
+222772 SCPT FGC01PiranusScript:
+SCPT/SCTX 141
+scn FGC01PiranusScript
+
+short packageVAR
+
+
+Begin OnPackageEnd FGC01PinarusEscort
+	set packageVAR to 2
+	StartConversation Player
+End
+
+SCPT/SLSD 24
+Index of the script variable 1
+0
+0
+0
+1
+-25
+42
+3
+16 -- 0.000000
+Chunk name: SCVR
+SCPT/SCVR 11
+packageVAR
+Chunk name: SCRO
+SCPT/SCRO 4
+222770
+Chunk name: SCRO
+SCPT/SCRO 4
+20
+End of SCPT
+
+% espparser test_pack34.esp 
+PACK/CTDA 24
+0000,0100                 % Use Global
+        ^0 AND 1 OR
+       ^Run on Target
+^^^000 == 001 != 010 > 011 >= 100 < 101 <=
+0
+0
+0
+Value 0.000000 % XXXX This is FormID 314069 for Use Global (GLOB record).
+Function ID 76
+Parameter 1: 579419
+Parameter 2: 0
+0
+
+
+
+============================================================================
+
+ok
+PGRD
+
+capture_20080916_034309.png % BrumaFightersGuild
+capture_20080922_232647.png % MelusPetilusHouse
+capture_20080928_200003.png % land pgrd
+capture_20080930_081207.png % BrumaIstirusBrolusHouse
+capture_20081004_185139.png % two cells having a cage
+
+
+PGRD is in the "Cell Temporary Children" group.
+
+CELL BrumaIstirusBrolusHouse
+GRUP Cell Children
+ GRUP Cell Persistent Children
+ REFR teleport
+ ACHR JantusBrolusRef
+ ACHR IstirusBrolusRef
+ REFR teleport 
+ ENDGRUP
+ GRUP Cell Temporary Children
+ PGRD % loc = 13265436 formid = 197573
+ REFR
+ ****
+ ENDGRUP
+ENDGRUP
+
+PGRD/DATA = number of path grid points = N
+PGRD/PGAG size = ceil(N/8) % 1 bit per point?
+PGRD/PGRP size = 16*N
+PGRD/PGRR size = sum of all number-of-lines of points
+
+35 path lines between points in BrumaIstirusBrolusHouse
+PGRD/PGRR 144
+? 144/36
+%96 = 4
+Did I count the path lines wrong? Yes, one at top is hidden.
+
+Min X coordinate is 124.
+Max X coordinate is 407. It is in the first point.
+Min Y coordinate is -502.
+Max Y coordinate is 242.
+
+X 124.252724
+X 132.314407
+X 133.564774
+X 151.031906
+X 172.028809
+X 196.376114
+X 250.713760
+X 256.362549
+X 259.897583
+X 264.335480
+X 271.970947
+X 281.480927
+X 297.610870
+X 349.149536
+X 358.866943
+X 407.282196
+
+Y -502.661285
+Y -494.333923
+Y -363.160187
+Y -356.163361
+Y -257.913116
+Y -249.394684
+Y -161.630051
+Y -157.489929
+Y -157.450623
+Y -41.751984
+Y -5.699684
+Y 57.814251
+Y 58.028664
+Y 110.330154
+Y 206.088348
+Y 242.549240
+
+      15(196,242)
+                  14(281,206)
+                         13(358,110)
+   12(133,58)   11(256,57)
+                                0(407,-5)
+               1(259,-41)
+  10(132,-161) 2(250,-157) 3(349,-157)
+ 4(124,-249)      5(271,-257)
+    9(151,-356)     6(297,-363)
+     8(172,-502) 7(264,-494)
+
+Order in PGRP may not be relevant.
+E.g., there is no path line from 3 to 4.
+
+PGRR numbers:
+tail -73 zppgrd197573|head -72|sort -n|uniq -c
+      6 0
+      4 1
+      7 2
+      3 3
+      6 4
+      6 5
+      6 6
+      4 7
+      4 8
+      6 9
+      4 10
+      6 11
+      1 12
+      3 13
+      4 14
+      2 15
+That is, the numbers at left are the number of path lines.
+
+What graph the PGRR is?
+
+Solution: PGRP gives the number of lines. That is used to group
+the end points in PGRR.
+
+In PGRR, values of -1 points to external cells and are listed
+in PGRI subrecord. But check formid = 1620974: it has no -1 path
+lines, but it has PGRI.
+
+Has negative PGRR values:
+Chunk name 0: PGRD 6 33431422
+formid = 561226
+Tamriel / cell 4 8
+
+Has no negative PGRR values:
+Chunk name 0: CELL 4 36176898
+formid = 1620974
+Tamriel / cell 12 5
+
+It looks like -1 entries are not necessary.
+When -1 are not used, the number of lines in the point table is 
+lower and does not match what CS displays.
+
+What happens if non -1 PGRD is converted to PGRD with -1?
+Does the engine handle both cases equally?
+
+What would happen if one point is in this side and all its
+connected points are in other side?
+With -1, it would look like this:
+  point 95 (red) --> -1 -1 -1
+But without -1, like this:
+  point 95 (red) --> <empty>
+
+Oblivion.esm does have points with 0 path lines. But have they
+PGRI connections?
+PGRD formid = 840513 (OblivionRD002CitadelLava) does have points
+without connections and it has no PGRI.
+
+But we may find this kind of cases:
+
+Chunk name 0: CELL 4 42548081
+formid = 24446
+Tamriel / cell 22 10
+Here point 38 is strange.
+ point 38 (orange) --> -1 34 99 86 33 + 3 PGRI connections
+ point 39 (orange) --> 10 53 9 5 4 + 1 PGRI connections
+Point 38 does not match non -1 or -1 system.
+Point 39 matches non -1 system.
+
+Chunk name 0: CELL 4 51865023
+formid = 17769
+Tamriel / cell 5 33
+Here the point 8 looks ok with -1, but point 9 is strange:
+ point 8 (orange) --> -1 -1 -1 7 33 34 31 + 3 PGRI connections
+ point 9 (orange) --> nowhere + 2 PGRI connections
+Both points matches the systems but the path grid does not
+use non -1 and -1 system consistently.
+
+What does these look like in CS?
+
+Does the extra data in point table or in PGRI table
+tell more about these cases?
+
+Point 38:
+X 93952.000000
+Y 44800.000000
+Z 3224.000000
+Path Lines 5
+70
+5
+128
+PGRD/PGRI 864
+Node 38
+237
+41
+94464.000000
+45312.000000
+3728.000000
+Node 38
+42
+1
+93952.000000
+45312.000000
+3448.000000
+Node 38
+42
+1
+94464.000000
+44800.000000
+3552.000000
+
+Point 8:
+X 23808.000000
+Y 139008.000000
+Z 25528.000000
+Path Lines 7
+0
+5
+0
+Point 9:
+X 20992.000000
+Y 135424.000000
+Z 21872.000000
+Path Lines 0
+0
+6
+0
+
+PGRD/PGRI 432
+Node 8
+0
+0
+23296.000000
+139520.000000
+25672.000000
+Node 8
+0
+0
+23808.000000
+139520.000000
+25712.000000
+Node 8
+0
+0
+24320.000000
+139264.000000
+25616.000000
+Node 9
+0
+0
+21504.000000
+135168.000000
+21648.000000
+Node 9
+0
+0
+21248.000000
+135168.000000
+21664.000000
+
+
+
+PGRD/PGRR 144
+% lines of 0 = 6
+14
+13
+11
+3
+2
+1
+% lines of 1 = 4
+11
+3
+2
+0
+% lines of 2 = 7
+10
+9
+5
+4
+3
+0
+1
+% lines of 3 = 3
+1
+0
+2
+
+10
+7
+6
+5
+9
+2
+10
+8
+4
+9
+6
+2
+10
+4
+8
+9
+7
+5
+4
+9
+8
+6
+5
+6
+9
+7
+2
+5
+4
+7
+8
+6
+6
+5
+4
+2
+15
+14
+13
+0
+12
+1
+11
+14
+0
+11
+0
+15
+11
+13
+14
+11
+End of PGRD
+
+ -*-
+
+capture_20080930_082303.png
+
+Chunk name: PGRL
+PGRD/PGRL 8
+221827 % Linked Object FormID
+2
+
+ -*-
+
+PGRD/PGRR 918 % 4 does not divide 918
+
+check cell MelusPetilusHouse for path grids
+
+MelusPetilusHouse has two disjoint paths. That must be
+the reason why there is any special in it.
+No need to be divisible by 4 as we already solved how
+PGRD works.
+
+ -*-
+
+get screenshots of path grids:
+838518 % Tamriel / cell (15,3) / near CharcoalCaveExterior
+838902 % Tamriel / cell (11,7) / near FatbackCaveExterior
+838906 % Tamriel / cell (3,8) / near ICWaterfront06
+838931 % Tamriel / cell (0,10) / near WeyeExterior
+1620976 % Tamriel / cell (14,6)
+
+check their points and PGAG
+
+PGAG has one bit per point.
+0 red point
+1 orange point
+What they mean?
+How to toggle between red and orange in CS? 
+What the blue color mean?
+Both red and orange toggled to blue with Alt + MouseButton1.
+
+Orange seems to mean Automatically Generated (AG).
+
+Blue means preferred node, and is used for roads, and the like.
+To find out where the blue info is stored, we need to create esps.
+Solved: Blue point's Z coordinate is odd, otherwise it is even.
+
+What if PGRI has coordinates of red point and the equivalent
+point in the other cell is switched to blue? Are PGRI coordinates
+updated? Or does the engine fix it later?
+
+
+Analysis of
+capture_20080928_200200.png
+formid = 561370
+Path Grid Points 83
+
+Point 3:    % Point 3 is selected in the screenshot.
+X 60596.937500
+Y 2725.119141
+Z 2936.000000
+Path Lines 3
+36
+18
+-59
+
+Point 76:
+X 60928.000000
+Y 2816.000000
+Z 2872.000000
+Path Lines 2
+75
+-82
+-11
+
+
+PGRD/PGAG 11
+0 % point 3 has 0 (red color)
+0
+0
+-4
+-1
+etc.
+
+point 2 (red) --> 3 1
+point 3 (red) --> 76 4 2 % selected point
+point 4 (red) --> 7 5 3
+
+point 76 (orange) --> 46 3
+
+
+capture_20080928_201326.png
+formid = 1620974
+Path Grid Points 105
+
+Point 9:
+X 51437.851562
+Y 23074.675781
+Z 1579.000000
+Path Lines 6
+14
+0
+0
+Point 10:   % selected blue point
+X 51670.984375
+Y 23329.650391
+Z 1593.000000
+Path Lines 4
+0
+0
+0
+Point 11:
+X 51901.167969
+Y 23553.113281
+Z 1607.000000
+Path Lines 2
+13
+0
+0
+Point 34:
+X 51456.000000
+Y 23296.000000
+Z 1592.000000
+Path Lines 4
+67
+5
+68
+Point 104:
+X 51690.726562
+Y 23129.921875
+Z 1588.000000
+Path Lines 3
+0
+65
+0
+
+point 9 (red) --> 70 34 28 10 8 104 % blue left down % 14 0 0 (8+4+2)
+point 10 (red) --> 34 11 9 104  % selected blue      % 0 0 0
+point 11 (red) --> 12 10        % blue on the bridge % 13 0 0 (8+4+1)
+point 34 (orange) --> 35 10 9 102 % orange left      % 67 5 68 (64+2+1) (4+1)
+point 104 (red) --> 103 10 9     % red left down     % 0 65 0 (64+1)
+
+Blue points:
+9 % 14 0 0
+10 % 0 0 0
+11 % 13 0 0
+12 % 0 0 0
+13 % 13 0 0
+14 % 68 7 68
+15 % 68 5 68 % endpoint
+
+Last 3 bytes in point data:
+red points: 0 - 20 (all could be blue)
+% 0 has form 40 48 48
+% 1-13 have form x 0 0
+% 14-20 have form 68 x 68
+orange points: 21 - 93
+% 21-92 have form 68 x 68 or 67 x 68 or 68 x 67
+% 93 has form -1 -1 -1
+red points: 94 - 104
+% 94-104 have form 0 x 0
+
+PGRI perhaps means:
+Node 94 % connect point 94 to point (49050,22912,1090)
+0
+0
+49050.117188
+22911.806641
+1090.000000
+Node 49 % connect point 49 to point (49050,22912,1090)
+0
+0
+49050.117188
+22911.806641
+1090.000000
+
+Point 15 is a bridge point which ends, but the blue
+path on the bridge does not end.
+Node 15
+0
+0
+53354.808594
+24799.996094
+1607.000000
+
+That point is point 0 in PGRD with formid = 1620975.
+Point 0:
+X 53354.808594
+Y 24799.996094
+Z 1607.000000
+Path Lines 1
+-128 % 1000,0000
+-92
+70
+
+That is blue point.
+
+That is also point 562 in ROAD with formid = 428995.
+
+Point 562:
+X 53354.808594
+Y 24799.996094
+Z 1607.000000
+Path Lines 2
+-59 % 1100,0101
+9   % 0000,1001
+0
+
+Point 562:
+X 53354.808594
+Y 24799.996094
+Z 1607.000000
+Path Lines 2
+197 % 1100,0101
+9   % 0000,1001
+0
+
+============================================================================
+
+ok
+QUST
+
+capture_22082008_160305.png
+
+QUST/DATA 2
+8  % 1 Start Game Enabled ?? Allow repeated conversation topics 8 Allow repeated stages
+60 % Priority
+
+
+Quest Target tab shows the cell. Where this is given?
+
+QUST/QSTA 8
+182846
+0
+0
+205
+13  % 182846-13 = 182833 which is the cell FormID, probably coincidence
+
+
+
+============================================================================
+
+nearly ok
+RACE
+
+capture_22082008_153612.png
+capture_20080922_231903.png
+
+Tabs:
+General Data % Male Voice Race, Female Voice Race % VNAM, UNAM, PNAM?
+Body Data % ok
+Face Data % ok
+FaceGen Data
+Text Data % ok
+Reactions % ok
+
+RACE/CNAM 1
+15 % Default Hair Color % "Satin Blonde"
+
+The name of the hair color is given here:
+GMST/EDID 13
+sHairColor15
+Chunk name: DATA
+GMST/DATA 13
+Satin Blonde
+
+Skills in Skill Bonus list: % differs from NPC training skills list
+-1 NONE
+12 Armorer
+13 Athletics
+14 Blade
+15 Block
+16 Blunt
+17 Hand To Hand
+18 Heavy Armor
+19 Alchemy
+20 Alteration
+21 Conjuration
+22 Destruction
+23 Illusion
+24 Mysticism
+25 Restoration
+26 Acrobatics
+27 Light Armor
+28 Marksman
+29 Mercantile
+30 Security
+31 Sneak
+32 Speechcraft
+
+Write parser for this structure:
+
+NAM0
+ INDX 0 MODL MODB ICON % Head Model and Texture
+ INDX 1 MODL MODB ICON % Ears (Male)
+ INDX 2 MODL MODB ICON % Ears (Female)
+ INDX 3 MODL MODB ICON % Mouth
+ INDX 4 MODL MODB ICON % Teeth (Lower)
+ INDX 5 MODL MODB ICON % Teeth (Upper)
+ INDX 6 MODL MODB ICON % Tongue
+ INDX 7 MODL MODB % Left Eye
+ INDX 8 MODL MODB % Right Eye
+NAM1
+MNAM % Male
+ MODL MODB % Tail Model
+ INDX 0 ICON % Upper Body Texture
+ INDX 1 ICON % Lower Body Texture
+ INDX 2 ICON % Hand Texture
+ INDX 3 ICON % Foot Texture
+ INDX 4 ICON % Tail Texture
+FNAM % Female
+ MODL MODB % Tail Model
+ INDX 0 ICON % Upper Body Texture
+ INDX 1 ICON % Lower Body Texture
+ INDX 2 ICON % Hand Texture
+ INDX 3 ICON % Foot Texture
+ INDX 4 ICON % Tail Texture
+
+
+RACE/NAM0 0
+RACE/INDX 4
+0
+RACE/MODL 37
+Characters\Argonian\HeadArgonian.NIF
+RACE/MODB 4
+0.000000
+RACE/ICON 37
+Characters\Argonian\HeadArgonian.dds
+RACE/INDX 4
+1
+RACE/INDX 4
+2
+RACE/INDX 4
+3
+RACE/MODL 38
+Characters\Argonian\MouthArgonian.NIF
+RACE/MODB 4
+0.000000
+RACE/ICON 35
+Characters\Imperial\MouthHuman.dds
+RACE/INDX 4
+4
+RACE/MODL 43
+Characters\Argonian\TeethLowerArgonian.NIF
+RACE/MODB 4
+0.000000
+RACE/ICON 38
+Characters\Argonian\TeethArgonian.dds
+RACE/INDX 4
+5
+RACE/MODL 43
+Characters\Argonian\TeethUpperArgonian.NIF
+RACE/MODB 4
+0.000000
+RACE/ICON 38
+Characters\Argonian\TeethArgonian.dds
+RACE/INDX 4
+6
+RACE/MODL 39
+Characters\Argonian\TongueArgonian.NIF
+RACE/MODB 4
+0.000000
+RACE/ICON 36
+Characters\Imperial\TongueHuman.dds
+RACE/INDX 4
+7
+RACE/MODL 40
+Characters\Argonian\EyeLeftArgonian.NIF
+RACE/MODB 4
+0.000000
+RACE/INDX 4
+8
+RACE/MODL 41
+Characters\Argonian\EyeRightArgonian.NIF
+RACE/MODB 4
+0.000000
+RACE/NAM1 0
+RACE/MNAM 0
+RACE/MODL 29
+Characters\Argonian\Tail.NIF
+RACE/MODB 4
+0.000000
+RACE/INDX 4
+0
+RACE/ICON 43
+Characters\Argonian\Male\UpperBodyMale.dds
+RACE/INDX 4
+1
+RACE/ICON 37
+Characters\Argonian\Male\LegMale.dds
+RACE/INDX 4
+2
+RACE/ICON 38
+Characters\Argonian\Male\HandMale.dds
+RACE/INDX 4
+3
+RACE/ICON 38
+Characters\Argonian\Male\FootMale.dds
+RACE/INDX 4
+4
+RACE/ICON 34
+Characters\Argonian\Male\tail.dds
+RACE/FNAM 0
+RACE/MODL 29
+Characters\Argonian\Tail.NIF
+RACE/MODB 4
+0.000000
+RACE/INDX 4
+0
+RACE/ICON 47
+Characters\Argonian\Female\UpperBodyFemale.dds
+RACE/INDX 4
+1
+RACE/ICON 41
+Characters\Argonian\Female\LegFemale.dds
+RACE/INDX 4
+2
+RACE/ICON 42
+Characters\Argonian\Female\HandFemale.dds
+RACE/INDX 4
+3
+RACE/ICON 42
+Characters\Argonian\Female\FootFemale.dds
+RACE/INDX 4
+4
+RACE/ICON 36
+Characters\Argonian\Female\tail.dds
+
+
+It seems to be the playable flag.
+What is this? Compare screenshots.
+RACE/DATA last int
+
+VampireRace 0
+Dremora     0
+Argonian    1
+Nord        1
+Breton      1
+WoodElf     1
+Khajiit     1
+DarkElf     1
+Orc         1
+HighElf     1
+Redguard    1
+Imperial    1
+
+
+When Male Voice Race and Female Voice Race were altered from
+defaults, RACE/VNAM appeared. But also RACE/PNAM and RACE/UNAM
+appeared. What are they? The float values are 5.0 and 3.0
+respectively.
+
+PNAM and UNAM are not necessarily related to VNAM.
+See Nord race.
+
+============================================================================
+
+REFR
+
+capture_20080916_024143.png
+capture_20080922_233248.png
+
+Rotations are in degrees in the editor, but in radians
+in the DATA subrecord.
+
+Editor displays 1.0 after positions and rotations. What are they?
+They are not in the REFR record.
+
+Editor display scale 1.0 and 0.1. Both are missing in REFR.
+
+Editor displays the space. This must been the cell or the world
+which to this REFR belongs to.
+
+Where are flags Open By Default and Turn Off Fire
+
+Editor displays the count 1 (default). It is not in REFR.
+
+Tree has rotation disabled. The shown rotation values may be valid.
+
+Visible When Distant is on and disabled.
+
+Extra tab has all disabled.
+
+Chunk name 0: REFR 6 121044081
+flags 1 = 0000,0000,0000,0000,1000,0000,0000,0000
+                              ^Visible When Distant
+formid = 998018 / formid = 0x000f3a82
+flags 2 = 0000,0000,1111,1111,0001,1111,0000,1000
+Chunk name: NAME
+REFR/NAME 4
+144091
+Chunk name: XSCL
+REFR/XSCL 4
+1.080000
+Chunk name: XSED
+REFR/XSED 1
+2
+Chunk name: DATA
+REFR/DATA 24
+196412.000000
+-12584.000000
+5940.500000
+-0.848304
+-0.073631
+0.000000
+End of REFR
+
+
+XESP seems to be some kind of parent reference but I'm not sure.
+
+OBgateRandGC003SpawnMarker
+REFR/XESP 8
+85761 % FormID?? REFR / MQ03StartingGateParent
+0
+
+
+base object 141761 Arrow2Steel
+NPC 220854 Fjotreid
+
+Two matches:
+
+Chunk name 0: REFR 5 11637411
+flags 1 = 0000,0000,0000,0000,0000,0000,0000,0000
+formid = 663786 / formid = 0x000a20ea
+flags 2 = 0000,0000,0010,0100,0010,0100,0001,0100
+Chunk name: NAME
+REFR/NAME 4
+Base Object FormID 141761
+Chunk name: XOWN
+REFR/XOWN 4
+Owner FormID 220854
+Chunk name: DATA
+REFR/DATA 24
+Position X -25.028378
+Position Y 25.044985
+Position Z -269.836243
+Rotation X -0.001477
+Rotation Y -0.004693
+Rotation Z 0.273807
+End of REFR
+
+Chunk name 0: REFR 5 11642667
+flags 1 = 0000,0000,0000,0000,0000,0000,0000,0000
+formid = 683442 / formid = 0x000a6db2
+flags 2 = 0000,0000,0010,0100,0010,0001,0000,0001
+Chunk name: NAME
+REFR/NAME 4
+Base Object FormID 141761
+Chunk name: XOWN
+REFR/XOWN 4
+Owner FormID 220854
+Chunk name: XCNT
+REFR/XCNT 4
+Count 30
+Chunk name: DATA
+REFR/DATA 24
+Position X -197.423279
+Position Y 231.968582
+Position Z -270.664581
+Rotation X -0.000077
+Rotation Y 0.000166
+Rotation Z 0.275365
+End of REFR
+
+They are in the cell "BrumaHammerAndAxe".
+
+Try edit the locked door with level 40.
+Its REFR (197520 / 0x00030390) has this:
+REFR/XLOC 12
+40
+2
+13
+0
+220739
+0111,1111,1111,1101,1111,0000,0000,0000
+
+How to change the level? And the other numbers?
+Where are stored the different speeds of lock-springs?
+How many springs?
+
+Check the two arrows; does arrow.nif contain the quiver?
+The bounding boxes of the arrow quiver and one arrow
+looks about the same size.
+
+
+
+All REFR subrecords:
+
+REFR/DATA 24
+REFR/EDID <many>
+REFR/FNAM 1
+REFR/FULL <many>
+REFR/NAME 4
+REFR/ONAM 0
+REFR/TNAM 2
+REFR/XACT 4
+REFR/XCNT 4 % how many arrows NPC Fjotreid has? XCNT = 30 % NPC has 0. Shop?
+REFR/XESP 8 % Parent
+REFR/XGLB 4
+REFR/XLCM 4
+REFR/XLOC 12 % lock information when the base object is container or lock
+REFR/XLOC 16
+REFR/XLOD 12 % TreeJuniper01
+REFR/XMRK 0
+REFR/XOWN 4 % owner, e.g., NPC Fjotreid owns 30 Arrow2Steel arrows
+REFR/XPCI 4
+REFR/XRNK 4
+REFR/XRTM 4
+REFR/XSCL 4
+REFR/XSED 1
+REFR/XSED 4
+REFR/XTEL 28
+REFR/XTRG 4
+
+
+All REFR records includes NAME and DATA.
+Highest number of subrecords in REFR in Oblivion.esm
+seems to be 8 while there are 23 subrecords in total.
+Many subrecords may be dependent on the type of the
+base object.
+
+No "XOWN XLOD" references. What other disjoints?
+
+All subrecords related to XLOD:
+EDID NAME XESP XLOD XRTM XSCL XSED DATA
+XESP ?= ? ? Parent
+XRTM ?= Reference To Master
+
+REFR/XLOD 12
+-0.118319
+-0.359729
+0.925713
+The length of the XLOD vector seems to be 1.0 (Pari-Gp output):
+? (-0.118319)^2 + (-0.359729)^2 + (0.925713)^2
+%6 = 1.000348897571000000000000000
+
+
+At least two matches for
+Base Object FormID 175344
+one has XOWN and XLOC but the second do not have.
+When door is not lockable or is not locked or does not have key
+
+Teleport is between REFRs. The base object is, e.g, the door.
+The Teleport FormID is the REFR at other side, not the world space
+or cell. To move through the door requires that we check in what
+world space or cell the REFR is located at.
+
+XXXX We should print what is the Teleport FormID so that we see
+XXXX if it always is REFR and what is its base object.
+
+
+% find all additional tabs 
+REFR dialog shows additional tabs:
+Lock
+Teleport
+
+Lock tab:
+flag: Leveled
+selector:
+Very Easy
+Easy
+Average
+Hard
+Very Hard
+Needs a key
+
+
+XSOL / Extra Soul
+0 None
+1 Petty
+2 Lesser
+3 Common
+4 Greater
+5 Grand
+
+0 None 1 Petty 2 Lesser 3 Common 4 Greater 5 Grand
+
+
+============================================================================
+
+ok
+REGN
+
+capture_22082008_150413.png
+capture_20080911_213236.png
+capture_20080916_034852.png % region drawings
+capture_20081004_182734.png % clustering
+
+Music types?
+
+Where are the flags:
+No Color % Color = (0,0,0) because the color changed when on/off was done
+Border Region % in header flags
+
+
+NibenayBasinValleySubRegion01 % capture 20080822 150728  474/990
+
+REGN/EDID 30
+REGN/RCLR 4
+REGN/WNAM 4
+REGN/RPLI 4
+REGN/RPLD 560
+REGN/RDAT 8 % RDAT 1 % Sound
+REGN/RDMD 4
+REGN/RDSD 276
+REGN/RDAT 8 % RDAT 2 % Map
+REGN/RDMP 18
+REGN/RDAT 8 % RDAT 3 % Objects
+REGN/RDOT 5616
+
+
+
+
+Objects, Map, and Sound are enabled: three RDATs?
+
+cat p1|grep -B 20 -A 3384 '^NibenayBasinValleySubRegion01$'|grep -A 2 REGN/RDAT
+REGN/RDAT 8
+7 % Sound
+--
+REGN/RDAT 8
+4 % Map
+--
+REGN/RDAT 8
+2 % Objects
+
+
+RDAT types:
+2 = Objects
+3 = Weather
+4 = Map
+5 = Landscape (only one occurance in Oblivion.esm)
+6 = Grass (only one occurance in Oblivion.esm)
+7 = Sound
+
+Types 5 and 6 needs more testing.
+
+3 / TGTempleOfTheEmperorZeroWeatherRegion
+3 / SkingradWeatherRegion
+5 / ParadiseRegion02
+6 / ToddTestRegion1
+
+REGN/RDGS % 6 / ToddTestRegion1
+167148 % TestToddLongGrass (GRAS)
+0
+167149
+0
+167150
+0
+167151
+0
+
+Check regions:
+LandTextures
+World Space FormID 2136 % Toddland
+Removerland
+World Space FormID 2136 % Toddland
+TestHouseShapes
+World Space FormID 2169 % ToddTestLand2
+
+
+Objects tab:
+TerrainNVGrass01SU (formid = 1042629 / formid = 0x000fe8c5)
+
+
+REGN/RDOT % Generated Objects
+
+REGN/RDOT/01 Gen Object FormID 2941
+REGN/RDOT/02a 255
+REGN/RDOT/02b 255
+REGN/RDOT/02c 128
+REGN/RDOT/02d 63
+REGN/RDOT/03 Density 0.200000
+REGN/RDOT/04a 0
+REGN/RDOT/04b 35 % Min Slope
+REGN/RDOT/04c 55 % Max Slope
+REGN/RDOT/04d 66
+REGN/RDOT/05a 0
+REGN/RDOT/05b 2
+REGN/RDOT/05cd 24 % Radius
+REGN/RDOT/06 Min Height 6000.000000
+REGN/RDOT/07 Max Height 200000.000000
+REGN/RDOT/08 32.000000
+REGN/RDOT/09 0.000000
+REGN/RDOT/10 2.000000
+REGN/RDOT/11 0
+REGN/RDOT/12 199680.000000
+REGN/RDOT/13a 123
+REGN/RDOT/13b 135
+REGN/RDOT/13c 147
+REGN/RDOT/13d 32
+
+REGN/RDSD % Sound
+
+cat p1|grep -B 20 -A 3384 '^NibenayBasinValleySubRegion01$'|grep -A 20 REGN/RDSD|more
+REGN/RDSD 276
+472111 % AMBRBirdsGeneric01
+11 % Rainy = 4
+700000
+803290 % AMBRBirdsGeneric02
+11
+700000
+805042
+15
+800000
+805043
+
+Object flags:
+Is a Tree
+Is a Huge Rock
+Has Radius % no flag but greyed out? object dependent? terrain?
+
+NibenayBasinValleySubRegion01 / RockGreatForest1500GC / 249909
+Is a Tree = 0
+Is A Huge Rock = 1
+Has Radius = 1
+Conform to Slope = 1
+Paint Vertices = 1
+AngleVarX+- = 0
+AngleVarY+- = 0
+AngleVarZ+- = 1
+SizeVar+- = 0
+REGN/RDOT/02c 192
+REGN/RDOT/02d 0
+REGN/RDOT/04a 0
+REGN/RDOT/04d 163 % 1 2 32 128
+REGN/RDOT/12c 67 % 1 2 128 % 2,128 ?= Is a Huge Rock, Has Radius
+REGN/RDOT/12d 72 % 8 64
+
+NibenayBasinValleySubRegion01 / TerrainNVGrass01SU / 1042629
+Is a Tree = 0
+Is a Huge Rock = 0
+Has Radius = 0
+REGN/RDOT/02c 0
+REGN/RDOT/02d 0
+REGN/RDOT/04a 0
+REGN/RDOT/04d 0
+REGN/RDOT/12c 1 % 2,64 = Has Radius, Is a Huge Rock ?? 64?
+REGN/RDOT/12d 72 % 8 64
+
+NibenayBasinValleySubRegion01 / RockGreatForest520Moss / 249878
+Is a Tree = ?
+Is A Huge Rock = ?
+Has Radius = ?
+Conform to Slope = 1
+Paint Vertices = 1
+AngleVarX+- = 1
+AngleVarY+- = 1
+AngleVarZ+- = 1
+SizeVar+- = 0
+REGN/RDOT/02c 153
+REGN/RDOT/02d 62
+REGN/RDOT/04a 0
+REGN/RDOT/04d 59 % 1 2 8 16 32
+REGN/RDOT/12c 67 % 1 2 64
+REGN/RDOT/12d 72 % 8 64
+
+NibenayBasinValleySubRegion01 / TerrainHDRock02 / 228769
+Is a Tree = ?
+Is A Huge Rock = ?
+Has Radius = ?
+Conform to Slope = 0
+Paint Vertices = 0
+AngleVarX+- = 0
+AngleVarY+- = 0
+AngleVarZ+- = 0
+SizeVar+- = 0
+REGN/RDOT/02c 168
+REGN/RDOT/02d 71
+REGN/RDOT/04a 55
+REGN/RDOT/04d 0
+REGN/RDOT/12c 188 % 4 8 16 32 128
+REGN/RDOT/12d 71 % 1 2 4 64
+
+NibenayBasinValleySubRegion01 / RockGreatForest195Moss / 249886
+Is a Tree = ?
+Is A Huge Rock = ?
+Has Radius = ?
+Conform to Slope = 1
+Paint Vertices = 1
+AngleVarX+- = 1
+AngleVarY+- = 1
+AngleVarZ+- = 1
+SizeVar+- = 0
+REGN/RDOT/02c 179
+REGN/RDOT/02d 62
+REGN/RDOT/04a 0
+REGN/RDOT/04d 59 % 1 2 8 16 32
+REGN/RDOT/12c 67 % 1 2 64
+REGN/RDOT/12d 72 % 8 64
+
+NibenayBasinValleySubRegion01 / ShrubBoxwood / 151664
+Is a Tree = ?
+Is A Huge Rock = ?
+Has Radius = ?
+Conform to Slope = 1
+Paint Vertices = 1
+AngleVarX+- = 0
+AngleVarY+- = 0
+AngleVarZ+- = 0
+SizeVar+- = 0
+REGN/RDOT/02c 128
+REGN/RDOT/02d 63
+REGN/RDOT/04a 0
+REGN/RDOT/04d 3 % 1 2 % missing 8 16 32 from 59
+REGN/RDOT/12c 67 % 1 2 64
+REGN/RDOT/12d 72 % 8 64
+
+NibenayBasinValleySubRegion01 / ShrubEuonymusSU / 156415
+Is a Tree = ?
+Is A Huge Rock = ?
+Has Radius = ?
+Conform to Slope = 0
+Paint Vertices = 1
+AngleVarX+- = 0
+AngleVarY+- = 0
+AngleVarZ+- = 0
+SizeVar+- = 0
+REGN/RDOT/02c 0
+REGN/RDOT/02d 0
+REGN/RDOT/04a 0
+REGN/RDOT/04d 2 % 2
+REGN/RDOT/12c 67
+REGN/RDOT/12d 72
+
+
+
+REGN/RDOT/04d flags:
+1 = Conform to Slope
+2 = Paint Vertices
+4 = SizeVar+- ??
+8 = AngleVarX+- ??
+16 = AngleVarY+- ??
+32 = AngleVarZ+-
+128 = ????
+
+
+get screenshots/special shots
+
+XXXX Object Tree/Object 12
+REGN/RDOT/01 Gen Object FormID 249909 % RockGreatForest1500GC
+REGN/RDOT/02ab Hierarchy Parent -1
+REGN/RDOT/02c 192
+REGN/RDOT/02d 0
+REGN/RDOT/03 Density 15.000000
+REGN/RDOT/04a 0
+REGN/RDOT/04b Min Slope 0
+REGN/RDOT/04c Max Slope 35
+REGN/RDOT/04d 1010,0011
+              ^??????
+
+XXXX Object Tree/Object 29
+REGN/RDOT/01 Gen Object FormID 249856 % RockGreatForest1400FGDRMoss
+REGN/RDOT/02ab Hierarchy Parent -1
+REGN/RDOT/02c 153
+REGN/RDOT/02d 62
+REGN/RDOT/03 Density 10.000000
+REGN/RDOT/04a 0
+REGN/RDOT/04b Min Slope 0
+REGN/RDOT/04c Max Slope 35
+REGN/RDOT/04d 1010,0011
+
+XXXX Object Tree/Object 75
+REGN/RDOT/01 Gen Object FormID 2941 % TreeWhitePineForest
+REGN/RDOT/02ab Hierarchy Parent -1
+REGN/RDOT/02c 128
+REGN/RDOT/02d 63
+REGN/RDOT/03 Density 0.200000
+REGN/RDOT/04a 0
+REGN/RDOT/04b Min Slope 35
+REGN/RDOT/04c Max Slope 55
+REGN/RDOT/04d 0100,0010
+
+XXXX Object Tree/Object 76
+REGN/RDOT/01 Gen Object FormID 2942 % TreeWhitePineYoung
+REGN/RDOT/02ab Hierarchy Parent 75
+REGN/RDOT/02c 179
+REGN/RDOT/02d 62
+REGN/RDOT/03 Density 0.025000
+REGN/RDOT/04a 0
+REGN/RDOT/04b Min Slope 35
+REGN/RDOT/04c Max Slope 55
+REGN/RDOT/04d 0100,0010
+
+XXXX Object Tree/Object 82
+REGN/RDOT/01 Gen Object FormID 130842 % TreeWeepingWillowSU
+REGN/RDOT/02ab Hierarchy Parent -1
+REGN/RDOT/02c 179
+REGN/RDOT/02d 190
+REGN/RDOT/03 Density 0.200000
+REGN/RDOT/04a 0
+REGN/RDOT/04b Min Slope 0
+REGN/RDOT/04c Max Slope 35
+REGN/RDOT/04d 0100,0010
+
+XXXX Object Tree/Object 87
+REGN/RDOT/01 Gen Object FormID 142423 % TreeGinkgo
+REGN/RDOT/02ab Hierarchy Parent -1
+REGN/RDOT/02c 179
+REGN/RDOT/02d 190
+REGN/RDOT/03 Density 0.200000
+REGN/RDOT/04a 0
+REGN/RDOT/04b Min Slope 0
+REGN/RDOT/04c Max Slope 40
+REGN/RDOT/04d 0100,0010
+
+XXXX Object Tree/Object 92
+REGN/RDOT/01 Gen Object FormID 145390 % TreeWillowOakForest01SU
+REGN/RDOT/02ab Hierarchy Parent -1
+REGN/RDOT/02c 179
+REGN/RDOT/02d 190
+REGN/RDOT/03 Density 0.200000
+REGN/RDOT/04a 0
+REGN/RDOT/04b Min Slope 0
+REGN/RDOT/04c Max Slope 40
+REGN/RDOT/04d 0100,0010
+
+XXXX Object Tree/Object 93
+REGN/RDOT/01 Gen Object FormID 3017 % TreeWillowOakYoungSU
+REGN/RDOT/02ab Hierarchy Parent 92
+REGN/RDOT/02c 128
+REGN/RDOT/02d 63
+REGN/RDOT/03 Density 0.025000
+REGN/RDOT/04a 0
+REGN/RDOT/04b Min Slope 0
+REGN/RDOT/04c Max Slope 30
+REGN/RDOT/04d 0100,0010
+
+XXXX Object Tree/Object 99
+REGN/RDOT/01 Gen Object FormID 130845 % TreeDogwoodSU
+REGN/RDOT/02ab Hierarchy Parent -1
+REGN/RDOT/02c 153
+REGN/RDOT/02d 62
+REGN/RDOT/03 Density 0.180000
+REGN/RDOT/04a 0
+REGN/RDOT/04b Min Slope 0
+REGN/RDOT/04c Max Slope 30
+REGN/RDOT/04d 0100,0010
+
+
+PalePassRegion01
+XXXX Object Tree/Object 106
+REGN/RDOT/01 Gen Object FormID 640268 % JMRockSmallSnow02
+REGN/RDOT/02ab Hierarchy Parent 105
+REGN/RDOT/02c 0
+REGN/RDOT/02d 0
+REGN/RDOT/03 Density 3.000000
+REGN/RDOT/04a 0
+REGN/RDOT/04b Min Slope 0
+REGN/RDOT/04c Max Slope 36
+REGN/RDOT/04d 0011,0111
+                 ^ ^ X/Y are different
+
+
+
+We need more General/Objects/More Objects tab pages.
+They give enough information.
+Do not select objects with +; select only true objects.
+Are the + objects true or false objects?
+
+
+
+Where the object hierarchy is stored? In RDOT ("Object Tree")?
+
+Why "JerallValusMountainsSubRegion03" has many
+REGN/RPLI 4
+REGN/RPLD 128
+pairs?
+Take screenshots of all tabs.
+They are the polylines in the cell map display.
+Region may have multiple polylines.
+
+Object hierarchy:
+TerrainNVGrass01SU / 1042629
+  TerrainHDGrassClover01SU / 116922
+    TerrainHDGrassHeather01 / 645828
+  TerrainHDGrassMoss01SU / 116663
+
+RDOT has them in this same order.
+REGN/RDOT/01 Gen Object FormID 1042629
+REGN/RDOT/02a 255 % Hierarchy Parent Number
+REGN/RDOT/02b 255
+REGN/RDOT/02c 0
+REGN/RDOT/02d 0
+REGN/RDOT/04a 0
+REGN/RDOT/04d 0
+REGN/RDOT/12c 1
+REGN/RDOT/12d 72
+REGN/RDOT/01 Gen Object FormID 116922
+REGN/RDOT/02a 0 % Hierarchy Parent Number
+REGN/RDOT/02b 0
+REGN/RDOT/02c 79
+REGN/RDOT/02d 71
+REGN/RDOT/04a 55
+REGN/RDOT/04d 0
+REGN/RDOT/12c 83
+REGN/RDOT/12d 71
+REGN/RDOT/01 Gen Object FormID 645828
+REGN/RDOT/02a 1
+REGN/RDOT/02b 0
+REGN/RDOT/02c 230
+REGN/RDOT/02d 71
+REGN/RDOT/04a 60
+REGN/RDOT/04d 0
+REGN/RDOT/12c 221
+REGN/RDOT/12d 71
+REGN/RDOT/01 Gen Object FormID 116663
+REGN/RDOT/02a 0
+REGN/RDOT/02b 0
+REGN/RDOT/02c 131
+REGN/RDOT/02d 71
+REGN/RDOT/04a 30
+REGN/RDOT/04d 0
+REGN/RDOT/12c 136
+REGN/RDOT/12d 71
+
+
+
+Chunk name 0: REGN 1 10123914
+flags 1 = 0000,0000,0000,0000,0000,0000,0100,0000
+                                         ^Border Region?? | No Color??
+
+Is color (0,0,0) the same as No Color? Not likely.
+
+Is any of these No Color? Border Region?
+flags 2 = 0000,0000,0000,1110,0010,0101,0000,1001
+
+
+NibenayBasinValleySubRegion01
+RDOT
+cat p1|grep -B 10 -A 3736 '^NibenayBasinValleySubRegion01$' > zpNibenayBasinValleySubRegion01
+
+cat zpNibenayBasinValleySubRegion01 |grep "Object Tree\|Object FormID\|Hierarchy Parent"
+
+Object Tree/Object 99:
+Generated Object FormID 130845
+Hierarchy Parent Index -1
+Object Tree/Object 100:
+Generated Object FormID 249889
+Hierarchy Parent Index 99
+Object Tree/Object 101:
+Generated Object FormID 249894
+Hierarchy Parent Index 99
+Object Tree/Object 102:
+Generated Object FormID 219662
+Hierarchy Parent Index 99
+Object Tree/Object 103:
+Generated Object FormID 210635
+Hierarchy Parent Index 99
+Object Tree/Object 104:
+Generated Object FormID 151662
+Hierarchy Parent Index 99
+Object Tree/Object 105:
+Generated Object FormID 116930
+Hierarchy Parent Index -1
+Object Tree/Object 106:
+Generated Object FormID 116932
+Hierarchy Parent Index -1
+Object Tree/Object 107:
+Generated Object FormID 116938
+Hierarchy Parent Index -1
+
+What is the meaning of the hierarchy?
+Does the child objects inherit parameter values from
+the parent object?
+Yes, "Radius wrt Parent".
+
+How the tree can be edited?
+
+What this could be? What parameter is still missing?
+REGN/RDOT/04a 0
+REGN/RDOT/04a 15
+REGN/RDOT/04a 30
+REGN/RDOT/04a 35
+REGN/RDOT/04a 55
+REGN/RDOT/04a 60
+
+Object Tree/Object 107:
+Generated Object FormID 116938
+Hierarchy Parent Index -1
+REGN/RDOT/02c 153
+REGN/RDOT/02d 62
+Density 0.150000            % Objects tab
+REGN/RDOT/04a 0             % Clustering????
+Min Slope 0                 % Objects tab
+Max Slope 35                % Objects tab
+0010,0101
+        ^Conform to Slope   % Objects (more) tab
+       ^Paint Vertices      % Objects (more) tab
+      ^SizeVar+-            % Objects (more) tab
+     ^AngleVarX+-           % Objects (more) tab
+   ^AngleVarY+-             % Objects (more) tab
+  ^AngleVarZ+-              % Objects (more) tab
+Radius wrt Parent 512       % Objects tab
+Radius 100                  % Objects tab
+Min Height 0.000000         % Objects tab
+Max Height 200000.000000    % Objects tab
+Sink 0.000000               % Objects (more) tab
+Sink Variance 0.000000      % Objects (more) tab
+Size Variance 0.250000      % Objects (more) tab
+Angle Variance X 0          % Objects (more) tab
+Angle Variance Y 0          % Objects (more) tab
+Angle Variance Z 180        % Objects (more) tab
+REGN/RDOT/12c 67
+REGN/RDOT/12d 72
+Vertex Color R 123          % Objects (more) tab
+Vertex Color G 135          % Objects (more) tab
+Vertex Color B 147          % Objects (more) tab
+Percent of Radius 0         % Objects (more) tab
+
+Flags:
+0000,0000
+0000,0010
+0000,0011
+0010,0101
+0011,1011
+0100,0010
+1010,0011
+        ^Conform to Slope
+       ^Paint Vertices
+      ^SizeVar+-
+     ^AngleVarX+-
+   ^AngleVarY+-
+  ^AngleVarZ+-
+ ^Is a Tree
+^Is a Huge Rock
+
+Has radius? Where?
+
+formid = 249909
+RockGreatForest1500GC
+1010,0011
+^Is a Huge Rock
+
+============================================================================
+
+ok
+ROAD
+
+Only appearances in Oblivion.esm are
+ROAD/PGRP 28016
+ROAD/PGRR 53736
+
+ROAD/PGRP matches PGRD/PGRP.
+
+ROAD/PGRR has 12 bytes per one endpoint, instead of
+2 bytes of PGRD/PGRR:
+Total number of path lines is 4478.
+53736/4478
+%11 = 12
+
+They are three floats, X Y Z coordinates of the endpoint.
+
+First endpoint is:
+106232.375000
+140084.046875
+22911.000000
+
+That can be found from the path grid points (PGRP):
+X 106232.375000
+Y 140084.046875
+Z 22911.000000
+Path Lines 2
+0
+0
+0
+
+Are all endpoints among the path grid points (PGRP)?
+Yes. By searching endpoints from the set of gridpoints,
+all endpoints were found.
+After searching the grid point indices, we may print the
+path grid the same way as PGRD is printed:
+
+Path Grid Lines:
+point 0 --> 1 1703
+point 1 --> 0 398
+point 2 --> 3 4 44
+etc.
+
+ROAD/PGRR allows arbitrary endpoints but is that feature
+actually used.
+What such path grid would look like?
+Screenshots of the ROAD record?
+It might be that the ROAD is not visualized in the editor.
+
+All points in ROAD are blue points.
+Are all blue points of PGRDs in the ROAD?
+
+CS does not automatically regenerate the ROAD records.
+Are they necessary? How ROAD records are used? To draw
+map roads? It is unlikely that they are used in the AI
+process because more detailed PGRDs are more usable
+for that.
+
+
+============================================================================
+
+ok
+SBSP
+
+capture_22082008_135937.png
+
+============================================================================
+
+check
+SCPT
+
+capture_22082008_161734.png % Script Edit window
+
+SCPT/EDID 19
+FGC01PiranusScript
+Chunk name: SCHR
+SCPT/SCHR 20
+0
+2  % number of SCROs and 
+43 % length of the compiled script in SCDA
+1  % number of variables (number of SLSD/SCVR pairs)
+0
+Chunk name: SCDA
+SCPT/SCDA 43
+Chunk name: SCTX
+SCPT/SCTX 141
+scn FGC01PiranusScript
+
+short packageVAR
+
+
+Begin OnPackageEnd FGC01PinarusEscort
+	set packageVAR to 2
+	StartConversation Player
+End
+
+Chunk name: SLSD
+SCPT/SLSD 24
+Index of the script variable 1
+0
+0
+0
+1
+-25
+42
+3
+16 -- 0.000000
+Chunk name: SCVR
+SCPT/SCVR 11
+packageVAR
+Chunk name: SCRO
+SCPT/SCRO 4
+222770 % FormID of PACK FGC01PinarusEscort
+Chunk name: SCRO
+SCPT/SCRO 4
+20 % This FormID means the player even the true FormID is 7 (UESP Wiki).
+End of SCPT
+
+
+Examples of SCPT/SLSD of float script variables:
+
+SCPT/SLSD 24
+Index of the script variable 5
+0
+0
+0
+0
+-114
+30
+2
+168 -- 0.000000
+
+SCPT/SLSD 24
+Index of the script variable 6
+0
+0
+0
+0
+0
+0
+0
+0 -- 0.000000
+
+SCPT/SLSD 24
+Index of the script variable 1
+0
+0
+0
+0
+0
+0
+0
+0 -- 0.000000
+
+
+Examples of refs:
+
+SCPT/SLSD 24
+Index of the script variable 7
+0
+0
+0
+0 % Type of the script variable
+-4
+-79
+2 % does 2 mean that the variable is a ref? No. See above float example.
+32 -- 0.000000
+
+SCPT/SLSD 24
+Index of the script variable 8
+0
+0
+0
+0
+-4
+-79
+2
+12 -- 0.000000
+
+
+SCPT/SCRV 4
+8 % index of a ref variable; variable is float if it is not here?
+SCPT/SCRV 4
+7
+
+SCPT/SLSD 24
+Index of the script variable 3
+0
+0
+0
+0
+114
+105
+103
+544367975 -- 0.000000
+SCPT/SCRV 4
+3
+
+
+============================================================================
+
+ok
+SGST (SigilStone)
+
+capture_22082008_132543.png
+
+SGST/DATA 9
+40 % Uses
+0 % Value
+1.000000 % Weight
+
+SGST/SCIT % does this exist?
+
+When the effect is "Script Effect", the bottom of the effect dialog
+becomes active.
+School types:
+0 Alteration
+1 Conjuration
+2 Destruction
+3 Illusion
+4 Mysticism
+5 Restoration
+
+0 Alteration 1 Conjuration 2 Destruction 3 Illusion 4 Mysticism 5 Restoration
+
+
+============================================================================
+
+ok
+SKIL
+
+capture_22082008_154639.png
+
+SKIL/INDX is the index number used by CLAS etc. to reference the skill.
+
+Governing Attribute:
+0 Strength
+1 Intelligence
+2 Willpower
+3 Agility
+4 Speed
+5 Endurance
+6 Personality
+7 Luck
+
+0 Strength 1 Intelligence 2 Willpower 3 Agility 4 Speed 5 Endurance 6 Personality 7 Luck
+
+
+Actions:  action 1 / action 2
+12 Armorer      Repair (one swing)
+13 Athletics    Second of running / Second of swimming
+14 Blade        Hit target
+15 Block        Hit while blocking
+16 Blunt        Hit target
+17 Hand To Hand Hit target
+18 Heavy Armor  Hit on armor piece
+19 Alchemy      Potion creation / Ingredient use
+20 Alteration   Cast / Hit Target
+21 Conjuration  Cast / Hit Target
+22 Destruction  Cast / Hit Target
+23 Illusion     Cast / Hit Target
+24 Mysticism    Cast / Hit Target
+25 Restoration  Cast / Hit Target
+26 Acrobatics   Jump / Fall
+27 Light Armor  Hit on armor piece
+28 Marksman     Hit target
+29 Mercantile   Barter
+30 Security     Pick lock
+31 Sneak        Avoid notice / Pick-pocket
+32 Speechcraft  Persuasion
+
+============================================================================
+
+ok
+SLGM
+
+capture_22082008_132708.png
+
+SLGM/DATA 8
+2500 % Value
+0.700000 % Weight
+SLGM/SOUL 1
+0 % Soul % 0 None
+SLGM/SLCP 1
+5 % Capacity % 5 Grand
+
+0 None
+1 Petty
+2 Lesser
+3 Common
+4 Greater
+5 Grand
+
+============================================================================
+
+ok
+SOUN
+
+capture_22082008_135208.png
+capture_20080928_190703.png
+capture_20081004_145251.png % SNDD
+
+SNDD subrecord has unknown byte
+Has SOUN/SNDD 8:
+BlockLight
+BlockHeavy
+
+SOUN/SNDD 8
+Minimum Attenuation Distance 0 (0)
+Maximum Attenuation Distance 140 (14000)
+Frequency Adjustment(%) 0
+1    % XXXX Could be the flags.
+0000,0000,0000,0000,0000,0000,0000,0000
+                                      ^Random Frequency Shift
+                                     ^Play At Random
+
+
+grep -A 300 -B 12 '^AMBArenaCrowdBoo$' p1|more
+
+Chunk name 0: SOUN 1 182870
+flags 1 = 0000,0000,0000,0000,0000,0000,0000,0000
+formid = 1559002
+flags 2 = 0000,0000,0011,1011,0010,0101,0001,0000
+Chunk name: EDID
+SOUN/EDID 17
+AMBArenaCrowdBoo
+Chunk name: FNAM
+SOUN/FNAM 33
+fx\ambient\amb_arenacrowdboo.wav % Sound File
+Chunk name: SNDX
+SOUN/SNDX 12
+0 % Default
+0 % Default
+0
+0
+64 % flags 1 = Random Frequency Shift 16 = Loop 64 = 2D 128 = 360 LFE
+0
+617 % Static Attenuation -6.17 (-value/100)
+0
+0
+End of SOUN
+
+0000,0000,0000,0000,0000,0000,0101,0000
+0000,0000,0000,0000,0000,0000,1100,0000
+                                      ^Random Frequency Shift
+                                     ^Play At Random
+                                    ^Environment Ignored
+                                   ^Random Location
+                                 ^Loop
+                                ^Menu Sound
+                               ^2D
+                              ^360 LFE
+
+SOUN/SNDD unknown; UESP format doc claims it is identical to
+the begin of SNDX subrecord.
+
+The two occurences differs in that the unknown byte is 1
+instead of 0.
+
+SOUN/SNDD 8
+Minimum Attenuation Distance 0 (0)
+Maximum Attenuation Distance 140 (14000)
+Frequency Adjustment(%) 0
+1
+0000,0000,0000,0000,0000,0000,0000,0000
+--
+SOUN/SNDD 8
+Minimum Attenuation Distance 0 (0)
+Maximum Attenuation Distance 0 (0)
+Frequency Adjustment(%) 0
+1
+0000,0000,0000,0000,0000,0000,0000,0000
+
+============================================================================
+
+ok
+SPEL
+
+capture_22082008_133453.png
+capture_20080928_192700.png % effect items
+capture_20080928_194204.png
+
+Todo:
+More types and levels. % ok
+
+In the list of spells, how Level (School) are computed?
+E.g. AbArenaAgronak is Journeyman (Restoration) but
+Spell level in Oblivion.esm is 1 Apprentice.
+
+
+grep -A 300 -B 12 '^AbAncestorGuardian$' p2|more
+grep -A 300 -B 12 '^AbBirthsignNecromancer$' p2|more
+grep -A 300 -B 12 '^AbBoundArmorMaceNoHelmet$' p2|more
+grep -A 300 -B 12 '^AbBoundArmorMaceNoHelmet' p2|more
+grep -A 300 -B 12 '^AbDAAzura$' p2|more
+grep -A 300 -B 12 '^AbAncestorGuardian$' p2|more
+grep -A 300 -B 12 '^AbAnimalResistFrost$' p2|more
+grep -A 300 -B 12 '^AbArenaAgronak$' p2|more
+
+AbAncestorGuardian
+SPEL/SPIT 16
+4 % Type
+0 % Spell Cost
+1 % Spell Level % XXXX AbArenaAgronak has 1 but level is Journeyman
+0000,0000,1101,0110,1110,1111,0000,0001
+
+AbArenaAgronak has Auto-Caculate marked. It looks like
+the spell level in SPIT is then ignored.
+
+AltarDragonStatue has spell cost 146784464.
+
+Types:
+0 Spell
+4 Ability
+
+Spell Level:
+0 Novice
+1 Apprentice
+4 Master
+
+Flags:
+0000,0000,1101,0110,1110,1111,0000,0001 % nothing marked
+0000,1111,1111,1110,0001,0001,0000,1011 % Immune to Silence marked
+0000,0000,1101,0110,1110,1111,0100,0001
+0000,0000,1101,0110,1110,1111,0010,0001
+0000,0000,1101,0110,1110,1111,0001,0001
+0000,0000,1101,0110,1110,1111,0000,0101
+0000,0000,1101,0110,1110,1111,1000,0001
+0000,0000,1101,0110,1110,1111,0000,1011
+                                      ^~Auto-calculate
+                                   ^-^Immune to Silence (both flags)
+                                    ^PC Start Spell
+                                 ^Area Effect Ignores LOS
+                                ^Script Effect Always Applies
+                               ^Disallow Spell Absorb/Reflect
+                              ^Touch Spell Explodes w/ no Target
+
+Is the magic school in the Spell list taken from the first
+effect? Or somehow computed?
+
+How the magic school is decided?
+What is the last number in EFIT?
+
+============================================================================
+
+ok
+STAT
+
+capture_22082008_142739.png
+capture_21082008_230443.png
+
+============================================================================
+
+TES4
+
+
+TES4/HEDR 12
+1.000000
+4
+3302
+Chunk name: CNAM
+TES4/CNAM 8
+DEFAULT
+Chunk name: MAST
+TES4/MAST 13
+Oblivion.esm
+Chunk name: DATA
+TES4/DATA 8
+0
+0
+End of TES4
+
+============================================================================
+
+ok
+TREE
+
+capture_21082008_225748.png
+capture_22082008_142857.png
+capture_20080826_005712.png
+
+Chunk name 0: TREE 1 7220973
+flags 1 = 0000,0000,0000,0000,0000,0000,0000,0000
+formid = 916033
+flags 2 = 0000,0000,0000,1110,0010,0101,0000,0001
+Chunk name: EDID
+TREE/EDID 14
+ShrubAzaleaFA
+Chunk name: MODL
+TREE/MODL 19
+\ShrubAzaleaFA.spt
+Chunk name: MODB
+TREE/MODB 4
+217.279221
+Chunk name: MODT
+TREE/MODT 48
+eb f2 0f 73 db 91 a5 e1  "s............rk"
+6b 72 0f 73 e0 91 a5 e1  "s............rk"
+73 65 17 74 f9 d5 6a 13  "t....................es"
+e1 e6 0d 73 dc 94 35 ba  "s..........fa"
+61 66 0d 73 e1 94 35 ba  "s..........fa"
+73 64 19 74 bc 2a c7 15  "t......................ds"
+Chunk name: ICON
+TREE/ICON 24
+ShrubAzaleaLeavesFA.dds
+Chunk name: SNAM
+TREE/SNAM 20
+105416 % SpeedTree Seed
+333312
+431405
+469878
+919633
+Chunk name: CNAM
+TREE/CNAM 32
+2.500000 % Leaf Curvature
+5.000000 % Minimum Leaf Angle
+85.000000 % Maximum Leaf Angle
+0.500000 % Branch Dimming Value
+0.700000 % Leaf Dimming Value
+112 % Shadow Radius % int type
+1.000000 % Rock Speed
+1.200000 % Rustle Speed
+Chunk name: BNAM
+TREE/BNAM 8
+180.000000 % Billboard Width
+180.000000 % Billboard Height
+
+
+============================================================================
+
+continue size 42 etc.
+WATR
+
+capture_21082008_225919.png
+capture_22082008_140020.png
+capture_20080928_190043.png
+capture_20081004_151314.png % material + damage count
+
+Water data size 42 is incomplete:
+Blood % capture_22082008_140033.png
+CamoranLava02 % capture_22082008_140151.png
+
+Material ID? In MNAM.
+Where is the damage amount? In last short of DATA.
+
+Chunk name 0: WATR 1 247364209
+flags 1 = 0000,0000,0000,0000,0000,0000,0000,0000
+formid = 593372
+flags 2 = 0000,0000,0000,1111,0001,1110,0001,1100
+Chunk name: EDID
+WATR/EDID 6
+Blood
+Chunk name: TNAM
+WATR/TNAM 47
+Landscape\Oblivion\TerrainHDOblivionLava01.dds
+Chunk name: ANAM
+WATR/ANAM 1
+100
+Chunk name: FNAM
+WATR/FNAM 1
+0
+Chunk name: DATA
+WATR/DATA 42
+10.000000 % Wind Velocity
+0.000000  % Wind Direction?
+25.000000 % Wave Amplitude
+0.500000  % Wave Frequency
+0.000000  % Sun Power
+0.000000  % Reflectivity Amount
+0.025000  % Fresnel Amount
+0.000000
+0.000000
+0.000000
+13.437500
+0.000000
+0.000000
+-0.000000
+0.000000
+788.001465
+0.000000
+73465529530715752583948926976.000000
+62490056.000000
+0.000000
+889195648.000000
+0.000000
+17589344273051129217024.000000
+279017415752360075042284896256.000000
+956283437720503582720.000000
+26988
+
+WATR/DATA 2
+WATR/DATA 42
+WATR/DATA 62
+WATR/DATA 86
+WATR/DATA 102
+
+Chunk name 0: WATR 1 247362788
+flags 1 = 0000,0000,0000,0000,0000,0000,0000,0000
+formid = 34001
+flags 2 = 0000,0000,0000,1110,0010,0101,0001,0010
+Chunk name: EDID
+WATR/EDID 18
+DefaultUnderwater
+Chunk name: TNAM
+WATR/TNAM 1
+
+Chunk name: ANAM
+WATR/ANAM 1
+100 % Opacity?
+Chunk name: FNAM
+WATR/FNAM 1
+2
+Chunk name: MNAM
+WATR/MNAM 1
+
+Chunk name: SNAM
+WATR/SNAM 4
+377890 % Sound FormID
+Chunk name: DATA
+WATR/DATA 102
+5.000000   % Wind Velocity
+100.000000 % Wind Direction
+0.150000   % Wave Amplitude
+0.700000   % Wave Frequency
+20.000000  % Sun Power
+0.950000   % Reflectivity Amount
+0.300000   % Fresnel Amount
+0.001100   % Scroll X Speed
+0.001100   % Scroll Y Speed
+-15000.000000 % Fog Distance - Near Plane
+2000.000000 % Fog Distance - Far Plane
+0.000000
+0.000000
+0.000000
+0.000000
+0.200000  % RainSim/Force
+0.500000  % RainSim/Velocity
+0.970000  % RainSim/Falloff
+0.600000  % RainSim/Dampner
+0.010000  % RainSim/Starting Size
+0.400000  % DispSim/Force
+0.600000  % DispSim/Velocity
+0.940000  % DispSim/Falloff
+10.000000 % DispSim/Dampner
+0.050000  % DispSim/Starting Size
+0 % Texture Blend?
+Chunk name: GNAM
+WATR/GNAM 12
+0
+0
+0
+End of WATR
+
+cat p2|grep XXXXWATR1
+XXXXWATR1 1212370447
+XXXXWATR1 0
+XXXXWATR1 0
+XXXXWATR1 0
+XXXXWATR1 1212370447
+XXXXWATR1 25
+XXXXWATR1 1212370432
+XXXXWATR1 65
+
+cat p2|grep -B 60 "XXXXWATR1 25"|more
+SewerWater
+XXXXWATR1 25 % Texture Blend (ubyte)
+
+
+Daytime
+Nighttime
+Underwater
+
+% refs to other WATR? defines how this water changes?
+NONE
+Blood
+CamoranLava
+CamoranLava02
+
+WATR/DATA 2
+WATR/DATA 42
+WATR/DATA 62
+WATR/DATA 86
+WATR/DATA 102
+
+
+============================================================================
+
+ok
+WEAP
+
+capture_22082008_132759.png
+capture_20080826_002929.png
+
+grep -A 300 -B 12 '^ArenaDaedricBow$' p2|more
+grep -A 300 -B 12 '^ArenaAkaviriLongSword$' p2|more
+grep -A 300 -B 12 '^BoundSword$' p2|more
+grep -A 300 -B 12 '^BoundMace$' p2|more
+grep -A 300 -B 12 '^ArenaSilverBattleAxe$' p2|more
+grep -A 300 -B 12 '^ArenaSteelLongswordGladiator$' p2|more
+
+WEAP/DATA 30
+5 % Type
+1.000000 % Speed
+0.000000 % Reach
+0000,0000,0000,0000,0000,0000,0000,0001
+3200 % Value
+420 % Health
+22.000000 % Weight
+20 % Damage
+
+0000,0000,0000,0000,0000,0000,0000,0001
+                                      ^Ignores Normal Weapon Resistance
+
+Types:
+0 = BladeOneHand
+1 = BladeTwoHand
+2 = BluntOneHand
+3 = BluntTwoHand
+4 = Staff
+5 = Bow
+
+
+============================================================================
+
+ok
+WRLD
+
+capture_22082008_152052.png
+capture_20080916_033339.png
+
+WRLD/DATA 1
+0001,0001
+        ^Small World
+       ^Can't Fast Travel From Here
+      ^Oblivion Worldspace
+   ^No LOD Water
+
+Can't Wait % in the header flags
+
+Chunk name 0: WRLD 1 224904716
+flags 1 = 0000,0000,0000,1000,0000,0000,0000,0000
+                         ^Can't Wait
+
+
+Chunk name 0: WRLD 1 30843095
+formid = 60 / formid = 0x0000003c
+flags 2 = 0000,0000,0110,0000,0010,1001,0001,0011
+Tamriel
+WRLD/MNAM 16
+Usable Dimensions X 2055
+Usable Dimensions Y 1830
+Cell Coords/NW Cell X -59
+Cell Coords/NW Cell Y 47
+Cell Coords/SE Cell X 59
+Cell Coords/SE Cell Y -58
+
+WRLD/NAM0 8 % Min (X,Y) World Space Coordinates? Yes.
+-262144.000000
+-282624.000000
+WRLD/NAM9 8 % Max (X,Y) World Space Coordinates? Yes.
+286720.000000
+245760.000000
+
+
+WRLD/OFST
+The size varies. Tampriel worldspace has largest OFST subrecord.
+It is the only subrecord requiring XXXX special subrecord.
+
+The numbers are yet unknown, but in this example the 7 first
+non-zero numbers go down among (with little exception), then next 8
+go down but starts at higher than the first 7.
+Chunk sizes are 7,8,8...,8,6 between the zero values.
+
+Are the first byte and two last bytes = 0?
+Yes. There are 256 bytes 0 at beginning, then 4 bytes 0, and then
+the 7 first non-zero numbers.
+
+This means that 256 is one chunk size, and 8 is another chunk size.
+But 70200 is divided by 256, and 70200/8 = 8775.
+
+31346171
+31345216
+31344270
+31334232
+31335210
+31333422
+31332475
+31356161
+31355270
+31354628
+31354383
+31354200
+31354017
+31353789
+31353485
+31364276
+31364094
+31363912
+
+
+Here the data looks like RGBA image, but R varies fast and B slow.
+Perhaps not an image.
+
+tail --bytes +30843256 Oblivion.esm |head --bytes 70200 |hexdump -f ~/src/hexdumpformat |more
+000000    0  0  0  0  0  0  0  0  0  0  0  0   ............
+*
+000252    0  0  0  0  0  0  0  0 fb 4d de  1   .........M..
+000264   40 4a de  1 8e 46 de  1 58 1f de  1   @J...F..X...
+000276   2a 23 de  1 2e 1c de  1 7b 18 de  1   *#......{...
+000288    1 75 de  1 86 71 de  1  4 6f de  1   .u...q...o..
+000300    f 6e de  1 58 6d de  1 a1 6c de  1   .n..Xm...l..
+000312   bd 6b de  1 8d 6a de  1 b4 94 de  1   .k...j......
+000324   fe 93 de  1 48 93 de  1 92 92 de  1   ....H.......
+000336   dc 91 de  1 26 91 de  1 70 90 de  1   ....&...p...
+000348   ba 8f de  1 63 b6 de  1 ad b5 de  1   ....c.......
+000360   f7 b4 de  1 d3 b3 de  1 7f b2 de  1   ............
+000372   ca b1 de  1 15 b1 de  1 60 b0 de  1   ........`...
+000384   e1 70 73  4 2c 70 73  4 77 6f 73  4   .ps.,ps.wos.
+000396   de 6d 73  4 48 5e 73  4 9f 5f 73  4   .ms.H^s.._s.
+000408   d2 5c 73  4 1b 5c 73  4 de 89 73  4   .\s..\s...s.
+
+? 70200/4
+%18 = 17550
+? factor(17550)
+%19 = 
+[2 1]
+
+[3 3]
+
+[5 2]
+
+[13 1]
+
+? 13*5
+%20 = 65
+? 2*3^3*5
+%21 = 270
+
+13*5*2 = 130
+5*3^3 = 135
+
+tail --bytes +30843256 Oblivion.esm |head --bytes 70200 |~/src/rawimageskipalpha > zofst-tamriel.rawrgb
+% Why Linux don't have a program which skips every 4th byte?
+% Whether it is binary processing or text processing, I have to write
+% my own tools. Strange, like first man in the moon. Never done before.
+cat zofst-tamriel.rawrgb |rawtoppm 135 130 |xloadimage -zoom 400 stdin
+
+The data is 135x130 "image" with 4 bytes per "pixel", if image at all.
+135*4 bytes
+135*4 bytes
+ ...
+135*4 bytes
+
+At top-left there is empty subimage of size about 70?x40.
+At right (and at bottom) there is one pixel column (row) of
+empty pixels.
+
+Does this "image" match the NAM0, NAM9 area?
+WRLD/NAM0 8
+-262144.000000
+-282624.000000
+Chunk name: NAM9
+WRLD/NAM9 8
+286720.000000
+245760.000000
+
+? 286720.000000--262144.000000
+%41 = 548864.0000000000000000000000
+? 245760.000000--282624.000000
+%42 = 528384.0000000000000000000000
+? 135/130.
+%43 = 1.038461538461538461538461538
+? %41/%42
+%44 = 1.038759689922480620155038760
+
+
+
+Chunk name 0: WRLD 1 233502209
+WRLD/EDID 11
+DreamWorld
+WRLD/OFST 140
+
+tail --bytes +233502362 Oblivion.esm |head --bytes 140 > zofst-dreamworld.rawrgba
+tail --bytes +233502362 Oblivion.esm |head --bytes 140 | ~/src/rawimageskipalpha > zofst-dreamworld.rawrgb
+cat zofst-dreamworld.rawrgb | rawtoppm 7 5 | xloadimage -zoom 400 stdin
+? factor(140/4)
+%31 = 
+[5 1]
+[7 1]
+
+
+Chunk name 0: WRLD 1 196576563
+TestTree
+WRLD/OFST 320
+
+tail --bytes +196576682 Oblivion.esm |head --bytes 320 > zofst-testtree.rgba
+tail --bytes +196576682 Oblivion.esm |head --bytes 320 | ~/src/rawimageskipalpha > zofst-testtree.rgb
+
+cat zofst-testtree.rgb |rawtoppm 8 10|xloadimage -zoom 1600 stdin
+
+? 16384.000000--12288.000000
+%37 = 28672.00000000000000000000000
+? 12288.000000--24576.000000
+%38 = 36864.00000000000000000000000
+? 10/8.
+%39 = 1.250000000000000000000000000
+? %38/%37
+%40 = 1.285714285714285714285714286
+
+
+TES4 has OFST subrecord as well. UESP doc thinks this is an offset
+pointing to records and subrecords.
+Why then I'm getting those images?
+
+Is TES4/OFST an image too? Perhaps not as hexdump shows list
+of record names. It is different OFST; should have different name.
+
+WRLD/OFST is now solved:
+1. Take min/max from NAM0 and NAM9.
+2. xsize = 2*(xmax-xmin)/8192 + 1, ysize = 2*(ymax-ymin)/8192 + 1.
+3. x0 = 2*(-xmin)/8192, y0 = 2*(-ymin)/8192.
+4. Read OFST data as xsize x ysize array of ints; x runs faster,
+or one dimensional array.
+5. Given the cell coordinates u,v, the corresponding array entry
+and the offset is: offset = array[y0 + v][x0 + u]
+= onearray[(y0 + v)*xsize + (x0 + u).
+6. The CELL record can be found at offset bytes away from the begin
+of this WRLD record.
+
+Example:
+Tamriel WRLD record begins at byte 30843095 in Oblivion.esm.
+We need to read the cell (11,-3).
+1. xmin = -262144.000000 ymin = -282624.000000
+   xmax = 286720.000000  ymax = 245760.000000
+2. xsize = 135 ysize = 130
+3. x0 = 65 y0 = 70
+4. array[130][135]
+5. offset = array[70-3][65+11] = array[67][76] = onearray[67*135 + 76]
+= 43777645
+6. 30843095 + 43777645 = 74620740
+
+And this is what is found from there. XCLC subrecord tells
+the cell's location. That is (11, -3) as wanted.
+
+Chunk name 0: CELL 4 74620740
+flags 1 = 0000,0000,0000,0000,0000,0000,0000,0000
+formid = 25950 / formid = 0x0000655e
+flags 2 = 0000,0000,0000,1110,0010,0101,0000,1001
+Chunk name: DATA
+CELL/DATA 1
+0000,0010
+       ^Has Water
+ ^Hand Changed
+^Behave Like Exterior
+Chunk name: XCLC
+CELL/XCLC 8
+Location x y 11 -3
+
+The code below prints "cell (11, -3) offset = 43777645".
+
+  // Print OFST info.
+  if ((ofst != NULL) && (hasmins == 1) && (hasmaxs == 1)) {
+    x0 = 2.0*(-xmin)/8192.0;
+    y0 = 2.0*(-ymin)/8192.0;
+    xsize = 2.0*(xmax-xmin)/8192.0 + 1.0;
+    ysize = 2.0*(ymax-ymin)/8192.0 + 1.0;
+    for (y = 0; y < ysize; y++) {
+      for (x = 0; x < xsize; x++) {
+	printf("cell (%i, %i) offset = %i\n",x-x0,y-y0,ofst[y*xsize + x]);
+      }
+    }
+  }
+
+============================================================================
+
+ok
+WTHR
+
+capture_22082008_151620.png
+capture_20080911_215512.png
+capture_20080916_022636.png
+capture_20080916_025530.png
+
+WTHR/SNAM
+Sound FormID
+Sound Type
+
+
+Clear
+WTHR/DATA/11 255
+WTHR/DATA/12 1
+Cloudy
+WTHR/DATA/11 255
+WTHR/DATA/12 2
+DefaultWeather
+WTHR/DATA/11 50
+WTHR/DATA/12 2
+
+
+WTHR/NAM0
+
+Type:
+1 Sky-Upper
+2 Fog
+3 Clouds-Lower
+4 Ambient
+5 Sunlight
+6 Sun
+7 Stars
+8 Sky-Lower
+9 Horizon
+10 Clouds-Upper
+
+
+Time:
+1 Sunrise
+2 Day
+3 Sunset
+4 Night
+
+
+
+Type/Time combinations in the record order:
+01 Sky-Upper/Sunrise
+02 Sky-Upper/Day
+03 Sky-Upper/Sunset
+04 Sky-Upper/Night
+05 Fog/Sunrise
+06 Fog/Day
+07 Fog/Sunset
+08 Fog/Night
+09 Clouds-Lower/Sunrise
+10 Clouds-Lower/Day
+11 Clouds-Lower/Sunset
+12 Clouds-Lower/Night
+13 Ambient/Sunrise
+14 Ambient/Day
+15 Ambient/Sunset
+16 Ambient/Night
+17 Sunlight/Sunrise
+18 Sunlight/Day
+19 Sunlight/Sunset
+20 Sunlight/Night
+21 Sun/Sunrise
+22 Sun/Day
+23 Sun/Sunset
+24 Sun/Night
+25 Stars/Sunrise
+26 Stars/Day
+27 Stars/Sunset
+28 Stars/Night
+29 Sky-Lower/Sunrise
+30 Sky-Lower/Day
+31 Sky-Lower/Sunset
+32 Sky-Lower/Night
+33 Horizon/Sunrise
+34 Horizon/Day
+35 Horizon/Sunset
+36 Horizon/Night
+37 Clouds-Upper/Sunrise
+38 Clouds-Upper/Day
+39 Clouds-Upper/Sunset
+40 Clouds-Upper/Night
+
+
+Flags:
+Show in Render Window? Perhaps not stored.
+
+
+============================================================================
+
+============================================================================
+============================================================================
+============================================================================
+============================================================================
+
+flags 1 = 0000,0000,0000,0000,0000,0000,0100,0000
+flags 1 = 0000,0000,0000,0010,0000,0000,0000,0000
+flags 1 = 0000,0000,0000,0010,0000,0000,0000,0000
+flags 1 = 0000,0000,0000,1000,0000,0000,0000,0000
+flags 1 = 0000,0000,0000,0000,0000,0000,0100,0000
+                                         ^Border Region (REGN)
+                                        ^Deleted????
+                                          ^Deleted (in UESP doc)
+                                    ^Quest Item + REFR:Persistent Reference
+                           ^Dangerous / Off Limits (CELL/Interior data)
+                         ^Can't Wait
+
+Only 0x80 appearances are for REFR with base object TestToddTorch.
+
+
+============================================================================
+
+EFIT Actor Values:
+
+0 Strength
+1 Intelligence
+2 Willpower
+3 Agility
+4 Speed
+5 Endurance
+6 Personality
+7 Luck
+
+XXXX What? These are effects:
+
+8 Restore Health
+9 Damage Magicka
+10 Restore Fatigue
+
+47 Invisibility
+
+INGR/EFIT 24
+DGSP
+Magnitude 45
+Area 0
+Duration 0
+Range 0 % 0 Self 1 Touch 2 Target
+ActorVal 9 % 0 Strength 1 Intelligence 2 Willpower 3 Agility 4 Speed 5 Endurance 6 Personality 7 Luck
+
+The Actor Value field is empty. What 9 means?
+DGSP magic effect (MGEF) has
+ Assoc. Item FormID 9
+Is that really FormID? The GUI has the field disabled.
+
+
+============================================================================
+
+See CREA and NPC_ sections.
+AIDT subrecord flags
+
+0000,0000,0000,0000,0110,0000,0001,0000 % Abhuki
+0000,0000,0000,0000,0000,0000,0000,0000 % DeadLoverFortNikel
+0000,0000,0000,0000,0000,0000,0000,0000 % CGGoblinBerserkerPATROL01
+0000,0000,0000,0000,0000,0000,0000,0000 % AnvilMGPetImp
+0000,0000,0000,0000,0000,0000,0000,0000 % ArenaBoar
+                                 ^Ingredients | Potions | Training
+                      ^Ingredients | Potions | Training
+                     ^Ingredients | Potions | Training
+
+============================================================================
+
+more screenshots?
+BMDT flags
+
+ARMO/BMDT and CLOT/BMDT % Are they identical?
+
+grep -A 300 -B 12 '^ArchMageHood$' p1|more
+grep -A 300 -B 12 '^DARingKhajiiti$' p1|more
+grep -A 300 -B 12 '^Dark01BlackBand01$' p1|more
+grep -A 300 -B 12 '^Dark05Heart01$' p1|more
+
+0000,0000,0000,0000,0000,0000,0000,0000
+tescstest_armo20080908/
+0000,0000,1000,0000,0000,0000,0000,0000
+0000,0000,1000,0010,0000,0000,0000,0000
+0000,0000,1000,0001,0000,0000,0000,0000
+0000,0000,1000,0000,0000,0000,0000,0001
+0000,0000,1000,0000,0000,0000,0000,0010
+0000,0000,1000,0000,0000,0000,0000,0100
+0000,0000,1000,0000,0000,0000,0000,1000
+0000,0000,1000,0000,0000,0000,0001,0000
+0000,0000,1000,0000,0000,0000,0010,0000
+0000,0000,1000,0000,0000,0000,0100,0000
+0000,0000,1000,0000,0000,0000,1000,0000
+0000,0000,1000,0000,0000,0001,0000,0000
+0000,0000,1000,0000,0000,0010,0000,0000
+0000,0000,1000,0000,0000,0100,0000,0000
+0000,0000,1000,0000,0000,1000,0000,0000
+0000,0000,1000,0000,0001,0000,0000,0000
+0000,0000,1000,0000,0010,0000,0000,0000
+0000,0000,1000,0000,0100,0000,0000,0000
+0000,0000,1000,0000,1000,0000,0000,0000
+                                      ^Head
+                                     ^Hair
+                                    ^UpperBody
+                                   ^LowerBody
+                                 ^Hand
+                                ^Foot
+                               ^RightRing
+                              ^LeftRing
+                            ^Amulet
+                           ^Weapon
+                          ^BackWeapon
+                         ^SideWeapon
+                       ^Quiver % Not found in Oblivion
+                      ^Shield
+                     ^Torch % Not found in Oblivion
+                    ^Tail
+                  ^Hide Rings
+                 ^Hide Amulet
+           ^~Playable
+          ^Heavy (1) Light (0)
+
+What are these? Probably nothing.
+        ^Cloth <?>
+ ^Cloth <?>
+
+CLOT/BMDT 4
+2
+0
+0
+65
+CLOT/BMDT 4
+64
+0
+0
+0
+
+check
+0000,0000,1000,0010,1000,0000,0000,0100 % EnchDwarvenCuirassResistNormalWeapons
+0000,0000,1000,0000,1010,0000,0000,0000 % EnchDwarvenShieldFrostShield
+                    ^Tail??
+
+
+
+
+============================================================================
+
+Camera zoom
+-----------
+
+oneselected
+
+1 / 366 674 t = 0.0
+2 / 442 622 t = 0.5
+3 / 487 591 t = 0.8
+4 / 517 569 t = 1.0
+
+p4-p1 = (151,-105)
+
+       110
+       |
+19 --     -- 1154
+       |
+       926
+
+first pixel 19 last pixel 1154
+first pixel 110 last pixel 926    
+
+
+allselected
+
+1 / 1073 672 t = 0.0
+2 / 811 589  t = 0.7
+3 / 732 565  t = 0.91
+4 / 696 554  t = 1.0
+
+
+if distance to bounding box small, then small step
+if distance large, then large step
+
+
+fCamera Pan:Movement
+fCamera Zoom:Movement
+fCamera Rotate:Movement
+Toggles the Free Fly camera (UFO cam).
+Change the camera's field of view (in deg): default 75
+SetCameraFOV
+
+============================================================================
+
+Menus
+capture_22082008_151430.png
+capture_22082008_152429.png
+capture_22082008_153335.png
+capture_22082008_161425.png
+
+Cell List View
+capture_22082008_143343.png % Shows full row: ID,Name,Location,Path(Y/N),Owner
+capture_20080911_190324.png % Objects of BrumeHammerAndAxe, Arrow2Steel
+
+Default objects when Oblivion.esm has not been loaded.
+capture_20080916_005623.png
+
+Gameplay/Facial Animation... menu
+capture_20080922_233043.png
+
+FaceGen Modeller screenshots
+capture_20080923_005330.png
+
+File/Data
+capture_22082008_151436.png
+capture_20080928_193759.png
+
+File/Preferences
+capture_22082008_151515.png
+
+Landscape Edit Settings
+capture_22082008_152607.png
+Where the values are stored? In config file?
+
+Heightmap Editor
+capture_22082008_152801.png
+
+Local Map Creation
+capture_22082008_153327.png
+Try create local maps. Where they are stored?
+
+Export Dialogue window
+capture_22082008_161412.png
+
+Script Edit window
+capture_22082008_161734.png
+capture_20081004_142953.png
+
+============================================================================
+
+Object types:
+
+Ammo
+MiscItem
+Static
+Furniture
+
+============================================================================
+
+Function name IDs from CTDA subrecords:
+
+capture_20081004_151809.png % functions and their parameters
+
+How this set of functions have been selected?
+Have the "condition functions" been marked in the CS executable?
+
+Functions can be seen in:
+Quest window / Quest Data tab
+Dialog window / INFO
+Idle Animation window
+
+Run On Target flag adds OnTarget() around the condition.
+
+1 GetDistance <ObjectReferenceID> % [TARGET]
+5
+14 GetActorValue <Actor Value>
+18
+27
+32
+35
+36 MenuMode <Integer> % 0
+39
+40 GetVampire
+41
+43
+44
+45
+46 GetDead
+47
+48 GetGold
+49 GetSleeping
+50
+53 GetScriptVariable <ObjectReferenceID> <Variable Name> % includes NONE
+56 GetQuestRunning <Quest>
+58 GetStage <Quest>
+59
+60
+61
+62
+63
+64
+66
+67
+68 GetIsClass <Class>
+69 GetIsRace <Race>
+70 GetIsSex <Sex> % 0 Male ? Female
+71 GetInFaction <Faction>
+72 GetIsID <ObjectID>
+73
+74
+75
+76 GetDisposition <Actor> % [TARGET]
+77 GetRandomPercent
+79 GetQuestVariable <Quest> <Variable Name> % Variable names?
+80
+84
+91 GetIsAlerted
+101 IsWeaponOut
+102 IsTorchOut
+103 IsShieldOut
+104 IsYielding
+106 IsFacingUp
+107 GetKnockedState
+108 GetWeaponAnimType
+109 GetWeaponSkillType
+110 GetCurrentAIPackage
+111 IsWaiting
+112 IsIdlePlaying
+116
+122
+125 IsGuard
+127
+129
+130
+131
+132
+134
+135
+136
+141 IsTalking
+143 GetCurrentAIProcedure
+144
+145
+146
+150
+159 GetSitting
+160 GetFurnitureMarkerID
+161 GetIsCurrentPackage <Package>
+170
+171
+176
+182
+185 IsSwimming
+190
+193
+195
+197
+224
+225
+228
+229
+230
+237
+246 GetIsUsedItem <ObjectID>
+247 GetIsUsedItemType <Form Type>
+249
+251
+254 GetIsPlayableRace
+258 GetUsedItemLevel
+259 GetUsedItemActivate
+266
+280
+285 IsLeftUp
+286 IsSneaking
+288
+289 IsInCombat
+300
+305
+309
+310
+312
+313 IsActorEvil
+314
+315
+318 GetIdleDoneOnce
+323
+327 IsRidingHorse
+329
+332 IsInDangerousWater
+339
+353 IsActor
+358
+361
+
+These are from the screenshots of Idle Animation dialog
+showing all the selector choices:
+
+CanHaveFlames
+CanPayCrimeGold
+GetActorValue <Actor Value>
+GetAlarmed
+GetAmountSoldStolen
+GetAngle <Axis> % X Y Z
+GetArmorRating
+GetArmorRatingUpperBody
+GetAttacked
+GetBarterGold
+GetBaseActorValue <Actor Value>
+GetClassDefaultMatch
+GetClothingValue
+GetCrime <Actor> <Crime Type> % [TARGET]
+GetCrimeGold
+GetCurrentAIPackage
+GetCurrentAIProcedure
+GetCurrentTime
+GetCurrentWeatherPercent
+GetDayOfWeek
+GetDead
+GetDeadCount <Actor Base> % NPC: 'Abhuki'
+GetDestroyed
+GetDetected <Actor> % [TARGET]
+GetDetectionLevel <Actor> % [TARGET]
+GetDisabled
+GetDisease
+GetDisposition <Actor> % [TARGET]
+GetDistance <ObjectReferenceID> % [TARGET]
+GetDoorDefaultOpen
+GetEquipped <ObjectID> % MiscItem: 'aaaObeisanceToken'
+GetFactionRank <Faction>
+GetFactionRankDifference <Faction> <Actor> % [TARGET]
+GetFatiguePercentage
+GetFriendHit <Actor> % [TARGET]
+GetFurnitureMarkerID
+GetGlobalValue <Global>
+GetGold
+GetHeadingAngle <ObjectReferenceID> % [TARGET]
+GetIdleDoneOnce
+GetIgnoreFriendlyHits
+GetInCell <Cell>
+GetInCellParam <Cell> <ObjectReferenceID> % [TARGET]
+GetInFaction <Faction>
+GetInSameCell <ObjectReferenceID> % [TARGET]
+GetInvestmentGold
+GetInWorldspace <WorldSpace>
+GetIsAlerted
+GetIsClass <Class>
+GetIsClassDefault <Class>
+GetIsCreature
+GetIsCurrentPackage <Package>
+GetIsCurrentWeather <Weather ID> % CamoranWeather
+GetIsGhost
+GetIsID <ObjectID>
+GetIsPlayableRace
+GetIsPlayerBirthsign <Birthsign>
+GetIsRace <Race>
+GetIsReference <ObjectReferenceID> % [TARGET]
+GetIsSex <Sex> % Female Male
+GetIsUsedItem <ObjectID>
+GetIsUsedItemType <Form Type>
+GetItemCount <ObjectID>
+GetKnockedState
+GetLevel
+GetLineOfSight <ObjectReferenceID> % [TARGET]
+GetLocked
+GetLockLevel
+GetNoRumors
+GetOffersServicesNow
+GetOpenState
+GetPCExpelled <Faction>
+GetPCFactionAttack <Faction>
+GetPCFactionMurder <Faction>
+GetPCFactionSteal <Faction>
+GetPCFactionSubmitAuthority <Faction>
+GetPCFame
+GetPCInFaction <Faction>
+GetPCInfamy
+GetPCIsClass <Class>
+GetPCIsRace <Race>
+GetPCIsSex <Sex> % Female Male
+GetPCMiscStat <Integer> % 0
+GetPersuasionNumber
+GetPlayerControlsDisabled
+GetPlayerHasLastRiddenHorse
+GetPlayerInSEWorld
+GetPos <Axis> % X Y Z
+GetQuestRunning <Quest>
+GetQuestVariable <Quest> <Variable Name> % Variable names?
+GetRandomPercent
+GetRestrained
+GetScale
+GetScriptVariable <ObjectReferenceID> <Variable Name> % includes NONE
+GetSecondsPassed
+GetShouldAttack <Actor> % [TARGET]
+GetSitting
+GetSleeping
+GetStage <Quest>
+GetStageDone <Quest> <Stage> % 10
+GetStartingAngle <Axis> % X Y Z
+GetStartingPos <Axis> % X Y Z
+GetTalkedToPC
+GetTalkedToPCParam <Actor> % [TARGET]
+GetTimeDead
+GetTotalPersuasionNumber
+GetTrespassWarningLevel
+GetUnconscious
+GetUsedItemActivate
+GetUsedItemLevel
+GetVampire
+GetWalkSpeed
+GetWeaponAnimType
+GetWeaponSkillType
+GetWindSpeed
+HasFlames
+HasMagicEffect <Magic Effect>
+HasVampireFed
+IsActor
+IsActorAVictim
+IsActorEvil
+IsActorUsingATorch
+IsCellOwner <Cell> <Owner(optional)> % NPC: 'Abhuki'
+IsCloudy
+IsContinuingPackagePCNear
+IsCurrentFurnitureObj <Furniture>
+IsCurrentFurnitureRef <ObjectReferenceID> % [TARGET]
+IsEssential
+IsFacingUp
+IsGuard
+IsHorseStolen
+IsIdlePlaying
+IsInCombat
+IsInDangerousWater
+IsInInterior
+IsInMyOwnedCell
+IsLeftUp
+IsOwner <Owner(optional)> % NPC: 'Abhuki'
+IsPCAMurderer
+IsPCSleeping
+IsPlayerInJail
+IsPlayerMovingIntoNewSpace
+IsPlayersLastRiddenHorse
+IsPleasant
+IsRaining
+IsRidingHorse
+IsRunning
+IsShieldOut
+IsSneaking
+IsSnowing
+IsSpellTarget <Magic Item> % Spell, Enchantment, Potion, what else?
+IsSwimming
+IsTalking
+IsTimePassing
+IsTorchOut
+IsTrespassing
+IsTurnArrest
+IsWaiting
+IsWeaponOut
+IsXBox
+IsYielding
+MenuMode <Integer> % 0
+SameFaction <Actor> % [TARGET]
+SameFactionAsPC
+SameRace <Actor> % [TARGET]
+SameRaceAsPC
+SameSex <Actor> % [TARGET]
+SameSexAsPC
+WhichServiceMenu
+
+
+============================================================================
+
+Actor Values (for GetActorVal):
+
+Acrobatics
+Aggression
+Agility
+Alchemy
+Alteration
+Armorer
+Athletics
+Attack Bonus
+Blade
+Blindness
+Block
+Blunt
+Bounty
+Casting Penalty
+Chameleon
+Confidence
+Confusion
+Conjuration
+Darkness
+Defend Bonus
+Destruction
+Detect Item Range
+Detect Life Range
+Encumbrance
+Endurance
+Energy
+Fame
+Fatigue
+Hand To Hand
+Health
+Heavy Armor
+Illusion
+Infamy
+Intelligence
+Invisibility
+Light Armor
+Luck
+Magicka
+Magicka Multiplier
+Marksman
+Mercantile
+Mysticism
+Night Eye Bonus
+Paralysis
+Personality
+Reflect Damage
+Resist Disease
+Resist Fire
+Resist Frost
+Resist Magic
+Resist Normal Weapons
+Resist Paralysis
+Resist Poison
+Resist Shock
+Resist Water Damage
+Responsibility
+Restoration
+Security
+Silence
+Sneak
+Speechcraft
+Spell Absorb Chance
+Spell Reflect Chance
+Strength
+Stunted Magicka
+Swim Speed Multiplier
+Telekinesis
+Vampirism
+Water Breathing
+Water Walking
+Willpower
+
+
+Crime Types:
+
+ANY
+Attack
+Murder
+Pickpocket
+Steal
+Steal Horse
+Trespass
+
+
+Form Types:
+
+Activator
+Ammo
+AnimObject
+Apparatus
+Armor
+Book
+Clothing
+CombatStyle
+Container
+Creature
+Door
+EffectShader
+Enchantment
+Flora
+Furniture
+Grass
+Ingredient
+Key
+LandTexture
+LeveledCreature
+LeveledItem
+LeveledSpell
+Light
+LoadScreen
+MiscItem
+NPC
+Potion
+SigilStone
+SoulGem
+Sound
+Spell
+Static
+SubSpace
+Tree
+WaterType
+Weapon
+
+
+============================================================================
+
+Contacts:
+
+UESP Wiki admin % Dave Humphrey
+Lord Cannondorf
+People who gave the source codes to their software
+ -TES4View (and its simpler version)
+
+Make available:
+ -espparser
+ -bsaparser
+ -modtunhash.c
+ -lodparser
+ -spttools
+
+1. Parsing the ESM/ESP/ESS files.
+2. Library with group, record, and subrecord skipping and searching.
+3. Data structures.
+4. Editor clone.
+5. Memory management at play time (cell, model, and texture loadings).
+
+
+============================================================================

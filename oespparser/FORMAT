@@ -1,0 +1,751 @@
+
+
+
+Record:
+<string4> % recordtype
+<int> % recordsize % excludes the header
+<uint> % flags32
+<uint> % formid
+<uint> % flags2/stamp/unknown
+
+Group:
+GRUP
+<int> % groupsize % includes the header: GRUP etc.
+<4 bytes> % groupdata
+<int> % grouptype
+<int> % stamp
+
+
+
+Parsed from multi.esp
+
+ACHR/DATA 24
+ACHR/EDID <bytes> <string>
+ACHR/NAME 4
+ACHR/XESP 8
+ACHR/XHRS 4
+ACHR/XLOD 12   % not documented at UESP Wiki
+ACHR/XMRC 4
+ACHR/XRGD 504  % not documented at UESP Wiki
+ACHR/XRGD 616
+ACHR/XSCL 4
+
+ACRE/DATA 24
+ACRE/EDID <bytes> <string>
+ACRE/NAME 4
+ACRE/XESP 8
+ACRE/XOWN 4
+ACRE/XRGD 224
+ACRE/XRGD 476
+ACRE/XRGD 700
+ACRE/XSCL 4
+% ACRE/XGLB not in multi.esp
+% ACRE/XRNK not in multi.esp
+
+ACTI/EDID <bytes> <string>
+ACTI/FULL <bytes> <string>
+ACTI/MODB 4
+ACTI/MODL <bytes> <string> % NIF model file
+ACTI/MODT 120
+ACTI/MODT 144
+ACTI/MODT 168
+ACTI/MODT 192
+ACTI/MODT 24
+ACTI/MODT 240
+ACTI/MODT 48
+ACTI/MODT 72
+ACTI/MODT 96
+ACTI/SCRI 4
+ACTI/SNAM 4
+
+ALCH/DATA 4
+ALCH/EDID <bytes> <string>
+ALCH/EFID 4
+ALCH/EFIT 24
+ALCH/ENIT 8
+ALCH/FULL <bytes> <string>
+ALCH/ICON <bytes> <string>
+ALCH/MODB 4
+ALCH/MODL <bytes> <string>
+ALCH/MODT 24
+ALCH/MODT 48
+ALCH/SCIT 16
+% ALCH/SCRI not in multi.esp
+
+AMMO/ANAM 2
+AMMO/DATA 18
+AMMO/EDID <bytes> <string>
+AMMO/ENAM 4
+AMMO/FULL <bytes> <string>
+AMMO/ICON <bytes> <string>
+AMMO/MODB 4
+AMMO/MODL <bytes> <string>
+AMMO/MODT 24
+
+% ANIO not in multi.esp
+
+APPA/DATA 13
+APPA/EDID <bytes> <string>
+APPA/FULL <bytes> <string>
+APPA/ICON <bytes> <string>
+APPA/MODB 4
+APPA/MODL <bytes> <string>
+APPA/MODT 24
+APPA/MODT 48
+% APPA/SCRI not in multi.esp
+
+ARMO/BMDT 4
+ARMO/DATA 14
+ARMO/EDID <bytes> <string>
+ARMO/ENAM 4
+ARMO/FULL <bytes> <string>
+ARMO/ICO2 <bytes> <string>
+ARMO/ICON <bytes> <string>
+ARMO/MO2B 4
+ARMO/MO2T 120
+ARMO/MO2T 144
+ARMO/MO2T 24
+ARMO/MO2T 48
+ARMO/MO2T 72
+ARMO/MO3B 4
+ARMO/MO3T 120
+ARMO/MO3T 24
+ARMO/MO3T 48
+ARMO/MO3T 72
+ARMO/MO4B 4
+ARMO/MO4T 24
+ARMO/MO4T 48
+ARMO/MO4T 72
+ARMO/MOD2 <bytes> <string>
+ARMO/MOD3 <bytes> <string>
+ARMO/MOD4 <bytes> <string>
+ARMO/MODB 4
+ARMO/MODL <bytes> <string>
+ARMO/MODT 120
+ARMO/MODT 144
+ARMO/MODT 24
+ARMO/MODT 48
+ARMO/MODT 72
+ARMO/SCRI 4
+% ARMO/ANAM not in multi.esp
+
+BOOK/ANAM 2
+BOOK/DATA 10
+BOOK/DESC <bytes> <string>
+BOOK/EDID <bytes> <string>
+BOOK/ENAM 4
+BOOK/FULL <bytes> <string>
+BOOK/ICON <bytes> <string>
+BOOK/MODB 4
+BOOK/MODL <bytes> <string>
+BOOK/MODT 24
+BOOK/MODT 48
+BOOK/MODT 72
+BOOK/SCRI 4
+
+BSGN/DESC <bytes> <string>
+BSGN/EDID <bytes> <string>
+BSGN/FULL <bytes> <string>
+BSGN/SPLO 4
+% BSGN/ICON not in multi.esp
+
+CELL/DATA 1
+CELL/EDID <bytes> <string>
+CELL/FULL <bytes> <string>
+CELL/XCCM 4
+CELL/XCLC 8
+CELL/XCLL 36
+CELL/XCLR 12
+CELL/XCLR 16
+CELL/XCLR 20
+CELL/XCLR 24
+CELL/XCLR 4
+CELL/XCLR 8
+CELL/XCLW 4
+CELL/XCMT 1
+CELL/XOWN 4
+CELL/XRNK 4
+% CELL/XGLB not in multi.esp
+% CELL/XCWT not in multi.esp
+
+CLAS/DATA 52
+CLAS/DESC <bytes> <string>
+CLAS/EDID <bytes> <string>
+CLAS/FULL <bytes> <string>
+CLAS/ICON <bytes> <string>
+
+% CLMT not documented at UESP Wiki
+% CLMT not in multi.esp
+
+CLOT/ANAM 2 % not documented at UESP Wiki
+CLOT/BMDT 4
+CLOT/DATA 8
+CLOT/EDID <bytes> <string>
+CLOT/ENAM 4
+CLOT/FULL <bytes> <string>
+CLOT/ICO2 <bytes> <string>
+CLOT/ICON <bytes> <string>
+CLOT/MO2B 4
+CLOT/MO2T 24
+CLOT/MO2T 48
+CLOT/MO2T 72
+CLOT/MO2T 96
+CLOT/MO3B 4
+CLOT/MO3T 24
+CLOT/MO3T 48
+CLOT/MO3T 72
+CLOT/MO4B 4
+CLOT/MO4T 24
+CLOT/MO4T 48
+CLOT/MO4T 72
+CLOT/MOD2 <bytes> <string>
+CLOT/MOD3 <bytes> <string>
+CLOT/MOD4 <bytes> <string>
+CLOT/MODB 4
+CLOT/MODL <bytes> <string>
+CLOT/MODT 24
+CLOT/MODT 48
+CLOT/MODT 72
+CLOT/MODT 96
+CLOT/SCRI 4
+
+CONT/CNTO 8
+CONT/DATA 5
+CONT/EDID <bytes> <string>
+CONT/FULL <bytes> <string>
+CONT/MODB 4
+CONT/MODL <bytes> <string>
+CONT/MODT 120
+CONT/MODT 144
+CONT/MODT 168
+CONT/MODT 24
+CONT/MODT 48
+CONT/MODT 72
+CONT/MODT 96
+CONT/QNAM 4
+CONT/SCRI 4
+CONT/SNAM 4
+
+CREA/ACBS 16
+CREA/AIDT 12
+CREA/BNAM 4
+CREA/CNTO 8
+CREA/CSCR 4
+CREA/CSDC 1
+CREA/CSDI 4
+CREA/CSDT 4
+CREA/DATA 20
+CREA/EDID <bytes> <string>
+CREA/FULL <bytes> <string>
+CREA/INAM 4
+CREA/KFFZ <bytes> <list of strings>
+CREA/MODB 4
+CREA/MODL <bytes> <string>
+CREA/MODT 120
+CREA/MODT 144
+CREA/MODT 24
+CREA/MODT 48
+CREA/MODT 72
+CREA/MODT 96
+CREA/NAM0 <bytes> <string>
+CREA/NAM1 <bytes> <string>
+CREA/NIFZ <bytes> <list of strings> % verify the last byte
+CREA/NIFT 4 % not documented at UESP Wiki % in gmmse.esp
+CREA/PKID 4
+CREA/RNAM 1
+CREA/SCRI 4
+CREA/SNAM 8
+CREA/SPLO 4
+CREA/TNAM 4
+CREA/WNAM 4
+CREA/ZNAM 4
+
+% CSTY not documented at UESP Wiki
+CSTY/CSAD 84
+CSTY/CSTD 124
+CSTY/EDID <bytes> <string>
+
+DIAL/DATA 1
+DIAL/EDID <bytes> <string>
+DIAL/FULL <bytes> <string>
+DIAL/QSTI 4
+
+DOOR/ANAM 4
+DOOR/BNAM 4
+DOOR/EDID <bytes> <string>
+DOOR/FNAM 1
+DOOR/FULL <bytes> <string>
+DOOR/MODB 4
+DOOR/MODL <bytes> <string>
+DOOR/MODT 120
+DOOR/MODT 144
+DOOR/MODT 168
+DOOR/MODT 24
+DOOR/MODT 240
+DOOR/MODT 288
+DOOR/MODT 48
+DOOR/MODT 72
+DOOR/MODT 96
+DOOR/SCRI 4
+DOOR/SNAM 4
+DOOR/TNAM 4
+
+% EFSH not documented at UESP Wiki
+EFSH/DATA 224
+EFSH/EDID <bytes> <string>
+EFSH/ICO2 <bytes> <string>
+EFSH/ICON <bytes> <string>
+
+ENCH/EDID <bytes> <string>
+ENCH/EFID 4
+ENCH/EFIT 24
+ENCH/ENIT 16
+ENCH/FULL <bytes> <string>
+ENCH/SCIT 16
+
+% EYES not in multi.esp
+
+FACT/CNAM 4
+FACT/DATA 1
+FACT/EDID <bytes> <string>
+FACT/FNAM <bytes> <string>
+FACT/FULL <bytes> <string>
+FACT/MNAM <bytes> <string>
+FACT/RNAM 4
+FACT/XNAM 8
+% FACT/INAM not in multi.esp
+
+FLOR/EDID <bytes> <string>
+FLOR/FULL <bytes> <string>
+FLOR/MODB 4
+FLOR/MODL <bytes> <string>
+FLOR/PFIG 4
+FLOR/PFPC 4
+% FLOR/SCRI not in multi.esp
+% FLOR/MODT not in multi.esp
+
+FURN/EDID <bytes> <string>
+FURN/FULL <bytes> <string>
+FURN/MNAM 4
+FURN/MODB 4
+FURN/MODL <bytes> <string>
+FURN/MODT 144
+FURN/MODT 48
+FURN/MODT 72
+FURN/MODT 96
+FURN/SCRI 4
+
+GLOB/EDID <bytes> <string>
+GLOB/FLTV 4
+GLOB/FNAM 1
+
+GMST/DATA 1
+GMST/DATA 32
+GMST/DATA 36
+GMST/DATA 37
+GMST/DATA 4
+GMST/EDID <bytes> <string>
+
+% GRAS not documented at UESP Wiki
+GRAS/DATA 32
+GRAS/EDID <bytes> <string>
+GRAS/MODB 4
+GRAS/MODL <bytes> <string>
+GRAS/MODT 24
+
+HAIR/DATA 1
+HAIR/EDID <bytes> <string>
+HAIR/FULL <bytes> <string>
+HAIR/ICON <bytes> <string>
+HAIR/MODB 4
+HAIR/MODL <bytes> <string>
+
+% IDLE not documented at UESP Wiki
+IDLE/ANAM 1
+IDLE/CTDA 24
+IDLE/DATA 8
+IDLE/EDID <bytes> <string>
+IDLE/MODB 4
+IDLE/MODL <bytes> <string>
+
+INFO/CTDA 24
+INFO/DATA 3
+INFO/NAM1 <bytes> <string>
+INFO/NAM2 <bytes> <string>
+INFO/NAME 4
+INFO/PNAM 4
+INFO/QSTI 4
+INFO/SCDA <bytes> <data>
+INFO/SCHR 20
+INFO/SCRO 4
+INFO/SCTX <bytes> <string>
+INFO/TCLF 4  % not documented at UESP Wiki
+INFO/TCLT 4
+INFO/TRDT 16
+% INFO/CTDT not in multi.esp
+
+INGR/DATA 4
+INGR/EDID <bytes> <string>
+INGR/EFID 4
+INGR/EFIT 24
+INGR/ENIT 8
+INGR/FULL <bytes> <string>
+INGR/ICON <bytes> <string>
+INGR/MODB 4
+INGR/MODL <bytes> <string>
+INGR/MODT 24
+INGR/MODT 72
+INGR/SCIT 16
+INGR/SCRI 4
+% according to UESP Wiki, INGR/FULL is also used for script effect name
+
+KEYM/DATA 8
+KEYM/EDID <bytes> <string>
+KEYM/FULL <bytes> <string>
+KEYM/ICON <bytes> <string>
+KEYM/MODB 4
+KEYM/MODL <bytes> <string>
+KEYM/MODT 24
+KEYM/MODT 48
+KEYM/SCRI 4
+
+LAND/ATXT 8
+LAND/BTXT 8
+LAND/DATA 4
+LAND/VCLR 3267
+LAND/VHGT 1096
+LAND/VNML 3267
+LAND/VTXT <bytes> <list of 8 bytes>
+
+LIGH/DATA 32
+LIGH/EDID <bytes> <string>
+LIGH/FNAM 4
+LIGH/FULL <bytes> <string>
+LIGH/ICON <bytes> <string>
+LIGH/MODB 4
+LIGH/MODL <bytes> <string>
+LIGH/MODT 120
+LIGH/MODT 144
+LIGH/MODT 192
+LIGH/MODT 24
+LIGH/MODT 48
+LIGH/MODT 72
+LIGH/MODT 96
+LIGH/SCRI 4
+LIGH/SNAM 4
+
+% LSCR not documented at UESP Wiki
+LSCR/DESC <bytes> <string>
+LSCR/EDID <bytes> <string>
+LSCR/ICON <bytes> <string>
+LSCR/LNAM 12
+
+% LTEX not documented at UESP Wiki
+LTEX/EDID <bytes> <string>
+LTEX/GNAM 4
+LTEX/HNAM 3
+LTEX/ICON <bytes> <string>
+LTEX/SNAM 1
+
+LVLC/EDID <bytes> <string>
+LVLC/LVLD 1
+LVLC/LVLF 1
+LVLC/LVLO 12
+LVLC/SCRI 4
+LVLC/TNAM 4
+
+LVLI/EDID <bytes> <string>
+LVLI/LVLD 1
+LVLI/LVLF 1
+LVLI/LVLO 12
+% LVLI/DATA not in multi.esp
+
+% LVSP not in multi.esp
+
+MGEF/DATA 64
+MGEF/DESC <bytes> <string>
+MGEF/EDID <bytes> <string>
+MGEF/ESCE <bytes> <list of 4-strings>
+MGEF/FULL <bytes> <string>
+MGEF/ICON <bytes> <string>
+MGEF/MODB 4
+MGEF/MODL <bytes> <string>
+
+MISC/DATA 8
+MISC/EDID <bytes> <string>
+MISC/FULL <bytes> <string>
+MISC/ICON <bytes> <string>
+MISC/MODB 4
+MISC/MODL <bytes> <string>
+MISC/MODT 120
+MISC/MODT 144
+MISC/MODT 24
+MISC/MODT 48
+MISC/MODT 72
+MISC/MODT 96
+MISC/SCRI 4
+
+NPC_/ACBS 16
+NPC_/AIDT 12
+NPC_/CNAM 4
+NPC_/CNTO 8
+NPC_/DATA 33
+NPC_/EDID <bytes> <string>
+NPC_/ENAM 4
+NPC_/FGGA 120
+NPC_/FGGS 200
+NPC_/FGTS 200
+NPC_/FNAM 2
+NPC_/FULL <bytes> <string>
+NPC_/HCLR 4
+NPC_/HNAM 4
+NPC_/INAM 4
+NPC_/LNAM 4
+NPC_/MODB 4
+NPC_/MODL <bytes> <string>
+NPC_/PKID 4
+NPC_/RNAM 4
+NPC_/SCRI 4
+NPC_/SNAM 8
+NPC_/SPLO 4
+NPC_/ZNAM 4
+
+PACK/CTDA 24
+PACK/EDID <bytes> <string>
+PACK/PKDT 8
+PACK/PLDT 12
+PACK/PSDT 8
+PACK/PTDT 12
+
+% PGRD not documented at UESP Wiki
+PGRD/DATA 2
+PGRD/PGAG 1    % variable size
+PGRD/PGRI 1040 % variable size
+PGRD/PGRP 1008 % variable size
+PGRD/PGRR 1004 % variable size
+
+QUST/CNAM <bytes> <string>   % not documented at UESP Wiki
+QUST/CTDA 24
+QUST/DATA 2
+QUST/EDID <bytes> <string>
+QUST/FULL <bytes> <string>
+QUST/ICON <bytes> <string>
+QUST/INDX 2
+QUST/QSDT 1
+QUST/QSTA 8
+QUST/SCDA <bytes> <compiled script>
+QUST/SCHR 20
+QUST/SCRI 4
+QUST/SCRO 4
+QUST/SCTX <bytes> <script string>
+
+% RACE not documented at UESP Wiki
+RACE/ATTR 16
+RACE/CNAM 1
+RACE/DATA 36
+RACE/DESC <bytes> <string>
+RACE/DNAM 8
+RACE/EDID <bytes> <string>
+RACE/ENAM 0
+RACE/FGGA 120
+RACE/FGGS 200
+RACE/FGTS 200
+RACE/FNAM 0
+RACE/FULL <bytes> <string>
+RACE/HNAM 0   % variable size, in 4 bytes chunks
+RACE/ICON <bytes> <string>
+RACE/INDX 4
+RACE/MNAM 0
+RACE/MODB 4
+RACE/MODL <bytes> <string>
+RACE/NAM0 0
+RACE/NAM1 0
+RACE/PNAM 4
+RACE/SNAM 2
+RACE/SPLO 4
+RACE/UNAM 4
+RACE/VNAM 8
+RACE/XNAM 8
+
+REFR/DATA 24
+REFR/EDID <bytes> <string>
+REFR/FNAM 1
+REFR/FULL <bytes> <string>
+REFR/NAME 4
+REFR/ONAM 0
+REFR/TNAM 2
+REFR/XACT 4
+REFR/XCNT 4
+REFR/XESP 8
+REFR/XHLT 4   % not documented at UESP Wiki
+REFR/XLOC 12
+REFR/XLOD 12
+REFR/XMRK 0
+REFR/XOWN 4
+REFR/XRNK 4
+REFR/XSCL 4
+REFR/XSED 1
+REFR/XTEL 28
+REFR/XTRG 4
+% REFR/XGLB not in multi.esp
+% REFR/XPCI not in multi.esp
+% REFR/XLCM not in multi.esp
+% REFR/XRTM not in multi.esp
+
+% REGN not documented at UESP Wiki
+REGN/EDID <bytes> <string>
+REGN/RCLR 4
+REGN/RDAT 8
+REGN/RDMD 4
+REGN/RDMP <bytes> <string>
+REGN/RDOT 1404
+REGN/RDSD 12
+REGN/RDSD 132
+REGN/RDWT 48
+REGN/RPLD 248
+REGN/RPLD 32
+REGN/RPLD 448
+REGN/RPLD 56
+REGN/RPLD 64
+REGN/RPLD 88
+REGN/RPLI 4
+REGN/WNAM 4
+
+% ROAD not documented at UESP Wiki
+% ROAD not in multi.esp
+
+% SBSP not documented at UESP Wiki
+% SBSP not in multi.esp
+
+SCPT/EDID <bytes> <string>
+SCPT/SCDA <bytes> <script string>
+SCPT/SCHR 20
+SCPT/SCRO 4
+SCPT/SCRV 4
+SCPT/SCTX <bytes> <script string>
+SCPT/SCVR <bytes> <string>
+SCPT/SLSD 24
+
+SGST/DATA 9
+SGST/EDID <bytes> <string>
+SGST/EFID <bytes> <string> ????
+SGST/EFIT <bytes> <string> ????
+SGST/FULL <bytes> <string>
+SGST/ICON <bytes> <string>
+SGST/MODB 4
+SGST/MODL <bytes> <string>
+SGST/MODT 96
+
+% SKIL not in multi.esp
+
+SLGM/EDID <bytes> <string>
+SLGM/FULL <bytes> <string>
+SLGM/ICON <bytes> <string>
+SLGM/MODB 4
+SLGM/MODL <bytes> <string>
+SLGM/MODT 24
+SLGM/SCRI 4
+SLGM/SLCP 1
+SLGM/SOUL 1
+
+SOUN/EDID <bytes> <string>
+SOUN/FNAM <bytes> <string>
+SOUN/SNDX 12
+
+SPEL/EDID <bytes> <string>
+SPEL/EFID <bytes> <string> ????
+SPEL/EFIT <bytes> <string> ????
+SPEL/FULL <bytes> <string>
+SPEL/SCIT 16
+SPEL/SPIT 16
+
+STAT/EDID <bytes> <string>
+STAT/MODB 4
+STAT/MODL <bytes> <string>
+STAT/MODT 120
+STAT/MODT 144
+STAT/MODT 168
+STAT/MODT 192
+STAT/MODT 216
+STAT/MODT 24
+STAT/MODT 240
+STAT/MODT 264
+STAT/MODT 288
+STAT/MODT 312
+STAT/MODT 336
+STAT/MODT 360
+STAT/MODT 384
+STAT/MODT 408
+STAT/MODT 432
+STAT/MODT 456
+STAT/MODT 48
+STAT/MODT 480
+STAT/MODT 504
+STAT/MODT 552
+STAT/MODT 624
+STAT/MODT 672
+STAT/MODT 72
+STAT/MODT 720
+STAT/MODT 96
+
+TES4/CNAM <bytes> <string>
+TES4/DATA 8
+TES4/HEDR 12
+TES4/MAST <bytes> <string>
+TES4/SNAM <bytes> <string>
+
+% TREE not documented at UESP Wiki --- it is now
+% TREE not in multi.esp, TREE in xulStendarrValley.esp
+TREE/BNAM 8
+TREE/CNAM 32
+TREE/EDID <bytes> <string>
+TREE/ICON <bytes> <string>
+TREE/MODB 4
+TREE/MODL <bytes> <string>
+TREE/SNAM 16
+TREE/SNAM 20
+TREE/SNAM 4
+
+% WATR not documented at UESP Wiki
+WATR/ANAM 1
+WATR/DATA 102
+WATR/EDID <bytes> <string>
+WATR/FNAM 1
+WATR/GNAM 12
+WATR/MNAM <bytes> <string>
+WATR/SNAM 4
+WATR/TNAM <bytes> <string>
+
+WEAP/ANAM 2
+WEAP/DATA 30
+WEAP/EDID <bytes> <string>
+WEAP/ENAM 4
+WEAP/FULL <bytes> <string>
+WEAP/ICON <bytes> <string>
+WEAP/MODB 4
+WEAP/MODL <bytes> <string>
+WEAP/MODT 24
+WEAP/MODT 96
+WEAP/SCRI 4
+
+WRLD/CNAM 4
+WRLD/DATA 1
+WRLD/EDID <bytes> <string>
+WRLD/FULL <bytes> <string>
+WRLD/ICON <bytes> <string>
+WRLD/MNAM 16
+WRLD/NAM0 8
+WRLD/NAM2 4
+WRLD/NAM9 8
+WRLD/SNAM 4
+WRLD/WNAM 4
+
+% WTHR not documented at UESP Wiki
+WTHR/CNAM <bytes> <string>
+WTHR/DATA 15
+WTHR/DNAM <bytes> <string>
+WTHR/EDID <bytes> <string>
+WTHR/FNAM 16
+WTHR/HNAM 56
+WTHR/NAM0 160
+WTHR/SNAM 8

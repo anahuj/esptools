@@ -1,0 +1,23 @@
+#!/bin/sh
+for y in ` seq -20 28 `
+do
+a=""
+for x in ` seq -19 24 `
+do
+f="land_${x}_${y}.info"
+if [ -f $f ]; then
+# a=$a"X"
+bh=` cat $f | grep baseheight | cut -b 14- `
+# echo "bh = ${bh}"
+v=` echo "9.9 * (${bh} + 256.0 ) / (256.0 + 2204.0)" | bc `
+# echo "v = $v"
+# w=` echo $v | cut -b -1 `
+w=` echo $v | cut -b -1 | tr "0123456789" "..XXXXXXXX" `
+# echo "w = $w"
+a=$a$w
+else
+a=$a"."
+fi
+done
+echo $a
+done

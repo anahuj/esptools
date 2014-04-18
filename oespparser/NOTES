@@ -1,0 +1,1074 @@
+
+ ---*---
+ ---*---
+ ---*---
+
+The same subrecords in multiple records:
+CTDA ok
+CTDT
+EFIT ok
+SCIT ok
+LVLO
+
+If the subrecords are the same but the flags differs,
+should we consider the subrecords as being different?
+If we parser to "p->has_thisandthat", then we have different
+structures. If we have "int p_has_thisandthat()", then one
+structure may be used.
+
+ ---*---
+
+20080907
+
+MODT
+
+The subrecord MODT holds hashed references of the textures
+used by the NIF model that was given in the subrecord MODL.
+
+One 24 bytes texture reference contains 3 hash references.
+The size of one hash is 8 bytes and are of the same type as
+the hashes used in the BSA file.
+
+Here are the MODT hashes of CreatureMudCrab:
+CREA/MODT 24
+b3 e2 05 6d 94 c2 3e 8e  "m..b3"
+33 62 05 6d 99 c2 3e 8e  "m..b3"
+62 61 1a 74 d3 39 98 ce  "t.......................ab"
+
+As can be seen it is not possible to compute the complete name.
+Only the length, the first letter, and two last letters.
+
+The first and third hashes can be found from the BSA files.
+The first hash refers to "mcrb3.dds" and the third hash
+refers to directory "textures/creatures/mudcrab".
+
+The extension (if any) of the second hash is so far unknown.
+The second hash seems to not be in the BSA file.
+
+Notes:
+ -Normal and glow textures have their own references, i.e.,
+they are not derived from the base texture name
+ -Except the normal textures, the textures are listed in NIF files
+of NIFZ subrecord
+ -It could be that the normal textures can be defined only with MODT
+ -The order of references does not match the order of NIFZ
+ -Directory of normal textures starts with "data"
+
+The normal maps ("_n") are not referenced inside the NIF files.
+Is the MODT subrecord only way to define the normal maps?
+I.e., if one would want completely new model with normal maps,
+would one need to make the MODT subrecord? Or does the engine
+automatically check for "_n" version of the texture?
+
+ ---*---
+
+20080907
+
+MODT
+
+The subrecord MODT holds hashed references of the textures
+used by the NIF model given in the subrecord MODL.
+
+One 24 bytes texture reference contains 3 hash references.
+The size of one hash is 8 bytes and seems to be the same hash
+as used in the BSA file (check!).
+
+Here are the MODT hashes of CreatureMudCrab (hexdump output):
+000000   b3 e2  5 6d 94 c2 3e 8e   ...m..>.
+000008   33 62  5 6d 99 c2 3e 8e   3b.m..>.
+000016   62 61 1a 74 d3 39 98 ce   ba.t.9..
+
+Here the hashes are converted to names as much as is possible
+(modtunhash output):
+Hash-to-name 1 "m..b3"
+Hash-to-name 2 "m..b3"
+Hash-to-name 3 "t.......................ab"
+
+As can be seen, two first hashes refers to the same filename
+("mcrb3"), but with different extension (because the hashes
+differs). The first must be "DDS" extension (see open source
+"unbsa.c" by Angel Death). The extension of the second is
+unknown to me.
+
+The third hash reference gives the directory where the files
+are located. The third hash in CreatureMudCrab refers to
+directory "textures/creatures/mudcrab".
+
+Normal and glow textures have their own 24 bytes texture
+reference (FGC10troll):
+Hash-to-name 1 "t...._n"
+Hash-to-name 2 "t...._n"
+Hash-to-name 3 "d..........................ll"
+And (FGC01Rat):
+Hash-to-name 1 "r....._g"
+Hash-to-name 2 "r....._g"
+Hash-to-name 3 "t...................at"
+
+As can be seen the texture directory may start or not start
+with "data" directory. The directory of the FGC10troll is
+"data/textures/creatures/troll".
+Note that normal map directory contains the "data".
+
+The normal maps ("_n") are not referenced inside the NIF files.
+Is the MODT subrecord only way to define the normal maps?
+I.e., if one would want completely new model with normal maps,
+would one need to make the MODT subrecord?
+
+
+
+ ---*---
+
+20080906
+
+MODT contains hash values of textures.
+One hash is 8 bytes. Minimum chunk in MODT subrecords
+is 24 bytes. That is 3 hash values.
+
+What controls the count of 24 bytes chunks?
+
+Rat has largest MODT: 216 bytes = 9 * 24 bytes.
+
+CREA/EDID 9
+FGC01Rat
+Chunk name: FULL
+CREA/FULL 4
+Rat
+Chunk name: MODL
+CREA/MODL 27
+Creatures\Rat\Skeleton.NIF
+Chunk name: MODB
+CREA/MODB 4
+97.858261
+Chunk name: MODT
+CREA/MODT 216
+creamodt465
+Chunk name: NIFZ
+CREA/NIFZ 50
+Eyes.NIF
+Head.NIF
+mange.NIF
+Rat.NIF
+Whiskers.NIF
+
+modtunhash.c prints the following texture name guesses.
+After % comes my guessed completion.
+
+Hash-to-name "r   ye" % rateye
+Hash-to-name "r   ye" % rateye
+Hash-to-name "t                   at"
+Hash-to-name "r     _n" % rateye_n
+Hash-to-name "r     _n" % rateye_n
+Hash-to-name "d                        at"
+Hash-to-name "r     _g" % rateye_g
+Hash-to-name "r     _g" % rateye_g
+Hash-to-name "t                   at"
+Hash-to-name "rat"
+Hash-to-name "rat"
+Hash-to-name "t                   at"
+Hash-to-name "r  _n" % rat_n
+Hash-to-name "r  _n" % rat_n
+Hash-to-name "d                        at"
+Hash-to-name "r       er" % ratwhisker
+Hash-to-name "r       er" % ratwhisker
+Hash-to-name "t                   at"
+Hash-to-name "r         _n" % ratwhisker_n
+Hash-to-name "r         _n" % ratwhisker_n
+Hash-to-name "d                        at"
+Hash-to-name "m  ge" % mange
+Hash-to-name "m  ge" % mange
+Hash-to-name "t                   at"
+Hash-to-name "m    _n" % mange_n
+Hash-to-name "m    _n" % mange_n
+Hash-to-name "d                        at"
+
+Solved: They are directory paths.
+The third hash is not that clear. Here are all third hashes.
+
+Hash-to-name 3 "d........................at" % data/
+Hash-to-name 3 "d...........................in"
+Hash-to-name 3 "d..........................ll"
+Hash-to-name 3 "d..................................on"
+Hash-to-name 3 "t.......................ab"
+Hash-to-name 3 "t.......................ai"
+Hash-to-name 3 "t........................an"
+Hash-to-name 3 "t.........................ar"
+Hash-to-name 3 "t....................ar"
+Hash-to-name 3 "t...................at"
+Hash-to-name 3 "t..............................ch"
+Hash-to-name 3 "t.............................ch"
+Hash-to-name 3 "t....................ch"
+Hash-to-name 3 "t.....................ep"
+Hash-to-name 3 "t....................er"
+Hash-to-name 3 "t..........................gh"
+Hash-to-name 3 "t......................ie"
+Hash-to-name 3 "t......................in"
+Hash-to-name 3 "t.....................ll"
+Hash-to-name 3 "t....................\m"   % Third entries are directories?
+Hash-to-name 3 "t.....................mp"
+Hash-to-name 3 "t...................mp"
+Hash-to-name 3 "t...........................od"
+Hash-to-name 3 "t...................og"
+Hash-to-name 3 "t.............................on"
+Hash-to-name 3 "t........................on"
+Hash-to-name 3 "t............................ra"
+Hash-to-name 3 "t....................re"
+Hash-to-name 3 "t.....................se"
+Hash-to-name 3 "t.............................sh"
+Hash-to-name 3 "t.............................sp"
+Hash-to-name 3 "t.....................st"
+Hash-to-name 3 "t........................th"
+Hash-to-name 3 "t......................th"
+Hash-to-name 3 "t........................ur"
+                1234567890123456789012345678901234567890
+                         1         2         3         4
+
+zrun1 % how many times in zfind
+270
+541
+180
+1606
+45 % "t.......................ab"
+105
+339
+790
+1307
+1054
+485
+528
+261
+72
+705
+60
+103
+1345
+495
+0
+1121
+1658
+407
+37 % "t...................og"
+4996
+3814
+391
+961
+619
+191
+68
+865
+176
+879
+108
+
+ ---*---
+
+20080821
+
+Added/modified
+
+TES4/OFST
+TES4/DELE
+SOUN/SNDD
+MGEF/DATA 36 instead of 64 % skip now, check screenshots
+ENCH/SCIT 12 instead of ENCH/SCIT 16 % skip now, check screenshots
+SPEL/SCIT 12
+APPA/SCRI
+ARMO/ANAM
+LIGH/DATA 24 instead of 32
+LVLI/LVLO 8 instead of 12
+WTHR/MODL
+WTHR/MODB
+WTHR/MODT % needed?
+REGN/RDWT
+REGN/ICON
+REGN/RDGS
+REFR/XLOC 16 instead of 12
+REFR/XRTM
+REFR/XLCM
+PGRD/PGRL % ok
+CELL/XGLB
+REFR/XGLB
+WRLD/XXXX
+WRLD/OFST
+REFR/XSED % size varies
+REFR/XPCI
+ACHR/XPCI
+ACHR/FULL
+LAND/VTEX % different from LAND/VTXT
+INFO/SCHD
+INFO/DATA 2 instead of 3
+IDLE/CTDT
+PACK/PKDT 4 instead of 8
+PACK/CTDT
+CSTY/CSTD 112
+EFSH/DATA % size varies
+
+New records:
+SKIL 
+SBSP 
+CLMT 
+ROAD 
+LVSP 
+ANIO 
+
+ ---*---
+
+20080602
+TODO:
+New parser.
+ -No loading to memory until needed; read() and free()
+ -Possibility to read all to memory; an option flag
+   == 0 for reading only the requested
+   == 1 for reading the whole record
+   == 2 for reading all in the same level
+   == 3 for reading all
+ -Transparent processing whether the data is in memory or is not
+ -Use skipping extensively; e.g, esp_read(esp,"LAND"); does not
+  need to know any other record types
+
+Note that the compressed records are entirely in memory.
+
+Memory mapping may not be the fastest way. We may need to use
+block reads in any case.
+
+esp_open()
+esp_look_next()
+esp_read_next() % does uncomp if necessary
+esp_grup_get_type()
+
+
+ ---*---
+
+TODO:
+
+Calls to buffer_read_int() etc could be function pointers.
+That way we may have different routines for reading via
+mmap, via freadf(), via virtual buffer, without "if"
+branches.
+
+Read graphs: format is presented as a graph of data objects.
+The traverser reads the data. Multiple traversers could
+exists for different input routines (mmap, freadf, virtual buffer).
+Graphs could be automatically created by parsing "nif.xml".
+Interactive user interface could be used to modify the graphs
+and display the data, a la Nifskope. Simple list is not enough
+because, e.g., global variables depends on the variable name
+("iVariable","fVariable","sVariable"). (Simple list with "if"
+and "go to" could work, though.)
+
+So far we have parsed every record and subrecord. We should
+parse the esm/esp files as the game would parse them. Only
+land and objects in the nearby cells need to be in the memory.
+For rendering entire Morrowind in one view, we need to generate
+the LOD versions of everything with respect to every cell.
+
+Parser passes:
+1. Create index of cells. Parse global variables.
+2. For each cell, generate LODs if not yet available or
+if the far version is not enough far.
+3. In the game, load and render all data in the cell.
+
+
+
+ ---*---
+ ---*---
+ ---*---
+
+20080601
+
+LAND
+
+uniquelandscapes20080528/Entius_Gorge7037/
+
+GRUP 2965 WRLD Grouptype = 0 Top
+  WRLD 2985
+  GRUP 3129 Grouptype = 1 World Children
+    CELL 3149 formid = 145271
+    GRUP 3190 Grouptype = 6 Cell Children % of 145271
+      GRUP 3210 Grouptype = 8 Cell Persistent Children % of 145271
+      GRUPEND
+    GRUPEND
+    GRUP 3498 Grouptype = 4 Exterior Cell Block (x,y) = (0,1)
+      GRUP 3518 Grouptype = 5 Exterior Cell Sub-Block (x,y) = (0,4)
+        CELL 3538 formid = 13033 XCLC = 36 7
+        GRUP 3597 Grouptype = 6 Cell Children
+          GRUP 3617 Grouptype = 9 Cell Temporary Children
+            LAND 3637
+          GRUPEND
+        GRUPEND
+        CELL 13885 formid = 13034 XCLC = 37 7
+        GRUP 13944 Grouptype = 6 Cell Children
+          GRUP 13964 Grouptype = 9 Cell Temporary Children
+            LAND 13984
+          GRUPEND
+        GRUPEND
+        CELL 28080 formid = 13035 XCLC = 38 7
+        GRUP 28139 Grouptype = 6 Cell Children
+          GRUP 28159 Grouptype = 10 Cell Visible Distant Children % NOTE
+          GRUP END
+          GRUP 28464 Grouptype = 9 Cell Temporary Children
+            LAND 28714
+
+
+
+What are the coordinates? Subblocks (0,4),(1,4),(0,5),(1,5) of block (0,1).
+
+0 1
+Grouptype = 4 Exterior Cell Block      (4x4 block)
+0 4
+Grouptype = 5 Exterior Cell Sub-Block  (8x8 sub blocks?)
+1 4
+Grouptype = 5 Exterior Cell Sub-Block
+0 5
+Grouptype = 5 Exterior Cell Sub-Block
+1 5
+Grouptype = 5 Exterior Cell Sub-Block
+
+
+8x8 cells = subblock
+4x4 subblocks = block = 32x32 cells
+
+block * 32 + subblock*8   % wrong
+
+cell_range = [subblock*8,subblock*8 + 7]  % correct
+That is, the cell, subblock, and block numberings are absolute
+with respect to the world origin.
+
+When rendering, we need only to take the cell coordinates from
+XCLC subrecord.
+
+
+ ---*---
+
+REFR/XLOC may be 12 or 16 bytes -- espparser handles only 12 bytes (20071121)
+
+Callback system:
+EFSH/DATA efshdata
+
+Callbacks are formed by appending the name.
+parse_from_esp_
+printparsed_
+compileesp_
+printcompiledesp_
+
+We should have something simpler as all can be automatically
+generated from XML description of the format.
+
+ ---*---
+
+ACTI/MODT
+
+One 24 bytes block for each instantation? No.
+One 24 bytes block for each item inside the NIF? What item? Children in root!
+
+
+8 times 24 bytes block
+tail --bytes +6599453 multi.esp | head --bytes 192 | hexdump -f ~/src/hexdumpformat | more
+000000   b1 b0  c 69 79 72 4f 55 31 30  c 69   ...iyrOU10.i
+000012   7e 72 4f 55 72 6f 26 74 3b b0 b7 91   ~rOUro&t;...
+000024   b1 b0  a 77 a9 83 23 22 31 30  a 77   ...w..#"10.w
+000036   ae 83 23 22 6c 6f 1d 74 91 31 32 c6   ..#"lo.t.12.
+000048   b1 b0  d 77 3c b4  2 c8 31 30  d 77   ...w<...10.w
+000060   41 b4  2 c8 6c 6f 1d 74 91 31 32 c6   A...lo.t.12.
+000072   b1 b0  c 69 db 8b 7b aa 31 30  c 69   ...i..{.10.i
+000084   e0 8b 7b aa 72 6f 26 74 3b b0 b7 91   ..{.ro&t;...
+000096   b1 b0 10 6c b9 2a 41 a9 31 30 10 6c   ...l.*A.10.l
+000108   be 2a 41 a9 64 6c 1e 74 52 25 3a  6   .*A.dl.tR%:.
+000120   b1 b0  b 62 20 4d 87 bf 31 30  b 62   ...b M..10.b
+000132   25 4d 87 bf 64 6c 1e 74 52 25 3a  6   %M..dl.tR%:.
+000144   b1 b0  e 62  5 b4 70 1f 31 30  e 62   ...b..p.10.b
+000156    a b4 70 1f 64 6c 1e 74 52 25 3a  6   ..p.dl.tR%:.
+000168   b2 b0 10 6c b9 2a 41 a9 32 30 10 6c   ...l.*A.20.l
+000180   be 2a 41 a9 64 6c 1e 74 52 25 3a  6   .*A.dl.tR%:.
+
+tail --bytes +6599453 multi.esp | head --bytes 24 | hexdump -f ~/src/hexdumpformat
+000000   b1 b0  c 69 79 72 4f 55 31 30  c 69   ...iyrOU10.i
+                  ^^^^^^^^^^^float?       ^^
+000012   7e 72 4f 55 72 6f 26 74 3b b0 b7 91   ~rOUro&t;...
+         ^^^^^^^^float? ^^^^^^^^^^^float?
+
+Possible floats are:
+4068043008.00000000000000000000000000000000000000000000000000000000
+4068370688.00000000000000000000000000000000000000000000000000000000
+0.00372543535195291042327880859375000000000000000000000000
+
+The first two floats could be coordinates. They also might be
+multiples of 8 which matches measures use in the construction set.
+
+b1 b0 and 31 30 looks similar. b = 1011, 3 = 0011
+Both two first floats is followed by 55.
+
+72 % ?
+b0 b7 % ?
+91 % ? = 145
+
+
+
+
+Chunk name 0: STAT 1 6956507
+flags 1 = 0000,0000,0000,0000,0000,0000,0000,0000
+formid = 98757
+flags 2 = 0000,0000,0000,0000,0000,0000,0000,0000
+Chunk name: EDID
+STAT/EDID 25
+AnvilUpperClassHaunted01
+Chunk name: MODL
+STAT/MODL 48
+Architecture\Anvil\AnvilUpperClassHaunted01.NIF
+Chunk name: MODB
+STAT/MODB 4
+1182.871094
+Chunk name: MODT
+STAT/MODT 552
+End of STAT
+Chunk name 0: STAT 1 6957180
+flags 1 = 0000,0000,0000,0000,0000,0000,0000,0000
+formid = 89039
+flags 2 = 0000,0000,0000,0000,0000,0000,0000,0000
+Chunk name: EDID
+STAT/EDID 15
+AnvilLCHouse01
+Chunk name: MODL
+STAT/MODL 38
+Architecture\Anvil\AnvilLCHouse01.NIF
+Chunk name: MODB
+STAT/MODB 4
+649.397949
+Chunk name: MODT
+STAT/MODT 216
+End of STAT
+
+347868  anvillchouse01.nif            216 = 24*9  Num children 9
+1499459 anvilupperclasshaunted01.nif  552 = 24*23 Num children 23
+
+Number of 24 bytes blocks = Number of children in root of NIF
+
+
+cat modt-AnvilLCHouse01 | hexdump -f hexdumpformat-modt 
+b1 b0  8 6c 95 44  7 aa 31 30  8 6c 9a 44  7 aa 6c 69 1b 74 10 b0 79 52
+b1 b0  b 6c 95 aa d8 87 31 30  b 6c 9a aa d8 87 6c 69 1b 74 10 b0 79 52
+f4 f5 12 6c 9a e4 4d ed 74 75 12 6c 9f e4 4d ed 6c 69 1b 74 10 b0 79 52
+b1 b0  c 6c d8 9b  d 61 31 30  c 6c dd 9b  d 61 6c 69 1b 74 10 b0 79 52
+f7 ef  c 62  d ff 40 a4 77 6f  c 62 12 ff 40 a4 73 73 20 74 30 e1 f8 ad
+b1 b0 10 61 c6 ea b4 28 31 30 10 61 cb ea b4 28 6c 69 1b 74 10 b0 79 52
+e1 df  b 6c 88 a8 6f 82 61 5f  b 6c 8d a8 6f 82 6c 69 1b 74 10 b0 79 52
+b1 b0  a 74 5b c8 92 7b 31 30  a 74 60 c8 92 7b 6c 69 1b 74 10 b0 79 52
+b1 b0 11 62 7f  9 8a 22 31 30 11 62 84  9 8a 22 6c 69 1b 74 10 b0 79 52
+
+cat modt-AnvilUpperClassHaunted01  | hexdump -f hexdumpformat-modt
+b3 b0  e 61 2d af ac ac 33 30  e 61 32 af ac ac 6c 69 1b 74 10 b0 79 52
+b2 b0 12 61 8f bb a1 97 32 30 12 61 94 bb a1 97 6c 69 1b 74 10 b0 79 52
+b1 b0  a 74 5b c8 92 7b 31 30  a 74 60 c8 92 7b 6c 69 1b 74 10 b0 79 52
+b2 b0 10 61 c6 ea b4 28 32 30 10 61 cb ea b4 28 6c 69 1b 74 10 b0 79 52
+b2 b0  c 63 35 9e 70  e 32 30  c 63 3a 9e 70  e 6c 69 1b 74 10 b0 79 52
+b1 b0  c 63 c3 6c f2 6c 31 30  c 63 c8 6c f2 6c 6c 69 1b 74 10 b0 79 52
+f2 e5  6 63 b4 7e f4 c4 72 65  6 63 b9 7e f4 c4 6c 69 1b 74 10 b0 79 52
+b1 b0 11 61 96 40 6a 79 31 30 11 61 9b 40 6a 79 6c 69 1b 74 10 b0 79 52
+f4 f3  a 63 80 8e 10 69 74 73  a 63 85 8e 10 69 6c 69 1b 74 10 b0 79 52
+b1 b0 13 61 8b b5 c6 55 31 30 13 61 90 b5 c6 55 6c 69 1b 74 10 b0 79 52
+b1 b0  a 74 e9 96 14 da 31 30  a 74 ee 96 14 da 6c 69 1b 74 10 b0 79 52
+b1 b0 14 61 4b c2 b3 20 31 30 14 61 50 c2 b3 20 6c 69 1b 74 10 b0 79 52
+e1 df 16 69 18 22 1f fc 61 5f 16 69 1d 22 1f fc 72 6f 29 74 50 db 62 50
+b1 b0  e 63 f2 cf 6c fc 31 30  e 63 f7 cf 6c fc 72 6f 29 74 50 db 62 50
+b1 b0 10 61 5b 98 25 fe 31 30 10 61 60 98 25 fe 6c 69 1b 74 10 b0 79 52
+b1 b0  e 61 4d be 88 a7 31 30  e 61 52 be 88 a7 6c 69 1b 74 10 b0 79 52
+e1 df 11 61 b6 b6 60 a4 61 5f 11 61 bb b6 60 a4 6c 69 1b 74 10 b0 79 52
+b1 b0 10 61 c6 ea b4 28 31 30 10 61 cb ea b4 28 6c 69 1b 74 10 b0 79 52
+b1 b0  8 6c 95 44  7 aa 31 30  8 6c 9a 44  7 aa 6c 69 1b 74 10 b0 79 52
+b1 b0  7 76 d8  a b7 d9 31 30  7 76 dd  a b7 d9 6c 69 1b 74 10 b0 79 52
+b2 b0  7 76 d8  a b7 d9 32 30  7 76 dd  a b7 d9 6c 69 1b 74 10 b0 79 52
+e1 df 10 61 30 87 e0 fd 61 5f 10 61 35 87 e0 fd 6c 69 1b 74 10 b0 79 52
+b1 b0  f 61 b5 22 be e7 31 30  f 61 ba 22 be e7 6c 69 1b 74 10 b0 79 52
+
+
+Clutter\CastleInterior\AnvilCastleInterior\AnvilRugMid01.NIF % only 1
+Clutter\LampSconceEvil01.NIF % 3
+Clutter\MinotaurHead01.NIF % 2
+Dungeons\FortRuins\Dungeon\DecoRubble\RFRubbleHallsPile02.NIF % only 1
+Lights\MiddleCandlestickFloorEvil04Fake.NIF % 2
+NibenIsleObjects\NLHAngelGirlBanner.nif % 2
+NibenIsleObjects\Statics\Alchemy\armaladacarving01.nif % only 1
+NibenIsleObjects\TableandFood\uppersilverglass01.nif % only 1
+
+LampSconceEvil01 in multi.esp
+archive/tes4/espfiles/espfiles5/4057-Version 2.0-NibenIsle BUGFIX-TESSource.esp
+
+Their MODTs are identical.
+That may mean that MODT depends only of properties of NIFs.
+That may also mean the three lamps represents the same lamp
+in different state at the same place.
+
+Chunk name 0: STAT 1 6984889
+flags 1 = 0000,0000,0000,0000,0000,0000,0000,0000
+formid = 102865
+flags 2 = 0000,0000,0000,0000,0000,0000,0000,0000
+Chunk name: EDID
+STAT/EDID 14
+LanternEvil01
+Chunk name: MODL
+STAT/MODL 29
+Clutter\LampSconceEvil01.NIF
+Chunk name: MODB
+STAT/MODB 4
+15.570317
+Chunk name: MODT
+STAT/MODT 120
+End of STAT
+
+Chunk name 0: STAT 1 6993258
+flags 1 = 0000,0000,0000,0000,0000,0000,0000,0000
+formid = 149409
+flags 2 = 0000,0000,0000,0000,0000,0000,0000,0000
+Chunk name: EDID
+STAT/EDID 21
+LampSconceDark01Fake
+Chunk name: MODL
+STAT/MODL 29
+Clutter\LampSconceEvil01.NIF
+Chunk name: MODB
+STAT/MODB 4
+15.570317
+Chunk name: MODT
+STAT/MODT 120
+End of STAT
+
+Chunk name 0: STAT 1 6993476
+flags 1 = 0000,0000,0000,0000,0000,0000,0000,0000
+formid = 149408
+flags 2 = 0000,0000,0000,0000,0000,0000,0000,0000
+Chunk name: EDID
+STAT/EDID 20
+LampSconceDark01Off
+Chunk name: MODL
+STAT/MODL 29
+Clutter\LampSconceEvil01.NIF
+Chunk name: MODB
+STAT/MODB 4
+15.570317
+Chunk name: MODT
+STAT/MODT 120
+End of STAT
+
+cat modt-LampSconceEvil01-1 | hexdump -f hexdumpformat-modt
+b1 b0 11 66 8f f6 b5  6 31 30 11 66 94 f6 b5  6 65 6d 1d 74 82 5b 5e 70
+b4 b0 11 6d 41 b8 72 a4 34 30 11 6d 46 b8 72 a4 74 65 17 74 53 95 28 20
+b3 b0 11 6d 41 b8 72 a4 33 30 11 6d 46 b8 72 a4 74 65 17 74 53 95 28 20
+b1 b0  c 6d e0 59 fa f7 31 30  c 6d e5 59 fa f7 74 65 17 74 53 95 28 20
+ec e9  a 63 e6 35 88 96 6c 69  a 63 eb 35 88 96 72 65 10 74 7c f4 8b  4
+
+cat modt-LampSconceEvil01-2 | hexdump -f hexdumpformat-modt
+b1 b0 11 66 8f f6 b5  6 31 30 11 66 94 f6 b5  6 65 6d 1d 74 82 5b 5e 70
+b4 b0 11 6d 41 b8 72 a4 34 30 11 6d 46 b8 72 a4 74 65 17 74 53 95 28 20
+b3 b0 11 6d 41 b8 72 a4 33 30 11 6d 46 b8 72 a4 74 65 17 74 53 95 28 20
+b1 b0  c 6d e0 59 fa f7 31 30  c 6d e5 59 fa f7 74 65 17 74 53 95 28 20
+ec e9  a 63 e6 35 88 96 6c 69  a 63 eb 35 88 96 72 65 10 74 7c f4 8b  4
+
+cat modt-LampSconceEvil01-3 | hexdump -f hexdumpformat-modt
+b1 b0 11 66 8f f6 b5  6 31 30 11 66 94 f6 b5  6 65 6d 1d 74 82 5b 5e 70
+b4 b0 11 6d 41 b8 72 a4 34 30 11 6d 46 b8 72 a4 74 65 17 74 53 95 28 20
+b3 b0 11 6d 41 b8 72 a4 33 30 11 6d 46 b8 72 a4 74 65 17 74 53 95 28 20
+b1 b0  c 6d e0 59 fa f7 31 30  c 6d e5 59 fa f7 74 65 17 74 53 95 28 20
+ec e9  a 63 e6 35 88 96 6c 69  a 63 eb 35 88 96 72 65 10 74 7c f4 8b  4
+
+
+
+ ---*---
+
+EFSH/DATA:
+
+224 bytes
+
+tail --bytes +595342 multi.esp | head --bytes 224 | hexdump -f ../hexdumpformat
+
+17  % 4 bytes
+5
+1
+3
+4868682  % 4 bytes
+% fill/texture effect section has 9 floats
+0.20000000298023223876953125000000000000000000000000000000
+0.40000000596046447753906250000000000000000000000000000000
+0.50000000000000000000000000000000000000000000000000000000
+0.20000000298023223876953125000000000000000000000000000000
+1.00000000000000000000000000000000000000000000000000000000
+1.00000000000000000000000000000000000000000000000000000000
+-0.30000001192092895507812500000000000000000000000000000000
+0.20000000298023223876953125000000000000000000000000000000
+1.00000000000000000000000000000000000000000000000000000000
+746484  % 4 bytes
+% edge effect has 8 floats
+0.20000000298023223876953125000000000000000000000000000000
+0.80000001192092895507812500000000000000000000000000000000
+0.50000000000000000000000000000000000000000000000000000000
+0.50000000000000000000000000000000000000000000000000000000
+1.00000000000000000000000000000000000000000000000000000000
+1.00000000000000000000000000000000000000000000000000000000
+0.50000000000000000000000000000000000000000000000000000000
+0.75000000000000000000000000000000000000000000000000000000
+6
+5
+1
+4
+2
+0
+0.60000002384185791015625000000000000000000000000000000000
+0.10000000149011611938476562500000000000000000000000000000
+0.50000000000000000000000000000000000000000000000000000000
+0.30000001192092895507812500000000000000000000000000000000
+0.50000000000000000000000000000000000000000000000000000000
+10.00000000000000000000000000000000000000000000000000000000
+30.00000000000000000000000000000000000000000000000000000000
+0 % float
+0
+0
+10.00000000000000000000000000000000000000000000000000000000
+0
+0
+0 % float
+30.00000000000000000000000000000000000000000000000000000000
+36.00000000000000000000000000000000000000000000000000000000
+0.10000000149011611938476562500000000000000000000000000000
+0.75000000000000000000000000000000000000000000000000000000
+16777215  % 4 bytes
+16777215  % 4 bytes
+9413805  % 4 bytes
+1.00000000000000000000000000000000000000000000000000000000
+1.00000000000000000000000000000000000000000000000000000000
+0.69999998807907104492187500000000000000000000000000000000
+1.00000000000000000000000000000000000000000000000000000000
+3.00000000000000000000000000000000000000000000000000000000
+8.00000000000000000000000000000000000000000000000000000000
+
+ ---*---
+
+MODT:
+
+How two models are attached together?
+Does MODT contain some kind of touch points on the objects?
+Touch points of the constraint objects?
+Touch points of the wearables?
+
+Why would they be separately described if they can be
+obtained from the NIF files?
+
+
+tail --bytes +376639 multi.esp | head --bytes 24 | ints
+1661791461
+-142133519
+1661758565
+-142133514
+1948022117
+1146902957
+
+tail --bytes +376639 multi.esp | head --bytes 24 | floats
+2599614220281954959360.00000000000000000000000000000000000000000000000000000000
+-5484956406312225451248985938329600.00000000000000000000000000000000000000000000000000000000
+2590354819448081219584.00000000000000000000000000000000000000000000000000000000
+-5484959501162323664699673186140160.00000000000000000000000000000000000000000000000000000000
+49583700799528460460721203838976.00000000000000000000000000000000000000000000000000000000
+881.40118408203125000000000000000000000000000000000000000000
+
+
+ ---*---
+
+Polish the parsebuffer_ routines so that common code is
+written only once.
+
+Write parsebuffer_ routines so that they parse to structures
+and print at the same time.
+
+ ---*---
+
+In GMST record, is there other way to recognize the type of the
+data than the first char of the EDID string? Something in the
+record header?
+
+ ---*---
+
+Later?
+The parser could first parse to database with help of
+XML format description (like in Niftools).
+Then the structures could be filled with
+ recordpath = "/TREE/CNAM/shadown_radius";
+ tree->shadow_radius = lookup(recordpath);
+
+ ---*---
+
+file.esp
+file/0001_   % top level records and groups
+file/0002_
+etc.
+
+filenames:
+<number>_<record name>.raw  % original data, could be ref to file.esp
+<number>_<record name>.uncomp  % uncompressed raw data
+<number>_<record name>/        % subrecords or group content
+
+Raw and uncompressed files may be too big for the group and other
+container records.
+
+ ---*---
+
+Later?
+Write program to generate parsebuffer_ files.
+Generate the structs for each chunk as well.
+
+ ---*---
+
+Reference: cswiki/TREE
+
+% SpeedTree Seed numbers
+TREE/SNAM 4
+TREE/SNAM 16
+TREE/SNAM 20
+
+% what is the correct order?
+TREE/CNAM 32
+% Shadow Radius
+% Leaf Curvature
+% Branch Dimming Value
+% Leaf Dimming Value
+% Minimum Leaf Angle
+% Maximum Leaf Angle
+% Rock Speed
+% Rustle Speed
+
+% Example values:
+2.500000
+5.000000
+85.000000
+0.500000
+0.700000
+0.000000
+1.000000
+1.200000
+
+% Billboard dimensions
+TREE/BNAM 8
+
+ ---*---
+
+Undocumented and not in multi.esp
+CLMT
+ROAD
+SBSP
+
+Not in multi.esp
+ANIO
+LVSP
+SKIL
+
+
+ ---*---
+
+check if all EFIT records are the same
+ --> all EFIT records are 24 bytes
+
+check if EFID are all string4
+ --> all EFID records are 4 bytes
+
+spel/ench/alch/ingr:
+SCIT fixed to 16 bytes even 4 bytes and 12 bytes have been observed
+ --> multi.esp has only SCIT records with 16 bytes
+
+ ---*---
+
+continue 20070422
+parsebuffer_acti.c is incomplete
+parsebuffer_armo.c is incomplete, new info on DATA
+parsebuffer_door.c is incomplete
+parsebuffer_lvlc.c is incomplete
+parsebuffer_lvli.c is incomplete, DATA not implemented
+parsebuffer_pack.c is incomplete, CTDA not implemented
+parsebuffer_scpt.c is incomplete, SLSD SCVR SCRO SCRV not implemented
+parsebuffer_weap.c
+
+ ---*---
+
+parsebuffer_refr.c is incomplete
+parsebuffer_achr.c is incomplete
+parsebuffer_cell.c is incomplete
+
+ACHR/XRGD at uespwiki is not documented
+ACHR/XLOD at uespwiki is not documented
+ACHR/XESP at uespwiki is documented wrong 
+CREA/MODT unknown
+ACTI has the same fields as NPC, compare their and others infos
+SCPT/SCHR [8] == length of SCDA block?
+REFR/XHLT at uespwiki is not documented
+ACRE/XESP wrong in docs (int vs 2*int)
+AMMO/MODT uespwiki doc has a typo MOBD --> MODB
+CLOT at uespwiki misses ANAM
+GMST/DATA at uespwiki is documented wrong
+INFO/TCLF at uespwiki is not documented
+MISC/DATA at uespwiki has incorrect length (4 vs 8) but shows correct fields
+SGST/DATA at uespwiki has incorrect length (4) in first occurence
+QUST/CNAM at uespwiki is not documented
+WRLD/MNAM at ueswiki is not documented
+WRLD/NAM0 <float> <float> min coords of the WRLD?
+WRLD/NAM9 <float> <float> max coords of the WRLD?
+
+ ---*---
+
+xulStendarrValley.esp has the following undocumented records:
+
+PGRD
+TREE ok
+
+multi.esp has the following undocumented records:
+CSTY
+EFSH
+GRAS
+LSCR
+PGRD
+RACE
+WATR
+WTHR
+
+multi2.esp has the following undocumented records:
+CSTY
+EFSH
+GRAS
+IDLE
+LTEX
+PGRD
+RACE
+REGN
+
+ ---*---
+
+LAND/VHGT subrecord:
+
+Given a height map, output the VHGT subrecord.
+
+h[][] height map
+
+Reference levels of all cells should be quantized to 8 game units.
+
+LAND/VHGT entry at Tes4Mod:Mod_File_Format/LAND may
+be unclear. Does the text mean that the nearby cells does
+copy the height values at the edges, not the gradient values?
+
+Is the first gradient value always 0?
+
+h[0][0] = offset + gradient[0][0];
+
+for (i = 1; i < 33; i++) {
+  h[0][i] = h[0][i-1] + gradient[0][i];
+}
+
+for (j = 1; j < 33; j++) {
+  h[j][0] = h[j-1][0] + gradient[j][0];
+  for (i = 1; i < 33; i++) {
+    h[j][i] = h[j][i-1] + gradient[j][i];
+  }
+}
+
+ ---*---
+
+PGRD:
+
+DATA short % tells how many path grid points
+
+
+Sizes:
+DATA 2    % = 102
+PGRP 1632
+PGAG 13
+PGRR 712  % shorts
+PGRI 816
+
+DATA PGRP PGAG PGRR PGRI
+ 102 1632   13  712  816
+  91 1456   12  820  848
+ 130 2080   17 1078 1136
+  73 1168   10  778  688
+
+PGRP = 16*DATA
+
+ ---*---
+
+GRUP groupsize
+TES4 size
+
+formid = int32
+size = int32 "chunk_size" // get_int("chunk_size") is used for skipping chunks
+CELL size 12*byte {
+FULL size string "Cell Name" // spaces allowed?
+XCWT size formid "Water"
+
+Quote marks " are necessary as not all data need to be named:
+CHNK size int int float "Radius" int int
+
+Data is references as shown:
+  waterid = cell->get_int("Water");
+
+ ---*---
+
+mw_07LTB.jpg
+Morrowind's Construction Set?
+
+Object window:
+Door
+Ingredient
+Light
+Lockpick
+Misc Item
+Probe
+Repair Item
+Spellmaking
+Enchanting
+Alchemy
+Leveled Item
+Activator
+Apparatus
+Armor
+Body Part
+Book
+Clothing
+Container
+Static
+Weapon
+NPC
+Creature
+Leveled Creature
+
+ ---*---
+
+GMST/DATA
+
+000192   28  0  0 47 4d 53 54 25  0  0  0  0   (..GMST%....
+000204    0  0  0 d9 11  0  1  0  0  0  0 45   ...........E
+000216   44 49 44 15  0 66 41 49 44 65 66 61   DID..fAIDefa
+000228   75 6c 74 53 70 65 65 63 68 4d 75 6c   ultSpeechMul
+000240   74  0 44 41 54 41  4  0  0  0 20 41   t.DATA.... A
+000252   47 52 55 50 7d  7  0  0 53 43 50 54   GRUP}...SCPT
+
+182880   6f 64 79 2e 4e 49 46  0 47 4d 53 54   ody.NIF.GMST
+182892   4b  0  0  0  0  0  0  0 b8 16  0  1   K...........
+182904    0  0  0  0 45 44 49 44 1a  0 73 52   ....EDID..sR
+182916   61 63 65 46 65 6d 61 6c 65 4c 6f 77   aceFemaleLow
+182928   65 72 42 6f 64 79 4d 6f 64 65 6c  0   erBodyModel.
+182940   44 41 54 41 25  0 43 68 61 72 61 63   DATA%.Charac
+182952   74 65 72 73 5c 5f 4d 61 6c 65 5c 46   ters\_Male\F
+182964   65 6d 61 6c 65 4c 6f 77 65 72 42 6f   emaleLowerBo
+182976   64 79 2e 4e 49 46  0 47 4d 53 54 41   dy.NIF.GMSTA
+
+600108   50 7c  1  0  0 47 4d 53 54  0  0  0   P|...GMST...
+600120    0  f 2a  0  0 47 4d 53 54 4b  0  0   ..*..GMSTK..
+600132    0  0  0  0  0 b7 16  0  1  0  0  0   ............
+600144    0 45 44 49 44 1a  0 73 52 61 63 65   .EDID..sRace
+600156   46 65 6d 61 6c 65 55 70 70 65 72 42   FemaleUpperB
+600168   6f 64 79 4d 6f 64 65 6c  0 44 41 54   odyModel.DAT
+600180   41 25  0 43 68 61 72 61 63 74 65 72   A%.Character
+600192   73 5c 5f 4d 61 6c 65 5c 46 65 6d 61   s\_Male\Fema
+600204   6c 65 55 70 70 65 72 42 6f 64 79 2e   leUpperBody.
+600216   4e 49 46  0 47 4d 53 54 4b  0  0  0   NIF.GMSTK...
+
+ ---*---
+
+grep strcmp parsebuffer_*.c > zsubrecords
+
+ ---*---
+ ---*---
+ ---*---
+ ---*---

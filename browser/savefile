@@ -1,0 +1,12 @@
+numlist 11
+0 arrayofchars 4 (null)
+4 int 4 recordsize
+8 int 4 unknown1
+12 int 4 unknown2
+16 hexdump 4 (null)
+20 hexdump 4 (null)
+24 hexdump 4 (null)
+28 hexdump 12 (null)
+40 hexdump 12 (null)
+52 hexdump 12 (null)
+64 unknown 247388784 TheRestofthefile

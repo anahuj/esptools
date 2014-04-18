@@ -1,0 +1,94 @@
+
+
+
+ ---*---
+ ---*---
+ ---*---
+
+
+
+
+ ---*---
+
+obsedemo.esp
+
+If we repeat only esp_next() the following ESP nodes are returned.
+TES4
+TES4/HEDR
+TES4/CNAM
+TES4/SNAM
+TES4/MAST
+TES4/DATA
+GRUP
+SCPT
+SCPT/EDID
+SCPT/SCHR
+etc.
+
+ ---*---
+
+Simpler version where user does the traversal.
+
+esp_open()
+esp_close()
+esp_check_name() // string4 of the header; does not advance buffer pointer
+esp_check_group() // info
+esp_check_record() // info
+esp_check_subrecord() // info (name, size)
+esp_skip_group()
+esp_skip_record()
+esp_skip_subrecord()
+esp_enter_group() // Returns new esp structure.
+esp_enter_record() // Uncompresses if needed.
+esp_get_subrecord() // Returns the buffer.
+esp_leave_group()
+esp_leave_record()
+esp_free_subrecord()
+
+
+ ---*---
+
+esp_next()
+
+Initially we are going through groups and records.
+
+Assume that the current location is at the begin of header.
+
+Test if EOF.
+  if EOF then
+    do {
+      clear
+      pop stack
+    } while // test EOF of popped buffers
+    if stack[].b == NULL then return NULL // End of ESP file.
+  end
+
+Decide what to do the next time we call esp_next() or esp_skip().
+This info is kept in the stack because after pop() we do the
+same as if we had called esp_skip().
+
+if in top or inside group then
+  type = string4
+  size = int
+  if type == GRUP then
+    stack[].skiploc = recloc + size
+    stack[].nextloc = recloc + 20
+    stack[].what = "enter the group"
+  else
+    stack[].skiploc = recloc + size + 20
+    stack[].nextloc = recloc + 20
+    stack[].what = "enter the record"
+    stack[].iscompressed = compressionflag
+  end
+  // enter to group or record
+  push stack
+  
+else // inside record
+  type = string4
+  size = short
+  stack[].skiploc = recloc + size + 20
+  stack[].nextloc = recloc + 20
+  stack[].type = "record"
+end
+
+

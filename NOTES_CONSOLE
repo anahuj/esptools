@@ -1,0 +1,7 @@
+
+   You can make a text dump of a save game's contents by using the SaveGame (save) or LoadGame (load)
+   console commands. Simply append a non-zero value to the command arguments, eg: save test 1 or load
+   test 1. It will generate a text file named with the same filename as your save game, but with .txt
+   appended, eg: save test 1 will generate a test.ess.txt file. The dump file contains list of records by
+   type and length of "subrecords" inside records.
+

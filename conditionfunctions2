@@ -1,0 +1,256 @@
+153 OF CanHaveFlames
+127 O- CanPayCrimeGold
+415 -F Exists <ObjectReferenceID> % [TARGET]
+118 -F GetActorAggroRadiusViolated
+459 -F GetActorCrimePlayerEnemy
+460 -F GetActorFactionPlayerEnemy
+557 -F GetActorsInHigh
+ 14 OF GetActorValue <Actor Value>
+ 61 OF GetAlarmed
+190 OF GetAmountSoldStolen
+  8 OF GetAngle <Axis> % X Y Z
+219 -F GetAnimAction
+ 81 OF GetArmorRating
+274 OF GetArmorRatingUpperBody
+ 63 OF GetAttacked
+264 OF GetBarterGold
+277 OF GetBaseActorValue <Actor Value>
+227 -F GetCannibal
+397 -F GetCauseofDeath
+229 OF GetClassDefaultMatch
+ 41 OF GetClothingValue
+489 -F GetConcussed
+122 OF GetCrime <Actor> <Crime Type> % [TARGET]
+116 O- GetCrimeGold
+110 OF GetCurrentAIPackage
+143 OF GetCurrentAIProcedure
+ 18 OF GetCurrentTime
+148 OF GetCurrentWeatherPercent
+170 OF GetDayOfWeek
+ 46 OF GetDead
+ 84 OF GetDeadCount <Actor Base> % NPC: 'Abhuki'
+215 -F GetDefaultOpen
+203 OF GetDestroyed
+471 -F GetDestructionStage
+ 45 OF GetDetected <Actor> % [TARGET]
+180 OF GetDetectionLevel <Actor> % [TARGET]
+435 -F GetDialogueEmotion
+436 -F GetDialogueEmotionValue
+ 35 OF GetDisabled
+ 39 OF GetDisease
+ 76 OF GetDisposition <Actor> % [TARGET]
+  1 OF GetDistance <ObjectReferenceID> % [TARGET]
+215 O- GetDoorDefaultOpen
+182 OF GetEquipped <ObjectID> % MiscItem: 'aaaObeisanceToken'
+411 -F GetFactionCombatReaction <Faction> <Faction>
+ 73 OF GetFactionRank <Faction>
+ 60 OF GetFactionRankDifference <Faction> <Actor> % [TARGET]
+450 -F GetFactionRelation <Actor> % [TARGET]
+128 OF GetFatiguePercentage
+288 Om GetFriendHit <Actor> % [TARGET]
+288 mF GetFriendHit % ok
+160 OF GetFurnitureMarkerID
+ 74 OF GetGlobalValue <Global>
+ 48 OF GetGold
+416 -F GetGroupMemberCount
+417 -F GetGroupTargetCount
+382 -F GetHasNote <Note>
+ 99 OF GetHeadingAngle <ObjectReferenceID> % [TARGET]
+431 -F GetHealthPercentage
+391 -F GetHitLocation
+318 OF GetIdleDoneOnce
+192 -F GetIgnoreCrime
+338 OF GetIgnoreFriendlyHits
+ 67 OF GetInCell <Cell>
+230 OF GetInCellParam <Cell> <ObjectReferenceID> % [TARGET]
+ 71 OF GetInFaction <Faction>
+ 32 OF GetInSameCell <ObjectReferenceID> % [TARGET]
+305 O- GetInvestmentGold
+310 OF GetInWorldspace <WorldSpace>
+446 -F GetInZone <EncounterZone>
+ 91 OF GetIsAlerted
+474 -F GetIsAlignment <AlignmentValue> % Evil Good Neutral VeryEvil VeryGood
+ 68 OF GetIsClass <Class>
+228 OF GetIsClassDefault <Class>
+ 64 OF GetIsCreature
+438 -F GetIsCreatureType <Integer>
+161 OF GetIsCurrentPackage <Package>
+149 OF GetIsCurrentWeather <Weather ID> % CamoranWeather
+237 OF GetIsGhost
+ 72 OF GetIsID <ObjectID>
+522 -F GetIsLockBroken
+433 -F GetIsObjectType <Form Type> % e.g., Acoustic Space
+254 OF GetIsPlayableRace
+224 O- GetIsPlayerBirthsign <Birthsign>
+ 69 OF GetIsRace <Race>
+136 OF GetIsReference <ObjectReferenceID> % [TARGET]
+ 70 OF GetIsSex <Sex> % 0 Male 1 Female
+246 OF GetIsUsedItem <ObjectID>
+480 -F GetIsUsedItemEquipType <EquipType>
+247 OF GetIsUsedItemType <Form Type>
+427 -F GetIsVoiceType <VoiceType>
+ 47 OF GetItemCount <ObjectID>
+496 -F GetKillingBlowLimb
+107 OF GetKnockedState
+510 -F GetLastHitCritical
+367 -F GetLastPlayerAction
+ 80 OF GetLevel
+ 27 OF GetLineOfSight <ObjectReferenceID> % [TARGET]
+  5 OF GetLocked
+ 65 OF GetLockLevel
+117 -F GetMajorCrimeCount
+492 -F GetMapMarkerVisible
+116 -F GetMinorCrimeCount
+320 OF GetNoRumors
+255 OF GetOffersServicesNow
+157 OF GetOpenState
+197 -F GetPCEnemyofFaction <Faction>
+193 OF GetPCExpelled <Faction>
+199 OF GetPCFactionAttack <Faction>
+195 OF GetPCFactionMurder <Faction>
+197 O- GetPCFactionSteal <Faction>
+201 O- GetPCFactionSubmitAuthority <Faction>
+249 O- GetPCFame
+132 OF GetPCInFaction <Faction>
+251 O- GetPCInfamy
+129 OF GetPCIsClass <Class>
+130 OF GetPCIsRace <Race>
+131 OF GetPCIsSex <Sex> % Female Male
+312 O- GetPCMiscStat <Integer> % 0
+312 -F GetPCMiscStat <Miscellaneous>
+495 -F GetPermanentActorValue <Actor Value>
+225 OF GetPersuasionNumber
+428 -F GetPlantedExplosive
+ 98 O- GetPlayerControlsDisabled
+ 98 -F GetPlayerControlsDisabled % two strange parameters, see capture_20090106_202137.png % XXXX caused program failure and exit, Function ID not verified
+362 OF GetPlayerHasLastRiddenHorse
+454 -F GetPlayerTeammate
+455 -F GetPlayerTeammateCount
+365 O- GetPlayerInSEWorld
+  6 OF GetPos <Axis> % X Y Z
+546 -F GetQuestCompleted <Quest>
+ 56 OF GetQuestRunning <Quest>
+ 79 OF GetQuestVariable <Quest> <Variable Name> % Variable names?
+503 -F GetRadiationLevel
+ 77 OF GetRandomPercent
+244 OF GetRestrained
+226 -F GetSandman
+ 24 OF GetScale
+ 53 OF GetScriptVariable <ObjectReferenceID> <Variable Name> % includes NONE
+ 12 OF GetSecondsPassed
+ 66 OF GetShouldAttack <Actor> % [TARGET]
+159 OF GetSitting
+ 49 OF GetSleeping
+555 -F GetSpellUsageNum <Magic Item> % AlienDisintegrationFXSpell
+ 58 OF GetStage <Quest>
+ 59 OF GetStageDone <Quest> <Stage> % NONE 10
+ 11 OF GetStartingAngle <Axis> % X Y Z
+ 10 OF GetStartingPos <Axis> % X Y Z
+ 50 OF GetTalkedToPC
+172 OF GetTalkedToPCParam <Actor> % [TARGET]
+478 -F GetThreatRatio <Actor> % [TARGET]
+361 OF GetTimeDead
+315 OF GetTotalPersuasionNumber
+144 OF GetTrespassWarningLevel
+242 OF GetUnconscious
+259 OF GetUsedItemActivate
+258 OF GetUsedItemLevel
+ 40 OF GetVampire
+520 -F GetVATSBackAreaFree <**ESObjectREFR> % TESObjectREFR??
+527 -F GetVATSBackTargetVisible <**ESObjectREFR> % TESObjectREFR??
+521 -F GetVATSFrontAreaFree <**ESObjectREFR> % TESObjectREFR??
+528 -F GetVATSFrontTargetVisible <**ESObjectREFR> % TESObjectREFR??
+519 -F GetVATSLeftAreaFree <**ESObjectREFR> % TESObjectREFR??
+526 -F GetVATSLeftTargetVisible <**ESObjectREFR> % TESObjectREFR??
+224 -F GetVATSMode
+518 -F GetVATSRightAreaFree <**ESObjectREFR> % TESObjectREFR??
+525 -F GetVATSRightTargetVisible <**ESObjectREFR> % TESObjectREFR??
+235 -F GetVatsTargetHeight
+408 -F GetVATSValue <VATS Value> <Data (Optional)>
+142 OF GetWalkSpeed
+108 OF GetWeaponAnimType
+500 -F GetWeaponHealthPerc
+109 O- GetWeaponSkillType
+147 OF GetWindSpeed
+533 -F GetXPForNextLevel
+127 -F HasBeenEaten
+154 OF HasFlames
+403 -F HasFriendDisposition
+558 -F HasLoaded3D
+214 OF HasMagicEffect <Magic Effect> % <Base Effect>
+449 -F HasPerk <Perk>
+227 O- HasVampireFed
+353 OF IsActor
+314 OF IsActorAVictim
+313 OF IsActorEvil
+430 -F IsActorTalkingThroughActivator
+306 OF IsActorUsingATorch
+280 OF IsCellOwner <Cell> <Owner(optional)> % NPC: 'Abhuki'
+365 -F IsChild
+267 OF IsCloudy
+515 -F IsCombatTarget <Actor> % [TARGET]
+150 OF IsContinuingPackagePCNear
+163 O- IsCurrentFurnitureObj <Furniture>
+163 -F IsCurrentFurnitureObj <Furniture> % Form List:'AlchoholicDrinks'
+162 OF IsCurrentFurnitureRef <ObjectReferenceID> % [TARGET]
+354 OF IsEssential
+106 OF IsFacingUp
+550 -F IsGoreDisabled
+123 -F IsGreetingPlayer
+125 OF IsGuard
+282 OF IsHorseStolen
+112 OF IsIdlePlaying
+289 OF IsInCombat
+531 -F IsInCriticalStage <CriticalStage>
+332 OF IsInDangerousWater
+300 OF IsInInterior
+372 -F IsInList <Form List> % FLST record FormID
+146 OF IsInMyOwnedCell
+409 -F IsKiller <Actor> % [TARGET]
+410 -F IsKillerObject <Form List>
+451 -F IsLastIdlePlayed <Idle Form>
+285 OF IsLeftUp
+398 -F IsLimbGone <Integer> % 0
+ 25 -F IsMoving
+278 OF IsOwner <Owner(optional)> % NPC: 'Abhuki'
+392 -F IsPC1stPerson
+176 OF IsPCAMurderer
+175 OF IsPCSleeping
+368 -F IsPlayerActionActive <Integer> % 0
+464 -F IsPlayerGrabbedRef <***ESObjectREFR> % [TARGET] % TESObjectREFR
+171 O- IsPlayerInJail
+358 OF IsPlayerMovingIntoNewSpace
+339 OF IsPlayersLastRiddenHorse
+266 OF IsPleasant
+523 -F IsPS3
+ 62 OF IsRaining
+327 OF IsRidingHorse
+287 OF IsRunning
+103 OF IsShieldOut
+286 OF IsSneaking
+ 75 OF IsSnowing
+223 OF IsSpellTarget <Magic Item> % Spell, Enchantment, Potion, what else?
+185 OF IsSwimming
+141 OF IsTalking
+370 -F IsTalkingActivatorActor <Actor> % [TARGET]
+265 OF IsTimePassing
+102 OF IsTorchOut
+145 OF IsTrespassing
+329 O- IsTurnArrest
+ 26 -F IsTurning
+111 OF IsWaiting
+304 -F IsWaterObject
+399 -F IsWeaponInList <Form List>
+101 OF IsWeaponOut
+109 OF IsWeaponSkillType <Actor Value>
+524 OF IsWin32
+309 OF IsXBox
+104 O- IsYielding
+ 36 OF MenuMode <Integer> % 0
+ 42 OF SameFaction <Actor> % [TARGET]
+133 OF SameFactionAsPC
+ 43 OF SameRace <Actor> % [TARGET]
+134 OF SameRaceAsPC
+ 44 OF SameSex <Actor> % [TARGET]
+135 OF SameSexAsPC
+323 OF WhichServiceMenu
